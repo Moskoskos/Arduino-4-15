@@ -8,5 +8,6 @@ namespace CTS_Application
 {
     class History
     {
+        int asd = 0;
     }
 }
