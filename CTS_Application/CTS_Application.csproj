@@ -57,10 +57,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ctsDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="ctsDataSetDbHistorianToGraph.cs">
+      <DependentUpon>ctsDataSetDbHistorianToGraph.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ctsDataSetDbHistorianToGraph.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ctsDataSetDbHistorianToGraph.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ctsDataSetHistorian.cs">
+      <DependentUpon>ctsDataSetHistorian.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="ctsDataSetHistorian.Designer.cs">
       <AutoGen>True</AutoGen>
