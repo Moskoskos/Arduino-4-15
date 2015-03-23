@@ -240,14 +240,6 @@ namespace CTS_Application
             }
             return false;
         }
-        public void TEstTestGitGit()
-        {
-            
-        }
-
-        public void ndTest()
-        {
-            return Attribute;
-        }
+  
     }
 }
