@@ -8,16 +8,20 @@ using System.IO.Ports;
 
 namespace CTS_Application
 {
-   class ArduinoCom
+    class ArduinoCom
     {
-       public bool comFault;
+        public bool comFault;
         public double temp { get; set; }
         SerialPort mySerialPort = new SerialPort("COM3", 9600, Parity.None, 8, StopBits.One);
         public ArduinoCom(string initComPort)
         {
             mySerialPort.PortName = initComPort;
         }
- 
+        public ArduinoCom()
+        {
+
+        }
+
         //Metode som leser verdi fra comport, deler på 9,31 for å få temp
         public double Readtemp()
         {
@@ -38,6 +42,7 @@ namespace CTS_Application
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.Message);
                 comFault = true;
             }
             return Math.Round(tempC, 2);
@@ -56,21 +61,22 @@ namespace CTS_Application
             }
             return fault;
         }
-     
-       /*
-       //Simulates the temperature variation throughout one year ranging from -20*C to +20*C
+
+
+        //Simulates the temperature variation throughout one year ranging from -20*C to +20*C
         public double Temperature(double days)
         {
-                double temp = 0.0;
-                double x = days;
-            temp = (20*Math.Cos(((2*Math.PI*x)/365)-((80*Math.PI)/73)+13));
+            double temp = 0.0;
+            double x = days;
+            temp = (20 * Math.Cos(((2 * Math.PI * x) / 365) - ((80 * Math.PI) / 73) + 13));
             temp = Math.Round(temp, 1);
             return temp;
-          */
-          
+
+
         }
-     
-        
-   
-    
+
+
+
+
+    }
 }
