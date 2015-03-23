@@ -21,7 +21,6 @@ namespace CTS_Application
         {
 
         }
-
         //Metode som leser verdi fra comport, deler på 9,31 for å få temp
         public double Readtemp()
         {
@@ -61,8 +60,6 @@ namespace CTS_Application
             }
             return fault;
         }
-
-
         //Simulates the temperature variation throughout one year ranging from -20*C to +20*C
         public double Temperature(double days)
         {
@@ -71,12 +68,6 @@ namespace CTS_Application
             temp = (20 * Math.Cos(((2 * Math.PI * x) / 365) - ((80 * Math.PI) / 73) + 13));
             temp = Math.Round(temp, 1);
             return temp;
-
-
         }
-
-
-
-
     }
 }
