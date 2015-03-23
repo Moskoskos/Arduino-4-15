@@ -51,6 +51,7 @@
     <Compile Include="Classes\CheckAlarms.cs" />
     <Compile Include="Classes\DbConnect.cs" />
     <Compile Include="Classes\Email.cs" />
+    <Compile Include="Classes\Setup.cs" />
     <Compile Include="ctsDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
