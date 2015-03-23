@@ -18,7 +18,7 @@ namespace CTS_Application
     {
         double temp_Arduino = 0.0;
         double days = 0.0;
-        DbConnect dbConnectGlobal = new DbConnect();
+        DbConnect dbConGlob = new DbConnect();
         
         public frmMain()
         {
@@ -69,10 +69,7 @@ namespace CTS_Application
             }
             lblState.Text = batteryMonitoring.Status;
         }
-        //NOT COMPLETE:
-        //Causes the program to reciæeve an SQL error regarding sending values to database.
-        //Section with errors are commented out.
-        //Further developtment needed.
+      
 
        private void tmrSimTemp_Tick(object sender, EventArgs e)
        {
@@ -84,7 +81,7 @@ namespace CTS_Application
 
        private void btnSubmit_Click(object sender, EventArgs e)
        {
-
+           
        }
 
        private void tmrRecToDb_Tick(object sender, EventArgs e)
@@ -93,7 +90,7 @@ namespace CTS_Application
            ArduinoCom arCom = new ArduinoCom();
        
            //write temp to db
-           dbconnect.WriteTempemperatureToHistorian(temp_Arduino);
+           dbConGlob.WriteTempemperatureToHistorian(temp_Arduino);
            // Update chart with temp
            this.historianTableAdapter.Fill(this.ctsDataSetDbHistorianToGraph.historian);
 
@@ -114,32 +111,31 @@ namespace CTS_Application
 
        private void button1_Click(object sender, EventArgs e)
        {
-           dbConnectGlobal.WriteToAlarmHistorian(1, "Do");
+           dbConGlob.WriteToAlarmHistorian(1, "Do");
            this.alarm_historianTableAdapter.Fill(this.ctsDataSetHistorian.alarm_historian);
-           this.dataGridView1.Sort(this.dataGridView1.Columns["alarm_event_id"], ListSortDirection.Descending);
        }
 
        private void button2_Click(object sender, EventArgs e)
        {
-           dbConnectGlobal.WriteToAlarmHistorian(2, "You");
+           dbConGlob.WriteToAlarmHistorian(2, "You");
            this.alarm_historianTableAdapter.Fill(this.ctsDataSetHistorian.alarm_historian);
        }
 
        private void button3_Click(object sender, EventArgs e)
        {
-           dbConnectGlobal.WriteToAlarmHistorian(3, "Wanna");
+           dbConGlob.WriteToAlarmHistorian(3, "Wanna");
            this.alarm_historianTableAdapter.Fill(this.ctsDataSetHistorian.alarm_historian);
        }
 
        private void button4_Click(object sender, EventArgs e)
        {
-           dbConnectGlobal.WriteToAlarmHistorian(4,"Fuck");
+           dbConGlob.WriteToAlarmHistorian(4,"PLAY DUNGEON MASTER?");
            this.alarm_historianTableAdapter.Fill(this.ctsDataSetHistorian.alarm_historian);
        }
 
        private void button5_Click(object sender, EventArgs e)
        {
-           dbConnectGlobal.WriteToAlarmHistorian(5, "?");
+           dbConGlob.WriteToAlarmHistorian(5, ":D");
            this.alarm_historianTableAdapter.Fill(this.ctsDataSetHistorian.alarm_historian);
        }
     }
