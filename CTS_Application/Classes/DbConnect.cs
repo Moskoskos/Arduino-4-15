@@ -164,6 +164,7 @@ namespace CTS_Application
                 }
             }
         }
+        //Counts number of rows from the recording table (Historian)
         public int NumOfRowsHistorianTable()
         {
             //Source:
@@ -173,7 +174,7 @@ namespace CTS_Application
             {
                 return int.Parse(cmd.ExecuteScalar().ToString());
             }
-        }
+        } //Done?
         //Retrieve data from historian
         public int NumOfRowsAlarmHistorianTable()
         {
@@ -181,7 +182,7 @@ namespace CTS_Application
             {
                 return int.Parse(cmd.ExecuteScalar().ToString());
             }
-        }
+        } //Done?
         public bool WriteToAlarmHistorian(int alarmCodeIn, string descriptionIn)
         {
             if (alarmCodeIn > 0)
@@ -211,7 +212,7 @@ namespace CTS_Application
                         }
                 }
            return false;
-        }
+        } //Done?
         //Use this if settings should be stored in DB for use in webpage
         public bool ChangeSetPoint(double setPointIn, double hysteresisIn)
         {
@@ -236,8 +237,6 @@ namespace CTS_Application
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                
-                
             }
             return false;
         }
