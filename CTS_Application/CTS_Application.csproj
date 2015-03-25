@@ -51,10 +51,10 @@
     <Compile Include="Classes\DbConnect.cs" />
     <Compile Include="Classes\Email.cs" />
     <Compile Include="Classes\Setup.cs" />
-    <Compile Include="ctsDataSet.Designer.cs">
+    <Compile Include="ctsDataSetSubscribers.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ctsDataSet.xsd</DependentUpon>
+      <DependentUpon>ctsDataSetSubscribers.xsd</DependentUpon>
     </Compile>
     <Compile Include="ctsDataSetDbHistorianToGraph.cs">
       <DependentUpon>ctsDataSetDbHistorianToGraph.xsd</DependentUpon>
@@ -104,16 +104,16 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="ctsDataSet.xsc">
-      <DependentUpon>ctsDataSet.xsd</DependentUpon>
+    <None Include="ctsDataSetSubscribers.xsc">
+      <DependentUpon>ctsDataSetSubscribers.xsd</DependentUpon>
     </None>
-    <None Include="ctsDataSet.xsd">
+    <None Include="ctsDataSetSubscribers.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ctsDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>ctsDataSetSubscribers.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="ctsDataSet.xss">
-      <DependentUpon>ctsDataSet.xsd</DependentUpon>
+    <None Include="ctsDataSetSubscribers.xss">
+      <DependentUpon>ctsDataSetSubscribers.xsd</DependentUpon>
     </None>
     <None Include="ctsDataSetDbHistorianToGraph.xsc">
       <DependentUpon>ctsDataSetDbHistorianToGraph.xsd</DependentUpon>

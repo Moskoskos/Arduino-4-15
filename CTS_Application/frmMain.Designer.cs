@@ -55,6 +55,10 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.alarmeventidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.datetimerecordedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.alarmidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.alarmhistorianBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ctsDataSetHistorian = new CTS_Application.ctsDataSetHistorian();
             this.alarm_historianTableAdapter = new CTS_Application.ctsDataSetHistorianTableAdapters.alarm_historianTableAdapter();
@@ -63,12 +67,8 @@
             this.connectionSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.historianTableAdapter = new CTS_Application.ctsDataSetDbHistorianToGraphTableAdapters.historianTableAdapter();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtHysteresis = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.alarmeventidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.datetimerecordedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.alarmidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.chrtTemp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.historianBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctsDataSetDbHistorianToGraph)).BeginInit();
@@ -290,6 +290,34 @@
             this.dataGridView1.Size = new System.Drawing.Size(456, 288);
             this.dataGridView1.TabIndex = 39;
             // 
+            // alarmeventidDataGridViewTextBoxColumn
+            // 
+            this.alarmeventidDataGridViewTextBoxColumn.DataPropertyName = "alarm_event_id";
+            this.alarmeventidDataGridViewTextBoxColumn.HeaderText = "alarm_event_id";
+            this.alarmeventidDataGridViewTextBoxColumn.Name = "alarmeventidDataGridViewTextBoxColumn";
+            this.alarmeventidDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // datetimerecordedDataGridViewTextBoxColumn
+            // 
+            this.datetimerecordedDataGridViewTextBoxColumn.DataPropertyName = "datetime_recorded";
+            this.datetimerecordedDataGridViewTextBoxColumn.HeaderText = "datetime_recorded";
+            this.datetimerecordedDataGridViewTextBoxColumn.Name = "datetimerecordedDataGridViewTextBoxColumn";
+            this.datetimerecordedDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // alarmidDataGridViewTextBoxColumn
+            // 
+            this.alarmidDataGridViewTextBoxColumn.DataPropertyName = "alarm_id";
+            this.alarmidDataGridViewTextBoxColumn.HeaderText = "alarm_id";
+            this.alarmidDataGridViewTextBoxColumn.Name = "alarmidDataGridViewTextBoxColumn";
+            this.alarmidDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "description";
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "description";
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // alarmhistorianBindingSource
             // 
             this.alarmhistorianBindingSource.DataMember = "alarm_historian";
@@ -339,13 +367,13 @@
             // 
             this.historianTableAdapter.ClearBeforeFill = true;
             // 
-            // textBox1
+            // txtHysteresis
             // 
-            this.textBox1.Location = new System.Drawing.Point(232, 48);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 41;
-            this.textBox1.Text = "3";
+            this.txtHysteresis.Location = new System.Drawing.Point(232, 48);
+            this.txtHysteresis.Name = "txtHysteresis";
+            this.txtHysteresis.Size = new System.Drawing.Size(100, 20);
+            this.txtHysteresis.TabIndex = 41;
+            this.txtHysteresis.Text = "3";
             // 
             // label2
             // 
@@ -356,41 +384,13 @@
             this.label2.TabIndex = 42;
             this.label2.Text = "Hysteresis";
             // 
-            // alarmeventidDataGridViewTextBoxColumn
-            // 
-            this.alarmeventidDataGridViewTextBoxColumn.DataPropertyName = "alarm_event_id";
-            this.alarmeventidDataGridViewTextBoxColumn.HeaderText = "alarm_event_id";
-            this.alarmeventidDataGridViewTextBoxColumn.Name = "alarmeventidDataGridViewTextBoxColumn";
-            this.alarmeventidDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // datetimerecordedDataGridViewTextBoxColumn
-            // 
-            this.datetimerecordedDataGridViewTextBoxColumn.DataPropertyName = "datetime_recorded";
-            this.datetimerecordedDataGridViewTextBoxColumn.HeaderText = "datetime_recorded";
-            this.datetimerecordedDataGridViewTextBoxColumn.Name = "datetimerecordedDataGridViewTextBoxColumn";
-            this.datetimerecordedDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // alarmidDataGridViewTextBoxColumn
-            // 
-            this.alarmidDataGridViewTextBoxColumn.DataPropertyName = "alarm_id";
-            this.alarmidDataGridViewTextBoxColumn.HeaderText = "alarm_id";
-            this.alarmidDataGridViewTextBoxColumn.Name = "alarmidDataGridViewTextBoxColumn";
-            this.alarmidDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "description";
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "description";
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1271, 422);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtHysteresis);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
@@ -461,7 +461,7 @@
         private ctsDataSetDbHistorianToGraph ctsDataSetDbHistorianToGraph;
         private System.Windows.Forms.BindingSource historianBindingSource;
         private ctsDataSetDbHistorianToGraphTableAdapters.historianTableAdapter historianTableAdapter;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtHysteresis;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridViewTextBoxColumn alarmeventidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn datetimerecordedDataGridViewTextBoxColumn;

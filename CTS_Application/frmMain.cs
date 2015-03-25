@@ -81,7 +81,8 @@ namespace CTS_Application
 
        private void btnSubmit_Click(object sender, EventArgs e)
        {
-           
+           int setPoint = Convert.ToInt32(txtSpL.Text);
+           int hysteresis = Convert.ToInt32(txtHysteresis.Text);
        }
 
        private void tmrRecToDb_Tick(object sender, EventArgs e)
