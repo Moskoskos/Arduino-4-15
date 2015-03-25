@@ -88,11 +88,19 @@ namespace CTS_Application
        {
            DbConnect dbconnect = new DbConnect();
            ArduinoCom arCom = new ArduinoCom();
-       
-           //write temp to db
-           dbConGlob.WriteTempemperatureToHistorian(temp_Arduino);
-           // Update chart with temp
-           this.historianTableAdapter.Fill(this.ctsDataSetDbHistorianToGraph.historian);
+           try
+           {
+               //write temp to db
+               dbConGlob.WriteTempemperatureToHistorian(temp_Arduino);
+               // Update chart with temp
+               this.historianTableAdapter.Fill(this.ctsDataSetDbHistorianToGraph.historian);
+           }
+           catch (Exception ex)
+           {
+               MessageBox.Show(ex.Message);
+               tmrRecToDb.Stop();
+           }
+         
 
        }
 
