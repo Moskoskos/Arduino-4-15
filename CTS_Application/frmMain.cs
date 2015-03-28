@@ -19,6 +19,7 @@ namespace CTS_Application
         double temp_Arduino = 0.0;
         double days = 0.0;
         DbConnect dbConGlob = new DbConnect();
+        ArduinoCom arcom = new ArduinoCom();
         
         public frmMain()
         {
@@ -73,36 +74,33 @@ namespace CTS_Application
 
        private void tmrSimTemp_Tick(object sender, EventArgs e)
        {
-           ArduinoCom arcom = new ArduinoCom();
            temp_Arduino = arcom.Temperature(days);
            txtCV.Text = Convert.ToString(temp_Arduino);
-           days = days + 0.1;
+           days = days + 1;
        }
 
        private void btnSubmit_Click(object sender, EventArgs e)
        {
            int setPoint = Convert.ToInt32(txtSpL.Text);
            int hysteresis = Convert.ToInt32(txtHysteresis.Text);
+           dbConGlob.ChangeSetPoint(setPoint, hysteresis);
        }
 
        private void tmrRecToDb_Tick(object sender, EventArgs e)
        {
-           DbConnect dbconnect = new DbConnect();
-           ArduinoCom arCom = new ArduinoCom();
            try
            {
                //write temp to db
                dbConGlob.WriteTempemperatureToHistorian(temp_Arduino);
                // Update chart with temp
                this.historianTableAdapter.Fill(this.ctsDataSetDbHistorianToGraph.historian);
+               this.chrtTemp.Update();
            }
            catch (Exception ex)
            {
                MessageBox.Show(ex.Message);
                tmrRecToDb.Stop();
            }
-         
-
        }
 
        private void frmMain_Load(object sender, EventArgs e)
@@ -114,9 +112,9 @@ namespace CTS_Application
            //Where to place the window at startup
            this.Location = new Point(0, 0);
            this.alarm_historianTableAdapter.Fill(this.ctsDataSetHistorian.alarm_historian);
-          // this.dataGridView1.Sort(this.dataGridViewTextBoxColumn1, ListSortDirection.Descending);
-          
        }
+
+        //This is for testing purposes only!
 
        private void button1_Click(object sender, EventArgs e)
        {
