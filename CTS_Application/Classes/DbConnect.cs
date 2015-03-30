@@ -139,7 +139,6 @@ namespace CTS_Application
             {
                 try
                 {
-
                     string query = "INSERT INTO historian(historian_id, datetime_recorded, value)VALUES(@id,@timestamp, @value);";
                     //Checks if connection is open
                     if (this.OpenConnection() == true)
@@ -148,7 +147,7 @@ namespace CTS_Application
                         using (MySqlCommand cmd = new MySqlCommand(query, connection))
                         {
                             // The paramteres mentioned in VALUES is here given a value
-                            cmd.Parameters.AddWithValue("@id", NumOfRowsHistorianTable() + 1);
+                            cmd.Parameters.AddWithValue("@id", NumOfRowsHistorianTable()+1);
                             cmd.Parameters.AddWithValue("@timestamp", DateTime.Now);
                             cmd.Parameters.AddWithValue("@value", valueIn);
                             // Execute the query
@@ -218,7 +217,7 @@ namespace CTS_Application
         {
             try
             {
-                string query = "UPDATE settings(setpoint, hysteresis)VALUES(@setPoint, @hysteresis);";
+                string query = "UPDATE settings(setting_id, setpoint, hysteresis)VALUES(@settingID, @setPoint, @hysteresis);";
                 //Checks if connection is open
                 if (this.OpenConnection() == true)
                 {
@@ -226,6 +225,7 @@ namespace CTS_Application
                     using (MySqlCommand cmd = new MySqlCommand(query, connection))
                     {
                         // The paramteres mentioned in VALUES is here given a value
+                        cmd.Parameters.AddWithValue("@settingID", 1);
                         cmd.Parameters.AddWithValue("@setPoint", setPointIn);
                         cmd.Parameters.AddWithValue("@hysteresis", hysteresisIn);
                         // Execute the query

@@ -95,6 +95,7 @@ namespace CTS_Application
                // Update chart with temp
                this.historianTableAdapter.Fill(this.ctsDataSetDbHistorianToGraph.historian);
                this.chrtTemp.Update();
+               
            }
            catch (Exception ex)
            {
