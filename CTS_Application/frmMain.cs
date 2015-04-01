@@ -81,17 +81,19 @@ namespace CTS_Application
 
        private void btnSubmit_Click(object sender, EventArgs e)
        {
+           DbConnect con = new DbConnect();
            int setPoint = Convert.ToInt32(txtSpL.Text);
            int hysteresis = Convert.ToInt32(txtHysteresis.Text);
-           dbConGlob.ChangeSetPoint(setPoint, hysteresis);
+           con.ChangeSetPoint(setPoint, hysteresis);
        }
 
        private void tmrRecToDb_Tick(object sender, EventArgs e)
        {
+           DbConnect con = new DbConnect();
            try
            {
                //write temp to db
-               dbConGlob.WriteTempemperatureToHistorian(temp_Arduino);
+               con.WriteTempemperatureToHistorian(temp_Arduino);
                // Update chart with temp
                this.historianTableAdapter.Fill(this.ctsDataSetDbHistorianToGraph.historian);
                this.chrtTemp.Update();
@@ -112,38 +114,43 @@ namespace CTS_Application
            //http://stackoverflow.com/questions/12033448/how-to-connect-two-different-windows-forms-keeping-both-open
            //Where to place the window at startup
            this.Location = new Point(0, 0);
-           this.alarm_historianTableAdapter.Fill(this.ctsDataSetHistorian.alarm_historian);
+           alarm_historianTableAdapter.Fill(this.ctsDataSetHistorian.alarm_historian);
        }
 
         //This is for testing purposes only!
 
        private void button1_Click(object sender, EventArgs e)
        {
-           dbConGlob.WriteToAlarmHistorian(1, "Do");
+           DbConnect con = new DbConnect();
+           con.WriteToAlarmHistorian(1, "Do");
            this.alarm_historianTableAdapter.Fill(this.ctsDataSetHistorian.alarm_historian);
        }
 
        private void button2_Click(object sender, EventArgs e)
        {
-           dbConGlob.WriteToAlarmHistorian(2, "You");
+           DbConnect con = new DbConnect();
+           con.WriteToAlarmHistorian(2, "You");
            this.alarm_historianTableAdapter.Fill(this.ctsDataSetHistorian.alarm_historian);
        }
 
        private void button3_Click(object sender, EventArgs e)
        {
-           dbConGlob.WriteToAlarmHistorian(3, "Wanna");
+           DbConnect con = new DbConnect();
+           con.WriteToAlarmHistorian(3, "Wanna");
            this.alarm_historianTableAdapter.Fill(this.ctsDataSetHistorian.alarm_historian);
        }
 
        private void button4_Click(object sender, EventArgs e)
        {
-           dbConGlob.WriteToAlarmHistorian(4,"PLAY DUNGEON MASTER?");
+           DbConnect con = new DbConnect();
+           con.WriteToAlarmHistorian(4,"PLAY DUNGEON MASTER?");
            this.alarm_historianTableAdapter.Fill(this.ctsDataSetHistorian.alarm_historian);
        }
 
        private void button5_Click(object sender, EventArgs e)
        {
-           dbConGlob.WriteToAlarmHistorian(5, ":D");
+           DbConnect con = new DbConnect();
+           con.WriteToAlarmHistorian(5, ":D");
            this.alarm_historianTableAdapter.Fill(this.ctsDataSetHistorian.alarm_historian);
        }
     }
