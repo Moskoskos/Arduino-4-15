@@ -20,7 +20,6 @@ namespace CTS_Application
         double days = 0.0;
         DbConnect dbConGlob = new DbConnect();
         ArduinoCom arcom = new ArduinoCom();
-        
         public frmMain()
         {
             
@@ -46,7 +45,9 @@ namespace CTS_Application
                 tmrSimTemp.Stop();
             }
             tmrRecToDb.Start();
-            
+            chrtTemp.ChartAreas[0].AxisX.ScaleView.Zoomable = true;
+
+
         }
         //Opens the subscriber window
         private void btnSubscribers_Click(object sender, EventArgs e)
@@ -152,6 +153,40 @@ namespace CTS_Application
            DbConnect con = new DbConnect();
            con.WriteToAlarmHistorian(5, ":D");
            this.alarm_historianTableAdapter.Fill(this.ctsDataSetHistorian.alarm_historian);
+       }
+
+
+        //Attempt scrolling in chart arena
+        //Source
+       //http://stackoverflow.com/questions/13584061/how-to-enable-zooming-in-microsoft-chart-control-by-using-mouse-wheel
+        //
+       private void chrtTemp_MouseWheel(object sender, MouseEventArgs e)
+       {
+           try
+           {
+               if (e.Delta < 0)
+               {
+                   chrtTemp.ChartAreas[0].AxisX.ScaleView.ZoomReset();
+                   chrtTemp.ChartAreas[0].AxisY.ScaleView.ZoomReset();
+               }
+
+               if (e.Delta > 0)
+               {
+                   double xMin = chrtTemp.ChartAreas[0].AxisX.ScaleView.ViewMinimum;
+                   double xMax = chrtTemp.ChartAreas[0].AxisX.ScaleView.ViewMaximum;
+                   double yMin = chrtTemp.ChartAreas[0].AxisY.ScaleView.ViewMinimum;
+                   double yMax = chrtTemp.ChartAreas[0].AxisY.ScaleView.ViewMaximum;
+
+                   double posXStart = chrtTemp.ChartAreas[0].AxisX.PixelPositionToValue(e.Location.X) - (xMax - xMin) / 4;
+                   double posXFinish = chrtTemp.ChartAreas[0].AxisX.PixelPositionToValue(e.Location.X) + (xMax - xMin) / 4;
+                   double posYStart = chrtTemp.ChartAreas[0].AxisY.PixelPositionToValue(e.Location.Y) - (yMax - yMin) / 4;
+                   double posYFinish = chrtTemp.ChartAreas[0].AxisY.PixelPositionToValue(e.Location.Y) + (yMax - yMin) / 4;
+
+                   chrtTemp.ChartAreas[0].AxisX.ScaleView.Zoom(posXStart, posXFinish);
+                   chrtTemp.ChartAreas[0].AxisY.ScaleView.Zoom(posYStart, posYFinish);
+               }
+           }
+           catch { }
        }
     }
 }
