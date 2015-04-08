@@ -279,13 +279,13 @@ namespace CTS_Application {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class alarm_historianDataTable : global::System.Data.TypedTableBase<alarm_historianRow> {
             
-            private global::System.Data.DataColumn columnalarm_event_id;
-            
             private global::System.Data.DataColumn columndatetime_recorded;
             
             private global::System.Data.DataColumn columnalarm_id;
             
             private global::System.Data.DataColumn columndescription;
+            
+            private global::System.Data.DataColumn columnalarm_event_id;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -322,14 +322,6 @@ namespace CTS_Application {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn alarm_event_idColumn {
-                get {
-                    return this.columnalarm_event_id;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn datetime_recordedColumn {
                 get {
                     return this.columndatetime_recorded;
@@ -349,6 +341,14 @@ namespace CTS_Application {
             public global::System.Data.DataColumn descriptionColumn {
                 get {
                     return this.columndescription;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn alarm_event_idColumn {
+                get {
+                    return this.columnalarm_event_id;
                 }
             }
             
@@ -389,13 +389,13 @@ namespace CTS_Application {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public alarm_historianRow Addalarm_historianRow(int alarm_event_id, System.DateTime datetime_recorded, int alarm_id, string description) {
+            public alarm_historianRow Addalarm_historianRow(System.DateTime datetime_recorded, int alarm_id, string description, int alarm_event_id) {
                 alarm_historianRow rowalarm_historianRow = ((alarm_historianRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        alarm_event_id,
                         datetime_recorded,
                         alarm_id,
-                        description};
+                        description,
+                        alarm_event_id};
                 rowalarm_historianRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowalarm_historianRow);
                 return rowalarm_historianRow;
@@ -425,30 +425,30 @@ namespace CTS_Application {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnalarm_event_id = base.Columns["alarm_event_id"];
                 this.columndatetime_recorded = base.Columns["datetime_recorded"];
                 this.columnalarm_id = base.Columns["alarm_id"];
                 this.columndescription = base.Columns["description"];
+                this.columnalarm_event_id = base.Columns["alarm_event_id"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnalarm_event_id = new global::System.Data.DataColumn("alarm_event_id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnalarm_event_id);
                 this.columndatetime_recorded = new global::System.Data.DataColumn("datetime_recorded", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndatetime_recorded);
                 this.columnalarm_id = new global::System.Data.DataColumn("alarm_id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnalarm_id);
                 this.columndescription = new global::System.Data.DataColumn("description", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndescription);
+                this.columnalarm_event_id = new global::System.Data.DataColumn("alarm_event_id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnalarm_event_id);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnalarm_event_id}, true));
-                this.columnalarm_event_id.AllowDBNull = false;
-                this.columnalarm_event_id.Unique = true;
                 this.columndatetime_recorded.AllowDBNull = false;
                 this.columnalarm_id.AllowDBNull = false;
                 this.columndescription.MaxLength = 45;
+                this.columnalarm_event_id.AllowDBNull = false;
+                this.columnalarm_event_id.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -591,17 +591,6 @@ namespace CTS_Application {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int alarm_event_id {
-                get {
-                    return ((int)(this[this.tablealarm_historian.alarm_event_idColumn]));
-                }
-                set {
-                    this[this.tablealarm_historian.alarm_event_idColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public System.DateTime datetime_recorded {
                 get {
                     return ((global::System.DateTime)(this[this.tablealarm_historian.datetime_recordedColumn]));
@@ -635,6 +624,17 @@ namespace CTS_Application {
                 }
                 set {
                     this[this.tablealarm_historian.descriptionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int alarm_event_id {
+                get {
+                    return ((int)(this[this.tablealarm_historian.alarm_event_idColumn]));
+                }
+                set {
+                    this[this.tablealarm_historian.alarm_event_idColumn] = value;
                 }
             }
             
@@ -810,10 +810,10 @@ namespace CTS_Application.ctsDataSetHistorianTableAdapters {
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "alarm_historian";
-            tableMapping.ColumnMappings.Add("alarm_event_id", "alarm_event_id");
             tableMapping.ColumnMappings.Add("datetime_recorded", "datetime_recorded");
             tableMapping.ColumnMappings.Add("alarm_id", "alarm_id");
             tableMapping.ColumnMappings.Add("description", "description");
+            tableMapping.ColumnMappings.Add("alarm_event_id", "alarm_event_id");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;

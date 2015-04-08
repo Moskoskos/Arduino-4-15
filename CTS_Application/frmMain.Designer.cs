@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.lblPercentage = new System.Windows.Forms.Label();
             this.btnSubscribers = new System.Windows.Forms.Button();
             this.tmrStatusChanged = new System.Windows.Forms.Timer(this.components);
@@ -55,10 +55,6 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.alarmeventidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.datetimerecordedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.alarmidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.alarmhistorianBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ctsDataSetHistorian = new CTS_Application.ctsDataSetHistorian();
             this.alarm_historianTableAdapter = new CTS_Application.ctsDataSetHistorianTableAdapters.alarm_historianTableAdapter();
@@ -68,7 +64,12 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.historianTableAdapter = new CTS_Application.ctsDataSetDbHistorianToGraphTableAdapters.historianTableAdapter();
             this.txtHysteresis = new System.Windows.Forms.TextBox();
+            this.txtSpHigh = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.alarmeventidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.datetimerecordedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.chrtTemp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.historianBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctsDataSetDbHistorianToGraph)).BeginInit();
@@ -147,7 +148,7 @@
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(368, 48);
+            this.btnSubmit.Location = new System.Drawing.Point(456, 48);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(75, 23);
             this.btnSubmit.TabIndex = 29;
@@ -169,27 +170,27 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(120, 32);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(79, 13);
+            this.label7.Size = new System.Drawing.Size(69, 13);
             this.label7.TabIndex = 28;
-            this.label7.Text = "Set Point Alarm";
+            this.label7.Text = "Setpoint Low";
             // 
             // chrtTemp
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chrtTemp.ChartAreas.Add(chartArea1);
+            chartArea4.Name = "ChartArea1";
+            this.chrtTemp.ChartAreas.Add(chartArea4);
             this.chrtTemp.DataSource = this.historianBindingSource;
-            legend1.Enabled = false;
-            legend1.Name = "Legend1";
-            this.chrtTemp.Legends.Add(legend1);
+            legend4.Enabled = false;
+            legend4.Name = "Legend1";
+            this.chrtTemp.Legends.Add(legend4);
             this.chrtTemp.Location = new System.Drawing.Point(8, 80);
             this.chrtTemp.Name = "chrtTemp";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            series1.XValueMember = "datetime_recorded";
-            series1.YValueMembers = "value";
-            this.chrtTemp.Series.Add(series1);
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            series4.XValueMember = "datetime_recorded";
+            series4.YValueMembers = "value";
+            this.chrtTemp.Series.Add(series4);
             this.chrtTemp.Size = new System.Drawing.Size(776, 288);
             this.chrtTemp.TabIndex = 30;
             this.chrtTemp.Text = "chart1";
@@ -198,7 +199,6 @@
             // 
             this.historianBindingSource.DataMember = "historian";
             this.historianBindingSource.DataSource = this.ctsDataSetDbHistorianToGraph;
-            this.historianBindingSource.CurrentChanged += new System.EventHandler(this.historianBindingSource_CurrentChanged);
             // 
             // ctsDataSetDbHistorianToGraph
             // 
@@ -282,7 +282,6 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.alarmeventidDataGridViewTextBoxColumn,
             this.datetimerecordedDataGridViewTextBoxColumn,
-            this.alarmidDataGridViewTextBoxColumn,
             this.descriptionDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.alarmhistorianBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(792, 80);
@@ -290,34 +289,6 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(456, 288);
             this.dataGridView1.TabIndex = 39;
-            // 
-            // alarmeventidDataGridViewTextBoxColumn
-            // 
-            this.alarmeventidDataGridViewTextBoxColumn.DataPropertyName = "alarm_event_id";
-            this.alarmeventidDataGridViewTextBoxColumn.HeaderText = "alarm_event_id";
-            this.alarmeventidDataGridViewTextBoxColumn.Name = "alarmeventidDataGridViewTextBoxColumn";
-            this.alarmeventidDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // datetimerecordedDataGridViewTextBoxColumn
-            // 
-            this.datetimerecordedDataGridViewTextBoxColumn.DataPropertyName = "datetime_recorded";
-            this.datetimerecordedDataGridViewTextBoxColumn.HeaderText = "datetime_recorded";
-            this.datetimerecordedDataGridViewTextBoxColumn.Name = "datetimerecordedDataGridViewTextBoxColumn";
-            this.datetimerecordedDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // alarmidDataGridViewTextBoxColumn
-            // 
-            this.alarmidDataGridViewTextBoxColumn.DataPropertyName = "alarm_id";
-            this.alarmidDataGridViewTextBoxColumn.HeaderText = "alarm_id";
-            this.alarmidDataGridViewTextBoxColumn.Name = "alarmidDataGridViewTextBoxColumn";
-            this.alarmidDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "description";
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "description";
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // alarmhistorianBindingSource
             // 
@@ -371,20 +342,63 @@
             // 
             // txtHysteresis
             // 
-            this.txtHysteresis.Location = new System.Drawing.Point(232, 48);
+            this.txtHysteresis.Location = new System.Drawing.Point(344, 48);
             this.txtHysteresis.Name = "txtHysteresis";
             this.txtHysteresis.Size = new System.Drawing.Size(100, 20);
             this.txtHysteresis.TabIndex = 41;
             this.txtHysteresis.Text = "3";
+            // 
+            // txtSpHigh
+            // 
+            this.txtSpHigh.Location = new System.Drawing.Point(232, 48);
+            this.txtSpHigh.Name = "txtSpHigh";
+            this.txtSpHigh.Size = new System.Drawing.Size(100, 20);
+            this.txtSpHigh.TabIndex = 43;
+            this.txtSpHigh.Text = "40";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(344, 32);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(55, 13);
+            this.label3.TabIndex = 44;
+            this.label3.Text = "Hysteresis";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(232, 32);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 13);
-            this.label2.TabIndex = 42;
-            this.label2.Text = "Hysteresis";
+            this.label2.Size = new System.Drawing.Size(71, 13);
+            this.label2.TabIndex = 45;
+            this.label2.Text = "Setpoint High";
+            // 
+            // alarmeventidDataGridViewTextBoxColumn
+            // 
+            this.alarmeventidDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.alarmeventidDataGridViewTextBoxColumn.DataPropertyName = "alarm_event_id";
+            this.alarmeventidDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.alarmeventidDataGridViewTextBoxColumn.Name = "alarmeventidDataGridViewTextBoxColumn";
+            this.alarmeventidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.alarmeventidDataGridViewTextBoxColumn.Width = 43;
+            // 
+            // datetimerecordedDataGridViewTextBoxColumn
+            // 
+            this.datetimerecordedDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.datetimerecordedDataGridViewTextBoxColumn.DataPropertyName = "datetime_recorded";
+            this.datetimerecordedDataGridViewTextBoxColumn.HeaderText = "Timestamp";
+            this.datetimerecordedDataGridViewTextBoxColumn.Name = "datetimerecordedDataGridViewTextBoxColumn";
+            this.datetimerecordedDataGridViewTextBoxColumn.ReadOnly = true;
+            this.datetimerecordedDataGridViewTextBoxColumn.Width = 83;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "description";
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // frmMain
             // 
@@ -392,6 +406,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1271, 422);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtSpHigh);
             this.Controls.Add(this.txtHysteresis);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button5);
@@ -464,10 +480,11 @@
         private System.Windows.Forms.BindingSource historianBindingSource;
         private ctsDataSetDbHistorianToGraphTableAdapters.historianTableAdapter historianTableAdapter;
         private System.Windows.Forms.TextBox txtHysteresis;
+        private System.Windows.Forms.TextBox txtSpHigh;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridViewTextBoxColumn alarmeventidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn datetimerecordedDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn alarmidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
     }
 }

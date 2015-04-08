@@ -34,7 +34,7 @@
                   </DbCommand>
                 </InsertCommand>
                 <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>SELECT `alarm_event_id`, `datetime_recorded`, `alarm_id`, `description` FROM `alarm_historian` ORDER BY `datetime_recorded` DESC</CommandText>
                     <Parameters />
                   </DbCommand>
@@ -58,10 +58,10 @@
               </DbSource>
             </MainSource>
             <Mappings>
-              <Mapping SourceColumn="alarm_event_id" DataSetColumn="alarm_event_id" />
               <Mapping SourceColumn="datetime_recorded" DataSetColumn="datetime_recorded" />
               <Mapping SourceColumn="alarm_id" DataSetColumn="alarm_id" />
               <Mapping SourceColumn="description" DataSetColumn="description" />
+              <Mapping SourceColumn="alarm_event_id" DataSetColumn="alarm_event_id" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -73,10 +73,9 @@
   <xs:element name="ctsDataSetHistorian" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="ctsDataSetHistorian" msprop:Generator_UserDSName="ctsDataSetHistorian">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="alarm_historian" msprop:Generator_TableClassName="alarm_historianDataTable" msprop:Generator_TableVarName="tablealarm_historian" msprop:Generator_RowChangedName="alarm_historianRowChanged" msprop:Generator_TablePropName="alarm_historian" msprop:Generator_RowDeletingName="alarm_historianRowDeleting" msprop:Generator_RowChangingName="alarm_historianRowChanging" msprop:Generator_RowEvHandlerName="alarm_historianRowChangeEventHandler" msprop:Generator_RowDeletedName="alarm_historianRowDeleted" msprop:Generator_RowClassName="alarm_historianRow" msprop:Generator_UserTableName="alarm_historian" msprop:Generator_RowEvArgName="alarm_historianRowChangeEvent">
+        <xs:element name="alarm_historian" msprop:Generator_TableClassName="alarm_historianDataTable" msprop:Generator_TableVarName="tablealarm_historian" msprop:Generator_TablePropName="alarm_historian" msprop:Generator_RowDeletingName="alarm_historianRowDeleting" msprop:Generator_RowChangingName="alarm_historianRowChanging" msprop:Generator_RowEvHandlerName="alarm_historianRowChangeEventHandler" msprop:Generator_RowDeletedName="alarm_historianRowDeleted" msprop:Generator_UserTableName="alarm_historian" msprop:Generator_RowChangedName="alarm_historianRowChanged" msprop:Generator_RowEvArgName="alarm_historianRowChangeEvent" msprop:Generator_RowClassName="alarm_historianRow">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="alarm_event_id" msprop:Generator_ColumnVarNameInTable="columnalarm_event_id" msprop:Generator_ColumnPropNameInRow="alarm_event_id" msprop:Generator_ColumnPropNameInTable="alarm_event_idColumn" msprop:Generator_UserColumnName="alarm_event_id" type="xs:int" />
               <xs:element name="datetime_recorded" msprop:Generator_ColumnVarNameInTable="columndatetime_recorded" msprop:Generator_ColumnPropNameInRow="datetime_recorded" msprop:Generator_ColumnPropNameInTable="datetime_recordedColumn" msprop:Generator_UserColumnName="datetime_recorded" type="xs:dateTime" />
               <xs:element name="alarm_id" msprop:Generator_ColumnVarNameInTable="columnalarm_id" msprop:Generator_ColumnPropNameInRow="alarm_id" msprop:Generator_ColumnPropNameInTable="alarm_idColumn" msprop:Generator_UserColumnName="alarm_id" type="xs:int" />
               <xs:element name="description" msprop:Generator_ColumnVarNameInTable="columndescription" msprop:Generator_ColumnPropNameInRow="description" msprop:Generator_ColumnPropNameInTable="descriptionColumn" msprop:Generator_UserColumnName="description" minOccurs="0">
@@ -86,6 +85,7 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="alarm_event_id" msprop:Generator_ColumnVarNameInTable="columnalarm_event_id" msprop:Generator_ColumnPropNameInRow="alarm_event_id" msprop:Generator_ColumnPropNameInTable="alarm_event_idColumn" msprop:Generator_UserColumnName="alarm_event_id" type="xs:int" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

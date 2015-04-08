@@ -193,10 +193,5 @@ namespace CTS_Application
        {
 
        }
-
-       private void historianBindingSource_CurrentChanged(object sender, EventArgs e)
-       {
-
-       }
     }
 }
