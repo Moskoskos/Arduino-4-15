@@ -198,6 +198,7 @@
             // 
             this.historianBindingSource.DataMember = "historian";
             this.historianBindingSource.DataSource = this.ctsDataSetDbHistorianToGraph;
+            this.historianBindingSource.CurrentChanged += new System.EventHandler(this.historianBindingSource_CurrentChanged);
             // 
             // ctsDataSetDbHistorianToGraph
             // 
