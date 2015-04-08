@@ -11,7 +11,6 @@ using System.Data;
 using MySql.Data;
 
 
-
 namespace CTS_Application
 {
     public partial class DbConnect

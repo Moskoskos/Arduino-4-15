@@ -188,5 +188,10 @@ namespace CTS_Application
            }
            catch { }
        }
+
+       private void connectionSettingsToolStripMenuItem_Click(object sender, EventArgs e)
+       {
+
+       }
     }
 }

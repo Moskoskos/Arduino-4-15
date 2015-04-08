@@ -356,6 +356,7 @@
             this.connectionSettingsToolStripMenuItem.Name = "connectionSettingsToolStripMenuItem";
             this.connectionSettingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.connectionSettingsToolStripMenuItem.Text = "Connection settings";
+            this.connectionSettingsToolStripMenuItem.Click += new System.EventHandler(this.connectionSettingsToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -413,7 +414,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "frmSub";
+            this.Text = "1";
             this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chrtTemp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.historianBindingSource)).EndInit();
