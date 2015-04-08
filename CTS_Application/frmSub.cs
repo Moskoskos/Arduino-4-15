@@ -40,7 +40,6 @@ namespace CTS_Application
             string email;
             try
             {
-                //testtest
                 username = txtUsername.Text;
                 firstname = txtFirstName.Text;
                 lastname = txtLastName.Text;

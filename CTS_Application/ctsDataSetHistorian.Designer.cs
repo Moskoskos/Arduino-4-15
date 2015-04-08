@@ -984,7 +984,7 @@ namespace CTS_Application.ctsDataSetHistorianTableAdapters {
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT `alarm_event_id`, `datetime_recorded`, `alarm_id`, `description` FROM `ala" +
-                "rm_historian`";
+                "rm_historian` ORDER BY `datetime_recorded` DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

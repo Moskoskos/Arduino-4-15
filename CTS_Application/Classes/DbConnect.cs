@@ -11,7 +11,6 @@ using System.Data;
 using MySql.Data;
 
 
-
 namespace CTS_Application
 {
     public partial class DbConnect
@@ -139,7 +138,6 @@ namespace CTS_Application
             {
                 try
                 {
-
                     string query = "INSERT INTO historian(historian_id, datetime_recorded, value)VALUES(@id,@timestamp, @value);";
                     //Checks if connection is open
                     if (this.OpenConnection() == true)
@@ -148,7 +146,7 @@ namespace CTS_Application
                         using (MySqlCommand cmd = new MySqlCommand(query, connection))
                         {
                             // The paramteres mentioned in VALUES is here given a value
-                            cmd.Parameters.AddWithValue("@id", NumOfRowsHistorianTable() + 1);
+                            cmd.Parameters.AddWithValue("@id", NumOfRowsHistorianTable()+1);
                             cmd.Parameters.AddWithValue("@timestamp", DateTime.Now);
                             cmd.Parameters.AddWithValue("@value", valueIn);
                             // Execute the query
@@ -164,6 +162,7 @@ namespace CTS_Application
                 }
             }
         }
+        //Counts number of rows from the recording table (Historian)
         public int NumOfRowsHistorianTable()
         {
             //Source:
@@ -173,7 +172,7 @@ namespace CTS_Application
             {
                 return int.Parse(cmd.ExecuteScalar().ToString());
             }
-        }
+        } //Done?
         //Retrieve data from historian
         public int NumOfRowsAlarmHistorianTable()
         {
@@ -181,7 +180,7 @@ namespace CTS_Application
             {
                 return int.Parse(cmd.ExecuteScalar().ToString());
             }
-        }
+        } //Done?
         public bool WriteToAlarmHistorian(int alarmCodeIn, string descriptionIn)
         {
             if (alarmCodeIn > 0)
@@ -211,13 +210,13 @@ namespace CTS_Application
                         }
                 }
            return false;
-        }
+        } //Done?
         //Use this if settings should be stored in DB for use in webpage
-        public bool ChangeSetPoint(double valueIn)
+        public bool ChangeSetPoint(double setPointIn, double hysteresisIn)
         {
             try
             {
-                string query = "UPDATE settings(setpoint)VALUES(@value);";
+                string query = "UPDATE settings(setting_id, setpoint, hysteresis)VALUES(@settingID, @setPoint, @hysteresis);";
                 //Checks if connection is open
                 if (this.OpenConnection() == true)
                 {
@@ -225,7 +224,9 @@ namespace CTS_Application
                     using (MySqlCommand cmd = new MySqlCommand(query, connection))
                     {
                         // The paramteres mentioned in VALUES is here given a value
-                        cmd.Parameters.AddWithValue("@value", valueIn);
+                        cmd.Parameters.AddWithValue("@settingID", 1);
+                        cmd.Parameters.AddWithValue("@setPoint", setPointIn);
+                        cmd.Parameters.AddWithValue("@hysteresis", hysteresisIn);
                         // Execute the query
                         cmd.ExecuteNonQuery();
                     }
@@ -235,8 +236,6 @@ namespace CTS_Application
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                
-                
             }
             return false;
         }
