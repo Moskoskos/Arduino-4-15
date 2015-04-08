@@ -25,15 +25,15 @@ namespace CTS_Application
                };
                DbConnect dbConnect = new DbConnect();
             // Amount of subs counted.
-               int numOfSubs = dbConnect.NumOfRowsSubTable();
-            //The selected email.
-               for (int i = 0; i <= numOfSubs; i++)
-               {
+            //   int numOfSubs = dbConnect.NumOfRowsSubTable();
+            ////The selected email.
+            //   for (int i = 0; i <= numOfSubs; i++)
+            //   {
                    
-                   client.Send("ia.arduino.415@gmail.com", "@recipient", "INSERT TOPIC", "INSERT ALARM INFO");
-                   Console.WriteLine("Sent");
-                   Console.ReadLine();
-               }
+            //       client.Send("ia.arduino.415@gmail.com", "@recipient", "INSERT TOPIC", "INSERT ALARM INFO");
+            //       Console.WriteLine("Sent");
+            //       Console.ReadLine();
+            //   }
               
             
        }

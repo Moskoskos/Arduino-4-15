@@ -1,6 +1,6 @@
 ﻿namespace CTS_Application
 {
-    partial class frmSub
+    partial class Subscribers
     {
         /// <summary>
         /// Required designer variable.
@@ -236,7 +236,7 @@
             this.phonenumber.HeaderText = "phonenumber";
             this.phonenumber.Name = "phonenumber";
             // 
-            // frmSub
+            // Subscribers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -256,7 +256,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "frmSub";
+            this.Name = "Subscribers";
             this.Text = "frmSub";
             this.Load += new System.EventHandler(this.frmSub_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ctsDataSet)).EndInit();

@@ -121,14 +121,7 @@ namespace CTS_Application
             }
         }
         //Retrieves the number of subscribers (used in sending mail to more than one subscriber
-        public int NumOfRowsSubTable()
-        {
-            //Datatable.Rows.count;
-            using (MySqlCommand cmd = new MySqlCommand("SELECT COUNT(*) FROM users", connection))
-            {
-                return int.Parse(cmd.ExecuteScalar().ToString());
-            }
-        }
+     
         //Writes temperature values to database
         public bool WriteTempemperatureToHistorian(double valueIn)
         {
@@ -138,7 +131,7 @@ namespace CTS_Application
             {
                 try
                 {
-                    string query = "INSERT INTO historian(historian_id, datetime_recorded, value)VALUES(@id,@timestamp, @value);";
+                    string query = "INSERT INTO historian(value)VALUES(@value);";
                     //Checks if connection is open
                     if (this.OpenConnection() == true)
                     {
@@ -146,8 +139,6 @@ namespace CTS_Application
                         using (MySqlCommand cmd = new MySqlCommand(query, connection))
                         {
                             // The paramteres mentioned in VALUES is here given a value
-                            cmd.Parameters.AddWithValue("@id", NumOfRowsHistorianTable()+1);
-                            cmd.Parameters.AddWithValue("@timestamp", DateTime.Now);
                             cmd.Parameters.AddWithValue("@value", valueIn);
                             // Execute the query
                             cmd.ExecuteNonQuery();
@@ -162,25 +153,10 @@ namespace CTS_Application
                 }
             }
         }
-        //Counts number of rows from the recording table (Historian)
-        public int NumOfRowsHistorianTable()
-        {
             //Source:
             //http://stackoverflow.com/questions/19196824/how-to-get-number-of-rows-in-a-table-in-mysql
             //
-            using (MySqlCommand cmd = new MySqlCommand("SELECT COUNT(*) FROM historian", connection))
-            {
-                return int.Parse(cmd.ExecuteScalar().ToString());
-            }
-        } //Done?
-        //Retrieve data from historian
-        public int NumOfRowsAlarmHistorianTable()
-        {
-            using (MySqlCommand cmd = new MySqlCommand("SELECT COUNT(*) FROM alarm_historian", connection))
-            {
-                return int.Parse(cmd.ExecuteScalar().ToString());
-            }
-        } //Done?
+
         public bool WriteToAlarmHistorian(int alarmCodeIn, string descriptionIn)
         {
             if (alarmCodeIn > 0)
@@ -188,15 +164,13 @@ namespace CTS_Application
                     try
                         {
                             
-                            string query = "INSERT INTO alarm_historian(alarm_event_id, datetime_recorded, alarm_id, description) VALUES(@addRow, @time, @alarmvar,@description);";
+                            string query = "INSERT INTO alarm_historian(alarm_id, description) VALUES(@alarmvar,@description);";
                             if (this.OpenConnection() == true)
                             {
 
 
                                 using (MySqlCommand cmdRegisterAlarm = new MySqlCommand(query, connection))
                                 {
-                                    cmdRegisterAlarm.Parameters.AddWithValue("@addRow", NumOfRowsAlarmHistorianTable() + 1);
-                                    cmdRegisterAlarm.Parameters.AddWithValue("@time", DateTime.Now);
                                     cmdRegisterAlarm.Parameters.AddWithValue("@alarmvar", alarmCodeIn);
                                     cmdRegisterAlarm.Parameters.AddWithValue("@description", descriptionIn);
                                     cmdRegisterAlarm.ExecuteNonQuery();

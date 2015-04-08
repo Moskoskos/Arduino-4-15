@@ -52,7 +52,7 @@ namespace CTS_Application
         //Opens the subscriber window
         private void btnSubscribers_Click(object sender, EventArgs e)
         {
-            frmSub sub = new frmSub();
+            Subscribers sub = new Subscribers();
             sub.Show();
         }
         //Ever x-interval the program retrieves the system information related to battery status
@@ -76,7 +76,7 @@ namespace CTS_Application
        private void tmrSimTemp_Tick(object sender, EventArgs e)
        {
            temp_Arduino = arcom.Temperature(days);
-           txtCV.Text = Convert.ToString(temp_Arduino);
+           txtCV.Text = Convert.ToString(temp_Arduino) + "°C";
            days = days + 1;
        }
 
@@ -97,6 +97,8 @@ namespace CTS_Application
                con.WriteTempemperatureToHistorian(temp_Arduino);
                // Update chart with temp
                this.historianTableAdapter.Fill(this.ctsDataSetDbHistorianToGraph.historian);
+               InitializeComponent();
+               
                this.chrtTemp.Update();
                
            }
@@ -190,6 +192,11 @@ namespace CTS_Application
        }
 
        private void connectionSettingsToolStripMenuItem_Click(object sender, EventArgs e)
+       {
+
+       }
+
+       private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
        {
 
        }
