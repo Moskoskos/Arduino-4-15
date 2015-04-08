@@ -68,7 +68,7 @@ namespace CTS_Application
         {
             // TODO: This line of code loads data into the 'ctsDataSet.users' table. You can move, or remove it, as needed.
             // The data comes from the connection created to the MySql Server.
-            this.Location = new Point(1287, 0);
+            //this.Location = new Point(1287, 0);
             this.usersTableAdapter.Fill(this.ctsDataSet.users);
         }
         private void btnRefresh_Click(object sender, EventArgs e)
