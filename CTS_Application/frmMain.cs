@@ -82,9 +82,10 @@ namespace CTS_Application
        private void btnSubmit_Click(object sender, EventArgs e)
        {
            DbConnect con = new DbConnect();
-           int setPoint = Convert.ToInt32(txtSpL.Text);
+           int setPointLow = Convert.ToInt32(txtSpL.Text);
+           int setPointHigh = Convert.ToInt32(txtSpH.Text);
            int hysteresis = Convert.ToInt32(txtHysteresis.Text);
-           con.ChangeSetPoint(setPoint, hysteresis);
+           con.ChangeSetPoint(1, setPointLow, setPointHigh, hysteresis);
        }
 
        private void tmrRecToDb_Tick(object sender, EventArgs e)
@@ -96,7 +97,6 @@ namespace CTS_Application
                con.WriteTempemperatureToHistorian(temp_Arduino);
                // Update chart with temp
                this.historianTableAdapter.Fill(this.ctsDataSetDbHistorianToGraph.historian);
-               InitializeComponent();
                
                this.chrtTemp.Update();
                

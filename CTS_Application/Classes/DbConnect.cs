@@ -186,11 +186,11 @@ namespace CTS_Application
            return false;
         } //Done?
         //Use this if settings should be stored in DB for use in webpage
-        public bool ChangeSetPoint(double setPointIn, double hysteresisIn)
+        public bool ChangeSetPoint(int settingID, double setPointLowIn, double setPointHighIn, double hysteresisIn)
         {
             try
             {
-                string query = "UPDATE settings(setting_id, setpoint, hysteresis)VALUES(@settingID, @setPoint, @hysteresis);";
+                string query = "UPDATE settings SET setpoint_low = @setPoint_low, setpoint_high = @setPoint_high, hysteresis = @hysteresis WHERE settings_id = @settingID;";
                 //Checks if connection is open
                 if (this.OpenConnection() == true)
                 {
@@ -198,8 +198,9 @@ namespace CTS_Application
                     using (MySqlCommand cmd = new MySqlCommand(query, connection))
                     {
                         // The paramteres mentioned in VALUES is here given a value
-                        cmd.Parameters.AddWithValue("@settingID", 1);
-                        cmd.Parameters.AddWithValue("@setPoint", setPointIn);
+                        cmd.Parameters.AddWithValue("@settingID", settingID);
+                        cmd.Parameters.AddWithValue("@setPoint_low", setPointLowIn);
+                        cmd.Parameters.AddWithValue("@setPoint_high", setPointHighIn);
                         cmd.Parameters.AddWithValue("@hysteresis", hysteresisIn);
                         // Execute the query
                         cmd.ExecuteNonQuery();

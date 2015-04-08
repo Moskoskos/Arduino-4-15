@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.lblPercentage = new System.Windows.Forms.Label();
             this.btnSubscribers = new System.Windows.Forms.Button();
             this.tmrStatusChanged = new System.Windows.Forms.Timer(this.components);
@@ -57,7 +57,7 @@
             this.connectionSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtHysteresis = new System.Windows.Forms.TextBox();
-            this.txtSpHigh = new System.Windows.Forms.TextBox();
+            this.txtSpH = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -74,6 +74,8 @@
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chrtTemp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -95,7 +97,7 @@
             // 
             // btnSubscribers
             // 
-            this.btnSubscribers.Location = new System.Drawing.Point(472, 112);
+            this.btnSubscribers.Location = new System.Drawing.Point(432, 112);
             this.btnSubscribers.Name = "btnSubscribers";
             this.btnSubscribers.Size = new System.Drawing.Size(75, 23);
             this.btnSubscribers.TabIndex = 19;
@@ -153,7 +155,7 @@
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(472, 56);
+            this.btnSubmit.Location = new System.Drawing.Point(520, 112);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(75, 23);
             this.btnSubmit.TabIndex = 29;
@@ -181,21 +183,21 @@
             // 
             // chrtTemp
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chrtTemp.ChartAreas.Add(chartArea3);
+            chartArea1.Name = "ChartArea1";
+            this.chrtTemp.ChartAreas.Add(chartArea1);
             this.chrtTemp.DataSource = this.historianBindingSource;
-            legend3.Enabled = false;
-            legend3.Name = "Legend1";
-            this.chrtTemp.Legends.Add(legend3);
+            legend1.Enabled = false;
+            legend1.Name = "Legend1";
+            this.chrtTemp.Legends.Add(legend1);
             this.chrtTemp.Location = new System.Drawing.Point(8, 144);
             this.chrtTemp.Name = "chrtTemp";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            series3.XValueMember = "datetime_recorded";
-            series3.YValueMembers = "value";
-            this.chrtTemp.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            series1.XValueMember = "datetime_recorded";
+            series1.YValueMembers = "value";
+            this.chrtTemp.Series.Add(series1);
             this.chrtTemp.Size = new System.Drawing.Size(1256, 288);
             this.chrtTemp.TabIndex = 30;
             this.chrtTemp.Text = "chart1";
@@ -316,13 +318,13 @@
             this.txtHysteresis.TabIndex = 41;
             this.txtHysteresis.Text = "3";
             // 
-            // txtSpHigh
+            // txtSpH
             // 
-            this.txtSpHigh.Location = new System.Drawing.Point(248, 56);
-            this.txtSpHigh.Name = "txtSpHigh";
-            this.txtSpHigh.Size = new System.Drawing.Size(100, 20);
-            this.txtSpHigh.TabIndex = 43;
-            this.txtSpHigh.Text = "40";
+            this.txtSpH.Location = new System.Drawing.Point(248, 56);
+            this.txtSpH.Name = "txtSpH";
+            this.txtSpH.Size = new System.Drawing.Size(100, 20);
+            this.txtSpH.TabIndex = 43;
+            this.txtSpH.Text = "40";
             // 
             // label3
             // 
@@ -440,11 +442,35 @@
             this.label6.TabIndex = 52;
             this.label6.Text = "End Date";
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Summer",
+            "Autumn",
+            "Winter",
+            "Spring"});
+            this.comboBox1.Location = new System.Drawing.Point(472, 56);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 53;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(472, 40);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(43, 13);
+            this.label8.TabIndex = 54;
+            this.label8.Text = "Period?";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1271, 504);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dateTimePicker2);
@@ -452,7 +478,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtSpHigh);
+            this.Controls.Add(this.txtSpH);
             this.Controls.Add(this.txtHysteresis);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button5);
@@ -522,7 +548,7 @@
         private System.Windows.Forms.BindingSource historianBindingSource;
         private ctsDataSetDbHistorianToGraphTableAdapters.historianTableAdapter historianTableAdapter;
         private System.Windows.Forms.TextBox txtHysteresis;
-        private System.Windows.Forms.TextBox txtSpHigh;
+        private System.Windows.Forms.TextBox txtSpH;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridViewTextBoxColumn alarmeventidDataGridViewTextBoxColumn;
@@ -533,5 +559,7 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label8;
     }
 }
