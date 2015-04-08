@@ -11,7 +11,6 @@ using System.Threading.Tasks;
 using System.Threading;
 
 
-
 namespace CTS_Application
 {
     public partial class frmMain : Form
@@ -104,8 +103,9 @@ namespace CTS_Application
            }
            catch (Exception ex)
            {
-               MessageBox.Show(ex.Message);
                tmrRecToDb.Stop();
+               MessageBox.Show(ex.Message);
+               
            }
        }
 
@@ -196,7 +196,7 @@ namespace CTS_Application
 
        }
 
-       private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
+       private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
        {
 
        }

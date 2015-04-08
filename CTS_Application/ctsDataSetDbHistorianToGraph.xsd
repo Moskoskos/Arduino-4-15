@@ -32,7 +32,7 @@
                   </DbCommand>
                 </InsertCommand>
                 <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT `historian_id`, `datetime_recorded`, `value` FROM `historian`</CommandText>
                     <Parameters />
                   </DbCommand>
@@ -68,7 +68,7 @@
   <xs:element name="ctsDataSetDbHistorianToGraph" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="ctsDataSetDbHistorianToGraph" msprop:Generator_UserDSName="ctsDataSetDbHistorianToGraph">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="historian" msprop:Generator_TableClassName="historianDataTable" msprop:Generator_TableVarName="tablehistorian" msprop:Generator_TablePropName="historian" msprop:Generator_RowDeletingName="historianRowDeleting" msprop:Generator_RowChangingName="historianRowChanging" msprop:Generator_RowEvHandlerName="historianRowChangeEventHandler" msprop:Generator_RowDeletedName="historianRowDeleted" msprop:Generator_UserTableName="historian" msprop:Generator_RowChangedName="historianRowChanged" msprop:Generator_RowEvArgName="historianRowChangeEvent" msprop:Generator_RowClassName="historianRow">
+        <xs:element name="historian" msprop:Generator_TableClassName="historianDataTable" msprop:Generator_TableVarName="tablehistorian" msprop:Generator_RowChangedName="historianRowChanged" msprop:Generator_TablePropName="historian" msprop:Generator_RowDeletingName="historianRowDeleting" msprop:Generator_RowChangingName="historianRowChanging" msprop:Generator_RowEvHandlerName="historianRowChangeEventHandler" msprop:Generator_RowDeletedName="historianRowDeleted" msprop:Generator_RowClassName="historianRow" msprop:Generator_UserTableName="historian" msprop:Generator_RowEvArgName="historianRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="historian_id" msprop:Generator_ColumnVarNameInTable="columnhistorian_id" msprop:Generator_ColumnPropNameInRow="historian_id" msprop:Generator_ColumnPropNameInTable="historian_idColumn" msprop:Generator_UserColumnName="historian_id" type="xs:int" />
