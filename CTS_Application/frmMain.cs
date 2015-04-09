@@ -22,31 +22,32 @@ namespace CTS_Application
         BatteryMonitoring batteryMonitoring = new BatteryMonitoring(); //Declare batterymonitoring class
         public frmMain()
         {
-            
             InitializeComponent();
+
             //show percentage left in label.
             lblPercentage.Text = batteryMonitoring.PercentBatteryLeft.ToString() + "% available"; 
+
             //Checks whether the battery status can be read or not. If -1 then no. 
-            if (batteryMonitoring.TimeLeft > 0) 
-            {
-                lblTimeLeft.Text = batteryMonitoring.TimeLeft.ToString();
-            }
-            else
-            {
-                lblTimeLeft.Text = "System could not calculate remaining time. Driver missing!";
-            }
+            if (batteryMonitoring.TimeLeft > 0)  {lblTimeLeft.Text = batteryMonitoring.TimeLeft.ToString();}
+            else{lblTimeLeft.Text = "System could not calculate remaining time. Driver missing!";}
             lblState.Text = batteryMonitoring.Status;
 
             //Simulate temp
             tmrSimTemp.Start();
-            if (days == (3*365))
-            {
-                tmrSimTemp.Stop();
-            }
+            if (days == (3*365)) {tmrSimTemp.Stop();}
             tmrRecToDb.Start();
-          
-
         }
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'ctsDataSetDbHistorianToGraph.historian' table. You can move, or remove it, as needed.
+            this.historianTableAdapter.Fill(this.ctsDataSetDbHistorianToGraph.historian);
+            //Source:
+            //http://stackoverflow.com/questions/12033448/how-to-connect-two-different-windows-forms-keeping-both-open
+            //Where to place the window at startup
+            this.Location = new Point(0, 0);
+            alarm_historianTableAdapter.Fill(this.ctsDataSetHistorian.alarm_historian);
+        }
+
         //Opens the subscriber window
         private void btnSubscribers_Click(object sender, EventArgs e)
         {
@@ -69,7 +70,6 @@ namespace CTS_Application
             }
             lblState.Text = batteryMonitoring.Status;
         }
-      
 
        private void tmrSimTemp_Tick(object sender, EventArgs e)
        {
@@ -103,63 +103,17 @@ namespace CTS_Application
                long memory = GC.GetTotalMemory(true);
                if (memory > 1048576) {lblMemory.Text = "Memory usage: " + (memory / 1024 /1024).ToString() + "MB"; }
                else {lblMemory.Text = "Memory usage: " + (memory / 1024).ToString() + "KB";}
-
-               
            }
            catch (Exception ex)
            {
                tmrRecToDb.Stop();
                MessageBox.Show(ex.Message);
-               
            }
-       }
-
-       private void frmMain_Load(object sender, EventArgs e)
-       {
-           // TODO: This line of code loads data into the 'ctsDataSetDbHistorianToGraph.historian' table. You can move, or remove it, as needed.
-           this.historianTableAdapter.Fill(this.ctsDataSetDbHistorianToGraph.historian);
-           //Source:
-           //http://stackoverflow.com/questions/12033448/how-to-connect-two-different-windows-forms-keeping-both-open
-           //Where to place the window at startup
-           this.Location = new Point(0, 0);
-           alarm_historianTableAdapter.Fill(this.ctsDataSetHistorian.alarm_historian);
-       }
-
-        //This is for testing purposes only!
-
-       private void button1_Click(object sender, EventArgs e)
-       {
-           DbConnect con = new DbConnect();
-           con.WriteToAlarmHistorian(1, "Do");
-           this.alarm_historianTableAdapter.Fill(this.ctsDataSetHistorian.alarm_historian);
-       }
-
-       private void button2_Click(object sender, EventArgs e)
-       {
-           DbConnect con = new DbConnect();
-           con.WriteToAlarmHistorian(2, "You");
-           this.alarm_historianTableAdapter.Fill(this.ctsDataSetHistorian.alarm_historian);
-       }
-
-       private void button3_Click(object sender, EventArgs e)
-       {
-           DbConnect con = new DbConnect();
-           con.WriteToAlarmHistorian(3, "Wanna");
-           this.alarm_historianTableAdapter.Fill(this.ctsDataSetHistorian.alarm_historian);
-       }
-
-       private void button4_Click(object sender, EventArgs e)
-       {
-           DbConnect con = new DbConnect();
-           con.WriteToAlarmHistorian(4,"PLAY DUNGEON MASTER?");
-           this.alarm_historianTableAdapter.Fill(this.ctsDataSetHistorian.alarm_historian);
-       }
-
-       private void button5_Click(object sender, EventArgs e)
-       {
-           DbConnect con = new DbConnect();
-           con.WriteToAlarmHistorian(5, ":D");
-           this.alarm_historianTableAdapter.Fill(this.ctsDataSetHistorian.alarm_historian);
+           //adds new data to the graph, using data retrieved from the database
+           //txtSpH.Text = con.GetHistorianXCoordinate();
+           //chrtTemp.Series["Series1"].Points.AddXY(con.GetHistorianXCoordinate(),con.GetHistorianYCoordinate());
+           //chrtTemp.Refresh();
+           
        }
 
        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)

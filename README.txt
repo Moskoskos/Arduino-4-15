@@ -1,6 +1,7 @@
 All programming done in Visual Studio Ultimate 2013
 Database: Mysql
 DBSM: HeidiSql
+IMPORTANT: To develop you'll need to install the MySql connector provided in this repo
 
 #The program:
 
