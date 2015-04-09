@@ -37,9 +37,9 @@
             // 
             this.btnDelRec.Location = new System.Drawing.Point(8, 8);
             this.btnDelRec.Name = "btnDelRec";
-            this.btnDelRec.Size = new System.Drawing.Size(144, 23);
+            this.btnDelRec.Size = new System.Drawing.Size(176, 23);
             this.btnDelRec.TabIndex = 0;
-            this.btnDelRec.Text = "Delete Recordings";
+            this.btnDelRec.Text = "Delete Temperature Recordings";
             this.btnDelRec.UseVisualStyleBackColor = true;
             this.btnDelRec.Click += new System.EventHandler(this.btnDelRec_Click);
             // 
@@ -47,9 +47,9 @@
             // 
             this.btnDelAla.Location = new System.Drawing.Point(8, 40);
             this.btnDelAla.Name = "btnDelAla";
-            this.btnDelAla.Size = new System.Drawing.Size(144, 23);
+            this.btnDelAla.Size = new System.Drawing.Size(176, 23);
             this.btnDelAla.TabIndex = 4;
-            this.btnDelAla.Text = "Delete Alarms";
+            this.btnDelAla.Text = "Delete Alarm Recordings";
             this.btnDelAla.UseVisualStyleBackColor = true;
             this.btnDelAla.Click += new System.EventHandler(this.btnDelAla_Click);
             // 
@@ -57,7 +57,7 @@
             // 
             this.btnDelSub.Location = new System.Drawing.Point(8, 72);
             this.btnDelSub.Name = "btnDelSub";
-            this.btnDelSub.Size = new System.Drawing.Size(144, 23);
+            this.btnDelSub.Size = new System.Drawing.Size(176, 23);
             this.btnDelSub.TabIndex = 5;
             this.btnDelSub.Text = "Delete Subscribers";
             this.btnDelSub.UseVisualStyleBackColor = true;

@@ -98,8 +98,13 @@ namespace CTS_Application
                this.historianTableAdapter.Fill(this.ctsDataSetDbHistorianToGraph.historian);
                
                this.chrtTemp.Update();
+
+               //Displays the programs current memory Usage. Excludes MySQL
                long memory = GC.GetTotalMemory(true);
-               lblMemory.Text = "Memory usage: " + (memory / 1024).ToString() + "KB";
+               if (memory > 1048576) {lblMemory.Text = "Memory usage: " + (memory / 1024 /1024).ToString() + "MB"; }
+               else {lblMemory.Text = "Memory usage: " + (memory / 1024).ToString() + "KB";}
+
+               
            }
            catch (Exception ex)
            {
