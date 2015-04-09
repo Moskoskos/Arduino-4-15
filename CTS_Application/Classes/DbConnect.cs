@@ -214,6 +214,28 @@ namespace CTS_Application
             }
             return false;
         }
+        public bool DeleteRecordsInTable(string tablename)
+        {
+                try
+                {
+                    //ALTER TABLE @tablename AUTO_INCREMENT=0
+
+                    string query = "TRUNCATE TABLE " + tablename;
+                    if (this.OpenConnection() == true)
+                    {
+                        using (MySqlCommand cmdDeleteRecords = new MySqlCommand(query, connection))
+                        {
+                            cmdDeleteRecords.ExecuteNonQuery();
+                        }
+                    }
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message + "\r\r\n");
+                }
+            return false;
+        } 
             
         
     }

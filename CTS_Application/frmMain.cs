@@ -46,7 +46,6 @@ namespace CTS_Application
             tmrRecToDb.Start();
           
 
-
         }
         //Opens the subscriber window
         private void btnSubscribers_Click(object sender, EventArgs e)
@@ -99,7 +98,8 @@ namespace CTS_Application
                this.historianTableAdapter.Fill(this.ctsDataSetDbHistorianToGraph.historian);
                
                this.chrtTemp.Update();
-               
+               long memory = GC.GetTotalMemory(true);
+               lblMemory.Text = "Memory usage: " + (memory / 1024).ToString() + "KB";
            }
            catch (Exception ex)
            {
@@ -157,14 +157,15 @@ namespace CTS_Application
            this.alarm_historianTableAdapter.Fill(this.ctsDataSetHistorian.alarm_historian);
        }
 
-       private void connectionSettingsToolStripMenuItem_Click(object sender, EventArgs e)
+       private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
        {
 
        }
 
-       private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+       private void menuSettings_Click(object sender, EventArgs e)
        {
-
+           frmSettings SettingsWindow = new frmSettings();
+           SettingsWindow.Show();
        }
     }
 }

@@ -74,6 +74,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ctsDataSetHistorian.xsd</DependentUpon>
     </Compile>
+    <Compile Include="frmSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSettings.Designer.cs">
+      <DependentUpon>frmSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSub.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +95,9 @@
     <Compile Include="Classes\History.cs" />
     <Compile Include="Classes\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmSettings.resx">
+      <DependentUpon>frmSettings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmSub.resx">
       <DependentUpon>frmSub.cs</DependentUpon>
     </EmbeddedResource>
