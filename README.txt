@@ -20,3 +20,9 @@ Changes:
 Enabled AUTO_INCREMENT in MySQL Via HEidiSQL
 Enabled auto-timestamp in Mysql via Heidisql
 
+How To:
+Add datasource to graph:
+Add dataset
+Add graph
+Graph properties->Data->Datasource
+

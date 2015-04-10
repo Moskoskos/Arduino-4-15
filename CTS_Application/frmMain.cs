@@ -39,13 +39,16 @@ namespace CTS_Application
         }
         private void frmMain_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'ctsDataSetDbHistorianToGraph.historian' table. You can move, or remove it, as needed.
-            this.historianTableAdapter.Fill(this.ctsDataSetDbHistorianToGraph.historian);
+            // TODO: This line of code loads data into the 'dataSetToGrah.historian' table. You can move, or remove it, as needed.
+            this.historianTableAdapter.Fill(this.dataSetToGrah.historian);
+            // TODO: This line of code loads data into the 'dataSetAlarmEvents.alarm_historian' table. You can move, or remove it, as needed.
+            this.alarm_historianTableAdapter.Fill(this.dataSetAlarmEvents.alarm_historian);
+           
             //Source:
             //http://stackoverflow.com/questions/12033448/how-to-connect-two-different-windows-forms-keeping-both-open
             //Where to place the window at startup
             this.Location = new Point(0, 0);
-            alarm_historianTableAdapter.Fill(this.ctsDataSetHistorian.alarm_historian);
+            
         }
 
         //Opens the subscriber window
@@ -95,9 +98,10 @@ namespace CTS_Application
                //write temp to db
                con.WriteTempemperatureToHistorian(temp_Arduino);
                // Update chart with temp
-               this.historianTableAdapter.Fill(this.ctsDataSetDbHistorianToGraph.historian);
-               
-               this.chrtTemp.Update();
+               this.historianTableAdapter.Fill(this.dataSetToGrah.historian);
+               chrtTemp.DataBind();
+               chrtTemp.Refresh();
+         
 
                //Displays the programs current memory Usage. Excludes MySQL
                long memory = GC.GetTotalMemory(true);
@@ -109,12 +113,14 @@ namespace CTS_Application
                tmrRecToDb.Stop();
                MessageBox.Show(ex.Message);
            }
+
            //adds new data to the graph, using data retrieved from the database
            //txtSpH.Text = con.GetHistorianXCoordinate();
            //chrtTemp.Series["Series1"].Points.AddXY(con.GetHistorianXCoordinate(),con.GetHistorianYCoordinate());
            //chrtTemp.Refresh();
            
        }
+   
 
        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
        {
@@ -126,5 +132,16 @@ namespace CTS_Application
            frmSettings SettingsWindow = new frmSettings();
            SettingsWindow.Show();
        }
+
+       private void button1_Click(object sender, EventArgs e)
+       {
+           
+           this.historianTableAdapter.Fill(this.dataSetToGrah.historian);
+           chrtTemp.DataBind();
+           chrtTemp.Refresh();
+           
+       }
+
+      
     }
 }

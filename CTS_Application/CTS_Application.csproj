@@ -57,23 +57,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ctsDataSetSubscribers.xsd</DependentUpon>
     </Compile>
-    <Compile Include="ctsDataSetDbHistorianToGraph.cs">
-      <DependentUpon>ctsDataSetDbHistorianToGraph.xsd</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ctsDataSetDbHistorianToGraph.Designer.cs">
+    <Compile Include="dataSetAlarmEvents.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ctsDataSetDbHistorianToGraph.xsd</DependentUpon>
+      <DependentUpon>dataSetAlarmEvents.xsd</DependentUpon>
     </Compile>
-    <Compile Include="ctsDataSetHistorian.cs">
-      <DependentUpon>ctsDataSetHistorian.xsd</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ctsDataSetHistorian.Designer.cs">
+    <Compile Include="DataSetToGrah.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ctsDataSetHistorian.xsd</DependentUpon>
+      <DependentUpon>DataSetToGrah.xsd</DependentUpon>
     </Compile>
     <Compile Include="frmSettings.cs">
       <SubType>Form</SubType>
@@ -125,27 +117,27 @@
     <None Include="ctsDataSetSubscribers.xss">
       <DependentUpon>ctsDataSetSubscribers.xsd</DependentUpon>
     </None>
-    <None Include="ctsDataSetDbHistorianToGraph.xsc">
-      <DependentUpon>ctsDataSetDbHistorianToGraph.xsd</DependentUpon>
+    <None Include="dataSetAlarmEvents.xsc">
+      <DependentUpon>dataSetAlarmEvents.xsd</DependentUpon>
     </None>
-    <None Include="ctsDataSetDbHistorianToGraph.xsd">
+    <None Include="dataSetAlarmEvents.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ctsDataSetDbHistorianToGraph.Designer.cs</LastGenOutput>
+      <LastGenOutput>dataSetAlarmEvents.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="ctsDataSetDbHistorianToGraph.xss">
-      <DependentUpon>ctsDataSetDbHistorianToGraph.xsd</DependentUpon>
+    <None Include="dataSetAlarmEvents.xss">
+      <DependentUpon>dataSetAlarmEvents.xsd</DependentUpon>
     </None>
-    <None Include="ctsDataSetHistorian.xsc">
-      <DependentUpon>ctsDataSetHistorian.xsd</DependentUpon>
+    <None Include="DataSetToGrah.xsc">
+      <DependentUpon>DataSetToGrah.xsd</DependentUpon>
     </None>
-    <None Include="ctsDataSetHistorian.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ctsDataSetHistorian.Designer.cs</LastGenOutput>
+    <None Include="DataSetToGrah.xsd">
       <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetToGrah.Designer.cs</LastGenOutput>
     </None>
-    <None Include="ctsDataSetHistorian.xss">
-      <DependentUpon>ctsDataSetHistorian.xsd</DependentUpon>
+    <None Include="DataSetToGrah.xss">
+      <DependentUpon>DataSetToGrah.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
