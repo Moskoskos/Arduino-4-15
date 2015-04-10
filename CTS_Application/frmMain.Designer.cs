@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.lblPercentage = new System.Windows.Forms.Label();
             this.btnSubscribers = new System.Windows.Forms.Button();
             this.tmrStatusChanged = new System.Windows.Forms.Timer(this.components);
@@ -72,7 +72,6 @@
             this.dataSetToGrah = new CTS_Application.DataSetToGrah();
             this.historianBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.historianTableAdapter = new CTS_Application.DataSetToGrahTableAdapters.historianTableAdapter();
-            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -185,7 +184,7 @@
             // 
             // tmrRecToDb
             // 
-            this.tmrRecToDb.Interval = 3000;
+            this.tmrRecToDb.Interval = 1200;
             this.tmrRecToDb.Tick += new System.EventHandler(this.tmrRecToDb_Tick);
             // 
             // menuStrip1
@@ -360,21 +359,22 @@
             // 
             // chrtTemp
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chrtTemp.ChartAreas.Add(chartArea4);
+            chartArea1.Name = "ChartArea1";
+            this.chrtTemp.ChartAreas.Add(chartArea1);
             this.chrtTemp.DataSource = this.historianBindingSource;
-            legend4.Enabled = false;
-            legend4.Name = "Legend1";
-            this.chrtTemp.Legends.Add(legend4);
+            legend1.Enabled = false;
+            legend1.Name = "Legend1";
+            this.chrtTemp.Legends.Add(legend1);
             this.chrtTemp.Location = new System.Drawing.Point(8, 144);
             this.chrtTemp.Name = "chrtTemp";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            series4.XValueMember = "datetime_recorded";
-            series4.YValueMembers = "value";
-            this.chrtTemp.Series.Add(series4);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            series1.XValueMember = "datetime_recorded";
+            series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Time;
+            series1.YValueMembers = "value";
+            this.chrtTemp.Series.Add(series1);
             this.chrtTemp.Size = new System.Drawing.Size(1256, 288);
             this.chrtTemp.TabIndex = 30;
             this.chrtTemp.Text = "chart1";
@@ -419,22 +419,11 @@
             // 
             this.historianTableAdapter.ClearBeforeFill = true;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(128, 88);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(104, 23);
-            this.button1.TabIndex = 56;
-            this.button1.Text = "Update Graph";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1271, 504);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.comboBox1);
@@ -518,6 +507,5 @@
         private DataSetToGrah dataSetToGrah;
         private System.Windows.Forms.BindingSource historianBindingSource;
         private DataSetToGrahTableAdapters.historianTableAdapter historianTableAdapter;
-        private System.Windows.Forms.Button button1;
     }
 }

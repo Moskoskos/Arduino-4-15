@@ -36,6 +36,10 @@ namespace CTS_Application
             tmrSimTemp.Start();
             if (days == (3*365)) {tmrSimTemp.Stop();}
             tmrRecToDb.Start();
+           // dateTimePicker1.Value = DateTime.Today;
+           // dateTimePicker2.Value = DateTime.MaxValue.AddDays(1);
+            //chrtTemp.ChartAreas["Series1"].AxisX.Maximum = dateTimePicker1.Value;
+           // chrtTemp.ChartAreas["Series1"].AxisX.Minimum = 0;
         }
         private void frmMain_Load(object sender, EventArgs e)
         {
@@ -107,18 +111,13 @@ namespace CTS_Application
                long memory = GC.GetTotalMemory(true);
                if (memory > 1048576) {lblMemory.Text = "Memory usage: " + (memory / 1024 /1024).ToString() + "MB"; }
                else {lblMemory.Text = "Memory usage: " + (memory / 1024).ToString() + "KB";}
+               txtSpH.Text = DateTime.Now.ToString();
            }
            catch (Exception ex)
            {
                tmrRecToDb.Stop();
                MessageBox.Show(ex.Message);
            }
-
-           //adds new data to the graph, using data retrieved from the database
-           //txtSpH.Text = con.GetHistorianXCoordinate();
-           //chrtTemp.Series["Series1"].Points.AddXY(con.GetHistorianXCoordinate(),con.GetHistorianYCoordinate());
-           //chrtTemp.Refresh();
-           
        }
    
 
@@ -132,16 +131,5 @@ namespace CTS_Application
            frmSettings SettingsWindow = new frmSettings();
            SettingsWindow.Show();
        }
-
-       private void button1_Click(object sender, EventArgs e)
-       {
-           
-           this.historianTableAdapter.Fill(this.dataSetToGrah.historian);
-           chrtTemp.DataBind();
-           chrtTemp.Refresh();
-           
-       }
-
-      
     }
 }
