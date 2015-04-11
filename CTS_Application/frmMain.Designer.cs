@@ -72,6 +72,8 @@
             this.dataSetToGrah = new CTS_Application.DataSetToGrah();
             this.historianBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.historianTableAdapter = new CTS_Application.DataSetToGrahTableAdapters.historianTableAdapter();
+            this.btnStartSim = new System.Windows.Forms.Button();
+            this.btnStopSim = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -93,7 +95,7 @@
             // 
             // btnSubscribers
             // 
-            this.btnSubscribers.Location = new System.Drawing.Point(24, 88);
+            this.btnSubscribers.Location = new System.Drawing.Point(696, 56);
             this.btnSubscribers.Name = "btnSubscribers";
             this.btnSubscribers.Size = new System.Drawing.Size(75, 23);
             this.btnSubscribers.TabIndex = 19;
@@ -276,14 +278,14 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(104, 440);
+            this.dateTimePicker1.Location = new System.Drawing.Point(24, 104);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 49;
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(1024, 440);
+            this.dateTimePicker2.Location = new System.Drawing.Point(248, 104);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker2.TabIndex = 50;
@@ -292,7 +294,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(40, 440);
+            this.label1.Location = new System.Drawing.Point(24, 88);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 51;
@@ -301,7 +303,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(960, 440);
+            this.label6.Location = new System.Drawing.Point(248, 88);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(52, 13);
             this.label6.TabIndex = 52;
@@ -327,7 +329,7 @@
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(43, 13);
             this.label8.TabIndex = 54;
-            this.label8.Text = "Period?";
+            this.label8.Text = "Season";
             // 
             // dataGridView1
             // 
@@ -338,9 +340,9 @@
             this.datetimerecordedDataGridViewTextBoxColumn,
             this.descriptionDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.alarmhistorianBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(816, 32);
+            this.dataGridView1.Location = new System.Drawing.Point(784, 32);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(448, 112);
+            this.dataGridView1.Size = new System.Drawing.Size(480, 112);
             this.dataGridView1.TabIndex = 55;
             // 
             // dataSetAlarmEvents
@@ -372,7 +374,6 @@
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             series1.XValueMember = "datetime_recorded";
-            series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Time;
             series1.YValueMembers = "value";
             this.chrtTemp.Series.Add(series1);
             this.chrtTemp.Size = new System.Drawing.Size(1256, 288);
@@ -419,11 +420,33 @@
             // 
             this.historianTableAdapter.ClearBeforeFill = true;
             // 
+            // btnStartSim
+            // 
+            this.btnStartSim.Location = new System.Drawing.Point(608, 96);
+            this.btnStartSim.Name = "btnStartSim";
+            this.btnStartSim.Size = new System.Drawing.Size(75, 23);
+            this.btnStartSim.TabIndex = 56;
+            this.btnStartSim.Text = "Start Sim";
+            this.btnStartSim.UseVisualStyleBackColor = true;
+            this.btnStartSim.Click += new System.EventHandler(this.btnStartSim_Click);
+            // 
+            // btnStopSim
+            // 
+            this.btnStopSim.Location = new System.Drawing.Point(696, 96);
+            this.btnStopSim.Name = "btnStopSim";
+            this.btnStopSim.Size = new System.Drawing.Size(75, 23);
+            this.btnStopSim.TabIndex = 57;
+            this.btnStopSim.Text = "Stop Sim";
+            this.btnStopSim.UseVisualStyleBackColor = true;
+            this.btnStopSim.Click += new System.EventHandler(this.btnStopSim_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1271, 504);
+            this.Controls.Add(this.btnStopSim);
+            this.Controls.Add(this.btnStartSim);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.comboBox1);
@@ -507,5 +530,7 @@
         private DataSetToGrah dataSetToGrah;
         private System.Windows.Forms.BindingSource historianBindingSource;
         private DataSetToGrahTableAdapters.historianTableAdapter historianTableAdapter;
+        private System.Windows.Forms.Button btnStartSim;
+        private System.Windows.Forms.Button btnStopSim;
     }
 }

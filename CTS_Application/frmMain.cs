@@ -32,10 +32,7 @@ namespace CTS_Application
             else{lblTimeLeft.Text = "System could not calculate remaining time. Driver missing!";}
             lblState.Text = batteryMonitoring.Status;
 
-            //Simulate temp
-            tmrSimTemp.Start();
-            if (days == (3*365)) {tmrSimTemp.Stop();}
-            tmrRecToDb.Start();
+           
            // dateTimePicker1.Value = DateTime.Today;
            // dateTimePicker2.Value = DateTime.MaxValue.AddDays(1);
             //chrtTemp.ChartAreas["Series1"].AxisX.Maximum = dateTimePicker1.Value;
@@ -52,6 +49,7 @@ namespace CTS_Application
             //http://stackoverflow.com/questions/12033448/how-to-connect-two-different-windows-forms-keeping-both-open
             //Where to place the window at startup
             this.Location = new Point(0, 0);
+           // chrtTemp.ChartAreas["Series1"].AxisX.LabelStyle.Format = "yyyy-MM-dd HH:mm";
             
         }
 
@@ -73,7 +71,7 @@ namespace CTS_Application
             }
             else
             {
-                lblTimeLeft.Text = "System could not calculate remaining time.";
+                lblTimeLeft.Text = "System could not calculate remaining time. Driver missing";
             }
             lblState.Text = batteryMonitoring.Status;
         }
@@ -131,5 +129,24 @@ namespace CTS_Application
            frmSettings SettingsWindow = new frmSettings();
            SettingsWindow.Show();
        }
+
+        private void DisplayXAxis()
+       {
+
+       }
+
+        private void btnStartSim_Click(object sender, EventArgs e)
+        {
+            //Simulate temp
+            tmrSimTemp.Start();
+            if (days == (3 * 365)) { tmrSimTemp.Stop(); }
+            tmrRecToDb.Start();
+        }
+
+        private void btnStopSim_Click(object sender, EventArgs e)
+        {
+            tmrSimTemp.Stop();
+            tmrRecToDb.Stop();
+        }
     }
 }
