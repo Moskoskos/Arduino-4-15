@@ -8,5 +8,6 @@ namespace CTS_Application.Classes
 {
     class AlarmHandling
     {
+
     }
 }
