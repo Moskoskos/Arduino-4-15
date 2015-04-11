@@ -8,8 +8,5 @@ namespace CTS_Application.Classes
 {
     class AlarmHandling
     {
-        //DbConnect con = new DbConnect();
-        //   con.WriteToAlarmHistorian(1, "AlarmMessage");
-        //   this.alarm_historianTableAdapter.Fill(this.ctsDataSetHistorian.alarm_historian);
     }
 }
