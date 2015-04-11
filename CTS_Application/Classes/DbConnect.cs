@@ -237,53 +237,7 @@ namespace CTS_Application
             return false;
         }
 
-        //All below needs future testing.
-        //ExecuteScalar retrieves only a single value
-        public string GetHistorianXCoordinate()
-        {
-            string temp = "";
-            try
-            {
-
-                string query = "SELECT datetime_recorded FROM historian ORDER BY id DESC LIMIT 1;";
-                if (this.OpenConnection() == true)
-                {
-                    using (MySqlCommand cmdGetXCoordinate = new MySqlCommand(query, connection))
-                    {
-                        temp = (string)cmdGetXCoordinate.ExecuteScalar();
-                        temp = Convert.ToString(temp);
-                    }
-                }
-                
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message + "\r\r\n");
-            }
-            return temp;
-        }
-        public bool GetHistorianYCoordinate()
-        {
-            try
-            {
-
-                string query = "SELECT value FROM historian ORDER BY id DESC LIMIT 1;";
-                if (this.OpenConnection() == true)
-                {
-                    using (MySqlCommand cmdGetYCoordinate = new MySqlCommand(query, connection))
-                    {
-                        cmdGetYCoordinate.ExecuteScalar();
-                    }
-                }
-                return true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message + "\r\r\n");
-            }
-            return false;
-        } 
-            
+   
         
     }
 }
