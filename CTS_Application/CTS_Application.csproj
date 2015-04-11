@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Alarm.cs" />
     <Compile Include="Classes\ArduinoCom.cs" />
     <Compile Include="Classes\BatteryMonitoring.cs" />
     <Compile Include="Classes\DbConnect.cs" />
