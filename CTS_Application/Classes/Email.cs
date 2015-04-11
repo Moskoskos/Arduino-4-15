@@ -5,40 +5,50 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using System.Net.Mail;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Windows.Forms;
+using Microsoft.Win32;
+using System.Media;
+using System.Threading;
 
 namespace CTS_Application
 {
     class Email
     {
+       private SmtpClient client;
+       private MailMessage message;
+       private string from;
         public Email()
         {
+           from = "arduino.ia2.4.15@gmail.com";
+            client = new SmtpClient("smtp.gmail.com", 587);
+            client.Credentials = new System.Net.NetworkCredential(from, "Arduino4.15");
+            client.EnableSsl = true;
+    }
+        public Email()
+        { }
 
-        }
-        public void SendEmail()
-       {
-           //Source:
-           //http://stackoverflow.com/questions/704636/sending-email-through-gmail-smtp-server-with-c-sharp
-               SmtpClient client = new SmtpClient("smtp.gmail.com", 587)
-               {
-                   Credentials = new NetworkCredential("ia.arduino.415@gmail.com", "lekemosKOS15"),
-                   EnableSsl = true
-               };
-               DbConnect dbConnect = new DbConnect();
-            // Amount of subs counted.
-            //   int numOfSubs = dbConnect.NumOfRowsSubTable();
-            ////The selected email.
-            //   for (int i = 0; i <= numOfSubs; i++)
-            //   {
-                   
-            //       client.Send("ia.arduino.415@gmail.com", "@recipient", "INSERT TOPIC", "INSERT ALARM INFO");
-            //       Console.WriteLine("Sent");
-            //       Console.ReadLine();
-            //   }
-              
-            
-       }
+        public void SendMessage(string to1, string subject1, string body1)
+        {
+            message = new MailMessage(from, to1, subject1, body1);
+
+
+            try
+            {
+                client.Send(message);
+               
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }             
+    }
+       
 
 
         
-    }
+    
 }
