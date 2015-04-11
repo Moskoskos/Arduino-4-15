@@ -43,45 +43,49 @@
             this.btnSubmit = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.chrtTemp = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.historianBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.ctsDataSetDbHistorianToGraph = new CTS_Application.ctsDataSetDbHistorianToGraph();
             this.tmrSimTemp = new System.Windows.Forms.Timer(this.components);
             this.tmrRecToDb = new System.Windows.Forms.Timer(this.components);
-            this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.alarmeventidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.datetimerecordedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.alarmidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.alarmhistorianBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.ctsDataSetHistorian = new CTS_Application.ctsDataSetHistorian();
-            this.alarm_historianTableAdapter = new CTS_Application.ctsDataSetHistorianTableAdapters.alarm_historianTableAdapter();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.connectionSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.historianTableAdapter = new CTS_Application.ctsDataSetDbHistorianToGraphTableAdapters.historianTableAdapter();
             this.txtHysteresis = new System.Windows.Forms.TextBox();
+            this.txtSpH = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.chrtTemp)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.historianBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ctsDataSetDbHistorianToGraph)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.alarmhistorianBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ctsDataSetHistorian)).BeginInit();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblMemory = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataSetAlarmEvents = new CTS_Application.dataSetAlarmEvents();
+            this.alarmhistorianBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.alarm_historianTableAdapter = new CTS_Application.dataSetAlarmEventsTableAdapters.alarm_historianTableAdapter();
+            this.chrtTemp = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.datetimerecordedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.alarmeventidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataSetToGrah = new CTS_Application.DataSetToGrah();
+            this.historianBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.historianTableAdapter = new CTS_Application.DataSetToGrahTableAdapters.historianTableAdapter();
             this.menuStrip1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSetAlarmEvents)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.alarmhistorianBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chrtTemp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSetToGrah)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.historianBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // lblPercentage
             // 
             this.lblPercentage.AutoSize = true;
-            this.lblPercentage.Location = new System.Drawing.Point(640, 400);
+            this.lblPercentage.Location = new System.Drawing.Point(136, 16);
             this.lblPercentage.Name = "lblPercentage";
             this.lblPercentage.Size = new System.Drawing.Size(62, 13);
             this.lblPercentage.TabIndex = 18;
@@ -89,7 +93,7 @@
             // 
             // btnSubscribers
             // 
-            this.btnSubscribers.Location = new System.Drawing.Point(1168, 392);
+            this.btnSubscribers.Location = new System.Drawing.Point(24, 88);
             this.btnSubscribers.Name = "btnSubscribers";
             this.btnSubscribers.Size = new System.Drawing.Size(75, 23);
             this.btnSubscribers.TabIndex = 19;
@@ -105,7 +109,7 @@
             // lblTimeLeft
             // 
             this.lblTimeLeft.AutoSize = true;
-            this.lblTimeLeft.Location = new System.Drawing.Point(720, 400);
+            this.lblTimeLeft.Location = new System.Drawing.Point(216, 16);
             this.lblTimeLeft.Name = "lblTimeLeft";
             this.lblTimeLeft.Size = new System.Drawing.Size(51, 13);
             this.lblTimeLeft.TabIndex = 20;
@@ -114,7 +118,7 @@
             // lblState
             // 
             this.lblState.AutoSize = true;
-            this.lblState.Location = new System.Drawing.Point(520, 400);
+            this.lblState.Location = new System.Drawing.Point(16, 16);
             this.lblState.Name = "lblState";
             this.lblState.Size = new System.Drawing.Size(32, 13);
             this.lblState.TabIndex = 21;
@@ -122,7 +126,7 @@
             // 
             // txtSpL
             // 
-            this.txtSpL.Location = new System.Drawing.Point(120, 48);
+            this.txtSpL.Location = new System.Drawing.Point(136, 56);
             this.txtSpL.Name = "txtSpL";
             this.txtSpL.Size = new System.Drawing.Size(100, 20);
             this.txtSpL.TabIndex = 23;
@@ -130,7 +134,7 @@
             // 
             // txtCV
             // 
-            this.txtCV.Location = new System.Drawing.Point(8, 48);
+            this.txtCV.Location = new System.Drawing.Point(24, 56);
             this.txtCV.Name = "txtCV";
             this.txtCV.ReadOnly = true;
             this.txtCV.Size = new System.Drawing.Size(100, 20);
@@ -147,7 +151,7 @@
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(368, 48);
+            this.btnSubmit.Location = new System.Drawing.Point(608, 56);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(75, 23);
             this.btnSubmit.TabIndex = 29;
@@ -158,7 +162,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 32);
+            this.label4.Location = new System.Drawing.Point(24, 40);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(71, 13);
             this.label4.TabIndex = 27;
@@ -167,43 +171,11 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(120, 32);
+            this.label7.Location = new System.Drawing.Point(136, 40);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(79, 13);
+            this.label7.Size = new System.Drawing.Size(69, 13);
             this.label7.TabIndex = 28;
-            this.label7.Text = "Set Point Alarm";
-            // 
-            // chrtTemp
-            // 
-            chartArea1.Name = "ChartArea1";
-            this.chrtTemp.ChartAreas.Add(chartArea1);
-            this.chrtTemp.DataSource = this.historianBindingSource;
-            legend1.Enabled = false;
-            legend1.Name = "Legend1";
-            this.chrtTemp.Legends.Add(legend1);
-            this.chrtTemp.Location = new System.Drawing.Point(8, 80);
-            this.chrtTemp.Name = "chrtTemp";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            series1.XValueMember = "datetime_recorded";
-            series1.YValueMembers = "value";
-            this.chrtTemp.Series.Add(series1);
-            this.chrtTemp.Size = new System.Drawing.Size(776, 288);
-            this.chrtTemp.TabIndex = 30;
-            this.chrtTemp.Text = "chart1";
-            // 
-            // historianBindingSource
-            // 
-            this.historianBindingSource.DataMember = "historian";
-            this.historianBindingSource.DataSource = this.ctsDataSetDbHistorianToGraph;
-            this.historianBindingSource.CurrentChanged += new System.EventHandler(this.historianBindingSource_CurrentChanged);
-            // 
-            // ctsDataSetDbHistorianToGraph
-            // 
-            this.ctsDataSetDbHistorianToGraph.DataSetName = "ctsDataSetDbHistorianToGraph";
-            this.ctsDataSetDbHistorianToGraph.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.label7.Text = "Setpoint Low";
             // 
             // tmrSimTemp
             // 
@@ -212,126 +184,8 @@
             // 
             // tmrRecToDb
             // 
-            this.tmrRecToDb.Interval = 3000;
+            this.tmrRecToDb.Interval = 1200;
             this.tmrRecToDb.Tick += new System.EventHandler(this.tmrRecToDb_Tick);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1000, 56);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 13);
-            this.label1.TabIndex = 33;
-            this.label1.Text = "Alarmlist";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(24, 392);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 34;
-            this.button1.Text = "Test Alarm 1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(104, 392);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 35;
-            this.button2.Text = "Test Alarm 2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(184, 392);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 36;
-            this.button3.Text = "Test Alarm 3";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(264, 392);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 37;
-            this.button4.Text = "Test Alarm 4";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(344, 392);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 38;
-            this.button5.Text = "Test Alarm 5";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.alarmeventidDataGridViewTextBoxColumn,
-            this.datetimerecordedDataGridViewTextBoxColumn,
-            this.alarmidDataGridViewTextBoxColumn,
-            this.descriptionDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.alarmhistorianBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(792, 80);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(456, 288);
-            this.dataGridView1.TabIndex = 39;
-            // 
-            // alarmeventidDataGridViewTextBoxColumn
-            // 
-            this.alarmeventidDataGridViewTextBoxColumn.DataPropertyName = "alarm_event_id";
-            this.alarmeventidDataGridViewTextBoxColumn.HeaderText = "alarm_event_id";
-            this.alarmeventidDataGridViewTextBoxColumn.Name = "alarmeventidDataGridViewTextBoxColumn";
-            this.alarmeventidDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // datetimerecordedDataGridViewTextBoxColumn
-            // 
-            this.datetimerecordedDataGridViewTextBoxColumn.DataPropertyName = "datetime_recorded";
-            this.datetimerecordedDataGridViewTextBoxColumn.HeaderText = "datetime_recorded";
-            this.datetimerecordedDataGridViewTextBoxColumn.Name = "datetimerecordedDataGridViewTextBoxColumn";
-            this.datetimerecordedDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // alarmidDataGridViewTextBoxColumn
-            // 
-            this.alarmidDataGridViewTextBoxColumn.DataPropertyName = "alarm_id";
-            this.alarmidDataGridViewTextBoxColumn.HeaderText = "alarm_id";
-            this.alarmidDataGridViewTextBoxColumn.Name = "alarmidDataGridViewTextBoxColumn";
-            this.alarmidDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "description";
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "description";
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // alarmhistorianBindingSource
-            // 
-            this.alarmhistorianBindingSource.DataMember = "alarm_historian";
-            this.alarmhistorianBindingSource.DataSource = this.ctsDataSetHistorian;
-            // 
-            // ctsDataSetHistorian
-            // 
-            this.ctsDataSetHistorian.DataSetName = "ctsDataSetHistorian";
-            this.ctsDataSetHistorian.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // alarm_historianTableAdapter
-            // 
-            this.alarm_historianTableAdapter.ClearBeforeFill = true;
             // 
             // menuStrip1
             // 
@@ -347,17 +201,17 @@
             // preferencesToolStripMenuItem
             // 
             this.preferencesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.connectionSettingsToolStripMenuItem});
+            this.menuSettings});
             this.preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
             this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
             this.preferencesToolStripMenuItem.Text = "Preferences";
             // 
-            // connectionSettingsToolStripMenuItem
+            // menuSettings
             // 
-            this.connectionSettingsToolStripMenuItem.Name = "connectionSettingsToolStripMenuItem";
-            this.connectionSettingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.connectionSettingsToolStripMenuItem.Text = "Connection settings";
-            this.connectionSettingsToolStripMenuItem.Click += new System.EventHandler(this.connectionSettingsToolStripMenuItem_Click);
+            this.menuSettings.Name = "menuSettings";
+            this.menuSettings.Size = new System.Drawing.Size(116, 22);
+            this.menuSettings.Text = "Settings";
+            this.menuSettings.Click += new System.EventHandler(this.menuSettings_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -365,41 +219,223 @@
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
             // 
-            // historianTableAdapter
-            // 
-            this.historianTableAdapter.ClearBeforeFill = true;
-            // 
             // txtHysteresis
             // 
-            this.txtHysteresis.Location = new System.Drawing.Point(232, 48);
+            this.txtHysteresis.Location = new System.Drawing.Point(360, 56);
             this.txtHysteresis.Name = "txtHysteresis";
             this.txtHysteresis.Size = new System.Drawing.Size(100, 20);
             this.txtHysteresis.TabIndex = 41;
             this.txtHysteresis.Text = "3";
             // 
+            // txtSpH
+            // 
+            this.txtSpH.Location = new System.Drawing.Point(248, 56);
+            this.txtSpH.Name = "txtSpH";
+            this.txtSpH.Size = new System.Drawing.Size(100, 20);
+            this.txtSpH.TabIndex = 43;
+            this.txtSpH.Text = "40";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(360, 40);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(55, 13);
+            this.label3.TabIndex = 44;
+            this.label3.Text = "Hysteresis";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(232, 32);
+            this.label2.Location = new System.Drawing.Point(248, 40);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 13);
-            this.label2.TabIndex = 42;
-            this.label2.Text = "Hysteresis";
+            this.label2.Size = new System.Drawing.Size(71, 13);
+            this.label2.TabIndex = 45;
+            this.label2.Text = "Setpoint High";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.panel1.Controls.Add(this.lblMemory);
+            this.panel1.Controls.Add(this.lblPercentage);
+            this.panel1.Controls.Add(this.lblTimeLeft);
+            this.panel1.Controls.Add(this.lblState);
+            this.panel1.Location = new System.Drawing.Point(0, 464);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1272, 40);
+            this.panel1.TabIndex = 47;
+            // 
+            // lblMemory
+            // 
+            this.lblMemory.AutoSize = true;
+            this.lblMemory.Location = new System.Drawing.Point(1144, 16);
+            this.lblMemory.Name = "lblMemory";
+            this.lblMemory.Size = new System.Drawing.Size(78, 13);
+            this.lblMemory.TabIndex = 22;
+            this.lblMemory.Text = "Memory Usage";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(104, 440);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.TabIndex = 49;
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Location = new System.Drawing.Point(1024, 440);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker2.TabIndex = 50;
+            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(40, 440);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(55, 13);
+            this.label1.TabIndex = 51;
+            this.label1.Text = "Start Date";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(960, 440);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(52, 13);
+            this.label6.TabIndex = 52;
+            this.label6.Text = "End Date";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Summer",
+            "Autumn",
+            "Winter",
+            "Spring"});
+            this.comboBox1.Location = new System.Drawing.Point(472, 56);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 53;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(472, 40);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(43, 13);
+            this.label8.TabIndex = 54;
+            this.label8.Text = "Period?";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.alarmeventidDataGridViewTextBoxColumn,
+            this.datetimerecordedDataGridViewTextBoxColumn,
+            this.descriptionDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.alarmhistorianBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(816, 32);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(448, 112);
+            this.dataGridView1.TabIndex = 55;
+            // 
+            // dataSetAlarmEvents
+            // 
+            this.dataSetAlarmEvents.DataSetName = "dataSetAlarmEvents";
+            this.dataSetAlarmEvents.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // alarmhistorianBindingSource
+            // 
+            this.alarmhistorianBindingSource.DataMember = "alarm_historian";
+            this.alarmhistorianBindingSource.DataSource = this.dataSetAlarmEvents;
+            // 
+            // alarm_historianTableAdapter
+            // 
+            this.alarm_historianTableAdapter.ClearBeforeFill = true;
+            // 
+            // chrtTemp
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chrtTemp.ChartAreas.Add(chartArea1);
+            this.chrtTemp.DataSource = this.historianBindingSource;
+            legend1.Enabled = false;
+            legend1.Name = "Legend1";
+            this.chrtTemp.Legends.Add(legend1);
+            this.chrtTemp.Location = new System.Drawing.Point(8, 144);
+            this.chrtTemp.Name = "chrtTemp";
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            series1.XValueMember = "datetime_recorded";
+            series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Time;
+            series1.YValueMembers = "value";
+            this.chrtTemp.Series.Add(series1);
+            this.chrtTemp.Size = new System.Drawing.Size(1256, 288);
+            this.chrtTemp.TabIndex = 30;
+            this.chrtTemp.Text = "chart1";
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "description";
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "description";
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // datetimerecordedDataGridViewTextBoxColumn
+            // 
+            this.datetimerecordedDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.datetimerecordedDataGridViewTextBoxColumn.DataPropertyName = "datetime_recorded";
+            this.datetimerecordedDataGridViewTextBoxColumn.HeaderText = "datetime_recorded";
+            this.datetimerecordedDataGridViewTextBoxColumn.Name = "datetimerecordedDataGridViewTextBoxColumn";
+            this.datetimerecordedDataGridViewTextBoxColumn.ReadOnly = true;
+            this.datetimerecordedDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // alarmeventidDataGridViewTextBoxColumn
+            // 
+            this.alarmeventidDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.alarmeventidDataGridViewTextBoxColumn.DataPropertyName = "alarm_event_id";
+            this.alarmeventidDataGridViewTextBoxColumn.HeaderText = "alarm_event_id";
+            this.alarmeventidDataGridViewTextBoxColumn.Name = "alarmeventidDataGridViewTextBoxColumn";
+            this.alarmeventidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.alarmeventidDataGridViewTextBoxColumn.Width = 104;
+            // 
+            // dataSetToGrah
+            // 
+            this.dataSetToGrah.DataSetName = "DataSetToGrah";
+            this.dataSetToGrah.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // historianBindingSource
+            // 
+            this.historianBindingSource.DataMember = "historian";
+            this.historianBindingSource.DataSource = this.dataSetToGrah;
+            // 
+            // historianTableAdapter
+            // 
+            this.historianTableAdapter.ClearBeforeFill = true;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1271, 422);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtHysteresis);
+            this.ClientSize = new System.Drawing.Size(1271, 504);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.dateTimePicker2);
+            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtSpH);
+            this.Controls.Add(this.txtHysteresis);
             this.Controls.Add(this.chrtTemp);
             this.Controls.Add(this.txtSpL);
             this.Controls.Add(this.txtCV);
@@ -407,24 +443,23 @@
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.lblState);
-            this.Controls.Add(this.lblTimeLeft);
             this.Controls.Add(this.btnSubscribers);
-            this.Controls.Add(this.lblPercentage);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "1";
+            this.Text = "Cabin Temperature System";
             this.Load += new System.EventHandler(this.frmMain_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.chrtTemp)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.historianBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ctsDataSetDbHistorianToGraph)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.alarmhistorianBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ctsDataSetHistorian)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSetAlarmEvents)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.alarmhistorianBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chrtTemp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSetToGrah)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.historianBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -443,31 +478,34 @@
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chrtTemp;
         private System.Windows.Forms.Timer tmrSimTemp;
         private System.Windows.Forms.Timer tmrRecToDb;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private ctsDataSetHistorian ctsDataSetHistorian;
-        private System.Windows.Forms.BindingSource alarmhistorianBindingSource;
-        private ctsDataSetHistorianTableAdapters.alarm_historianTableAdapter alarm_historianTableAdapter;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem preferencesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem connectionSettingsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuSettings;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private ctsDataSetDbHistorianToGraph ctsDataSetDbHistorianToGraph;
-        private System.Windows.Forms.BindingSource historianBindingSource;
-        private ctsDataSetDbHistorianToGraphTableAdapters.historianTableAdapter historianTableAdapter;
         private System.Windows.Forms.TextBox txtHysteresis;
+        private System.Windows.Forms.TextBox txtSpH;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblMemory;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private dataSetAlarmEvents dataSetAlarmEvents;
+        private System.Windows.Forms.BindingSource alarmhistorianBindingSource;
+        private dataSetAlarmEventsTableAdapters.alarm_historianTableAdapter alarm_historianTableAdapter;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chrtTemp;
         private System.Windows.Forms.DataGridViewTextBoxColumn alarmeventidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn datetimerecordedDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn alarmidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private DataSetToGrah dataSetToGrah;
+        private System.Windows.Forms.BindingSource historianBindingSource;
+        private DataSetToGrahTableAdapters.historianTableAdapter historianTableAdapter;
     }
 }

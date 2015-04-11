@@ -16,14 +16,15 @@ using System.Windows.Forms;
 //
 //
 //
+//YO YO YO!
 
 
 
 namespace CTS_Application
 {
-    public partial class frmSub : Form
+    public partial class Subscribers : Form
     {
-        public frmSub()
+        public Subscribers()
         {
             InitializeComponent();
            // int num = dataGridView1.Rows.Count;
