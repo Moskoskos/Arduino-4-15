@@ -9,44 +9,58 @@ namespace CTS_Application.Classes
     class AlarmHandling//klasse for temperaturalarmer
     {
         public string description;
-        public double pv;//temperatur
-        public double sp;//alarmsetpunkt
         public int tagId;
         public bool type;//true = lav alarm, false = høy alarm
         public int hysterese;
+        //private instansvariabler brukt i raiseAlarm metode
+        private bool alarm = false;
+        private bool currentAlarm = false;
 
-        public AlarmHandling(string initDescription, double initPv, double initSp, int initTagId, bool initType, int initHystirese)
+        public AlarmHandling(string initDescription, int initTagId, bool initType, int initHystirese)
         {
             description = initDescription;
-            pv = initPv;
-            sp = initSp;
             tagId = initTagId;
             type = initType;
             hysterese = initHystirese;
         }
         public AlarmHandling()
+        {       }
+        public bool RaiseAlarm(double sp, double pv) // returnerer true, hvis alarm. Temperatur må gå tilbake til "normal" før man får ny alarm.
         {
-
-        }
-        public bool RaiseAlarm() // returnerer true, hvis alarm
-        {
-            bool alarm = false;
-            bool lastCheck;
+            //bool lastCheck = false;
             if (type==true)//lav alarm
             {
-                if (((pv + hysterese) < sp) && (lastCheck = false))
+                if (((pv + hysterese) < sp) && (currentAlarm == false))//pv lavere enn sp og ikke alarmstatus = ny alarm
                 {
                     alarm = true;
+                    currentAlarm = true;
+                }
+                else if ((currentAlarm == true) && (pv > sp))//pv går over sp igjen etter alarmstatus = vi kan få ny alarm
+                {
+                    currentAlarm = false;
+                    //alarm = false;
+                }
+                else
+                { 
+                    alarm = false; 
                 }
             }
             else//høy alarm
             {
-                if (((pv + hysterese) > sp) && (lastCheck = false))
+                if (((pv + hysterese) > sp) && (currentAlarm == false))//pv høyere enn sp og ikke alarmstatus = ny alarm
                 {
                     alarm = true;
+                    currentAlarm = true;
+                }
+                else if ((currentAlarm == true) && (pv < sp))//pv går under sp igjen etter alarmstatus = vi kan få ny alarm
+                {
+                    currentAlarm = false;
+                }
+                else
+                {
+                    alarm = false;
                 }
             }
-            lastCheck = alarm;// lagrer forrige alarmstatus for bruk til neste sjekk
             return alarm;
         }
      }
