@@ -24,13 +24,8 @@ namespace CTS_Application
         {
             InitializeComponent();
 
-            //show percentage left in label.
-            lblPercentage.Text = batteryMonitoring.PercentBatteryLeft.ToString() + "% available"; 
-
-            //Checks whether the battery status can be read or not. If -1 then no. 
-            if (batteryMonitoring.TimeLeft > 0)  {lblTimeLeft.Text = batteryMonitoring.TimeLeft.ToString();}
-            else{lblTimeLeft.Text = "System could not calculate remaining time. Driver missing!";}
-            lblState.Text = batteryMonitoring.Status;
+            
+            Status();
             tmrStatus.Start();
            
            // dateTimePicker1.Value = DateTime.Today;
@@ -59,10 +54,6 @@ namespace CTS_Application
             Subscribers sub = new Subscribers();
             sub.Show();
         }
-        //Ever x-interval the program retrieves the system information related to battery status
-        //default: Every 30 second.
-  
-
 
        private void tmrSimTemp_Tick(object sender, EventArgs e)
        {
@@ -109,11 +100,6 @@ namespace CTS_Application
            SettingsWindow.Show();
        }
 
-        private void DisplayXAxis()
-       {
-
-       }
-
         private void btnStartSim_Click(object sender, EventArgs e)
         {
             //Simulate temp
@@ -130,16 +116,14 @@ namespace CTS_Application
 
         private void tmrStatus_Tick(object sender, EventArgs e)
         {
+            Status();
+        }
+        private void Status()
+        {
             BatteryMonitoring batteryMonitoring = new BatteryMonitoring();
             lblPercentage.Text = batteryMonitoring.PercentBatteryLeft.ToString() + "% available";
-            if (batteryMonitoring.TimeLeft >= 1)
-            {
-                lblTimeLeft.Text = batteryMonitoring.TimeLeft.ToString();
-            }
-            else
-            {
-                lblTimeLeft.Text = "System could not calculate remaining time. Driver missing";
-            }
+            if (batteryMonitoring.TimeLeft >= 1) { lblTimeLeft.Text = batteryMonitoring.TimeLeft.ToString(); }
+            else { lblTimeLeft.Text = "System could not calculate remaining time. Driver missing"; }
             lblState.Text = batteryMonitoring.Status;
             //Displays the programs current memory Usage. Excludes MySQL
             long memory = GC.GetTotalMemory(true);
