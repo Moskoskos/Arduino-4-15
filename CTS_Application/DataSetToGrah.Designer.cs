@@ -285,6 +285,12 @@ namespace CTS_Application {
             
             private global::System.Data.DataColumn columnvalue;
             
+            private global::System.Data.DataColumn columnsettings_id;
+            
+            private global::System.Data.DataColumn columnsetpoint_low;
+            
+            private global::System.Data.DataColumn columnsetpoint_high;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public historianDataTable() {
@@ -344,6 +350,30 @@ namespace CTS_Application {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn settings_idColumn {
+                get {
+                    return this.columnsettings_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn setpoint_lowColumn {
+                get {
+                    return this.columnsetpoint_low;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn setpoint_highColumn {
+                get {
+                    return this.columnsetpoint_high;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -379,12 +409,15 @@ namespace CTS_Application {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public historianRow AddhistorianRow(System.DateTime datetime_recorded, double value) {
+            public historianRow AddhistorianRow(System.DateTime datetime_recorded, double value, double setpoint_low, double setpoint_high) {
                 historianRow rowhistorianRow = ((historianRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         datetime_recorded,
-                        value};
+                        value,
+                        null,
+                        setpoint_low,
+                        setpoint_high};
                 rowhistorianRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowhistorianRow);
                 return rowhistorianRow;
@@ -417,6 +450,9 @@ namespace CTS_Application {
                 this.columnhistorian_id = base.Columns["historian_id"];
                 this.columndatetime_recorded = base.Columns["datetime_recorded"];
                 this.columnvalue = base.Columns["value"];
+                this.columnsettings_id = base.Columns["settings_id"];
+                this.columnsetpoint_low = base.Columns["setpoint_low"];
+                this.columnsetpoint_high = base.Columns["setpoint_high"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -428,6 +464,12 @@ namespace CTS_Application {
                 base.Columns.Add(this.columndatetime_recorded);
                 this.columnvalue = new global::System.Data.DataColumn("value", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnvalue);
+                this.columnsettings_id = new global::System.Data.DataColumn("settings_id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsettings_id);
+                this.columnsetpoint_low = new global::System.Data.DataColumn("setpoint_low", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsetpoint_low);
+                this.columnsetpoint_high = new global::System.Data.DataColumn("setpoint_high", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsetpoint_high);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnhistorian_id}, true));
                 this.columnhistorian_id.AutoIncrement = true;
@@ -436,6 +478,12 @@ namespace CTS_Application {
                 this.columnhistorian_id.AllowDBNull = false;
                 this.columnhistorian_id.Unique = true;
                 this.columndatetime_recorded.AllowDBNull = false;
+                this.columnsettings_id.AutoIncrement = true;
+                this.columnsettings_id.AutoIncrementSeed = -1;
+                this.columnsettings_id.AutoIncrementStep = -1;
+                this.columnsettings_id.AllowDBNull = false;
+                this.columnsetpoint_low.AllowDBNull = false;
+                this.columnsetpoint_high.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -616,6 +664,39 @@ namespace CTS_Application {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int settings_id {
+                get {
+                    return ((int)(this[this.tablehistorian.settings_idColumn]));
+                }
+                set {
+                    this[this.tablehistorian.settings_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double setpoint_low {
+                get {
+                    return ((double)(this[this.tablehistorian.setpoint_lowColumn]));
+                }
+                set {
+                    this[this.tablehistorian.setpoint_lowColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double setpoint_high {
+                get {
+                    return ((double)(this[this.tablehistorian.setpoint_highColumn]));
+                }
+                set {
+                    this[this.tablehistorian.setpoint_highColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsvalueNull() {
                 return this.IsNull(this.tablehistorian.valueColumn);
             }
@@ -789,116 +870,10 @@ namespace CTS_Application.DataSetToGrahTableAdapters {
             tableMapping.ColumnMappings.Add("historian_id", "historian_id");
             tableMapping.ColumnMappings.Add("datetime_recorded", "datetime_recorded");
             tableMapping.ColumnMappings.Add("value", "value");
+            tableMapping.ColumnMappings.Add("settings_id", "settings_id");
+            tableMapping.ColumnMappings.Add("setpoint_low", "setpoint_low");
+            tableMapping.ColumnMappings.Add("setpoint_high", "setpoint_high");
             this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.DeleteCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
-            this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM `historian` WHERE ((`historian_id` = @p1) AND (`datetime_recorded` = " +
-                "@p2) AND ((@p3 = 1 AND `value` IS NULL) OR (`value` = @p4)))";
-            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p1";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
-            param.IsNullable = true;
-            param.SourceColumn = "historian_id";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p2";
-            param.DbType = global::System.Data.DbType.DateTime;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.DateTime;
-            param.IsNullable = true;
-            param.SourceColumn = "datetime_recorded";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p3";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
-            param.IsNullable = true;
-            param.SourceColumn = "value";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p4";
-            param.DbType = global::System.Data.DbType.Double;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
-            param.IsNullable = true;
-            param.SourceColumn = "value";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            this._adapter.InsertCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO `historian` (`datetime_recorded`, `value`) VALUES (@p1, @p2)";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p1";
-            param.DbType = global::System.Data.DbType.DateTime;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.DateTime;
-            param.IsNullable = true;
-            param.SourceColumn = "datetime_recorded";
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p2";
-            param.DbType = global::System.Data.DbType.Double;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
-            param.IsNullable = true;
-            param.SourceColumn = "value";
-            this._adapter.InsertCommand.Parameters.Add(param);
-            this._adapter.UpdateCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
-            this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE `historian` SET `datetime_recorded` = @p1, `value` = @p2 WHERE ((`historia" +
-                "n_id` = @p3) AND (`datetime_recorded` = @p4) AND ((@p5 = 1 AND `value` IS NULL) " +
-                "OR (`value` = @p6)))";
-            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p1";
-            param.DbType = global::System.Data.DbType.DateTime;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.DateTime;
-            param.IsNullable = true;
-            param.SourceColumn = "datetime_recorded";
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p2";
-            param.DbType = global::System.Data.DbType.Double;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
-            param.IsNullable = true;
-            param.SourceColumn = "value";
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p3";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
-            param.IsNullable = true;
-            param.SourceColumn = "historian_id";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p4";
-            param.DbType = global::System.Data.DbType.DateTime;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.DateTime;
-            param.IsNullable = true;
-            param.SourceColumn = "datetime_recorded";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p5";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
-            param.IsNullable = true;
-            param.SourceColumn = "value";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p6";
-            param.DbType = global::System.Data.DbType.Double;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
-            param.IsNullable = true;
-            param.SourceColumn = "value";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -914,7 +889,9 @@ namespace CTS_Application.DataSetToGrahTableAdapters {
             this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        historian_id, datetime_recorded, value\r\nFROM            historian";
+            this._commandCollection[0].CommandText = "SELECT        historian.historian_id, historian.datetime_recorded, historian.valu" +
+                "e, settings.settings_id, settings.setpoint_low, settings.setpoint_high\r\nFROM    " +
+                "        historian, settings";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -941,35 +918,6 @@ namespace CTS_Application.DataSetToGrahTableAdapters {
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetToGrah.historianDataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetToGrah dataSet) {
-            return this.Adapter.Update(dataSet, "historian");
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new global::System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
-        }
     }
     
     /// <summary>
@@ -984,8 +932,6 @@ namespace CTS_Application.DataSetToGrahTableAdapters {
         
         private UpdateOrderOption _updateOrder;
         
-        private historianTableAdapter _historianTableAdapter;
-        
         private bool _backupDataSetBeforeUpdate;
         
         private global::System.Data.IDbConnection _connection;
@@ -998,20 +944,6 @@ namespace CTS_Application.DataSetToGrahTableAdapters {
             }
             set {
                 this._updateOrder = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
-            "a", "System.Drawing.Design.UITypeEditor")]
-        public historianTableAdapter historianTableAdapter {
-            get {
-                return this._historianTableAdapter;
-            }
-            set {
-                this._historianTableAdapter = value;
             }
         }
         
@@ -1034,10 +966,6 @@ namespace CTS_Application.DataSetToGrahTableAdapters {
                 if ((this._connection != null)) {
                     return this._connection;
                 }
-                if (((this._historianTableAdapter != null) 
-                            && (this._historianTableAdapter.Connection != null))) {
-                    return this._historianTableAdapter.Connection;
-                }
                 return null;
             }
             set {
@@ -1051,9 +979,6 @@ namespace CTS_Application.DataSetToGrahTableAdapters {
         public int TableAdapterInstanceCount {
             get {
                 int count = 0;
-                if ((this._historianTableAdapter != null)) {
-                    count = (count + 1);
-                }
                 return count;
             }
         }
@@ -1065,15 +990,6 @@ namespace CTS_Application.DataSetToGrahTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateUpdatedRows(DataSetToGrah dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._historianTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.historian.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._historianTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             return result;
         }
         
@@ -1084,14 +1000,6 @@ namespace CTS_Application.DataSetToGrahTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateInsertedRows(DataSetToGrah dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._historianTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.historian.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._historianTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             return result;
         }
         
@@ -1102,14 +1010,6 @@ namespace CTS_Application.DataSetToGrahTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateDeletedRows(DataSetToGrah dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._historianTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.historian.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._historianTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             return result;
         }
         
@@ -1149,11 +1049,6 @@ namespace CTS_Application.DataSetToGrahTableAdapters {
             if ((dataSet.HasChanges() == false)) {
                 return 0;
             }
-            if (((this._historianTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._historianTableAdapter.Connection) == false))) {
-                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
-                        "tring.");
-            }
             global::System.Data.IDbConnection workConnection = this.Connection;
             if ((workConnection == null)) {
                 throw new global::System.ApplicationException("TableAdapterManager contains no connection information. Set each TableAdapterMana" +
@@ -1186,15 +1081,6 @@ namespace CTS_Application.DataSetToGrahTableAdapters {
             try {
                 // ---- Prepare for update -----------
                 //
-                if ((this._historianTableAdapter != null)) {
-                    revertConnections.Add(this._historianTableAdapter, this._historianTableAdapter.Connection);
-                    this._historianTableAdapter.Connection = ((global::MySql.Data.MySqlClient.MySqlConnection)(workConnection));
-                    this._historianTableAdapter.Transaction = ((global::MySql.Data.MySqlClient.MySqlTransaction)(workTransaction));
-                    if (this._historianTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._historianTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._historianTableAdapter.Adapter);
-                    }
-                }
                 // 
                 //---- Perform updates -----------
                 //
@@ -1252,10 +1138,6 @@ namespace CTS_Application.DataSetToGrahTableAdapters {
             finally {
                 if (workConnOpened) {
                     workConnection.Close();
-                }
-                if ((this._historianTableAdapter != null)) {
-                    this._historianTableAdapter.Connection = ((global::MySql.Data.MySqlClient.MySqlConnection)(revertConnections[this._historianTableAdapter]));
-                    this._historianTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

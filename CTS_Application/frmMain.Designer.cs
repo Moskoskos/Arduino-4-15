@@ -32,6 +32,8 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.lblPercentage = new System.Windows.Forms.Label();
             this.btnSubscribers = new System.Windows.Forms.Button();
             this.lblTimeLeft = new System.Windows.Forms.Label();
@@ -68,12 +70,12 @@
             this.dataSetAlarmEvents = new CTS_Application.dataSetAlarmEvents();
             this.alarm_historianTableAdapter = new CTS_Application.dataSetAlarmEventsTableAdapters.alarm_historianTableAdapter();
             this.chrtTemp = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.historianBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSetToGrah = new CTS_Application.DataSetToGrah();
-            this.historianTableAdapter = new CTS_Application.DataSetToGrahTableAdapters.historianTableAdapter();
             this.btnStartSim = new System.Windows.Forms.Button();
             this.btnStopSim = new System.Windows.Forms.Button();
             this.tmrStatus = new System.Windows.Forms.Timer(this.components);
+            this.historianBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSetToGrah = new CTS_Application.DataSetToGrah();
+            this.historianTableAdapter = new CTS_Application.DataSetToGrahTableAdapters.historianTableAdapter();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -397,24 +399,26 @@
             series1.Name = "Series1";
             series1.XValueMember = "datetime_recorded";
             series1.YValueMembers = "value";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Color = System.Drawing.Color.Red;
+            series2.Legend = "Legend1";
+            series2.Name = "SpLow";
+            series2.XValueMember = "datetime_recorded";
+            series2.YValueMembers = "setpoint_low";
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.Color = System.Drawing.Color.Red;
+            series3.Legend = "Legend1";
+            series3.Name = "SpHigh";
+            series3.XValueMember = "datetime_recorded";
+            series3.YValueMembers = "setpoint_high";
             this.chrtTemp.Series.Add(series1);
+            this.chrtTemp.Series.Add(series2);
+            this.chrtTemp.Series.Add(series3);
             this.chrtTemp.Size = new System.Drawing.Size(1256, 288);
             this.chrtTemp.TabIndex = 30;
             this.chrtTemp.Text = "chart1";
-            // 
-            // historianBindingSource
-            // 
-            this.historianBindingSource.DataMember = "historian";
-            this.historianBindingSource.DataSource = this.dataSetToGrah;
-            // 
-            // dataSetToGrah
-            // 
-            this.dataSetToGrah.DataSetName = "DataSetToGrah";
-            this.dataSetToGrah.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // historianTableAdapter
-            // 
-            this.historianTableAdapter.ClearBeforeFill = true;
             // 
             // btnStartSim
             // 
@@ -440,6 +444,20 @@
             // 
             this.tmrStatus.Interval = 1000;
             this.tmrStatus.Tick += new System.EventHandler(this.tmrStatus_Tick);
+            // 
+            // historianBindingSource
+            // 
+            this.historianBindingSource.DataMember = "historian";
+            this.historianBindingSource.DataSource = this.dataSetToGrah;
+            // 
+            // dataSetToGrah
+            // 
+            this.dataSetToGrah.DataSetName = "DataSetToGrah";
+            this.dataSetToGrah.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // historianTableAdapter
+            // 
+            this.historianTableAdapter.ClearBeforeFill = true;
             // 
             // frmMain
             // 
