@@ -21,6 +21,7 @@ namespace CTS_Application
         private string database;
         private string uid;
         private string password;
+        
 
 
         //Source:
@@ -109,8 +110,10 @@ namespace CTS_Application
                             cmd.Parameters.AddWithValue("@number", numberIn);
                             // Execute the query
                             cmd.ExecuteNonQuery();
+                            CloseConnection();
                         }
                     }
+                   
                     return true;
                 }
                 catch (MySqlException ex)
@@ -120,7 +123,6 @@ namespace CTS_Application
                 }
             }
         }
-        //Retrieves the number of subscribers (used in sending mail to more than one subscriber
      
         //Writes temperature values to database
         public bool WriteTempemperatureToHistorian(double valueIn)
@@ -142,9 +144,11 @@ namespace CTS_Application
                             cmd.Parameters.AddWithValue("@value", valueIn);
                             // Execute the query
                             cmd.ExecuteNonQuery();
+                            CloseConnection();
                         }
                     }
                     return true;
+                    
                 }
                 catch (MySqlException ex)
                 {
@@ -174,8 +178,10 @@ namespace CTS_Application
                                     cmdRegisterAlarm.Parameters.AddWithValue("@alarmvar", alarmCodeIn);
                                     cmdRegisterAlarm.Parameters.AddWithValue("@description", descriptionIn);
                                     cmdRegisterAlarm.ExecuteNonQuery();
+                                    CloseConnection();
                                 }
                             }
+
                             return true;
                         }
                     catch (Exception ex)
@@ -185,7 +191,7 @@ namespace CTS_Application
                 }
            return false;
         } //Done?
-        //Use this if settings should be stored in DB for use in webpage
+        //if data doesnt exsist this code does not work.
         public bool ChangeSetPoint(int settingID, double setPointLowIn, double setPointHighIn, double hysteresisIn)
         {
             try
@@ -204,6 +210,7 @@ namespace CTS_Application
                         cmd.Parameters.AddWithValue("@hysteresis", hysteresisIn);
                         // Execute the query
                         cmd.ExecuteNonQuery();
+                        CloseConnection();
                     }
                 }
                 return true;
@@ -218,14 +225,14 @@ namespace CTS_Application
         {
                 try
                 {
-                    //ALTER TABLE @tablename AUTO_INCREMENT=0
 
                     string query = "TRUNCATE TABLE " + tablename;
                     if (this.OpenConnection() == true)
                     {
-                        using (MySqlCommand cmdDeleteRecords = new MySqlCommand(query, connection))
+                        using (MySqlCommand cmdTruncate = new MySqlCommand(query, connection))
                         {
-                            cmdDeleteRecords.ExecuteNonQuery();
+                            cmdTruncate.ExecuteNonQuery();
+                            CloseConnection();
                         }
                     }
                     return true;
@@ -237,7 +244,51 @@ namespace CTS_Application
             return false;
         }
 
-   
-        
+      
+        public string GetLowSP(int id)
+        {
+                string result = "";
+                string query = "SELECT setpoint_low FROM settings WHERE settings_id = @id";
+                if (this.OpenConnection() == true)
+	                {
+		               using (MySqlCommand cmdGetLowSp = new MySqlCommand(query, connection))
+                           {
+                               cmdGetLowSp.Parameters.AddWithValue("@id", id);
+                              result = cmdGetLowSp.ExecuteScalar().ToString();
+                              CloseConnection();
+                           }
+	                }
+                return result;
+        }
+        public string GetHighSp(int id)
+        {
+            string result = "";
+            string query = "SELECT setpoint_high FROM settings WHERE settings_id = @id";
+            if (this.OpenConnection() == true)
+            {
+                using (MySqlCommand cmdGetHighSp = new MySqlCommand(query, connection))
+                {
+                    cmdGetHighSp.Parameters.AddWithValue("@id", id);
+                    result = cmdGetHighSp.ExecuteScalar().ToString();
+                    CloseConnection();
+                }
+            }
+            return result;
+        }
+        public string GetHystersis(int id)
+        {
+            string result = "";
+            string query = "SELECT setpoint_low FROM settings WHERE settings_id = @id";
+            if (this.OpenConnection() == true)
+            {
+                using (MySqlCommand cmdGetHysteresis = new MySqlCommand(query, connection))
+                {
+                    cmdGetHysteresis.Parameters.AddWithValue("@id", id);
+                    result = cmdGetHysteresis.ExecuteScalar().ToString();
+                    CloseConnection();
+                }
+            }
+            return result;
+        }
     }
 }

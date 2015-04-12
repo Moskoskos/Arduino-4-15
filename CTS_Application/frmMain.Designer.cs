@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.lblPercentage = new System.Windows.Forms.Label();
             this.btnSubscribers = new System.Windows.Forms.Button();
             this.lblTimeLeft = new System.Windows.Forms.Label();
@@ -127,7 +127,7 @@
             this.txtSpL.Name = "txtSpL";
             this.txtSpL.Size = new System.Drawing.Size(100, 20);
             this.txtSpL.TabIndex = 23;
-            this.txtSpL.Text = "3";
+            this.txtSpL.Text = "1";
             // 
             // txtCV
             // 
@@ -230,7 +230,7 @@
             this.txtSpH.Name = "txtSpH";
             this.txtSpH.Size = new System.Drawing.Size(100, 20);
             this.txtSpH.TabIndex = 43;
-            this.txtSpH.Text = "40";
+            this.txtSpH.Text = "10";
             // 
             // label3
             // 
@@ -277,6 +277,7 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 49;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // dateTimePicker2
             // 
@@ -382,21 +383,21 @@
             // 
             // chrtTemp
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chrtTemp.ChartAreas.Add(chartArea1);
+            chartArea3.Name = "ChartArea1";
+            this.chrtTemp.ChartAreas.Add(chartArea3);
             this.chrtTemp.DataSource = this.historianBindingSource;
-            legend1.Enabled = false;
-            legend1.Name = "Legend1";
-            this.chrtTemp.Legends.Add(legend1);
+            legend3.Enabled = false;
+            legend3.Name = "Legend1";
+            this.chrtTemp.Legends.Add(legend3);
             this.chrtTemp.Location = new System.Drawing.Point(8, 144);
             this.chrtTemp.Name = "chrtTemp";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            series1.XValueMember = "datetime_recorded";
-            series1.YValueMembers = "value";
-            this.chrtTemp.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            series3.XValueMember = "datetime_recorded";
+            series3.YValueMembers = "value";
+            this.chrtTemp.Series.Add(series3);
             this.chrtTemp.Size = new System.Drawing.Size(1256, 288);
             this.chrtTemp.TabIndex = 30;
             this.chrtTemp.Text = "chart1";

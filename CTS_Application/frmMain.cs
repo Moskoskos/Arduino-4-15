@@ -44,8 +44,9 @@ namespace CTS_Application
             //http://stackoverflow.com/questions/12033448/how-to-connect-two-different-windows-forms-keeping-both-open
             //Where to place the window at startup
             this.Location = new Point(0, 0);
-           // chrtTemp.ChartAreas["Series1"].AxisX.LabelStyle.Format = "yyyy-MM-dd HH:mm";
-            
+           txtSpL.Text = dbConGlob.GetLowSP(1);
+           txtSpH.Text = dbConGlob.GetHighSp(1);
+           txtHysteresis.Text = dbConGlob.GetHystersis(1);
         }
 
         //Opens the subscriber window
@@ -89,6 +90,10 @@ namespace CTS_Application
                MessageBox.Show(ex.Message);
            }
        }
+       private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+       {
+           
+       }
        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
        {
 
@@ -130,5 +135,7 @@ namespace CTS_Application
             if (memory > 1048576) { lblMemory.Text = "Memory usage: " + (memory / 1024 / 1024).ToString() + "MB"; }
             else { lblMemory.Text = "Memory usage: " + (memory / 1024).ToString() + "KB"; }
         }
+
+
     }
 }
