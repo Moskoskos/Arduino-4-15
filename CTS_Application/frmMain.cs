@@ -31,11 +31,8 @@ namespace CTS_Application
             if (batteryMonitoring.TimeLeft > 0)  {lblTimeLeft.Text = batteryMonitoring.TimeLeft.ToString();}
             else{lblTimeLeft.Text = "System could not calculate remaining time. Driver missing!";}
             lblState.Text = batteryMonitoring.Status;
-
-            //Simulate temp
-            tmrSimTemp.Start();
-            if (days == (3*365)) {tmrSimTemp.Stop();}
-            tmrRecToDb.Start();
+            tmrStatus.Start();
+           
            // dateTimePicker1.Value = DateTime.Today;
            // dateTimePicker2.Value = DateTime.MaxValue.AddDays(1);
             //chrtTemp.ChartAreas["Series1"].AxisX.Maximum = dateTimePicker1.Value;
@@ -52,6 +49,7 @@ namespace CTS_Application
             //http://stackoverflow.com/questions/12033448/how-to-connect-two-different-windows-forms-keeping-both-open
             //Where to place the window at startup
             this.Location = new Point(0, 0);
+           // chrtTemp.ChartAreas["Series1"].AxisX.LabelStyle.Format = "yyyy-MM-dd HH:mm";
             
         }
 
@@ -63,20 +61,8 @@ namespace CTS_Application
         }
         //Ever x-interval the program retrieves the system information related to battery status
         //default: Every 30 second.
-        private void tmrStatusChanged_Tick(object sender, EventArgs e)
-        {
-            BatteryMonitoring batteryMonitoring = new BatteryMonitoring();
-            lblPercentage.Text = batteryMonitoring.PercentBatteryLeft.ToString() + "% available";
-            if (batteryMonitoring.TimeLeft >= 1)
-            {
-                lblTimeLeft.Text = batteryMonitoring.TimeLeft.ToString();
-            }
-            else
-            {
-                lblTimeLeft.Text = "System could not calculate remaining time.";
-            }
-            lblState.Text = batteryMonitoring.Status;
-        }
+  
+
 
        private void tmrSimTemp_Tick(object sender, EventArgs e)
        {
@@ -105,13 +91,6 @@ namespace CTS_Application
                this.historianTableAdapter.Fill(this.dataSetToGrah.historian);
                chrtTemp.DataBind();
                chrtTemp.Refresh();
-         
-
-               //Displays the programs current memory Usage. Excludes MySQL
-               long memory = GC.GetTotalMemory(true);
-               if (memory > 1048576) {lblMemory.Text = "Memory usage: " + (memory / 1024 /1024).ToString() + "MB"; }
-               else {lblMemory.Text = "Memory usage: " + (memory / 1024).ToString() + "KB";}
-               txtSpH.Text = DateTime.Now.ToString();
            }
            catch (Exception ex)
            {
@@ -119,8 +98,6 @@ namespace CTS_Application
                MessageBox.Show(ex.Message);
            }
        }
-   
-
        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
        {
 
@@ -131,5 +108,43 @@ namespace CTS_Application
            frmSettings SettingsWindow = new frmSettings();
            SettingsWindow.Show();
        }
+
+        private void DisplayXAxis()
+       {
+
+       }
+
+        private void btnStartSim_Click(object sender, EventArgs e)
+        {
+            //Simulate temp
+            tmrSimTemp.Start();
+            if (days == (3 * 365)) { tmrSimTemp.Stop(); }
+            tmrRecToDb.Start();
+        }
+
+        private void btnStopSim_Click(object sender, EventArgs e)
+        {
+            tmrSimTemp.Stop();
+            tmrRecToDb.Stop();
+        }
+
+        private void tmrStatus_Tick(object sender, EventArgs e)
+        {
+            BatteryMonitoring batteryMonitoring = new BatteryMonitoring();
+            lblPercentage.Text = batteryMonitoring.PercentBatteryLeft.ToString() + "% available";
+            if (batteryMonitoring.TimeLeft >= 1)
+            {
+                lblTimeLeft.Text = batteryMonitoring.TimeLeft.ToString();
+            }
+            else
+            {
+                lblTimeLeft.Text = "System could not calculate remaining time. Driver missing";
+            }
+            lblState.Text = batteryMonitoring.Status;
+            //Displays the programs current memory Usage. Excludes MySQL
+            long memory = GC.GetTotalMemory(true);
+            if (memory > 1048576) { lblMemory.Text = "Memory usage: " + (memory / 1024 / 1024).ToString() + "MB"; }
+            else { lblMemory.Text = "Memory usage: " + (memory / 1024).ToString() + "KB"; }
+        }
     }
 }
