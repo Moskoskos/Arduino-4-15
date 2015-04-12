@@ -26,7 +26,7 @@ namespace CTS_Application
             client = new SmtpClient("smtp.gmail.com", 587);
             client.Credentials = new System.Net.NetworkCredential(from, "Arduino4.15");
             client.EnableSsl = true;
-        }
+    }
 
         public void SendMessage(string to1, string body1)
         {
