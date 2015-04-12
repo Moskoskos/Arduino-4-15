@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CTS_Application.Classes
 {
-    class AlarmHandling
+    class AlarmHandling//klasse for temperaturalarmer
     {
         public string description;
         public double pv;//temperatur
