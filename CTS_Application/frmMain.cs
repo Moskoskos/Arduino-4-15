@@ -31,7 +31,7 @@ namespace CTS_Application
             if (batteryMonitoring.TimeLeft > 0)  {lblTimeLeft.Text = batteryMonitoring.TimeLeft.ToString();}
             else{lblTimeLeft.Text = "System could not calculate remaining time. Driver missing!";}
             lblState.Text = batteryMonitoring.Status;
-
+            tmrStatus.Start();
            
            // dateTimePicker1.Value = DateTime.Today;
            // dateTimePicker2.Value = DateTime.MaxValue.AddDays(1);
@@ -61,20 +61,8 @@ namespace CTS_Application
         }
         //Ever x-interval the program retrieves the system information related to battery status
         //default: Every 30 second.
-        private void tmrStatusChanged_Tick(object sender, EventArgs e)
-        {
-            BatteryMonitoring batteryMonitoring = new BatteryMonitoring();
-            lblPercentage.Text = batteryMonitoring.PercentBatteryLeft.ToString() + "% available";
-            if (batteryMonitoring.TimeLeft >= 1)
-            {
-                lblTimeLeft.Text = batteryMonitoring.TimeLeft.ToString();
-            }
-            else
-            {
-                lblTimeLeft.Text = "System could not calculate remaining time. Driver missing";
-            }
-            lblState.Text = batteryMonitoring.Status;
-        }
+  
+
 
        private void tmrSimTemp_Tick(object sender, EventArgs e)
        {
@@ -103,13 +91,6 @@ namespace CTS_Application
                this.historianTableAdapter.Fill(this.dataSetToGrah.historian);
                chrtTemp.DataBind();
                chrtTemp.Refresh();
-         
-
-               //Displays the programs current memory Usage. Excludes MySQL
-               long memory = GC.GetTotalMemory(true);
-               if (memory > 1048576) {lblMemory.Text = "Memory usage: " + (memory / 1024 /1024).ToString() + "MB"; }
-               else {lblMemory.Text = "Memory usage: " + (memory / 1024).ToString() + "KB";}
-               txtSpH.Text = DateTime.Now.ToString();
            }
            catch (Exception ex)
            {
@@ -117,8 +98,6 @@ namespace CTS_Application
                MessageBox.Show(ex.Message);
            }
        }
-   
-
        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
        {
 
@@ -147,6 +126,25 @@ namespace CTS_Application
         {
             tmrSimTemp.Stop();
             tmrRecToDb.Stop();
+        }
+
+        private void tmrStatus_Tick(object sender, EventArgs e)
+        {
+            BatteryMonitoring batteryMonitoring = new BatteryMonitoring();
+            lblPercentage.Text = batteryMonitoring.PercentBatteryLeft.ToString() + "% available";
+            if (batteryMonitoring.TimeLeft >= 1)
+            {
+                lblTimeLeft.Text = batteryMonitoring.TimeLeft.ToString();
+            }
+            else
+            {
+                lblTimeLeft.Text = "System could not calculate remaining time. Driver missing";
+            }
+            lblState.Text = batteryMonitoring.Status;
+            //Displays the programs current memory Usage. Excludes MySQL
+            long memory = GC.GetTotalMemory(true);
+            if (memory > 1048576) { lblMemory.Text = "Memory usage: " + (memory / 1024 / 1024).ToString() + "MB"; }
+            else { lblMemory.Text = "Memory usage: " + (memory / 1024).ToString() + "KB"; }
         }
     }
 }
