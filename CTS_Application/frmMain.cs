@@ -25,9 +25,12 @@ namespace CTS_Application
             InitializeComponent();
             Status();
             tmrStatus.Start();
+            tmrRecToDb.Start();
+            
         }
         private void frmMain_Load(object sender, EventArgs e)
         {
+           
             // TODO: This line of code loads data into the 'dataSetToGrah.historian' table. You can move, or remove it, as needed.
             this.historianTableAdapter.Fill(this.dataSetToGrah.historian);
             // TODO: This line of code loads data into the 'dataSetAlarmEvents.alarm_historian' table. You can move, or remove it, as needed.
@@ -39,6 +42,7 @@ namespace CTS_Application
             this.Location = new Point(0, 0);
            txtSpL.Text = con.GetLowSP(1);
            txtSpH.Text = con.GetHighSp(1);
+           
         }
 
         //Opens the subscriber window
@@ -67,7 +71,6 @@ namespace CTS_Application
            {
                MessageBox.Show(ex.Message);
            }
-           
        }
 
        private void tmrRecToDb_Tick(object sender, EventArgs e)
