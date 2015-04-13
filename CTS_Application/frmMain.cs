@@ -19,8 +19,6 @@ namespace CTS_Application
         double days = 0.0;
         DbConnect con = new DbConnect();
         ArduinoCom arCom = new ArduinoCom();
-        AlarmHandling lAlarm = new AlarmHandling("lav ute temp", 1, true);
-        AlarmHandling hAlarm = new AlarmHandling("høy ute temp", 1, false);
         BatteryMonitoring batteryMonitoring = new BatteryMonitoring(); //Declare batterymonitoring class
         public frmMain()
         {
