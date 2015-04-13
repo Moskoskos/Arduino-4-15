@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//test
 namespace CTS_Application
 {
     class AlarmHandling//klasse for temperaturalarmer
