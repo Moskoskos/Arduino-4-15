@@ -27,7 +27,7 @@ namespace CTS_Application
             Status();
             tmrStatus.Start();
             tmrRecToDb.Start();
-            tmrReadTempArd.Start();
+            tmrSimTemp.Start();
             
         }
         private void frmMain_Load(object sender, EventArgs e)
@@ -120,7 +120,7 @@ namespace CTS_Application
 
         private void btnStopSim_Click(object sender, EventArgs e)
         {
-            tmrReadTempArd.Stop();
+            tmrSimTemp.Stop();
             tmrRecToDb.Stop();
         }
 

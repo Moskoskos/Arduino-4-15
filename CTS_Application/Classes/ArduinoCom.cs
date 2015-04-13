@@ -12,7 +12,7 @@ namespace CTS_Application
     {
         public bool comFault;
         public double temp { get; set; }
-        SerialPort mySerialPort = new SerialPort("COM3", 9600, Parity.None, 8, StopBits.One);
+        SerialPort mySerialPort = new SerialPort("COM5", 9600, Parity.None, 8, StopBits.One);
         public ArduinoCom(string initComPort)
         {
             mySerialPort.PortName = initComPort;
@@ -37,7 +37,7 @@ namespace CTS_Application
                     mySerialPort.Open();
                     temp = mySerialPort.ReadLine();
                 }
-                tempC = (Convert.ToDouble(temp)) / 9.31;
+                tempC = ((Convert.ToDouble(temp)) * 0.03);
             }
             catch (Exception ex)
             {
