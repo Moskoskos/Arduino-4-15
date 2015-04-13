@@ -19,6 +19,7 @@ namespace CTS_Application
         double days = 0.0;
         DbConnect con = new DbConnect();
         ArduinoCom arCom = new ArduinoCom();
+        AlarmHandling alarm = new AlarmHandling();
         BatteryMonitoring batteryMonitoring = new BatteryMonitoring(); //Declare batterymonitoring class
         public frmMain()
         {
@@ -146,6 +147,23 @@ namespace CTS_Application
             long memory = System.Diagnostics.Process.GetCurrentProcess().WorkingSet64;
             if (memory > 1048576) { lblMemory.Text = "Memory usage: " + (memory / 1024 / 1024).ToString() + "MB"; }
             else { lblMemory.Text = "Memory usage: " + (memory / 1024).ToString() + "KB"; }
+        }
+
+        private void tmrAlarm_Tick(object sender, EventArgs e)
+        {
+            bool highTemp = false;
+            bool lowTemp = false;
+            bool tempOOR = false;
+            bool batAlarm = false;
+            bool arcomAlarm = false;
+            double spH = Convert.ToDouble(con.GetHighSp(1));
+            double spL = Convert.ToDouble(con.GetLowSP(1));
+
+            highTemp = alarm.HighTempAlarm(spH, arCom.Readtemp());
+            lowTemp = alarm.LowTempAlarm(spL, arCom.Readtemp());
+            tempOOR = alarm.TempOutOfRange(arCom.Readtemp());
+            batAlarm = alarm.BatteryAlarm(batteryMonitoring.StatusChanged());
+            arcomAlarm = alarm.ArduComAlarm(arCom.ComFault());
         }
 
 
