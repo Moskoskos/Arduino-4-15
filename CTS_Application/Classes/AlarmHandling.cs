@@ -9,8 +9,7 @@ namespace CTS_Application
 {
     class AlarmHandling//klasse for temperaturalarmer
     {
-        public string description;
-        public int tagId;
+
         //private instansvariabler brukt i raiseAlarm metode
         private bool lowAlarm = false;
         private bool highAlarm = false;
@@ -21,11 +20,6 @@ namespace CTS_Application
         private bool currentBatteryAlarm = false;
         private bool comAlarm = false;
 
-        public AlarmHandling(string initDescription, int initTagId)
-        {
-            description = initDescription;
-            tagId = initTagId;
-        }
         public AlarmHandling()
         {       }
         public bool LowTempAlarm(double sp, double pv) // returnerer true, hvis alarm. Temperatur må gå tilbake til "normal" før man får ny alarm.
