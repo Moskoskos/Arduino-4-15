@@ -27,6 +27,7 @@ namespace CTS_Application
             Status();
             tmrStatus.Start();
             tmrRecToDb.Start();
+            tmrReadTempArd.Start();
             
         }
         private void frmMain_Load(object sender, EventArgs e)
@@ -112,9 +113,9 @@ namespace CTS_Application
         private void btnStartSim_Click(object sender, EventArgs e)
         {
             //Simulate temp
-            tmrReadTempArd.Start();
-            if (days == (3 * 365)) { tmrReadTempArd.Stop(); }
-            tmrRecToDb.Start();
+            //tmrReadTempArd.Start();
+           // if (days == (3 * 365)) { tmrReadTempArd.Stop(); }
+           // tmrRecToDb.Start();
         }
 
         private void btnStopSim_Click(object sender, EventArgs e)
