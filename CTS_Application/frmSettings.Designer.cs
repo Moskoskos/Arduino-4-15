@@ -72,7 +72,6 @@
             this.Controls.Add(this.btnDelAla);
             this.Controls.Add(this.btnDelRec);
             this.Name = "frmSettings";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmSettings";
             this.ResumeLayout(false);
 

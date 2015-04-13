@@ -47,13 +47,15 @@ namespace CTS_Application
                 number = Convert.ToInt32(txtNumber.Text);
                 email = txtMail.Text;
              
-                DbConnect con = new DbConnect();
-                //Inserts the desierd input into the con method
-                con.InsertIntoUsers(username, firstname, lastname, email, number);
+                //When using dbConnect.OpenConnection and dbConnect.CloseConnection it did not write to database. Wh?
+                DbConnect dbConnect = new DbConnect();
+                //Inserts the desierd input into the DbConnect method
+                dbConnect.InsertIntoUsers(username, firstname, lastname, email, number);
                 //After the query is ran and the connection is closed, retrieve rows and update the table.
                 usersTableAdapter.Fill(ctsDataSet.users);
                 lblMessage.Text = "Transfer Succesful";
                 lblMessage.ForeColor = Color.Green;
+                
                 
             }
             catch (Exception ex)
@@ -95,5 +97,7 @@ namespace CTS_Application
         {
             ClearTextBoxes(this.Controls);
         }
+
+
     }
 }

@@ -21,6 +21,8 @@ namespace CTS_Application
         private string database;
         private string uid;
         private string password;
+        
+
 
         //Source:
         //http://www.codeproject.com/Articles/43438/Connect-C-to-MySQL
@@ -90,6 +92,7 @@ namespace CTS_Application
             {
                 try
                 {
+                    
                     string query = "INSERT INTO users(username, firstname, lastname, email, phonenumber)VALUES(@username, @firstname, @lastname,@email,@number);";
                     //Checks if connection is open
                     if (this.OpenConnection() == true)
@@ -120,6 +123,7 @@ namespace CTS_Application
                 }
             }
         }
+     
         //Writes temperature values to database
         public bool WriteTempemperatureToHistorian(double valueIn)
         {
@@ -166,6 +170,8 @@ namespace CTS_Application
                             string query = "INSERT INTO alarm_historian(alarm_id, description) VALUES(@alarmvar,@description);";
                             if (this.OpenConnection() == true)
                             {
+
+
                                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
                                 {
                                     cmd.Parameters.AddWithValue("@alarmvar", alarmCodeIn);
@@ -235,6 +241,7 @@ namespace CTS_Application
                 }
             return false;
         }
+
       
         public string GetLowSP(int id)
         {
