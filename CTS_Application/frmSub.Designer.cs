@@ -257,6 +257,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Subscribers";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmSub";
             this.Load += new System.EventHandler(this.frmSub_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ctsDataSet)).EndInit();

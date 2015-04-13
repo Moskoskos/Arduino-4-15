@@ -15,7 +15,7 @@ namespace CTS_Application
 {
     public partial class frmMain : Form
     {
-        double temp_Arduino = 0.0;
+        double temp_Arduino = -20.0;
         double days = 0.0;
         DbConnect con = new DbConnect();
         ArduinoCom arCom = new ArduinoCom();
@@ -36,10 +36,10 @@ namespace CTS_Application
             //Source:
             //http://stackoverflow.com/questions/12033448/how-to-connect-two-different-windows-forms-keeping-both-open
             //Where to place the window at startup
-            this.Location = new Point(0, 0);
            txtSpL.Text = con.GetLowSP(1);
            txtSpH.Text = con.GetHighSp(1);
            txtHysteresis.Text = con.GetHystersis(1);
+           tmrRecToDb.Start();
         }
 
         //Opens the subscriber window
@@ -69,7 +69,6 @@ namespace CTS_Application
            {
                MessageBox.Show(ex.Message);
            }
-           
        }
 
        private void tmrRecToDb_Tick(object sender, EventArgs e)
@@ -82,6 +81,7 @@ namespace CTS_Application
                this.historianTableAdapter.Fill(this.dataSetToGrah.historian);
                chrtTemp.DataBind();
                chrtTemp.Refresh();
+               
            }
            catch (Exception ex)
            {
@@ -109,7 +109,7 @@ namespace CTS_Application
             //Simulate temp
             tmrSimTemp.Start();
             if (days == (3 * 365)) { tmrSimTemp.Stop(); }
-            tmrRecToDb.Start();
+            
         }
 
         private void btnStopSim_Click(object sender, EventArgs e)
