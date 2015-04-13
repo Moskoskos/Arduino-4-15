@@ -29,20 +29,33 @@ namespace CTS_Application
             client.EnableSsl = true;
          }
 
-        public void SendMessage(string to1, string body1)
+        public void SendMessage(string body1)
         {
+            DbConnect con = new DbConnect();
+            string body = body1;
             string subject1 = "Alarm fra CTS";
-            message = new MailMessage(from, to1, subject1, body1);
-            try
+            //Then get the number of rows in the table to iterate IDs
+            int numOfRows = Convert.ToInt32(con.GetTotalRow());
+            //For each unique id in the table, send email.
+            for (int i = 1; i <= numOfRows; i++)
             {
-                client.Send(message);
-               
+                try
+                {
+                    string userId = con.GetEmail(i);
+                    message = new MailMessage(from, userId, subject1, body);
+                    client.Send(message);
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }             
+            
+            
+        }
+             
     }
        
 

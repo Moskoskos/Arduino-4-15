@@ -173,35 +173,35 @@ namespace CTS_Application
             {
                 string message = "Temperature extended setpoint: High. Temperature =" + realTemp.ToString();
                 con.WriteToAlarmHistorian(1, message);
-                
-                int numOfRows = Convert.ToInt32(con.GetTotalRow());
-                
-                for (int i = 1; i <= numOfRows; i++)
-                {
-                    string userId = con.GetEmail(i);
-                    mail.SendMessage(userId, message);
-
-                }
+                mail.SendMessage( message);
                 UpdateAlarmGrid();
             }
             if (lowTemp ==true)
             {
-                con.WriteToAlarmHistorian(2, "Temperature extended setpoint: Low. Temperature =" + realTemp.ToString());
+                string message = "Temperature extended setpoint: Low. Temperature =" + realTemp.ToString();
+                con.WriteToAlarmHistorian(2, message);
+                mail.SendMessage( message);
                 UpdateAlarmGrid();
             }
             if (tempOOR == true)
             {
-                con.WriteToAlarmHistorian(3, "Temperature out of range. Temperature =" + realTemp.ToString());
+                string message = "Temperature out of range. Temperature =" + realTemp.ToString();
+                con.WriteToAlarmHistorian(3, message);
+                mail.SendMessage( message);
                 UpdateAlarmGrid();
             }
             if (batAlarm == true)
             {
-                con.WriteToAlarmHistorian(4, "Lost powerline. Laptop on battery");
+                string message = "Lost powerline. Laptop is running on battery";
+                con.WriteToAlarmHistorian(4, message);
+                mail.SendMessage( message);
                 UpdateAlarmGrid();
             }
             if (arcomAlarm == true)
             {
-                con.WriteToAlarmHistorian(5, "Lost connection to Arduino");
+                string message = "Lost Connection to Arduino";
+                con.WriteToAlarmHistorian(5, message);
+                mail.SendMessage( message);
                 UpdateAlarmGrid();
             }
         }
@@ -209,7 +209,10 @@ namespace CTS_Application
         {
             this.alarm_historianTableAdapter.Fill(this.dataSetAlarmEvents.alarm_historian);
         }
-        
+        public void SendAlarms()
+        {
+
+        }
 
 
 
