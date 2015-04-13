@@ -10,57 +10,99 @@ namespace CTS_Application
     {
         public string description;
         public int tagId;
-        public bool type;//true = lav alarm, false = høy alarm
         //private instansvariabler brukt i raiseAlarm metode
-        private bool alarm = false;
-        private bool currentAlarm = false;
+        private bool lowAlarm = false;
+        private bool highAlarm = false;
+        private bool currentLowAlarm = false;
+        private bool currentHighAlarm = false;
+        private bool outOfRangeAlarm = false;
+        private bool batteryAlarm = false;
+        private bool comAlarm = false;
 
-        public AlarmHandling(string initDescription, int initTagId, bool initType)
+        public AlarmHandling(string initDescription, int initTagId)
         {
             description = initDescription;
             tagId = initTagId;
-            type = initType;
         }
         public AlarmHandling()
         {       }
-        public bool RaiseAlarm(double sp, double pv) // returnerer true, hvis alarm. Temperatur må gå tilbake til "normal" før man får ny alarm.
-        {
-            //bool lastCheck = false;
-            if (type==true)//lav alarm
-            {
-                if ((pv < sp) && (currentAlarm == false))//pv lavere enn sp og ikke alarmstatus = ny alarm
+        public bool LowTempAlarm(double sp, double pv) // returnerer true, hvis alarm. Temperatur må gå tilbake til "normal" før man får ny alarm.
+        {            
+                if ((pv < sp) && (currentLowAlarm == false))//pv lavere enn sp og ikke alarmstatus = ny alarm
                 {
-                    alarm = true;
-                    currentAlarm = true;
+                    lowAlarm = true;
+                    currentLowAlarm = true;
                 }
-                else if ((currentAlarm == true) && (pv > sp))//pv går over sp igjen etter alarmstatus = vi kan få ny alarm
+                else if ((currentLowAlarm == true) && (pv > sp))//pv går over sp igjen etter alarmstatus = vi kan få ny alarm
                 {
-                    currentAlarm = false;
-                    //alarm = false;
+                    currentLowAlarm = false;
                 }
                 else
                 { 
-                    alarm = false; 
+                    lowAlarm = false; 
                 }
-            }
-            else//høy alarm
+            
+            return lowAlarm;
+        }
+            public bool HighTempAlarm(double sp, double pv)//høy alarm
             {
-                if ((pv > sp) && (currentAlarm == false))//pv høyere enn sp og ikke alarmstatus = ny alarm
+                if ((pv > sp) && (currentHighAlarm == false))//pv høyere enn sp og ikke alarmstatus = ny alarm
                 {
-                    alarm = true;
-                    currentAlarm = true;
+                    highAlarm = true;
+                    currentHighAlarm = true;
                 }
-                else if ((currentAlarm == true) && (pv < sp))//pv går under sp igjen etter alarmstatus = vi kan få ny alarm
+                else if ((currentHighAlarm == true) && (pv < sp))//pv går under sp igjen etter alarmstatus = vi kan få ny alarm
                 {
-                    currentAlarm = false;
+                    currentHighAlarm = false;
                 }
                 else
                 {
-                    alarm = false;
+                    highAlarm = false;
                 }
+                return highAlarm;
+             }
+        //gir alarm hvis temperaturverdi er utenfor gitte verdier
+            public bool TempOutOfRange(double pv)
+            {
+                if (pv < 10000)
+                {
+                    outOfRangeAlarm = true;
+                }
+                else if (pv > 10000)
+                {
+                    outOfRangeAlarm = true;
+                }
+                else
+                {
+                    outOfRangeAlarm = false;
+                }
+                return outOfRangeAlarm;
             }
-            return alarm;
-        }
+        //gir alarm hvis nettspenning forsvinner
+            public bool BatteryAlarm(bool powerstatus)
+            {
+                if (powerstatus == true)
+                {
+                    batteryAlarm = true;
+                }
+                else if (powerstatus == false)
+                {
+                    batteryAlarm = false;
+                }
+                return batteryAlarm;
+            }
+            public bool ArduComAlarm(bool comStatus)
+            {
+                if (comStatus == true)
+                {
+                    comAlarm = true;
+                }
+                else if (comStatus == false)
+                {
+                    comAlarm = false;
+                }
+                return comAlarm;
+            }
      }
     
 }
