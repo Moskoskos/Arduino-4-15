@@ -58,7 +58,6 @@ namespace CTS_Application
            temp_Arduino = arCom.Temperature(days);
            lblCV.Text = Convert.ToString(temp_Arduino) + "°C";
            days = days + 2;
-           //lblCV.Text = arCom.Readtemp().ToString();
        }
 
        private void btnSubmit_Click(object sender, EventArgs e)
@@ -77,18 +76,14 @@ namespace CTS_Application
 
        private void tmrRecToDb_Tick(object sender, EventArgs e)
        {
-           int tempValue = 0;
            try
            {
-               
                //write temp to db
                con.WriteTempemperatureToHistorian(temp_Arduino);
                // Update chart with temp
                this.historianTableAdapter.Fill(this.dataSetToGrah.historian);
                chrtTemp.DataBind();
                chrtTemp.Refresh();
-                tempValue = Convert.ToInt32(con.GetHistorianValue());
-              
            }
            catch (Exception ex)
            {
