@@ -191,11 +191,11 @@ namespace CTS_Application
            return false;
         } //Done?
         //if data doesnt exsist this code does not work.
-        public bool ChangeSetPoint(int settingID, double setPointLowIn, double setPointHighIn, double hysteresisIn)
+        public bool ChangeSetPoint(int settingID, double setPointLowIn, double setPointHighIn)
         {
             try
             {
-                string query = "UPDATE settings SET setpoint_low = @setPoint_low, setpoint_high = @setPoint_high, hysteresis = @hysteresis WHERE settings_id = @settingID;";
+                string query = "UPDATE settings SET setpoint_low = @setPoint_low, setpoint_high = @setPoint_high WHERE settings_id = @settingID;";
                 //Checks if connection is open
                 if (this.OpenConnection() == true)
                 {
@@ -206,7 +206,6 @@ namespace CTS_Application
                         cmd.Parameters.AddWithValue("@settingID", settingID);
                         cmd.Parameters.AddWithValue("@setPoint_low", setPointLowIn);
                         cmd.Parameters.AddWithValue("@setPoint_high", setPointHighIn);
-                        cmd.Parameters.AddWithValue("@hysteresis", hysteresisIn);
                         // Execute the query
                         cmd.ExecuteNonQuery();
                         CloseConnection();

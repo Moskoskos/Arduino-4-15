@@ -39,7 +39,6 @@ namespace CTS_Application
             this.Location = new Point(0, 0);
            txtSpL.Text = con.GetLowSP(1);
            txtSpH.Text = con.GetHighSp(1);
-           txtHysteresis.Text = con.GetHystersis(1);
         }
 
         //Opens the subscriber window
@@ -62,8 +61,7 @@ namespace CTS_Application
            {
                int setPointLow = Convert.ToInt32(txtSpL.Text);
                int setPointHigh = Convert.ToInt32(txtSpH.Text);
-               int hysteresis = Convert.ToInt32(txtHysteresis.Text);
-               con.ChangeSetPoint(1, setPointLow, setPointHigh, hysteresis);
+               con.ChangeSetPoint(1, setPointLow, setPointHigh);
            }
            catch (Exception ex)
            {

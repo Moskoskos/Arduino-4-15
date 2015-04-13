@@ -50,9 +50,7 @@
             this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.txtHysteresis = new System.Windows.Forms.TextBox();
             this.txtSpH = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblMemory = new System.Windows.Forms.Label();
@@ -218,14 +216,6 @@
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
             // 
-            // txtHysteresis
-            // 
-            this.txtHysteresis.Location = new System.Drawing.Point(360, 56);
-            this.txtHysteresis.Name = "txtHysteresis";
-            this.txtHysteresis.Size = new System.Drawing.Size(100, 20);
-            this.txtHysteresis.TabIndex = 3;
-            this.txtHysteresis.Text = "0";
-            // 
             // txtSpH
             // 
             this.txtSpH.Location = new System.Drawing.Point(248, 56);
@@ -233,15 +223,6 @@
             this.txtSpH.Size = new System.Drawing.Size(100, 20);
             this.txtSpH.TabIndex = 2;
             this.txtSpH.Text = "0";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(360, 40);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 13);
-            this.label3.TabIndex = 44;
-            this.label3.Text = "Hysteresis";
             // 
             // label2
             // 
@@ -475,9 +456,7 @@
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.txtSpH);
-            this.Controls.Add(this.txtHysteresis);
             this.Controls.Add(this.chrtTemp);
             this.Controls.Add(this.txtSpL);
             this.Controls.Add(this.txtCV);
@@ -525,9 +504,7 @@
         private System.Windows.Forms.ToolStripMenuItem preferencesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menuSettings;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.TextBox txtHysteresis;
         private System.Windows.Forms.TextBox txtSpH;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
