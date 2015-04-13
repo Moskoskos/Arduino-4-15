@@ -89,8 +89,6 @@ namespace CTS_Application
                chrtTemp.Refresh();
                 tempValue = Convert.ToInt32(con.GetHistorianValue());
               
-               
-              
            }
            catch (Exception ex)
            {
@@ -158,12 +156,34 @@ namespace CTS_Application
             bool arcomAlarm = false;
             double spH = Convert.ToDouble(con.GetHighSp(1));
             double spL = Convert.ToDouble(con.GetLowSP(1));
+            double realTemp = arCom.Readtemp();
 
-            highTemp = alarm.HighTempAlarm(spH, arCom.Readtemp());
-            lowTemp = alarm.LowTempAlarm(spL, arCom.Readtemp());
-            tempOOR = alarm.TempOutOfRange(arCom.Readtemp());
+            highTemp = alarm.HighTempAlarm(spH, realTemp);
+            lowTemp = alarm.LowTempAlarm(spL, realTemp);
+            tempOOR = alarm.TempOutOfRange(realTemp);
             batAlarm = alarm.BatteryAlarm(batteryMonitoring.StatusChanged());
             arcomAlarm = alarm.ArduComAlarm(arCom.ComFault());
+
+            if (highTemp == true)
+            {
+                con.WriteToAlarmHistorian(1, "Temperature extended setpoint: High. PV =" + realTemp.ToString());
+            }
+            if (lowTemp ==true)
+            {
+                con.WriteToAlarmHistorian(2, "Temperature extended setpoint: Low. PV =" + realTemp.ToString());
+            }
+            if (tempOOR == true)
+            {
+                con.WriteToAlarmHistorian(3, "Temperature out of range. PV=" + realTemp.ToString());
+            }
+            if (batAlarm == true)
+            {
+                con.WriteToAlarmHistorian(4, "Lost powerline. Laptop on battery");
+            }
+            if (arcomAlarm == true)
+            {
+                con.WriteToAlarmHistorian(5, "Lost connection to Arduino");
+            }
         }
 
 
