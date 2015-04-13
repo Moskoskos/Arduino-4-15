@@ -41,8 +41,9 @@ namespace CTS_Application
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
                 comFault = true;
+                MessageBox.Show(ex.Message);
+                
             }
             return Math.Round(tempC, 2);
         }

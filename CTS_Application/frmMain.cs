@@ -56,15 +56,21 @@ namespace CTS_Application
 
        private void tmrSimTemp_Tick(object sender, EventArgs e)
        {
+           if (arCom.comFault == true)
+           {
+               tmrSimTemp.Stop();
+           };
            temp_Arduino = arCom.Readtemp();
            lblCV.Text = Convert.ToString(temp_Arduino) + "°C";
            days = days + 2;
+           
        }
 
        private void btnSubmit_Click(object sender, EventArgs e)
        {
            try
            {
+               con.WriteToAlarmHistorian(1, "Temperature extended setpoint: High. PV =");
                int setPointLow = Convert.ToInt32(txtSpL.Text);
                int setPointHigh = Convert.ToInt32(txtSpH.Text);
                con.ChangeSetPoint(1, setPointLow, setPointHigh);
