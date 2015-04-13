@@ -18,6 +18,7 @@ namespace CTS_Application
         private bool currentHighAlarm = false;
         private bool outOfRangeAlarm = false;
         private bool batteryAlarm = false;
+        private bool currentBatteryAlarm = false;
         private bool comAlarm = false;
 
         public AlarmHandling(string initDescription, int initTagId)
@@ -82,11 +83,16 @@ namespace CTS_Application
         //gir alarm hvis nettspenning forsvinner
             public bool BatteryAlarm(bool powerstatus)
             {
-                if (powerstatus == true)
+                if ((powerstatus == true) && (currentBatteryAlarm == false))
                 {
                     batteryAlarm = true;
+                    currentBatteryAlarm = true;
                 }
-                else if (powerstatus == false)
+                else if ((powerstatus == false) && (currentBatteryAlarm == true))
+                {
+                    currentBatteryAlarm = false;
+                }
+                else
                 {
                     batteryAlarm = false;
                 }
