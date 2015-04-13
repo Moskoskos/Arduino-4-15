@@ -445,7 +445,7 @@
             // 
             // tmrAlarm
             // 
-            this.tmrAlarm.Interval = 1000;
+            this.tmrAlarm.Interval = 4000;
             this.tmrAlarm.Tick += new System.EventHandler(this.tmrAlarm_Tick);
             // 
             // frmMain

@@ -895,8 +895,8 @@ namespace CTS_Application.dataSetAlarmEventsTableAdapters {
             this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT `alarm_event_id`, `datetime_recorded`, `description` FROM `alarm_historian" +
-                "`";
+            this._commandCollection[0].CommandText = "SELECT        alarm_event_id, datetime_recorded, description\r\nFROM            ala" +
+                "rm_historian\r\nORDER BY alarm_event_id DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

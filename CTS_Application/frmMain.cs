@@ -18,7 +18,7 @@ namespace CTS_Application
         double temp_Arduino = 0.0;
         double days = 0.0;
         DbConnect con = new DbConnect();
-        ArduinoCom arCom = new ArduinoCom();
+        ArduinoCom arCom = new ArduinoCom("COM3");
         AlarmHandling alarm = new AlarmHandling();
         BatteryMonitoring batteryMonitoring = new BatteryMonitoring(); //Declare batterymonitoring class
         public frmMain()
@@ -28,6 +28,7 @@ namespace CTS_Application
             tmrStatus.Start();
             tmrRecToDb.Start();
             tmrSimTemp.Start();
+            tmrAlarm.Start();
             
         }
         private void frmMain_Load(object sender, EventArgs e)
@@ -170,10 +171,12 @@ namespace CTS_Application
             if (highTemp == true)
             {
                 con.WriteToAlarmHistorian(1, "Temperature extended setpoint: High. PV =" + realTemp.ToString());
+                this.alarm_historianTableAdapter.Fill(this.dataSetAlarmEvents.alarm_historian);
             }
             if (lowTemp ==true)
             {
                 con.WriteToAlarmHistorian(2, "Temperature extended setpoint: Low. PV =" + realTemp.ToString());
+                UpdateAlarmGrid();
             }
             if (tempOOR == true)
             {
@@ -187,6 +190,10 @@ namespace CTS_Application
             {
                 con.WriteToAlarmHistorian(5, "Lost connection to Arduino");
             }
+        }
+        public void UpdateAlarmGrid()
+        {
+            this.alarm_historianTableAdapter.Fill(this.dataSetAlarmEvents.alarm_historian);
         }
 
 
