@@ -18,7 +18,7 @@ USE `cts`;
 -- Dumping structure for table cts.alarm_historian
 CREATE TABLE IF NOT EXISTS `alarm_historian` (
   `alarm_event_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `datetime_recorded` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `datetime_recorded` datetime NOT NULL,
   `alarm_id` int(11) NOT NULL,
   `description` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`alarm_event_id`)
@@ -52,13 +52,13 @@ CREATE TABLE IF NOT EXISTS `settings` (
 
 -- Dumping structure for table cts.users
 CREATE TABLE IF NOT EXISTS `users` (
+  `userID` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(45) NOT NULL,
-  `firstname` varchar(45) DEFAULT NULL,
-  `lastname` varchar(45) DEFAULT NULL,
-  `email` varchar(45) DEFAULT NULL,
+  `firstname` varchar(45) NOT NULL,
+  `lastname` varchar(45) NOT NULL,
+  `email` varchar(45) NOT NULL,
   `phonenumber` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`username`),
-  UNIQUE KEY `userID_UNIQUE` (`username`)
+  PRIMARY KEY (`userID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Data exporting was unselected.

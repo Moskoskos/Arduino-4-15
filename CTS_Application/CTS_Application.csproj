@@ -52,10 +52,10 @@
     <Compile Include="Classes\DbConnect.cs" />
     <Compile Include="Classes\Email.cs" />
     <Compile Include="Classes\Setup.cs" />
-    <Compile Include="ctsDataSetSubscribers.Designer.cs">
+    <Compile Include="ctsDataSetUsers.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ctsDataSetSubscribers.xsd</DependentUpon>
+      <DependentUpon>ctsDataSetUsers.xsd</DependentUpon>
     </Compile>
     <Compile Include="dataSetAlarmEvents.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -106,16 +106,16 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="ctsDataSetSubscribers.xsc">
-      <DependentUpon>ctsDataSetSubscribers.xsd</DependentUpon>
+    <None Include="ctsDataSetUsers.xsc">
+      <DependentUpon>ctsDataSetUsers.xsd</DependentUpon>
     </None>
-    <None Include="ctsDataSetSubscribers.xsd">
+    <None Include="ctsDataSetUsers.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ctsDataSetSubscribers.Designer.cs</LastGenOutput>
+      <LastGenOutput>ctsDataSetUsers.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="ctsDataSetSubscribers.xss">
-      <DependentUpon>ctsDataSetSubscribers.xsd</DependentUpon>
+    <None Include="ctsDataSetUsers.xss">
+      <DependentUpon>ctsDataSetUsers.xsd</DependentUpon>
     </None>
     <None Include="dataSetAlarmEvents.xsc">
       <DependentUpon>dataSetAlarmEvents.xsd</DependentUpon>

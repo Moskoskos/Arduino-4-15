@@ -52,7 +52,7 @@ namespace CTS_Application
                 //Inserts the desierd input into the DbConnect method
                 dbConnect.InsertIntoUsers(username, firstname, lastname, email, number);
                 //After the query is ran and the connection is closed, retrieve rows and update the table.
-                usersTableAdapter.Fill(ctsDataSet.users);
+                usersTableAdapter.Fill(ctsDataSetUsers.users);
                 lblMessage.Text = "Transfer Succesful";
                 lblMessage.ForeColor = Color.Green;
                 
@@ -67,14 +67,16 @@ namespace CTS_Application
         }
         private void frmSub_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'ctsDataSetUsers.users' table. You can move, or remove it, as needed.
+            this.usersTableAdapter.Fill(this.ctsDataSetUsers.users);
             // TODO: This line of code loads data into the 'ctsDataSet.users' table. You can move, or remove it, as needed.
             // The data comes from the connection created to the MySql Server.
             //this.Location = new Point(1287, 0);
-            this.usersTableAdapter.Fill(this.ctsDataSet.users);
+            this.usersTableAdapter.Fill(this.ctsDataSetUsers.users);
         }
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            usersTableAdapter.Fill(ctsDataSet.users);
+            usersTableAdapter.Fill(ctsDataSetUsers.users);
             lblMessage.Text = "Table Updated";
             lblMessage.ForeColor = Color.Green;
         }
