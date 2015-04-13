@@ -299,5 +299,10 @@ namespace CTS_Application
             }
             return result;
         }
+        //public string GetComPort()
+        //{
+        //    string result = "";
+        //    string query = "SELECT COM_port FROM settings WHERE "
+        //}
     }
 }

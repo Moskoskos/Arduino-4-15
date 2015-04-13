@@ -18,6 +18,7 @@ namespace CTS_Application
         public frmSettings()
         {
             InitializeComponent();
+            DbConnect cmd = new DbConnect();
         }
 
         private void btnDelRec_Click(object sender, EventArgs e)
@@ -60,6 +61,11 @@ namespace CTS_Application
             {
                 //do something else
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
