@@ -20,6 +20,7 @@ namespace CTS_Application
         DbConnect con = new DbConnect();
         ArduinoCom arCom = new ArduinoCom("COM3");
         AlarmHandling alarm = new AlarmHandling();
+        Email mail = new Email();
         BatteryMonitoring batteryMonitoring = new BatteryMonitoring(); //Declare batterymonitoring class
         public frmMain()
         {
@@ -170,17 +171,27 @@ namespace CTS_Application
 
             if (highTemp == true)
             {
-                con.WriteToAlarmHistorian(1, "Temperature extended setpoint: High. PV =" + realTemp.ToString());
+                string message = "Temperature extended setpoint: High. Temperature =" + realTemp.ToString();
+                con.WriteToAlarmHistorian(1, message);
+                
+                int numOfRows = Convert.ToInt32(con.GetTotalRow());
+                
+                for (int i = 1; i <= numOfRows; i++)
+                {
+                    string userId = con.GetEmail(i);
+                    mail.SendMessage(userId, message);
+
+                }
                 UpdateAlarmGrid();
             }
             if (lowTemp ==true)
             {
-                con.WriteToAlarmHistorian(2, "Temperature extended setpoint: Low. PV =" + realTemp.ToString());
+                con.WriteToAlarmHistorian(2, "Temperature extended setpoint: Low. Temperature =" + realTemp.ToString());
                 UpdateAlarmGrid();
             }
             if (tempOOR == true)
             {
-                con.WriteToAlarmHistorian(3, "Temperature out of range. PV=" + realTemp.ToString());
+                con.WriteToAlarmHistorian(3, "Temperature out of range. Temperature =" + realTemp.ToString());
                 UpdateAlarmGrid();
             }
             if (batAlarm == true)
@@ -198,6 +209,7 @@ namespace CTS_Application
         {
             this.alarm_historianTableAdapter.Fill(this.dataSetAlarmEvents.alarm_historian);
         }
+        
 
 
 
