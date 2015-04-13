@@ -19,6 +19,7 @@ namespace CTS_Application
         double days = 0.0;
         DbConnect con = new DbConnect();
         ArduinoCom arCom = new ArduinoCom();
+        AlarmHandling alarm = new AlarmHandling();
         BatteryMonitoring batteryMonitoring = new BatteryMonitoring(); //Declare batterymonitoring class
         public frmMain()
         {
@@ -57,6 +58,7 @@ namespace CTS_Application
            temp_Arduino = arCom.Temperature(days);
            lblCV.Text = Convert.ToString(temp_Arduino) + "°C";
            days = days + 2;
+           //lblCV.Text = arCom.Readtemp().ToString();
        }
 
        private void btnSubmit_Click(object sender, EventArgs e)
@@ -75,14 +77,21 @@ namespace CTS_Application
 
        private void tmrRecToDb_Tick(object sender, EventArgs e)
        {
+           int tempValue = 0;
            try
            {
+               
                //write temp to db
                con.WriteTempemperatureToHistorian(temp_Arduino);
                // Update chart with temp
                this.historianTableAdapter.Fill(this.dataSetToGrah.historian);
                chrtTemp.DataBind();
                chrtTemp.Refresh();
+                tempValue = Convert.ToInt32(con.GetHistorianValue());
+                if (tempValue > Convert.ToInt32(con.GetHighSp(1)) && tempValue < Convert.ToInt32(con.GetLowSP(1)))
+                {
+                    
+                }
            }
            catch (Exception ex)
            {
@@ -138,6 +147,8 @@ namespace CTS_Application
             if (memory > 1048576) { lblMemory.Text = "Memory usage: " + (memory / 1024 / 1024).ToString() + "MB"; }
             else { lblMemory.Text = "Memory usage: " + (memory / 1024).ToString() + "KB"; }
         }
+
+
 
 
     }

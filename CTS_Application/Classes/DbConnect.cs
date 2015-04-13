@@ -287,5 +287,19 @@ namespace CTS_Application
             }
             return result;
         }
+        public string GetHistorianValue()
+        {
+            string result = "";
+            string query = "SELECT value FROM historian ORDER BY historian_id DESC LIMIT 1";
+            if (this.OpenConnection() == true)
+            {
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                {
+                    result = cmd.ExecuteScalar().ToString();
+                    CloseConnection();
+                }
+            }
+            return result;
+        }
     }
 }
