@@ -52,15 +52,7 @@ namespace CTS_Application
             bool fault = comFault;
             return fault;
         }
-        public bool TempOutOfRange()
-        {
-            bool fault = false;
-            if ((temp < -20.0) || (temp > 50.0))
-            {
-                fault = true;
-            }
-            return fault;
-        }
+
         //Simulates the temperature variation throughout one year ranging from -20*C to +20*C
         public double Temperature(double days)
         {
