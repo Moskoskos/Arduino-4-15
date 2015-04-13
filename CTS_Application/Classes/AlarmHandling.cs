@@ -18,6 +18,7 @@ namespace CTS_Application
         private bool outOfRangeAlarm = false;
         private bool batteryAlarm = false;
         private bool comAlarm = false;
+        private string faultMassage  { get; set; }
 
         public AlarmHandling(string initDescription, int initTagId)
         {
@@ -32,6 +33,7 @@ namespace CTS_Application
                 {
                     lowAlarm = true;
                     currentLowAlarm = true;
+                    faultMassage = "Lav temperatur alarm";
                 }
                 else if ((currentLowAlarm == true) && (pv > sp))//pv går over sp igjen etter alarmstatus = vi kan få ny alarm
                 {
@@ -50,6 +52,7 @@ namespace CTS_Application
                 {
                     highAlarm = true;
                     currentHighAlarm = true;
+                    faultMassage = "Høy temperatur alarm";
                 }
                 else if ((currentHighAlarm == true) && (pv < sp))//pv går under sp igjen etter alarmstatus = vi kan få ny alarm
                 {
@@ -67,10 +70,12 @@ namespace CTS_Application
                 if (pv < -100)
                 {
                     outOfRangeAlarm = true;
+                    faultMassage = "Temperatur sensor feil";
                 }
                 else if (pv > 100)
                 {
                     outOfRangeAlarm = true;
+                    faultMassage = "Temperatur sensor feil";
                 }
                 else
                 {
@@ -84,6 +89,7 @@ namespace CTS_Application
                 if (powerstatus == true)
                 {
                     batteryAlarm = true;
+                    faultMassage = "Staum frakoblet";
                 }
                 else if (powerstatus == false)
                 {
@@ -97,6 +103,7 @@ namespace CTS_Application
                 if (comStatus == true)
                 {
                     comAlarm = true;
+                    faultMassage = "Com feil";
                 }
                 else if (comStatus == false)
                 {
