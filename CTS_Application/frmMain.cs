@@ -55,7 +55,7 @@ namespace CTS_Application
        private void tmrSimTemp_Tick(object sender, EventArgs e)
        {
            temp_Arduino = arCom.Temperature(days);
-           txtCV.Text = Convert.ToString(temp_Arduino) + "°C";
+           lblCV.Text = Convert.ToString(temp_Arduino) + "°C";
            days = days + 2;
        }
 
