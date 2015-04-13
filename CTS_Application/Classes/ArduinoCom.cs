@@ -37,12 +37,12 @@ namespace CTS_Application
                     mySerialPort.Open();
                     temp = mySerialPort.ReadLine();
                 }
-                tempC = ((Convert.ToDouble(temp)) * 0.03);
+                tempC = ((Convert.ToDouble(temp)) * 0.0318);
             }
             catch (Exception ex)
             {
                 comFault = true;
-                MessageBox.Show(ex.Message + "The program could not find the Arduino. Go to Preferences to change COM port");
+                MessageBox.Show(ex.Message + "\r\r\nThe program could not find the Arduino. Go to Preferences to change COM port");
                 
             }
             return Math.Round(tempC, 2);

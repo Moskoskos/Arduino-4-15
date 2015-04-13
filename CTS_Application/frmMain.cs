@@ -22,6 +22,7 @@ namespace CTS_Application
         AlarmHandling alarm = new AlarmHandling();
         Email mail = new Email();
         BatteryMonitoring batteryMonitoring = new BatteryMonitoring(); //Declare batterymonitoring class
+       
         public frmMain()
         {
             InitializeComponent();
@@ -45,6 +46,7 @@ namespace CTS_Application
             this.Location = new Point(0, 0);
            txtSpL.Text = con.GetLowSP(1);
            txtSpH.Text = con.GetHighSp(1);
+            
            
         }
 
