@@ -18,7 +18,7 @@ namespace CTS_Application
         double temp_Arduino = 0.0;
         double days = 0.0;
         DbConnect con = new DbConnect();
-        ArduinoCom arCom = new ArduinoCom();
+        ArduinoCom arCom = new ArduinoCom("COM3");
         AlarmHandling alarm = new AlarmHandling();
         BatteryMonitoring batteryMonitoring = new BatteryMonitoring(); //Declare batterymonitoring class
         public frmMain()
@@ -28,6 +28,7 @@ namespace CTS_Application
             tmrStatus.Start();
             tmrRecToDb.Start();
             tmrSimTemp.Start();
+            tmrAlarm.Start();
             
         }
         private void frmMain_Load(object sender, EventArgs e)
@@ -36,8 +37,7 @@ namespace CTS_Application
             // TODO: This line of code loads data into the 'dataSetToGrah.historian' table. You can move, or remove it, as needed.
             this.historianTableAdapter.Fill(this.dataSetToGrah.historian);
             // TODO: This line of code loads data into the 'dataSetAlarmEvents.alarm_historian' table. You can move, or remove it, as needed.
-            this.alarm_historianTableAdapter.Fill(this.dataSetAlarmEvents.alarm_historian);
-           
+            UpdateAlarmGrid();           
             //Source:
             //http://stackoverflow.com/questions/12033448/how-to-connect-two-different-windows-forms-keeping-both-open
             //Where to place the window at startup
@@ -56,15 +56,21 @@ namespace CTS_Application
 
        private void tmrSimTemp_Tick(object sender, EventArgs e)
        {
+           if (arCom.comFault == true)
+           {
+               tmrSimTemp.Stop();
+           };
            temp_Arduino = arCom.Readtemp();
            lblCV.Text = Convert.ToString(temp_Arduino) + "°C";
            days = days + 2;
+           
        }
 
        private void btnSubmit_Click(object sender, EventArgs e)
        {
            try
            {
+               con.WriteToAlarmHistorian(1, "Temperature extended setpoint: High. PV =");
                int setPointLow = Convert.ToInt32(txtSpL.Text);
                int setPointHigh = Convert.ToInt32(txtSpH.Text);
                con.ChangeSetPoint(1, setPointLow, setPointHigh);
@@ -161,26 +167,36 @@ namespace CTS_Application
             batAlarm = alarm.BatteryAlarm(batteryMonitoring.StatusChanged());
             arcomAlarm = alarm.ArduComAlarm(arCom.ComFault());
 
+
             if (highTemp == true)
             {
                 con.WriteToAlarmHistorian(1, "Temperature extended setpoint: High. PV =" + realTemp.ToString());
+                UpdateAlarmGrid();
             }
             if (lowTemp ==true)
             {
                 con.WriteToAlarmHistorian(2, "Temperature extended setpoint: Low. PV =" + realTemp.ToString());
+                UpdateAlarmGrid();
             }
             if (tempOOR == true)
             {
                 con.WriteToAlarmHistorian(3, "Temperature out of range. PV=" + realTemp.ToString());
+                UpdateAlarmGrid();
             }
             if (batAlarm == true)
             {
                 con.WriteToAlarmHistorian(4, "Lost powerline. Laptop on battery");
+                UpdateAlarmGrid();
             }
             if (arcomAlarm == true)
             {
                 con.WriteToAlarmHistorian(5, "Lost connection to Arduino");
+                UpdateAlarmGrid();
             }
+        }
+        public void UpdateAlarmGrid()
+        {
+            this.alarm_historianTableAdapter.Fill(this.dataSetAlarmEvents.alarm_historian);
         }
 
 

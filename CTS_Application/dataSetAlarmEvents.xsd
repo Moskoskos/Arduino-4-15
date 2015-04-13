@@ -22,8 +22,10 @@
                   </DbCommand>
                 </DeleteCommand>
                 <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT `alarm_event_id`, `datetime_recorded`, `description` FROM `alarm_historian`</CommandText>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        alarm_event_id, datetime_recorded, description
+FROM            alarm_historian
+ORDER BY alarm_event_id DESC</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -57,7 +59,7 @@
   <xs:element name="dataSetAlarmEvents" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="dataSetAlarmEvents" msprop:Generator_UserDSName="dataSetAlarmEvents">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="alarm_historian" msprop:Generator_TableClassName="alarm_historianDataTable" msprop:Generator_TableVarName="tablealarm_historian" msprop:Generator_TablePropName="alarm_historian" msprop:Generator_RowDeletingName="alarm_historianRowDeleting" msprop:Generator_RowChangingName="alarm_historianRowChanging" msprop:Generator_RowEvHandlerName="alarm_historianRowChangeEventHandler" msprop:Generator_RowDeletedName="alarm_historianRowDeleted" msprop:Generator_UserTableName="alarm_historian" msprop:Generator_RowChangedName="alarm_historianRowChanged" msprop:Generator_RowEvArgName="alarm_historianRowChangeEvent" msprop:Generator_RowClassName="alarm_historianRow">
+        <xs:element name="alarm_historian" msprop:Generator_TableClassName="alarm_historianDataTable" msprop:Generator_TableVarName="tablealarm_historian" msprop:Generator_RowChangedName="alarm_historianRowChanged" msprop:Generator_TablePropName="alarm_historian" msprop:Generator_RowDeletingName="alarm_historianRowDeleting" msprop:Generator_RowChangingName="alarm_historianRowChanging" msprop:Generator_RowEvHandlerName="alarm_historianRowChangeEventHandler" msprop:Generator_RowDeletedName="alarm_historianRowDeleted" msprop:Generator_RowClassName="alarm_historianRow" msprop:Generator_UserTableName="alarm_historian" msprop:Generator_RowEvArgName="alarm_historianRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="alarm_event_id" msprop:Generator_ColumnVarNameInTable="columnalarm_event_id" msprop:Generator_ColumnPropNameInRow="alarm_event_id" msprop:Generator_ColumnPropNameInTable="alarm_event_idColumn" msprop:Generator_UserColumnName="alarm_event_id" type="xs:unsignedInt" />

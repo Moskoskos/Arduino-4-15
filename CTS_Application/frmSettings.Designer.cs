@@ -31,6 +31,9 @@
             this.btnDelRec = new System.Windows.Forms.Button();
             this.btnDelAla = new System.Windows.Forms.Button();
             this.btnDelSub = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnDelRec
@@ -63,17 +66,46 @@
             this.btnDelSub.UseVisualStyleBackColor = true;
             this.btnDelSub.Click += new System.EventHandler(this.btnDelSub_Click);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(8, 120);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 6;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(8, 104);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(47, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "ComPort";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(120, 120);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Submit";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // frmSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(460, 408);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnDelSub);
             this.Controls.Add(this.btnDelAla);
             this.Controls.Add(this.btnDelRec);
             this.Name = "frmSettings";
             this.Text = "frmSettings";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -82,5 +114,8 @@
         private System.Windows.Forms.Button btnDelRec;
         private System.Windows.Forms.Button btnDelAla;
         private System.Windows.Forms.Button btnDelSub;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button1;
     }
 }
