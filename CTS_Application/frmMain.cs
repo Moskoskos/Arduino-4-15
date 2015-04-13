@@ -100,10 +100,12 @@ namespace CTS_Application
        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
        {
            
+           chrtTemp.ChartAreas["Series1"].AxisX.Minimum = 0;
        }
        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
        {
-
+           chrtTemp.ChartAreas["Series1"].AxisX.Maximum = 0;
+           //test test
        }
 
        private void menuSettings_Click(object sender, EventArgs e)
