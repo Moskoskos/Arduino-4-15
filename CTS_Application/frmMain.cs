@@ -19,7 +19,8 @@ namespace CTS_Application
         double days = 0.0;
         DbConnect con = new DbConnect();
         ArduinoCom arCom = new ArduinoCom();
-        AlarmHandling alarm = new AlarmHandling();
+        AlarmHandling lAlarm = new AlarmHandling("lav ute temp", 1, true);
+        AlarmHandling hAlarm = new AlarmHandling("høy ute temp", 1, false);
         BatteryMonitoring batteryMonitoring = new BatteryMonitoring(); //Declare batterymonitoring class
         public frmMain()
         {
@@ -88,10 +89,9 @@ namespace CTS_Application
                chrtTemp.DataBind();
                chrtTemp.Refresh();
                 tempValue = Convert.ToInt32(con.GetHistorianValue());
-                if (tempValue > Convert.ToInt32(con.GetHighSp(1)) && tempValue < Convert.ToInt32(con.GetLowSP(1)))
-                {
-                    
-                }
+              
+               
+              
            }
            catch (Exception ex)
            {

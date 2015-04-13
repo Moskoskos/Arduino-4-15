@@ -22,11 +22,11 @@ namespace CTS_Application
        private string from;
         public Email()
         {
-           from = "arduino.ia2.4.15@gmail.com";
+            from = "arduino.ia2.4.15@gmail.com";
             client = new SmtpClient("smtp.gmail.com", 587);
             client.Credentials = new System.Net.NetworkCredential(from, "Arduino4.15");
             client.EnableSsl = true;
-    }
+         }
 
         public void SendMessage(string to1, string body1)
         {

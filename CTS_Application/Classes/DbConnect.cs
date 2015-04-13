@@ -21,8 +21,6 @@ namespace CTS_Application
         private string database;
         private string uid;
         private string password;
-        
-
 
         //Source:
         //http://www.codeproject.com/Articles/43438/Connect-C-to-MySQL
