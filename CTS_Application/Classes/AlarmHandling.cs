@@ -64,11 +64,11 @@ namespace CTS_Application
         //gir alarm hvis temperaturverdi er utenfor gitte verdier
             public bool TempOutOfRange(double pv)
             {
-                if (pv < 10000)
+                if (pv < -100)
                 {
                     outOfRangeAlarm = true;
                 }
-                else if (pv > 10000)
+                else if (pv > 100)
                 {
                     outOfRangeAlarm = true;
                 }
@@ -91,6 +91,7 @@ namespace CTS_Application
                 }
                 return batteryAlarm;
             }
+        //gir alarm hvis com feil
             public bool ArduComAlarm(bool comStatus)
             {
                 if (comStatus == true)
