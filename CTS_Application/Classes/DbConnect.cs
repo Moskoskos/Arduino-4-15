@@ -270,21 +270,7 @@ namespace CTS_Application
             }
             return result;
         }
-        public string GetHystersis(int id)
-        {
-            string result = "";
-            string query = "SELECT setpoint_low FROM settings WHERE settings_id = @id";
-            if (this.OpenConnection() == true)
-            {
-                using (MySqlCommand cmd = new MySqlCommand(query, connection))
-                {
-                    cmd.Parameters.AddWithValue("@id", id);
-                    result = cmd.ExecuteScalar().ToString();
-                    CloseConnection();
-                }
-            }
-            return result;
-        }
+       
         public string GetHistorianValue()
         {
             string result = "";
