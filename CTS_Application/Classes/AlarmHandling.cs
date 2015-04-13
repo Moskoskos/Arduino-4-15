@@ -11,17 +11,15 @@ namespace CTS_Application.Classes
         public string description;
         public int tagId;
         public bool type;//true = lav alarm, false = høy alarm
-        public int hysterese;
         //private instansvariabler brukt i raiseAlarm metode
         private bool alarm = false;
         private bool currentAlarm = false;
 
-        public AlarmHandling(string initDescription, int initTagId, bool initType, int initHystirese)
+        public AlarmHandling(string initDescription, int initTagId, bool initType)
         {
             description = initDescription;
             tagId = initTagId;
             type = initType;
-            hysterese = initHystirese;
         }
         public AlarmHandling()
         {       }
@@ -30,7 +28,7 @@ namespace CTS_Application.Classes
             //bool lastCheck = false;
             if (type==true)//lav alarm
             {
-                if (((pv + hysterese) < sp) && (currentAlarm == false))//pv lavere enn sp og ikke alarmstatus = ny alarm
+                if ((pv < sp) && (currentAlarm == false))//pv lavere enn sp og ikke alarmstatus = ny alarm
                 {
                     alarm = true;
                     currentAlarm = true;
@@ -47,7 +45,7 @@ namespace CTS_Application.Classes
             }
             else//høy alarm
             {
-                if (((pv + hysterese) > sp) && (currentAlarm == false))//pv høyere enn sp og ikke alarmstatus = ny alarm
+                if ((pv > sp) && (currentAlarm == false))//pv høyere enn sp og ikke alarmstatus = ny alarm
                 {
                     alarm = true;
                     currentAlarm = true;
