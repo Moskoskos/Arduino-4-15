@@ -104,6 +104,7 @@ namespace CTS_Application
                 }
                 return comAlarm;
             }
+        //Lag en metode som skriver feilmeldingen og verdi til database. Jeg lager databasespørringen for deg. <3 :*
      }
     
 }

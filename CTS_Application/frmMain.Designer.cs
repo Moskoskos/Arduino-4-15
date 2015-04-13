@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series13 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series15 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.lblPercentage = new System.Windows.Forms.Label();
             this.btnSubscribers = new System.Windows.Forms.Button();
             this.lblTimeLeft = new System.Windows.Forms.Label();
@@ -74,6 +74,7 @@
             this.tmrStatus = new System.Windows.Forms.Timer(this.components);
             this.historianTableAdapter = new CTS_Application.DataSetToGrahTableAdapters.historianTableAdapter();
             this.label3 = new System.Windows.Forms.Label();
+            this.tmrAlarm = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -359,37 +360,37 @@
             // 
             // chrtTemp
             // 
-            chartArea5.Name = "ChartArea1";
-            this.chrtTemp.ChartAreas.Add(chartArea5);
+            chartArea1.Name = "ChartArea1";
+            this.chrtTemp.ChartAreas.Add(chartArea1);
             this.chrtTemp.DataSource = this.historianBindingSource;
-            legend5.Enabled = false;
-            legend5.Name = "Legend1";
-            this.chrtTemp.Legends.Add(legend5);
+            legend1.Enabled = false;
+            legend1.Name = "Legend1";
+            this.chrtTemp.Legends.Add(legend1);
             this.chrtTemp.Location = new System.Drawing.Point(8, 144);
             this.chrtTemp.Name = "chrtTemp";
-            series13.ChartArea = "ChartArea1";
-            series13.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series13.Legend = "Legend1";
-            series13.Name = "Series1";
-            series13.XValueMember = "datetime_recorded";
-            series13.YValueMembers = "value";
-            series14.ChartArea = "ChartArea1";
-            series14.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series14.Color = System.Drawing.Color.Red;
-            series14.Legend = "Legend1";
-            series14.Name = "SpLow";
-            series14.XValueMember = "datetime_recorded";
-            series14.YValueMembers = "setpoint_low";
-            series15.ChartArea = "ChartArea1";
-            series15.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series15.Color = System.Drawing.Color.Red;
-            series15.Legend = "Legend1";
-            series15.Name = "SpHigh";
-            series15.XValueMember = "datetime_recorded";
-            series15.YValueMembers = "setpoint_high";
-            this.chrtTemp.Series.Add(series13);
-            this.chrtTemp.Series.Add(series14);
-            this.chrtTemp.Series.Add(series15);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            series1.XValueMember = "datetime_recorded";
+            series1.YValueMembers = "value";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Color = System.Drawing.Color.Red;
+            series2.Legend = "Legend1";
+            series2.Name = "SpLow";
+            series2.XValueMember = "datetime_recorded";
+            series2.YValueMembers = "setpoint_low";
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.Color = System.Drawing.Color.Red;
+            series3.Legend = "Legend1";
+            series3.Name = "SpHigh";
+            series3.XValueMember = "datetime_recorded";
+            series3.YValueMembers = "setpoint_high";
+            this.chrtTemp.Series.Add(series1);
+            this.chrtTemp.Series.Add(series2);
+            this.chrtTemp.Series.Add(series3);
             this.chrtTemp.Size = new System.Drawing.Size(1256, 312);
             this.chrtTemp.TabIndex = 30;
             this.chrtTemp.Text = "chart1";
@@ -441,6 +442,10 @@
             this.label3.Size = new System.Drawing.Size(71, 13);
             this.label3.TabIndex = 58;
             this.label3.Text = "Current Value";
+            // 
+            // tmrAlarm
+            // 
+            this.tmrAlarm.Interval = 1000;
             // 
             // frmMain
             // 
@@ -530,5 +535,6 @@
         private System.Windows.Forms.Button btnStopSim;
         private System.Windows.Forms.Timer tmrStatus;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Timer tmrAlarm;
     }
 }
