@@ -129,8 +129,11 @@ namespace CTS_Application
             if (batteryMonitoring.TimeLeft >= 1) { lblTimeLeft.Text = batteryMonitoring.TimeLeft.ToString(); }
             else { lblTimeLeft.Text = "System could not calculate remaining time. Driver missing"; }
             lblState.Text = batteryMonitoring.Status;
-            //Displays the programs current memory Usage. Excludes MySQL
-            long memory = GC.GetTotalMemory(true);
+            //Displays the programs current memory Usage. 
+            //Source:
+            //http://stackoverflow.com/questions/1440720/how-can-i-determine-how-much-memory-my-program-is-currently-occupying
+            //
+            long memory = System.Diagnostics.Process.GetCurrentProcess().WorkingSet64;
             if (memory > 1048576) { lblMemory.Text = "Memory usage: " + (memory / 1024 / 1024).ToString() + "MB"; }
             else { lblMemory.Text = "Memory usage: " + (memory / 1024).ToString() + "KB"; }
         }
