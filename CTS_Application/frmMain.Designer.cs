@@ -70,11 +70,11 @@
             this.dataSetAlarmEvents = new CTS_Application.dataSetAlarmEvents();
             this.alarm_historianTableAdapter = new CTS_Application.dataSetAlarmEventsTableAdapters.alarm_historianTableAdapter();
             this.chrtTemp = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.historianBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSetToGrah = new CTS_Application.DataSetToGrah();
             this.btnStartSim = new System.Windows.Forms.Button();
             this.btnStopSim = new System.Windows.Forms.Button();
             this.tmrStatus = new System.Windows.Forms.Timer(this.components);
-            this.historianBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSetToGrah = new CTS_Application.DataSetToGrah();
             this.historianTableAdapter = new CTS_Application.DataSetToGrahTableAdapters.historianTableAdapter();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -100,7 +100,7 @@
             this.btnSubscribers.Location = new System.Drawing.Point(696, 56);
             this.btnSubscribers.Name = "btnSubscribers";
             this.btnSubscribers.Size = new System.Drawing.Size(75, 23);
-            this.btnSubscribers.TabIndex = 19;
+            this.btnSubscribers.TabIndex = 6;
             this.btnSubscribers.Text = "Subscribers";
             this.btnSubscribers.UseVisualStyleBackColor = true;
             this.btnSubscribers.Click += new System.EventHandler(this.btnSubscribers_Click);
@@ -128,7 +128,7 @@
             this.txtSpL.Location = new System.Drawing.Point(136, 56);
             this.txtSpL.Name = "txtSpL";
             this.txtSpL.Size = new System.Drawing.Size(100, 20);
-            this.txtSpL.TabIndex = 23;
+            this.txtSpL.TabIndex = 1;
             this.txtSpL.Text = "0";
             // 
             // txtCV
@@ -137,7 +137,7 @@
             this.txtCV.Name = "txtCV";
             this.txtCV.ReadOnly = true;
             this.txtCV.Size = new System.Drawing.Size(100, 20);
-            this.txtCV.TabIndex = 24;
+            this.txtCV.TabIndex = 0;
             this.txtCV.Text = "0";
             // 
             // label5
@@ -153,7 +153,7 @@
             this.btnSubmit.Location = new System.Drawing.Point(608, 56);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(75, 23);
-            this.btnSubmit.TabIndex = 29;
+            this.btnSubmit.TabIndex = 5;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
@@ -194,7 +194,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1271, 24);
-            this.menuStrip1.TabIndex = 40;
+            this.menuStrip1.TabIndex = 9;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // preferencesToolStripMenuItem
@@ -223,7 +223,7 @@
             this.txtHysteresis.Location = new System.Drawing.Point(360, 56);
             this.txtHysteresis.Name = "txtHysteresis";
             this.txtHysteresis.Size = new System.Drawing.Size(100, 20);
-            this.txtHysteresis.TabIndex = 41;
+            this.txtHysteresis.TabIndex = 3;
             this.txtHysteresis.Text = "0";
             // 
             // txtSpH
@@ -231,7 +231,7 @@
             this.txtSpH.Location = new System.Drawing.Point(248, 56);
             this.txtSpH.Name = "txtSpH";
             this.txtSpH.Size = new System.Drawing.Size(100, 20);
-            this.txtSpH.TabIndex = 43;
+            this.txtSpH.TabIndex = 2;
             this.txtSpH.Text = "0";
             // 
             // label3
@@ -278,7 +278,7 @@
             this.dateTimePicker1.Location = new System.Drawing.Point(24, 104);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 49;
+            this.dateTimePicker1.TabIndex = 7;
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // dateTimePicker2
@@ -286,7 +286,7 @@
             this.dateTimePicker2.Location = new System.Drawing.Point(248, 104);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker2.TabIndex = 50;
+            this.dateTimePicker2.TabIndex = 8;
             this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // label1
@@ -318,7 +318,7 @@
             this.comboBox1.Location = new System.Drawing.Point(472, 56);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 53;
+            this.comboBox1.TabIndex = 4;
             // 
             // label8
             // 
@@ -420,6 +420,16 @@
             this.chrtTemp.TabIndex = 30;
             this.chrtTemp.Text = "chart1";
             // 
+            // historianBindingSource
+            // 
+            this.historianBindingSource.DataMember = "historian";
+            this.historianBindingSource.DataSource = this.dataSetToGrah;
+            // 
+            // dataSetToGrah
+            // 
+            this.dataSetToGrah.DataSetName = "DataSetToGrah";
+            this.dataSetToGrah.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // btnStartSim
             // 
             this.btnStartSim.Location = new System.Drawing.Point(608, 96);
@@ -444,16 +454,6 @@
             // 
             this.tmrStatus.Interval = 1000;
             this.tmrStatus.Tick += new System.EventHandler(this.tmrStatus_Tick);
-            // 
-            // historianBindingSource
-            // 
-            this.historianBindingSource.DataMember = "historian";
-            this.historianBindingSource.DataSource = this.dataSetToGrah;
-            // 
-            // dataSetToGrah
-            // 
-            this.dataSetToGrah.DataSetName = "DataSetToGrah";
-            this.dataSetToGrah.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // historianTableAdapter
             // 

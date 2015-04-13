@@ -17,21 +17,14 @@ namespace CTS_Application
     {
         double temp_Arduino = 0.0;
         double days = 0.0;
-        DbConnect dbConGlob = new DbConnect();
-        ArduinoCom arcom = new ArduinoCom();
+        DbConnect con = new DbConnect();
+        ArduinoCom arCom = new ArduinoCom();
         BatteryMonitoring batteryMonitoring = new BatteryMonitoring(); //Declare batterymonitoring class
         public frmMain()
         {
             InitializeComponent();
-
-            
             Status();
             tmrStatus.Start();
-           
-           // dateTimePicker1.Value = DateTime.Today;
-           // dateTimePicker2.Value = DateTime.MaxValue.AddDays(1);
-            //chrtTemp.ChartAreas["Series1"].AxisX.Maximum = dateTimePicker1.Value;
-           // chrtTemp.ChartAreas["Series1"].AxisX.Minimum = 0;
         }
         private void frmMain_Load(object sender, EventArgs e)
         {
@@ -44,9 +37,9 @@ namespace CTS_Application
             //http://stackoverflow.com/questions/12033448/how-to-connect-two-different-windows-forms-keeping-both-open
             //Where to place the window at startup
             this.Location = new Point(0, 0);
-           txtSpL.Text = dbConGlob.GetLowSP(1);
-           txtSpH.Text = dbConGlob.GetHighSp(1);
-           txtHysteresis.Text = dbConGlob.GetHystersis(1);
+           txtSpL.Text = con.GetLowSP(1);
+           txtSpH.Text = con.GetHighSp(1);
+           txtHysteresis.Text = con.GetHystersis(1);
         }
 
         //Opens the subscriber window
@@ -58,23 +51,29 @@ namespace CTS_Application
 
        private void tmrSimTemp_Tick(object sender, EventArgs e)
        {
-           temp_Arduino = arcom.Temperature(days);
+           temp_Arduino = arCom.Temperature(days);
            txtCV.Text = Convert.ToString(temp_Arduino) + "°C";
-           days = days + 1;
+           days = days + 2;
        }
 
        private void btnSubmit_Click(object sender, EventArgs e)
        {
-           DbConnect con = new DbConnect();
-           int setPointLow = Convert.ToInt32(txtSpL.Text);
-           int setPointHigh = Convert.ToInt32(txtSpH.Text);
-           int hysteresis = Convert.ToInt32(txtHysteresis.Text);
-           con.ChangeSetPoint(1, setPointLow, setPointHigh, hysteresis);
+           try
+           {
+               int setPointLow = Convert.ToInt32(txtSpL.Text);
+               int setPointHigh = Convert.ToInt32(txtSpH.Text);
+               int hysteresis = Convert.ToInt32(txtHysteresis.Text);
+               con.ChangeSetPoint(1, setPointLow, setPointHigh, hysteresis);
+           }
+           catch (Exception ex)
+           {
+               MessageBox.Show(ex.Message);
+           }
+           
        }
 
        private void tmrRecToDb_Tick(object sender, EventArgs e)
        {
-           DbConnect con = new DbConnect();
            try
            {
                //write temp to db

@@ -167,17 +167,16 @@ namespace CTS_Application
 	            {
                     try
                         {
-                            
                             string query = "INSERT INTO alarm_historian(alarm_id, description) VALUES(@alarmvar,@description);";
                             if (this.OpenConnection() == true)
                             {
 
 
-                                using (MySqlCommand cmdRegisterAlarm = new MySqlCommand(query, connection))
+                                using (MySqlCommand cmd = new MySqlCommand(query, connection))
                                 {
-                                    cmdRegisterAlarm.Parameters.AddWithValue("@alarmvar", alarmCodeIn);
-                                    cmdRegisterAlarm.Parameters.AddWithValue("@description", descriptionIn);
-                                    cmdRegisterAlarm.ExecuteNonQuery();
+                                    cmd.Parameters.AddWithValue("@alarmvar", alarmCodeIn);
+                                    cmd.Parameters.AddWithValue("@description", descriptionIn);
+                                    cmd.ExecuteNonQuery();
                                     CloseConnection();
                                 }
                             }
@@ -225,13 +224,12 @@ namespace CTS_Application
         {
                 try
                 {
-
                     string query = "TRUNCATE TABLE " + tablename;
                     if (this.OpenConnection() == true)
                     {
-                        using (MySqlCommand cmdTruncate = new MySqlCommand(query, connection))
+                        using (MySqlCommand cmd = new MySqlCommand(query, connection))
                         {
-                            cmdTruncate.ExecuteNonQuery();
+                            cmd.ExecuteNonQuery();
                             CloseConnection();
                         }
                     }
@@ -251,10 +249,10 @@ namespace CTS_Application
                 string query = "SELECT setpoint_low FROM settings WHERE settings_id = @id";
                 if (this.OpenConnection() == true)
 	                {
-		               using (MySqlCommand cmdGetLowSp = new MySqlCommand(query, connection))
+		               using (MySqlCommand cmd = new MySqlCommand(query, connection))
                            {
-                               cmdGetLowSp.Parameters.AddWithValue("@id", id);
-                              result = cmdGetLowSp.ExecuteScalar().ToString();
+                               cmd.Parameters.AddWithValue("@id", id);
+                              result = cmd.ExecuteScalar().ToString();
                               CloseConnection();
                            }
 	                }
@@ -266,10 +264,10 @@ namespace CTS_Application
             string query = "SELECT setpoint_high FROM settings WHERE settings_id = @id";
             if (this.OpenConnection() == true)
             {
-                using (MySqlCommand cmdGetHighSp = new MySqlCommand(query, connection))
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
                 {
-                    cmdGetHighSp.Parameters.AddWithValue("@id", id);
-                    result = cmdGetHighSp.ExecuteScalar().ToString();
+                    cmd.Parameters.AddWithValue("@id", id);
+                    result = cmd.ExecuteScalar().ToString();
                     CloseConnection();
                 }
             }
@@ -281,10 +279,10 @@ namespace CTS_Application
             string query = "SELECT setpoint_low FROM settings WHERE settings_id = @id";
             if (this.OpenConnection() == true)
             {
-                using (MySqlCommand cmdGetHysteresis = new MySqlCommand(query, connection))
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
                 {
-                    cmdGetHysteresis.Parameters.AddWithValue("@id", id);
-                    result = cmdGetHysteresis.ExecuteScalar().ToString();
+                    cmd.Parameters.AddWithValue("@id", id);
+                    result = cmd.ExecuteScalar().ToString();
                     CloseConnection();
                 }
             }
