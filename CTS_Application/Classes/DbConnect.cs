@@ -304,5 +304,37 @@ namespace CTS_Application
         //    string result = "";
         //    string query = "SELECT COM_port FROM settings WHERE "
         //}
+        public string GetTotalRow()
+        {
+            string result = "";
+            string query = "SELECT COUNT(*) FROM users";
+            if (this.OpenConnection() == true)
+            {
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                {
+                    result = cmd.ExecuteScalar().ToString();
+                    CloseConnection();
+                }
+            }
+            return result;
+        }
+
+        public string GetEmail(int idIn)
+        {
+            string result = "";
+            string query = "SELECT email FROM users WHERE userID = @id";
+            if (this.OpenConnection() == true)
+            {
+                using(MySqlCommand cmd = new MySqlCommand(query,connection))
+                {
+                    cmd.Parameters.AddWithValue("@id",idIn );
+                        result = cmd.ExecuteScalar().ToString();
+                        CloseConnection();
+                }
+            }
+              return result;  
+           
+        }
+      
     }
 }
