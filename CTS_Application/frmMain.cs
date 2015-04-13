@@ -55,7 +55,7 @@ namespace CTS_Application
 
        private void tmrSimTemp_Tick(object sender, EventArgs e)
        {
-           temp_Arduino = arCom.Temperature(days);
+           temp_Arduino = arCom.Readtemp();
            lblCV.Text = Convert.ToString(temp_Arduino) + "°C";
            days = days + 2;
        }
@@ -98,7 +98,8 @@ namespace CTS_Application
        }
        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
        {
-           chrtTemp.ChartAreas["Series1"].AxisX.Maximum = 0;
+          // var temp = dateTimePicker1.Value;
+           //chrtTemp.ChartAreas["Series1"].AxisX.Maximum = temp;
            //test test
        }
 
@@ -111,14 +112,14 @@ namespace CTS_Application
         private void btnStartSim_Click(object sender, EventArgs e)
         {
             //Simulate temp
-            tmrSimTemp.Start();
-            if (days == (3 * 365)) { tmrSimTemp.Stop(); }
+            tmrReadTempArd.Start();
+            if (days == (3 * 365)) { tmrReadTempArd.Stop(); }
             tmrRecToDb.Start();
         }
 
         private void btnStopSim_Click(object sender, EventArgs e)
         {
-            tmrSimTemp.Stop();
+            tmrReadTempArd.Stop();
             tmrRecToDb.Stop();
         }
 
