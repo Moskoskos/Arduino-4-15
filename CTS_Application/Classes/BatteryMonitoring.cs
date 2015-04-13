@@ -54,9 +54,6 @@ namespace CTS_Application
         {
              get
             {
-
-                 //test test. remove 14.04
-                 //test 2 
                timeLeft = power.BatteryLifeRemaining / 60 ;
                  return timeLeft;
             }
