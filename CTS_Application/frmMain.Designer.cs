@@ -411,7 +411,7 @@
             this.btnStartSim.Name = "btnStartSim";
             this.btnStartSim.Size = new System.Drawing.Size(75, 23);
             this.btnStartSim.TabIndex = 56;
-            this.btnStartSim.Text = "Start Sim";
+            this.btnStartSim.Text = "Start Alarm";
             this.btnStartSim.UseVisualStyleBackColor = true;
             this.btnStartSim.Click += new System.EventHandler(this.btnStartSim_Click);
             // 
@@ -421,7 +421,7 @@
             this.btnStopSim.Name = "btnStopSim";
             this.btnStopSim.Size = new System.Drawing.Size(75, 23);
             this.btnStopSim.TabIndex = 57;
-            this.btnStopSim.Text = "Stop Sim";
+            this.btnStopSim.Text = "Stop Alarm";
             this.btnStopSim.UseVisualStyleBackColor = true;
             this.btnStopSim.Click += new System.EventHandler(this.btnStopSim_Click);
             // 

@@ -30,7 +30,8 @@ namespace CTS_Application
             tmrStatus.Start();
             tmrRecToDb.Start();
             tmrSimTemp.Start();
-            tmrAlarm.Start();
+           // tmrAlarm.Start();
+            // See btnSim_tick for reasoning. Like...Things why we do the things we do. 
             
         }
         private void frmMain_Load(object sender, EventArgs e)
@@ -121,16 +122,22 @@ namespace CTS_Application
 
         private void btnStartSim_Click(object sender, EventArgs e)
         {
-            //Simulate temp
-            //tmrReadTempArd.Start();
-           // if (days == (3 * 365)) { tmrReadTempArd.Stop(); }
-           // tmrRecToDb.Start();
+            /*
+             * WARNING! WARNING
+             * To prevent mails from firing off like a Palestinian milita during program testing.
+             * REMOVE BEFORE FINAL VERSION
+             */
+            tmrAlarm.Start();
         }
 
         private void btnStopSim_Click(object sender, EventArgs e)
         {
-            tmrSimTemp.Stop();
-            tmrRecToDb.Stop();
+            /*
+             * WARNING! WARNING
+             * To prevent mails from firing off like a Palestinian milita during program testing.
+             * REMOVE BEFORE FINAL VERSION
+             */
+            tmrAlarm.Stop();
         }
 
         private void tmrStatus_Tick(object sender, EventArgs e)
