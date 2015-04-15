@@ -16,10 +16,12 @@ namespace CTS_Application
     public partial class frmMain : Form
     {
         double temp_Arduino = 0.0;
-        double days = 0.0;
+       
         DbConnect con = new DbConnect();
         DbWrite dbWrite = new DbWrite();
         DbRead dbRead = new DbRead();
+        DbEdit dbEdit = new DbEdit();
+        
         ArduinoCom arCom = new ArduinoCom("COM3");
         AlarmHandling alarm = new AlarmHandling();
         Email mail = new Email();
@@ -38,8 +40,8 @@ namespace CTS_Application
         }
         private void frmMain_Load(object sender, EventArgs e)
         {
-            txtSpL.Text = con.GetLowSP(1);
-            txtSpH.Text = con.GetHighSp(1);
+            txtSpL.Text = dbRead.GetLowSP(1);
+            txtSpH.Text = dbRead.GetHighSp(1);
             // TODO: This line of code loads data into the 'dataSetToGrah.historian' table. You can move, or remove it, as needed.
             this.historianTableAdapter.Fill(this.dataSetToGrah.historian);
             // TODO: This line of code loads data into the 'dataSetAlarmEvents.alarm_historian' table. You can move, or remove it, as needed.
@@ -69,7 +71,6 @@ namespace CTS_Application
            };
            temp_Arduino = arCom.Readtemp();
            lblCV.Text = Convert.ToString(temp_Arduino) + "°C";
-           days = days + 2;
        }
 
        private void btnSubmit_Click(object sender, EventArgs e)
@@ -79,7 +80,7 @@ namespace CTS_Application
                dbWrite.WriteToAlarmHistorian(1, "Temperature extended setpoint: High. PV =");
                int setPointLow = Convert.ToInt32(txtSpL.Text);
                int setPointHigh = Convert.ToInt32(txtSpH.Text);
-               con.ChangeSetPoint(1, setPointLow, setPointHigh);
+               dbEdit.ChangeSetPoint(1, setPointLow, setPointHigh);
            }
            catch (Exception ex)
            {
@@ -169,8 +170,8 @@ namespace CTS_Application
             bool tempOOR = false;
             bool batAlarm = false;
             bool arcomAlarm = false;
-            double spH = Convert.ToDouble(con.GetHighSp(1));
-            double spL = Convert.ToDouble(con.GetLowSP(1));
+            double spH = Convert.ToDouble(dbRead.GetHighSp(1));
+            double spL = Convert.ToDouble(dbRead.GetLowSP(1));
             double realTemp = 0;
             realTemp = arCom.Readtemp();
 
@@ -213,8 +214,9 @@ namespace CTS_Application
             {
                 string message = "Lost Connection to Arduino";
                 dbWrite.WriteToAlarmHistorian(5, message);
-               mail.SendMessage( message);
+                mail.SendMessage( message);
                 UpdateAlarmGrid();
+                
             }
         }
         public void UpdateAlarmGrid()
