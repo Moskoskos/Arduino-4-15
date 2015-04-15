@@ -57,8 +57,6 @@
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.alarmeventidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.datetimerecordedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -96,7 +94,7 @@
             // 
             // btnSubscribers
             // 
-            this.btnSubscribers.Location = new System.Drawing.Point(464, 104);
+            this.btnSubscribers.Location = new System.Drawing.Point(368, 56);
             this.btnSubscribers.Name = "btnSubscribers";
             this.btnSubscribers.Size = new System.Drawing.Size(75, 23);
             this.btnSubscribers.TabIndex = 6;
@@ -140,7 +138,7 @@
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(384, 56);
+            this.btnSubmit.Location = new System.Drawing.Point(248, 56);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(64, 23);
             this.btnSubmit.TabIndex = 5;
@@ -281,28 +279,6 @@
             this.label6.Size = new System.Drawing.Size(52, 13);
             this.label6.TabIndex = 52;
             this.label6.Text = "End Date";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Summer",
-            "Autumn",
-            "Winter",
-            "Spring"});
-            this.comboBox1.Location = new System.Drawing.Point(248, 56);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 4;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(248, 40);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(43, 13);
-            this.label8.TabIndex = 54;
-            this.label8.Text = "Season";
             // 
             // dataGridView1
             // 
@@ -457,8 +433,6 @@
             this.Controls.Add(this.btnStopAlarm);
             this.Controls.Add(this.btnStartAlarm);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dateTimePicker2);
@@ -518,8 +492,6 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblMemory;
         private System.Windows.Forms.DataGridView dataGridView1;
         private dataSetAlarmEvents dataSetAlarmEvents;
