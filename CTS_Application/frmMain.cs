@@ -20,7 +20,7 @@ namespace CTS_Application
         DbConnect con = new DbConnect();
         DbWrite dbWrite = new DbWrite();
         DbRead dbRead = new DbRead();
-        ArduinoCom arCom = new ArduinoCom("COM3");
+        ArduinoCom arCom = new ArduinoCom("COM5");
         AlarmHandling alarm = new AlarmHandling();
         Email mail = new Email();
         BatteryMonitoring batteryMonitoring = new BatteryMonitoring(); //Declare batterymonitoring class
