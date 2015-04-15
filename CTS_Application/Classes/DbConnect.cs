@@ -193,7 +193,7 @@ namespace CTS_Application
         {
             try
             {
-                string query = "UPDATE settings SET setpoint_low = @setPoint_low, setpoint_high = @setPoint_high WHERE settings_id = @settingID;";
+                string query = "INSERT INTO settings(settings_ID, setpoint_low, setpoint_high) VALUES (@settingID, @setPoint_low, @setPoint_high) ON DUPLICATE KEY UPDATE setpoint_low = VALUES(setpoint_low), setpoint_high = VALUES(setpoint_high);";
                 //Checks if connection is open
                 if (this.OpenConnection() == true)
                 {

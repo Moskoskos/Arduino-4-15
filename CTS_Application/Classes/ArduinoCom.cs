@@ -39,11 +39,9 @@ namespace CTS_Application
                 }
                 tempC = ((Convert.ToDouble(temp)) * 0.0318);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 comFault = true;
-                MessageBox.Show(ex.Message + "\r\r\nThe program could not find the Arduino. Go to Preferences to change COM port");
-                
             }
             return Math.Round(tempC, 2);
         }
@@ -51,16 +49,6 @@ namespace CTS_Application
         {
             bool fault = comFault;
             return fault;
-        }
-
-        //Simulates the temperature variation throughout one year ranging from -20*C to +20*C
-        public double Temperature(double days)
-        {
-            double temp = 0.0;
-            double x = days;
-            temp = (20 * Math.Cos(((2 * Math.PI * x) / 365) - ((80 * Math.PI) / 73) + 13));
-            temp = Math.Round(temp, 1);
-            return temp;
         }
     }
 }

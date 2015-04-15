@@ -92,7 +92,7 @@ namespace CTS_Application
                 }
                 return batteryAlarm;
             }
-        //gir alarm hvis com feil
+           //gir alarm hvis com feil
             public bool ArduComAlarm(bool comStatus)
             {
                 if (comStatus == true)
@@ -103,9 +103,9 @@ namespace CTS_Application
                 {
                     comAlarm = false;
                 }
+                
                 return comAlarm;
             }
-        //Lag en metode som skriver feilmeldingen og verdi til database. Jeg lager databasespørringen for deg. <3 :*
      }
     
 }

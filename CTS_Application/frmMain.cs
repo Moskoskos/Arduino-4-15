@@ -36,7 +36,8 @@ namespace CTS_Application
         }
         private void frmMain_Load(object sender, EventArgs e)
         {
-           
+            txtSpL.Text = con.GetLowSP(1);
+            txtSpH.Text = con.GetHighSp(1);
             // TODO: This line of code loads data into the 'dataSetToGrah.historian' table. You can move, or remove it, as needed.
             this.historianTableAdapter.Fill(this.dataSetToGrah.historian);
             // TODO: This line of code loads data into the 'dataSetAlarmEvents.alarm_historian' table. You can move, or remove it, as needed.
@@ -44,9 +45,8 @@ namespace CTS_Application
             //Source:
             //http://stackoverflow.com/questions/12033448/how-to-connect-two-different-windows-forms-keeping-both-open
             //Where to place the window at startup
-            this.Location = new Point(0, 0);
-           txtSpL.Text = con.GetLowSP(1);
-           txtSpH.Text = con.GetHighSp(1);
+           
+          
             
            
         }
@@ -63,11 +63,11 @@ namespace CTS_Application
            if (arCom.comFault == true)
            {
                tmrSimTemp.Stop();
+               MessageBox.Show("The program could not find the Arduino. Go to Preferences to change COM port");
            };
            temp_Arduino = arCom.Readtemp();
            lblCV.Text = Convert.ToString(temp_Arduino) + "°C";
            days = days + 2;
-           
        }
 
        private void btnSubmit_Click(object sender, EventArgs e)
@@ -120,7 +120,7 @@ namespace CTS_Application
            SettingsWindow.Show();
        }
 
-        private void btnStartSim_Click(object sender, EventArgs e)
+       private void btnStartAlarm_Click(object sender, EventArgs e)
         {
             /*
              * WARNING! WARNING
@@ -130,7 +130,7 @@ namespace CTS_Application
             tmrAlarm.Start();
         }
 
-        private void btnStopSim_Click(object sender, EventArgs e)
+        private void btnStopAlarm_Click(object sender, EventArgs e)
         {
             /*
              * WARNING! WARNING
@@ -182,35 +182,35 @@ namespace CTS_Application
             {
                 string message = "Temperature extended setpoint: High. Temperature =" + realTemp.ToString();
                 con.WriteToAlarmHistorian(1, message);
-                mail.SendMessage( message);
+              //  mail.SendMessage( message);
                 UpdateAlarmGrid();
             }
             if (lowTemp ==true)
             {
                 string message = "Temperature extended setpoint: Low. Temperature =" + realTemp.ToString();
                 con.WriteToAlarmHistorian(2, message);
-                mail.SendMessage( message);
+             //   mail.SendMessage( message);
                 UpdateAlarmGrid();
             }
             if (tempOOR == true)
             {
                 string message = "Temperature out of range. Temperature =" + realTemp.ToString();
                 con.WriteToAlarmHistorian(3, message);
-                mail.SendMessage( message);
+              //  mail.SendMessage( message);
                 UpdateAlarmGrid();
             }
             if (batAlarm == true)
             {
                 string message = "Lost powerline. Laptop is running on battery";
                 con.WriteToAlarmHistorian(4, message);
-                mail.SendMessage( message);
+              //  mail.SendMessage( message);
                 UpdateAlarmGrid();
             }
             if (arcomAlarm == true)
             {
                 string message = "Lost Connection to Arduino";
-                con.WriteToAlarmHistorian(5, message);
-                mail.SendMessage( message);
+               con.WriteToAlarmHistorian(5, message);
+                //mail.SendMessage( message);
                 UpdateAlarmGrid();
             }
         }

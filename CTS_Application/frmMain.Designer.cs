@@ -69,8 +69,8 @@
             this.chrtTemp = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.historianBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSetToGrah = new CTS_Application.DataSetToGrah();
-            this.btnStartSim = new System.Windows.Forms.Button();
-            this.btnStopSim = new System.Windows.Forms.Button();
+            this.btnStartAlarm = new System.Windows.Forms.Button();
+            this.btnStopAlarm = new System.Windows.Forms.Button();
             this.tmrStatus = new System.Windows.Forms.Timer(this.components);
             this.historianTableAdapter = new CTS_Application.DataSetToGrahTableAdapters.historianTableAdapter();
             this.label3 = new System.Windows.Forms.Label();
@@ -405,25 +405,25 @@
             this.dataSetToGrah.DataSetName = "DataSetToGrah";
             this.dataSetToGrah.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // btnStartSim
+            // btnStartAlarm
             // 
-            this.btnStartSim.Location = new System.Drawing.Point(560, 56);
-            this.btnStartSim.Name = "btnStartSim";
-            this.btnStartSim.Size = new System.Drawing.Size(75, 23);
-            this.btnStartSim.TabIndex = 56;
-            this.btnStartSim.Text = "Start Alarm";
-            this.btnStartSim.UseVisualStyleBackColor = true;
-            this.btnStartSim.Click += new System.EventHandler(this.btnStartSim_Click);
+            this.btnStartAlarm.Location = new System.Drawing.Point(560, 56);
+            this.btnStartAlarm.Name = "btnStartAlarm";
+            this.btnStartAlarm.Size = new System.Drawing.Size(75, 23);
+            this.btnStartAlarm.TabIndex = 56;
+            this.btnStartAlarm.Text = "Start Alarm";
+            this.btnStartAlarm.UseVisualStyleBackColor = true;
+            this.btnStartAlarm.Click += new System.EventHandler(this.btnStartAlarm_Click);
             // 
-            // btnStopSim
+            // btnStopAlarm
             // 
-            this.btnStopSim.Location = new System.Drawing.Point(560, 104);
-            this.btnStopSim.Name = "btnStopSim";
-            this.btnStopSim.Size = new System.Drawing.Size(75, 23);
-            this.btnStopSim.TabIndex = 57;
-            this.btnStopSim.Text = "Stop Alarm";
-            this.btnStopSim.UseVisualStyleBackColor = true;
-            this.btnStopSim.Click += new System.EventHandler(this.btnStopSim_Click);
+            this.btnStopAlarm.Location = new System.Drawing.Point(560, 104);
+            this.btnStopAlarm.Name = "btnStopAlarm";
+            this.btnStopAlarm.Size = new System.Drawing.Size(75, 23);
+            this.btnStopAlarm.TabIndex = 57;
+            this.btnStopAlarm.Text = "Stop Alarm";
+            this.btnStopAlarm.UseVisualStyleBackColor = true;
+            this.btnStopAlarm.Click += new System.EventHandler(this.btnStopAlarm_Click);
             // 
             // tmrStatus
             // 
@@ -445,7 +445,7 @@
             // 
             // tmrAlarm
             // 
-            this.tmrAlarm.Interval = 4000;
+            this.tmrAlarm.Interval = 1000;
             this.tmrAlarm.Tick += new System.EventHandler(this.tmrAlarm_Tick);
             // 
             // frmMain
@@ -454,8 +454,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1271, 504);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.btnStopSim);
-            this.Controls.Add(this.btnStartSim);
+            this.Controls.Add(this.btnStopAlarm);
+            this.Controls.Add(this.btnStartAlarm);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.comboBox1);
@@ -532,8 +532,8 @@
         private DataSetToGrah dataSetToGrah;
         private System.Windows.Forms.BindingSource historianBindingSource;
         private DataSetToGrahTableAdapters.historianTableAdapter historianTableAdapter;
-        private System.Windows.Forms.Button btnStartSim;
-        private System.Windows.Forms.Button btnStopSim;
+        private System.Windows.Forms.Button btnStartAlarm;
+        private System.Windows.Forms.Button btnStopAlarm;
         private System.Windows.Forms.Timer tmrStatus;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Timer tmrAlarm;
