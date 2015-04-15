@@ -42,7 +42,7 @@ namespace CTS_Application
             catch (Exception ex)
             {
                 comFault = true;
-                MessageBox.Show(ex.Message + "\r\r\nThe program could not find the Arduino. Go to Preferences to change COM port");
+                
                 
             }
             return Math.Round(tempC, 2);
