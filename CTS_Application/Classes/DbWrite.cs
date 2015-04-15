@@ -10,6 +10,7 @@ namespace CTS_Application
 {
     class DbWrite : DbConnect
     {
+        //basj
         public DbWrite() 
         {
 

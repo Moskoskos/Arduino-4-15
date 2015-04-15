@@ -16,7 +16,7 @@ namespace CTS_Application
 
         DbEdit dbEdit = new DbEdit();
         public frmSettings()
-        {
+        {        //Source:oiughdfjh
             InitializeComponent();
             
         }

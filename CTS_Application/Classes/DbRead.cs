@@ -10,6 +10,7 @@ namespace CTS_Application
 {
     class DbRead : DbConnect
     {
+        //jøde
         public DbRead()
         {
 

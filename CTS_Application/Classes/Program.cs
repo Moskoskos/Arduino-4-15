@@ -15,7 +15,7 @@ namespace CTS_Application
         static void Main()
         {
             Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
+            Application.SetCompatibleTextRenderingDefault(false);        //Source:oiughdfjh
             Application.Run(new frmMain());
         }
    }
