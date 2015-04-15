@@ -31,19 +31,19 @@ namespace CTS_Application
                 if (mySerialPort.IsOpen)
                 {
                     temp = mySerialPort.ReadLine();
+                    mySerialPort.Close();
                 }
                 else
                 {
                     mySerialPort.Open();
                     temp = mySerialPort.ReadLine();
+                    mySerialPort.Close();
                 }
                 tempC = ((Convert.ToDouble(temp)) * 0.0318);
             }
             catch (Exception)
             {
-                comFault = true;
-             
-                
+                comFault = true;               
             }
             return Math.Round(tempC, 2);
         }
