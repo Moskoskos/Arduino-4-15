@@ -53,5 +53,69 @@ namespace CTS_Application
                 }
             }
         }
+                 //Writes temperature values to database
+        public bool WriteTempemperatureToHistorian(double valueIn)
+        {
+            //
+            //Source:
+            //http://stackoverflow.com/questions/19527554/inserting-values-into-mysql-database-from-c-sharp-application-text-box
+            {
+                try
+                {
+                    string query = "INSERT INTO historian(value)VALUES(@value);";
+                    //Checks if connection is open
+                    if (this.OpenConnection() == true)
+                    {
+                        //uses the connection string and the query created above.
+                        using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                        {
+                            // The paramteres mentioned in VALUES is here given a value
+                            cmd.Parameters.AddWithValue("@value", valueIn);
+                            // Execute the query
+                            cmd.ExecuteNonQuery();
+                            CloseConnection();
+                        }
+                    }
+                    return true;
+                    
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show("Could not insert into historian" + ex.Message);
+                    return false;
+                }
+            }
+
+        }
+
+        //Write to alarm table
+        public bool WriteToAlarmHistorian(int alarmCodeIn, string descriptionIn)
+        {
+            if (alarmCodeIn > 0)
+            {
+                try
+                {
+                    string query = "INSERT INTO alarm_historian(alarm_id, description) VALUES(@alarmvar,@description);";
+                    if (this.OpenConnection() == true)
+                    {
+
+
+                        using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                        {
+                            cmd.Parameters.AddWithValue("@alarmvar", alarmCodeIn);
+                            cmd.Parameters.AddWithValue("@description", descriptionIn);
+                            cmd.ExecuteNonQuery();
+                            CloseConnection();
+                        }
+                    }
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Could not insert into alarm_historian" + ex.Message + "\r\r\n");
+                }
+            }
+            return false;
+        }
     }
 }

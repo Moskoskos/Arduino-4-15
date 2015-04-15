@@ -76,7 +76,7 @@ namespace CTS_Application
        {
            try
            {
-               con.WriteToAlarmHistorian(1, "Temperature extended setpoint: High. PV =");
+               dbWrite.WriteToAlarmHistorian(1, "Temperature extended setpoint: High. PV =");
                int setPointLow = Convert.ToInt32(txtSpL.Text);
                int setPointHigh = Convert.ToInt32(txtSpH.Text);
                con.ChangeSetPoint(1, setPointLow, setPointHigh);
@@ -92,7 +92,7 @@ namespace CTS_Application
            try
            {
                //write temp to db
-               con.WriteTempemperatureToHistorian(temp_Arduino);
+               dbWrite.WriteTempemperatureToHistorian(temp_Arduino);
                // Update chart with temp
                this.historianTableAdapter.Fill(this.dataSetToGrah.historian);
                chrtTemp.DataBind();
@@ -171,7 +171,8 @@ namespace CTS_Application
             bool arcomAlarm = false;
             double spH = Convert.ToDouble(con.GetHighSp(1));
             double spL = Convert.ToDouble(con.GetLowSP(1));
-            double realTemp = arCom.Readtemp();
+            double realTemp = 0;
+            realTemp = arCom.Readtemp();
 
             highTemp = alarm.HighTempAlarm(spH, realTemp);
             lowTemp = alarm.LowTempAlarm(spL, realTemp);
@@ -183,35 +184,35 @@ namespace CTS_Application
             if (highTemp == true)
             {
                 string message = "Temperature extended setpoint: High. Temperature =" + realTemp.ToString();
-                con.WriteToAlarmHistorian(1, message);
+                dbWrite.WriteToAlarmHistorian(1, message);
                 mail.SendMessage( message);
                 UpdateAlarmGrid();
             }
             if (lowTemp ==true)
             {
                 string message = "Temperature extended setpoint: Low. Temperature =" + realTemp.ToString();
-                con.WriteToAlarmHistorian(2, message);
+                dbWrite.WriteToAlarmHistorian(2, message);
                 mail.SendMessage( message);
                 UpdateAlarmGrid();
             }
             if (tempOOR == true)
             {
                 string message = "Temperature out of range. Temperature =" + realTemp.ToString();
-                con.WriteToAlarmHistorian(3, message);
+                dbWrite.WriteToAlarmHistorian(3, message);
                 mail.SendMessage( message);
                 UpdateAlarmGrid();
             }
             if (batAlarm == true)
             {
                 string message = "Lost powerline. Laptop is running on battery";
-                con.WriteToAlarmHistorian(4, message);
+                dbWrite.WriteToAlarmHistorian(4, message);
                 mail.SendMessage( message);
                 UpdateAlarmGrid();
             }
             if (arcomAlarm == true)
             {
                 string message = "Lost Connection to Arduino";
-               con.WriteToAlarmHistorian(5, message);
+                dbWrite.WriteToAlarmHistorian(5, message);
                mail.SendMessage( message);
                 UpdateAlarmGrid();
             }

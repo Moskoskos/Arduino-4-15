@@ -82,7 +82,7 @@ namespace CTS_Application
             return true;
         }
         //Insert statement
-        public bool InsertIntoUsers(string usernameIn, string firstnameIn, string lastnameIn, string emailIn, int numberIn)
+        /*public bool InsertIntoUsers(string usernameIn, string firstnameIn, string lastnameIn, string emailIn, int numberIn)
         {
             //Source:
             //http://stackoverflow.com/questions/19527554/inserting-values-into-mysql-database-from-c-sharp-application-text-box
@@ -119,10 +119,10 @@ namespace CTS_Application
                     return false;
                 }
             }
-        }
+        }*/
      
         //Writes temperature values to database
-        public bool WriteTempemperatureToHistorian(double valueIn)
+       /* public bool WriteTempemperatureToHistorian(double valueIn)
         {
             //
             //Source:
@@ -153,12 +153,12 @@ namespace CTS_Application
                     return false;
                 }
             }
-        }
+        }*/
             //Source:
             //http://stackoverflow.com/questions/19196824/how-to-get-number-of-rows-in-a-table-in-mysql
             //
 
-        public bool WriteToAlarmHistorian(int alarmCodeIn, string descriptionIn)
+        /*public bool WriteToAlarmHistorian(int alarmCodeIn, string descriptionIn)
         {
             if (alarmCodeIn > 0)
 	            {
@@ -185,7 +185,7 @@ namespace CTS_Application
                         }
                 }
            return false;
-        } //Done?
+        } *///Done?
         //if data doesnt exsist this code does not work.
         public bool ChangeSetPoint(int settingID, double setPointLowIn, double setPointHighIn)
         {

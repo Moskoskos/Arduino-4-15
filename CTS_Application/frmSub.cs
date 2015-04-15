@@ -48,9 +48,10 @@ namespace CTS_Application
                 email = txtMail.Text;
              
                 //When using dbConnect.OpenConnection and dbConnect.CloseConnection it did not write to database. Wh?
-                DbConnect dbConnect = new DbConnect();
+                //DbConnect dbConnect = new DbConnect();
+                DbWrite dbWrite = new DbWrite();
                 //Inserts the desierd input into the DbConnect method
-                dbConnect.InsertIntoUsers(username, firstname, lastname, email, number);
+                dbWrite.InsertIntoUsers(username, firstname, lastname, email, number);
                 //After the query is ran and the connection is closed, retrieve rows and update the table.
                 usersTableAdapter.Fill(ctsDataSetUsers.users);
                 lblMessage.Text = "Transfer Succesful";
