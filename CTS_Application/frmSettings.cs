@@ -13,12 +13,12 @@ namespace CTS_Application
     public partial class frmSettings : Form
     {
         //The DbConnect class cannot be declared globaly. If one want to delete several tables it will only work if its declared in each event.
-        
+        DbEdit dbEdit = new DbEdit();
         
         public frmSettings()
         {        //Source:oiughdfjh
             InitializeComponent();
-            DbConnect cmd = new DbConnect();
+           
         }
 
         private void btnDelRec_Click(object sender, EventArgs e)
@@ -26,8 +26,7 @@ namespace CTS_Application
             DialogResult dialogResult = MessageBox.Show("This will delete all temperature recordings", "WARNING!", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                DbConnect con = new DbConnect();
-                con.DeleteRecordsInTable("historian");
+                dbEdit.DeleteRecordsInTable("historian");
             }
             else if (dialogResult == DialogResult.No)
             {
@@ -40,8 +39,7 @@ namespace CTS_Application
             DialogResult dialogResult = MessageBox.Show("This will delete all alarm recordings", "WARNING!", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                DbConnect con = new DbConnect();
-                con.DeleteRecordsInTable("alarm_historian");
+                dbEdit.DeleteRecordsInTable("alarm_historian");
             }
             else if (dialogResult == DialogResult.No)
             {
@@ -54,8 +52,7 @@ namespace CTS_Application
             DialogResult dialogResult = MessageBox.Show("This will delete all subscribers", "WARNING!", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                DbConnect con = new DbConnect();
-                con.DeleteRecordsInTable("users");
+                dbEdit.DeleteRecordsInTable("users");
             }
             else if (dialogResult == DialogResult.No)
             {

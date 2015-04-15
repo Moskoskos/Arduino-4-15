@@ -31,17 +31,17 @@ namespace CTS_Application
 
         public void SendMessage(string body1)
         {
-            DbConnect con = new DbConnect();
+            DbRead dbRead = new DbRead();
             string body = body1;
             string subject1 = "Alarm fra CTS";
             //Then get the number of rows in the table to iterate IDs
-            int numOfRows = Convert.ToInt32(con.GetTotalRow());
+            int numOfRows = Convert.ToInt32(dbRead.GetTotalRow());
             //For each unique id in the table, send email.
             for (int i = 1; i <= numOfRows; i++)
             {
                 try
                 {
-                    string userId = con.GetEmail(i);
+                    string userId = dbRead.GetEmail(i);
                     message = new MailMessage(from, userId, subject1, body);
                     client.Send(message);
 

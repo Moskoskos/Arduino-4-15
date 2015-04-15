@@ -81,6 +81,8 @@ namespace CTS_Application
             }
             return true;
         }
+    }
+}
         //Insert statement
         /*public bool InsertIntoUsers(string usernameIn, string firstnameIn, string lastnameIn, string emailIn, int numberIn)
         {
@@ -187,7 +189,7 @@ namespace CTS_Application
            return false;
         } *///Done?
         //if data doesnt exsist this code does not work.
-        public bool ChangeSetPoint(int settingID, double setPointLowIn, double setPointHighIn)
+      /*  public bool ChangeSetPoint(int settingID, double setPointLowIn, double setPointHighIn)
         {
             try
             {
@@ -321,4 +323,4 @@ namespace CTS_Application
         }
       
     }
-}
+}*/
