@@ -10,7 +10,6 @@ namespace CTS_Application
 {
     class DbEdit : DbConnect
     {
-        //hei fuckface
         public DbEdit()
         {
 
