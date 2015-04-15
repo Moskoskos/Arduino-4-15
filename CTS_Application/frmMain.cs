@@ -15,7 +15,7 @@ namespace CTS_Application
 {
     public partial class frmMain : Form
     {
-        double temp_Arduino = 0.0;        //Source:oiughdfjh
+        double temp_Arduino = 0.0;        
        
         DbConnect con = new DbConnect();
         DbWrite dbWrite = new DbWrite();
