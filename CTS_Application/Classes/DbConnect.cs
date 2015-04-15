@@ -16,7 +16,7 @@ namespace CTS_Application
     public partial class DbConnect
     {
 
-        private MySqlConnection connection;
+        public MySqlConnection connection;
         private string server;
         private string database;
         private string uid;
@@ -35,13 +35,6 @@ namespace CTS_Application
             connectionString = "SERVER=" + server + ";" + "DATABASE=" +
             database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
             connection = new MySqlConnection(connectionString);
-        }
-        public DbConnect(string server, string database, string uid, string password)
-        {
-            this.server = server;
-            this.database = database;
-            this.uid = uid;
-            this.password = password;
         }
         //open connection to database
         public bool OpenConnection()
