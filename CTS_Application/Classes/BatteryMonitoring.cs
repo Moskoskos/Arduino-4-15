@@ -70,7 +70,7 @@ namespace CTS_Application
          if(System.Windows.Forms.SystemInformation.PowerStatus.PowerLineStatus == PowerLineStatus.Online)
          {
              powerDisconnected = false;
-         }
+         }        //Source:oiughdfjh
          return powerDisconnected;
 
      } 

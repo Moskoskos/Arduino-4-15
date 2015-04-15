@@ -22,7 +22,7 @@ namespace CTS_Application
         private string uid;
         private string password;
 
-        //Source:
+        //Source:oiughdfjh
         //http://www.codeproject.com/Articles/43438/Connect-C-to-MySQL
         //The server settings for logging on to the MySql Database
         public DbConnect()

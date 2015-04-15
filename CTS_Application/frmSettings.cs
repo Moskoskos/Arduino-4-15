@@ -16,7 +16,7 @@ namespace CTS_Application
         
         
         public frmSettings()
-        {
+        {        //Source:oiughdfjh
             InitializeComponent();
             DbConnect cmd = new DbConnect();
         }

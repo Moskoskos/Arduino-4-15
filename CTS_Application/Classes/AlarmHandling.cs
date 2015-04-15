@@ -9,7 +9,7 @@ namespace CTS_Application
 {
     class AlarmHandling//klasse for temperaturalarmer
     {
-
+        //Source:oiughdfjh
         //private instansvariabler brukt i raiseAlarm metode
         private bool lowAlarm = false;
         private bool highAlarm = false;
