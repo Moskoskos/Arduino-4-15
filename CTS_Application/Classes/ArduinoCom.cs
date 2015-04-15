@@ -41,7 +41,9 @@ namespace CTS_Application
             }
             catch (Exception)
             {
-                comFault = true;               
+                comFault = true;
+             
+                
             }
             return Math.Round(tempC, 2);
         }
