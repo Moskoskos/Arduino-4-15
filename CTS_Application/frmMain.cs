@@ -126,7 +126,7 @@ namespace CTS_Application
         {
             /*
              * WARNING! WARNING
-             * To prevent mails from firing off like a Palestinian milita during program testing.
+             * To prevent mails from firing off like a Palestinian milita during the liberation of Gaza.
              * REMOVE BEFORE FINAL VERSION
              */
             tmrAlarm.Start();
@@ -136,7 +136,7 @@ namespace CTS_Application
         {
             /*
              * WARNING! WARNING
-             * To prevent mails from firing off like a Palestinian milita during program testing.
+             * To prevent mails from firing off like a Palestinian milita during the liberation of Gaza.
              * REMOVE BEFORE FINAL VERSION
              */
             tmrAlarm.Stop();
