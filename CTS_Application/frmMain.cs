@@ -18,6 +18,8 @@ namespace CTS_Application
         double temp_Arduino = 0.0;
         double days = 0.0;
         DbConnect con = new DbConnect();
+        DbWrite dbWrite = new DbWrite();
+        DbRead dbRead = new DbRead();
         ArduinoCom arCom = new ArduinoCom("COM3");
         AlarmHandling alarm = new AlarmHandling();
         Email mail = new Email();
@@ -182,28 +184,28 @@ namespace CTS_Application
             {
                 string message = "Temperature extended setpoint: High. Temperature =" + realTemp.ToString();
                 con.WriteToAlarmHistorian(1, message);
-              mail.SendMessage( message);
+                mail.SendMessage( message);
                 UpdateAlarmGrid();
             }
             if (lowTemp ==true)
             {
                 string message = "Temperature extended setpoint: Low. Temperature =" + realTemp.ToString();
                 con.WriteToAlarmHistorian(2, message);
-             mail.SendMessage( message);
+                mail.SendMessage( message);
                 UpdateAlarmGrid();
             }
             if (tempOOR == true)
             {
                 string message = "Temperature out of range. Temperature =" + realTemp.ToString();
                 con.WriteToAlarmHistorian(3, message);
-              mail.SendMessage( message);
+                mail.SendMessage( message);
                 UpdateAlarmGrid();
             }
             if (batAlarm == true)
             {
                 string message = "Lost powerline. Laptop is running on battery";
                 con.WriteToAlarmHistorian(4, message);
-              mail.SendMessage( message);
+                mail.SendMessage( message);
                 UpdateAlarmGrid();
             }
             if (arcomAlarm == true)

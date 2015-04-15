@@ -51,6 +51,8 @@
     <Compile Include="Classes\BatteryMonitoring.cs" />
     <Compile Include="Classes\DbConnect.cs" />
     <Compile Include="Classes\Email.cs" />
+    <Compile Include="Classes\DbRead.cs" />
+    <Compile Include="Classes\DbWrite.cs" />
     <Compile Include="ctsDataSetUsers.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

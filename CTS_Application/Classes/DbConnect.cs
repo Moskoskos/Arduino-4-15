@@ -36,6 +36,13 @@ namespace CTS_Application
             database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
             connection = new MySqlConnection(connectionString);
         }
+        public DbConnect(string server, string database, string uid, string password)
+        {
+            this.server = server;
+            this.database = database;
+            this.uid = uid;
+            this.password = password;
+        }
         //open connection to database
         public bool OpenConnection()
         {
@@ -74,7 +81,6 @@ namespace CTS_Application
             {
                 connection.Close();
                 return true;
-
             }
             catch (MySqlException ex)
             {
@@ -116,7 +122,7 @@ namespace CTS_Application
                 }
                 catch (MySqlException ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("Could not insert into users" + ex.Message);
                     return false;
                 }
             }
@@ -150,7 +156,7 @@ namespace CTS_Application
                 }
                 catch (MySqlException ex)
                 {
-                    MessageBox.Show(ex.Message + "\r\r\n" + ex.GetType());
+                    MessageBox.Show("Could not insert into historian" + ex.Message);
                     return false;
                 }
             }
@@ -178,12 +184,11 @@ namespace CTS_Application
                                     CloseConnection();
                                 }
                             }
-
                             return true;
                         }
                     catch (Exception ex)
                         {
-                            MessageBox.Show(ex.Message + "\r\r\n");
+                            MessageBox.Show("Could not insert into alarm_historian" + ex.Message + "\r\r\n");
                         }
                 }
            return false;
@@ -213,7 +218,7 @@ namespace CTS_Application
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Could not insert into settings" + ex.Message);
             }
             return false;
         }
