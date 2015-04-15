@@ -18,7 +18,6 @@ namespace CTS_Application
     class Email
     {
        private SmtpClient client;
-       private DbRead dbRead = new DbRead(); 
        private MailMessage message;
        private string from;
         public Email()
@@ -32,17 +31,17 @@ namespace CTS_Application
 
         public void SendMessage(string body1)
         {
-            
+            DbConnect con = new DbConnect();
             string body = body1;
             string subject1 = "Alarm fra CTS";
             //Then get the number of rows in the table to iterate IDs
-            int numOfRows = Convert.ToInt32(dbRead.GetTotalRow());
+            int numOfRows = Convert.ToInt32(con.GetTotalRow());
             //For each unique id in the table, send email.
             for (int i = 1; i <= numOfRows; i++)
             {
                 try
                 {
-                    string userId = dbRead.GetEmail(i);
+                    string userId = con.GetEmail(i);
                     message = new MailMessage(from, userId, subject1, body);
                     client.Send(message);
 
