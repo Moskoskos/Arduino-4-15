@@ -19,6 +19,8 @@ namespace CTS_Application
         private bool batteryAlarm = false;
         private bool currentBatteryAlarm = false;
         private bool comAlarm = false;
+        private bool currentComAlarm = false;
+
 
         public AlarmHandling()
         {       }
@@ -92,20 +94,25 @@ namespace CTS_Application
                 }
                 return batteryAlarm;
             }
-           //gir alarm hvis com feil
+        //gir alarm hvis com feil
             public bool ArduComAlarm(bool comStatus)
             {
-                if (comStatus == true)
+                if ((comStatus == true) && (currentComAlarm == false))
                 {
                     comAlarm = true;
+                    currentComAlarm = true;
                 }
-                else if (comStatus == false)
+                else if ((comStatus == false) && (currentComAlarm == true))
+                {
+                    currentComAlarm = false;
+                }
+                else
                 {
                     comAlarm = false;
                 }
-                
                 return comAlarm;
             }
+        //Lag en metode som skriver feilmeldingen og verdi til database. Jeg lager databasespørringen for deg. <3 :*
      }
     
 }
