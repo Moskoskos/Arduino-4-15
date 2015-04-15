@@ -68,6 +68,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetToGrah.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DbEdit.cs" />
     <Compile Include="frmSettings.cs">
       <SubType>Form</SubType>
     </Compile>
