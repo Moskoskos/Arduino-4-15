@@ -29,7 +29,7 @@ namespace CTS_Application
             Status();
             tmrStatus.Start();
             tmrRecToDb.Start();
-            tmrSimTemp.Start();
+            tmrTemp.Start();
            // tmrAlarm.Start();
             // See btnSim_tick for reasoning. Like...Things why we do the things we do. 
             
@@ -58,11 +58,11 @@ namespace CTS_Application
             sub.Show();
         }
 
-       private void tmrSimTemp_Tick(object sender, EventArgs e)
+       private void tmrTemp_Tick(object sender, EventArgs e)
        {
            if (arCom.comFault == true)
            {
-               tmrSimTemp.Stop();
+               tmrTemp.Stop();
                MessageBox.Show("The program could not find the Arduino. Go to Preferences to change COM port");
            };
            temp_Arduino = arCom.Readtemp();
@@ -182,35 +182,35 @@ namespace CTS_Application
             {
                 string message = "Temperature extended setpoint: High. Temperature =" + realTemp.ToString();
                 con.WriteToAlarmHistorian(1, message);
-              //  mail.SendMessage( message);
+              mail.SendMessage( message);
                 UpdateAlarmGrid();
             }
             if (lowTemp ==true)
             {
                 string message = "Temperature extended setpoint: Low. Temperature =" + realTemp.ToString();
                 con.WriteToAlarmHistorian(2, message);
-             //   mail.SendMessage( message);
+             mail.SendMessage( message);
                 UpdateAlarmGrid();
             }
             if (tempOOR == true)
             {
                 string message = "Temperature out of range. Temperature =" + realTemp.ToString();
                 con.WriteToAlarmHistorian(3, message);
-              //  mail.SendMessage( message);
+              mail.SendMessage( message);
                 UpdateAlarmGrid();
             }
             if (batAlarm == true)
             {
                 string message = "Lost powerline. Laptop is running on battery";
                 con.WriteToAlarmHistorian(4, message);
-              //  mail.SendMessage( message);
+              mail.SendMessage( message);
                 UpdateAlarmGrid();
             }
             if (arcomAlarm == true)
             {
                 string message = "Lost Connection to Arduino";
                con.WriteToAlarmHistorian(5, message);
-                //mail.SendMessage( message);
+               mail.SendMessage( message);
                 UpdateAlarmGrid();
             }
         }
