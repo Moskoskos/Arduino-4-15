@@ -63,5 +63,34 @@ namespace CTS_Application
             }
             return false;
         }
+        public bool EditComPort(int settingID, string comPortIn)
+        {
+            try
+            {
+                string query = "INSERT INTO settings(settings_ID, COM_port) VALUES (@settingID, @comPort) ON DUPLICATE KEY UPDATE COM_port = VALUES(COM_port);";
+                //Checks if connection is open
+                if (this.OpenConnection() == true)
+                {
+                    //uses the connection string and the query created above.
+                    using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                    {
+                        // The paramteres mentioned in VALUES is here given a value
+                        cmd.Parameters.AddWithValue("@settingID", settingID);
+                        cmd.Parameters.AddWithValue("@comPort", comPortIn);
+                        // Execute the query
+                        cmd.ExecuteNonQuery();
+                        CloseConnection();
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Could not insert into settings com" + ex.Message);
+            }
+            return false;
+        }
+       
+   
     }
 }

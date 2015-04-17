@@ -45,25 +45,6 @@ namespace CTS_Application
             return result;
         }
        
-        public string GetHistorianValue()
-        {
-            string result = "";
-            string query = "SELECT value FROM historian ORDER BY historian_id DESC LIMIT 1";
-            if (this.OpenConnection() == true)
-            {
-                using (MySqlCommand cmd = new MySqlCommand(query, connection))
-                {
-                    result = cmd.ExecuteScalar().ToString();
-                    CloseConnection();
-                }
-            }
-            return result;
-        }
-        //public string GetComPort()
-        //{
-        //    string result = "";
-        //    string query = "SELECT COM_port FROM settings WHERE "
-        //}
         public string GetTotalRow()
         {
             string result = "";
@@ -94,7 +75,42 @@ namespace CTS_Application
             }
               return result;  
         }
-      
+
+        public string GetComPort(int idIn)
+        {
+            string result = "";
+            string query = "SELECT COM_port FROM settings WHERE settings_id = @id";
+            if (this.OpenConnection() == true)
+            {
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@id", idIn);
+                    result = cmd.ExecuteScalar().ToString();
+                    CloseConnection();
+                }
+            }
+            return result;
+        }
+        public string GetGraphData(DateTime dateMin, DateTime dateMax)
+        {
+            string result = "";
+            string query = "";
+            return "meh";
+        }
+        //public DateTime GetInitialDateTimeMin()
+        //{
+        //    DateTime? date = null;
+        //    string query = "SELECT datetime_recorded FROM historian WHERE id = 1";
+        //    if (this.OpenConnection() == true)
+        //    {
+        //        using(MySqlCommand cmd = new MySqlCommand(query, connection))
+        //        {
+        //           date = (DateTime)cmd.ExecuteScalar();
+        //            CloseConnection();
+        //        }
+        //    }
+        //    return date;
+        //}
     }
   }
 

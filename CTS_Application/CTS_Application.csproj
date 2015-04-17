@@ -63,6 +63,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dataSetAlarmEvents.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSetToGrah.cs">
+      <DependentUpon>DataSetToGrah.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DataSetToGrah.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

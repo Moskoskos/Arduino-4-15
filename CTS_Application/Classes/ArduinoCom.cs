@@ -10,16 +10,18 @@ namespace CTS_Application
 {
     class ArduinoCom
     {
+        DbRead dbRead = new DbRead();
         public bool comFault;
         public double temp { get; set; }
         SerialPort mySerialPort = new SerialPort("COM5", 9600, Parity.None, 8, StopBits.One);
-        public ArduinoCom(string initComPort)
+       /* public ArduinoCom(string initComPort)
         {
             mySerialPort.PortName = initComPort;
-        }
+        }*/
         public ArduinoCom()
         {
-
+            string port = dbRead.GetComPort(1);
+            mySerialPort.PortName = port;
         }
         //Metode som leser verdi fra comport, deler på 9,31 for å få temp
         public double Readtemp()

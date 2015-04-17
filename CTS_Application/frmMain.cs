@@ -21,8 +21,8 @@ namespace CTS_Application
         DbWrite dbWrite = new DbWrite();
         DbRead dbRead = new DbRead();
         DbEdit dbEdit = new DbEdit();
-        
-        ArduinoCom arCom = new ArduinoCom("COM3");
+
+        ArduinoCom arCom = new ArduinoCom();
         AlarmHandling alarm = new AlarmHandling();
         Email mail = new Email();
         BatteryMonitoring batteryMonitoring = new BatteryMonitoring(); //Declare batterymonitoring class
@@ -35,26 +35,18 @@ namespace CTS_Application
             tmrRecToDb.Start();
             tmrTemp.Start();
            // tmrAlarm.Start();
-            // See btnSim_tick for reasoning. Like...Things why we do the things we do. 
+            // See btnAlarm_tick for reasoning. Like...Things why we do the things we do. 
             
         }
         private void frmMain_Load(object sender, EventArgs e)
         {
-            txtSpL.Text = dbRead.GetLowSP(1);
-            txtSpH.Text = dbRead.GetHighSp(1);
             // TODO: This line of code loads data into the 'dataSetToGrah.historian' table. You can move, or remove it, as needed.
             this.historianTableAdapter.Fill(this.dataSetToGrah.historian);
             // TODO: This line of code loads data into the 'dataSetAlarmEvents.alarm_historian' table. You can move, or remove it, as needed.
             UpdateAlarmGrid();           
-            //Source:
-            //http://stackoverflow.com/questions/12033448/how-to-connect-two-different-windows-forms-keeping-both-open
-            //Where to place the window at startup
-           
-          
-            
-           
+         
+          //  dateTimePicker1.Value = dbRead.GetInitialDateTimeMin();
         }
-
         //Opens the subscriber window
         private void btnSubscribers_Click(object sender, EventArgs e)
         {
@@ -72,28 +64,12 @@ namespace CTS_Application
            temp_Arduino = arCom.Readtemp();
            lblCV.Text = Convert.ToString(temp_Arduino) + "°C";
        }
-
-       private void btnSubmit_Click(object sender, EventArgs e)
-       {
-           try
-           {
-               dbWrite.WriteToAlarmHistorian(1, "Temperature extended setpoint: High. PV =");
-               int setPointLow = Convert.ToInt32(txtSpL.Text);
-               int setPointHigh = Convert.ToInt32(txtSpH.Text);
-               dbEdit.ChangeSetPoint(1, setPointLow, setPointHigh);
-           }
-           catch (Exception ex)
-           {
-               MessageBox.Show(ex.Message);
-           }
-       }
-
        private void tmrRecToDb_Tick(object sender, EventArgs e)
        {
            try
            {
                //write temp to db
-               dbWrite.WriteTempemperatureToHistorian(temp_Arduino);
+               dbWrite.WriteTempToHistorian(temp_Arduino);
                // Update chart with temp
                this.historianTableAdapter.Fill(this.dataSetToGrah.historian);
                chrtTemp.DataBind();
@@ -223,13 +199,5 @@ namespace CTS_Application
         {
             this.alarm_historianTableAdapter.Fill(this.dataSetAlarmEvents.alarm_historian);
         }
-        public void SendAlarms()
-        {
-
-        }
-
-
-
-
     }
 }

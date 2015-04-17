@@ -10,7 +10,7 @@ namespace CTS_Application
 {
     class DbWrite : DbConnect
     {
-        //basj
+        
         public DbWrite() 
         {
 
@@ -55,7 +55,7 @@ namespace CTS_Application
             }
         }
                  //Writes temperature values to database
-        public bool WriteTempemperatureToHistorian(double valueIn)
+        public bool WriteTempToHistorian(double valueIn)
         {
             //
             //Source:
@@ -118,5 +118,6 @@ namespace CTS_Application
             }
             return false;
         }
+ 
     }
 }
