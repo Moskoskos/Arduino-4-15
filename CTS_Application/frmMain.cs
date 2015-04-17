@@ -95,8 +95,7 @@ namespace CTS_Application
 
        private void menuSettings_Click(object sender, EventArgs e)
        {
-           frmSettings SettingsWindow = new frmSettings();
-           SettingsWindow.Show();
+           
        }
 
        private void btnStartAlarm_Click(object sender, EventArgs e)
@@ -207,6 +206,12 @@ namespace CTS_Application
 
             chrtTemp.ChartAreas[0].AxisX.Minimum = temp.ToOADate();
             chrtTemp.ChartAreas[0].AxisX.Maximum = temp2.ToOADate();
+        }
+
+        private void preferencesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmSettings SettingsWindow = new frmSettings();
+            SettingsWindow.Show();
         }
     }
 }

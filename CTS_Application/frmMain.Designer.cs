@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.lblPercentage = new System.Windows.Forms.Label();
             this.btnSubscribers = new System.Windows.Forms.Button();
             this.lblTimeLeft = new System.Windows.Forms.Label();
@@ -44,7 +44,6 @@
             this.tmrRecToDb = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblMemory = new System.Windows.Forms.Label();
@@ -158,18 +157,10 @@
             // 
             // preferencesToolStripMenuItem
             // 
-            this.preferencesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuSettings});
             this.preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
             this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
             this.preferencesToolStripMenuItem.Text = "Preferences";
-            // 
-            // menuSettings
-            // 
-            this.menuSettings.Name = "menuSettings";
-            this.menuSettings.Size = new System.Drawing.Size(116, 22);
-            this.menuSettings.Text = "Settings";
-            this.menuSettings.Click += new System.EventHandler(this.menuSettings_Click);
+            this.preferencesToolStripMenuItem.Click += new System.EventHandler(this.preferencesToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -301,37 +292,37 @@
             // 
             // chrtTemp
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chrtTemp.ChartAreas.Add(chartArea1);
+            chartArea3.Name = "ChartArea1";
+            this.chrtTemp.ChartAreas.Add(chartArea3);
             this.chrtTemp.DataSource = this.historianBindingSource;
-            legend1.Enabled = false;
-            legend1.Name = "Legend1";
-            this.chrtTemp.Legends.Add(legend1);
+            legend3.Enabled = false;
+            legend3.Name = "Legend1";
+            this.chrtTemp.Legends.Add(legend3);
             this.chrtTemp.Location = new System.Drawing.Point(8, 144);
             this.chrtTemp.Name = "chrtTemp";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            series1.XValueMember = "datetime_recorded";
-            series1.YValueMembers = "value";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.Color = System.Drawing.Color.Red;
-            series2.Legend = "Legend1";
-            series2.Name = "SpLow";
-            series2.XValueMember = "datetime_recorded";
-            series2.YValueMembers = "setpoint_low";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series3.Color = System.Drawing.Color.Red;
-            series3.Legend = "Legend1";
-            series3.Name = "SpHigh";
-            series3.XValueMember = "datetime_recorded";
-            series3.YValueMembers = "setpoint_high";
-            this.chrtTemp.Series.Add(series1);
-            this.chrtTemp.Series.Add(series2);
-            this.chrtTemp.Series.Add(series3);
+            series7.ChartArea = "ChartArea1";
+            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series7.Legend = "Legend1";
+            series7.Name = "Series1";
+            series7.XValueMember = "datetime_recorded";
+            series7.YValueMembers = "value";
+            series8.ChartArea = "ChartArea1";
+            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series8.Color = System.Drawing.Color.Red;
+            series8.Legend = "Legend1";
+            series8.Name = "SpLow";
+            series8.XValueMember = "datetime_recorded";
+            series8.YValueMembers = "setpoint_low";
+            series9.ChartArea = "ChartArea1";
+            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series9.Color = System.Drawing.Color.Red;
+            series9.Legend = "Legend1";
+            series9.Name = "SpHigh";
+            series9.XValueMember = "datetime_recorded";
+            series9.YValueMembers = "setpoint_high";
+            this.chrtTemp.Series.Add(series7);
+            this.chrtTemp.Series.Add(series8);
+            this.chrtTemp.Series.Add(series9);
             this.chrtTemp.Size = new System.Drawing.Size(1156, 312);
             this.chrtTemp.TabIndex = 30;
             this.chrtTemp.Text = "chart1";
@@ -439,7 +430,6 @@
         private System.Windows.Forms.Timer tmrRecToDb;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem preferencesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem menuSettings;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;

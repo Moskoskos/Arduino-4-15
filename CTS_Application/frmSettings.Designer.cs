@@ -159,7 +159,7 @@
             this.Controls.Add(this.btnDelRec);
             this.Name = "frmSettings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmSettings";
+            this.Text = "Preferences";
             this.Load += new System.EventHandler(this.frmSettings_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
