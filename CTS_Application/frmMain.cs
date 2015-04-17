@@ -199,5 +199,14 @@ namespace CTS_Application
         {
             this.alarm_historianTableAdapter.Fill(this.dataSetAlarmEvents.alarm_historian);
         }
+
+        private void btnSubView_Click_1(object sender, EventArgs e)
+        {
+            DateTime temp = dateTimePicker1.Value;
+            DateTime temp2 = dateTimePicker2.Value;
+
+            chrtTemp.ChartAreas[0].AxisX.Minimum = temp.ToOADate();
+            chrtTemp.ChartAreas[0].AxisX.Maximum = temp2.ToOADate();
+        }
     }
 }

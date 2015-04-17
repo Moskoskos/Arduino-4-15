@@ -91,26 +91,7 @@ namespace CTS_Application
             }
             return result;
         }
-        public string GetGraphData(DateTime dateMin, DateTime dateMax)
-        {
-            string result = "";
-            string query = "";
-            return "meh";
-        }
-        //public DateTime GetInitialDateTimeMin()
-        //{
-        //    DateTime? date = null;
-        //    string query = "SELECT datetime_recorded FROM historian WHERE id = 1";
-        //    if (this.OpenConnection() == true)
-        //    {
-        //        using(MySqlCommand cmd = new MySqlCommand(query, connection))
-        //        {
-        //           date = (DateTime)cmd.ExecuteScalar();
-        //            CloseConnection();
-        //        }
-        //    }
-        //    return date;
-        //}
+
     }
   }
 
