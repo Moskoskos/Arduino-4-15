@@ -19,8 +19,22 @@ namespace CTS_Application
         public frmSettings()
         {        
             InitializeComponent();
+            FillTextBoxes();
+        }
+        private void frmSettings_Load(object sender, EventArgs e)
+        {
+
+        }
+        private void FillTextBoxes()
+        {
             txtSpL.Text = dbRead.GetLowSP(1);
             txtSpH.Text = dbRead.GetHighSp(1);
+            txtCom.Text = dbRead.GetComPort(1);
+            if (txtSpH.Text == "" && txtSpL.Text == "" && txtCom.Text == "")
+            {
+                MessageBox.Show("If this is the first time the application has been started there are no values present. Close this window and open it again. \r\r\n  If this is the second time you are opening this window please make sure that the Mysql server is running. Processname = mysqld");
+            }
+
         }
 
         private void btnDelRec_Click(object sender, EventArgs e)
@@ -67,10 +81,7 @@ namespace CTS_Application
             dbEdit.EditComPort(1, txtCom.Text);
         }
 
-        private void frmSettings_Load(object sender, EventArgs e)
-        {
-            txtCom.Text = dbRead.GetComPort(1);
-        }
+
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
@@ -85,8 +96,5 @@ namespace CTS_Application
                 MessageBox.Show(ex.Message);
             }
         }
-
-    
-
     }
 }

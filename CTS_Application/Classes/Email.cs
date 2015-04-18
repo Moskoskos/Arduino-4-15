@@ -20,6 +20,7 @@ namespace CTS_Application
        private SmtpClient client;
        private MailMessage message;
        private string from;
+
         public Email()
         {
             //from = "arduino.ia2.4.15@gmail.com" PW=Arduino4.15;
@@ -28,7 +29,10 @@ namespace CTS_Application
             client.Credentials = new System.Net.NetworkCredential(from, "arduino123");       
             client.EnableSsl = true;
          }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="body1"></param>
         public void SendMessage(string body1)
         {
             DbRead dbRead = new DbRead();

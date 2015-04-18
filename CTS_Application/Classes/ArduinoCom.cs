@@ -20,10 +20,22 @@ namespace CTS_Application
         }*/
         public ArduinoCom()
         {
-            string port = dbRead.GetComPort(1);
-            mySerialPort.PortName = port;
+            try
+            {
+                string port = dbRead.GetComPort(1);
+                mySerialPort.PortName = port;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Could not find COM Port value. Make sure that the MySQL-server is running!");
+
+            } 
         }
         //Metode som leser verdi fra comport, deler på 9,31 for å få temp
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public double Readtemp()
         {
             string temp = "";
@@ -49,6 +61,10 @@ namespace CTS_Application
             }
             return Math.Round(tempC, 2);
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public bool ComFault()
         {
             bool fault = comFault;

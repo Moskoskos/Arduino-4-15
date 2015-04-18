@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Text;
 using System.Windows.Forms;
-using System.Threading.Tasks;
+//using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 
 namespace CTS_Application
@@ -14,21 +14,41 @@ namespace CTS_Application
         {
 
         }
+        DbEdit dbEdit = new DbEdit();
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
          public string GetLowSP(int id)
         {
                 string result = "";
                 string query = "SELECT setpoint_low FROM settings WHERE settings_id = @id";
-                if (this.OpenConnection() == true)
-	                {
-		               using (MySqlCommand cmd = new MySqlCommand(query, connection))
-                           {
-                               cmd.Parameters.AddWithValue("@id", id);
-                              result = cmd.ExecuteScalar().ToString();
-                              CloseConnection();
-                           }
-	                }
+                try
+                {
+                    if (this.OpenConnection() == true)
+                    {
+                        using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                        {
+                            cmd.Parameters.AddWithValue("@id", id);
+                            result = cmd.ExecuteScalar().ToString();
+                            CloseConnection();
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    //Hvis tabellen for instillinger er tom vil dbEdit bli kalt for å gi den verdier.
+                    dbEdit.ChangeSetPoint(1, -20, 20);
+                    dbEdit.EditComPort(1, "COM3");
+                } 
                 return result;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public string GetHighSp(int id)
         {
             string result = "";
@@ -44,7 +64,10 @@ namespace CTS_Application
             }
             return result;
         }
-       
+       /// <summary>
+       /// 
+       /// </summary>
+       /// <returns></returns>
         public string GetTotalRow()
         {
             string result = "";
@@ -59,7 +82,11 @@ namespace CTS_Application
             }
             return result;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="idIn"></param>
+        /// <returns></returns>
         public string GetEmail(int idIn)
         {
             string result = "";
@@ -75,7 +102,11 @@ namespace CTS_Application
             }
               return result;  
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="idIn"></param>
+        /// <returns></returns>
         public string GetComPort(int idIn)
         {
             string result = "";

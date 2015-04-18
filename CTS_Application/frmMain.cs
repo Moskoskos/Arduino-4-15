@@ -9,6 +9,10 @@ using Microsoft.Win32;
 using System.Media;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Diagnostics;
+
+
+
 
 
 namespace CTS_Application
@@ -21,7 +25,6 @@ namespace CTS_Application
         DbWrite dbWrite = new DbWrite();
         DbRead dbRead = new DbRead();
         DbEdit dbEdit = new DbEdit();
-
         ArduinoCom arCom = new ArduinoCom();
         AlarmHandling alarm = new AlarmHandling();
         Email mail = new Email();
@@ -34,8 +37,6 @@ namespace CTS_Application
             tmrStatus.Start();
             tmrRecToDb.Start();
             tmrTemp.Start();
-           // tmrAlarm.Start();
-            // See btnAlarm_tick for reasoning. Like...Things why we do the things we do. 
             
         }
         private void frmMain_Load(object sender, EventArgs e)
@@ -125,7 +126,7 @@ namespace CTS_Application
         private void Status()
         {
             BatteryMonitoring batteryMonitoring = new BatteryMonitoring();
-            lblPercentage.Text = batteryMonitoring.PercentBatteryLeft.ToString() + "% available";
+            lblPercentage.Text = "Battery at " + batteryMonitoring.PercentBatteryLeft.ToString() + "%";
             if (batteryMonitoring.TimeLeft >= 1) { lblTimeLeft.Text = batteryMonitoring.TimeLeft.ToString(); }
             else { lblTimeLeft.Text = "System could not calculate remaining time. Driver missing"; }
             lblState.Text = batteryMonitoring.Status;
@@ -136,6 +137,7 @@ namespace CTS_Application
             long memory = System.Diagnostics.Process.GetCurrentProcess().WorkingSet64;
             if (memory > 1048576) { lblMemory.Text = "Memory usage: " + (memory / 1024 / 1024).ToString() + "MB"; }
             else { lblMemory.Text = "Memory usage: " + (memory / 1024).ToString() + "KB"; }
+            MySqlStatus();
         }
 
         private void tmrAlarm_Tick(object sender, EventArgs e)
@@ -212,6 +214,18 @@ namespace CTS_Application
         {
             frmSettings SettingsWindow = new frmSettings();
             SettingsWindow.Show();
+        }
+        private void MySqlStatus()
+        {
+            Process[] instance = Process.GetProcessesByName("mysqld");
+            if (instance.Length != 0)
+            {
+                lblMySql.Text = "MySql Status: Running";
+            }
+            else
+            {
+                lblMySql.Text = "MySql Status: Not Running";
+            }
         }
     }
 }

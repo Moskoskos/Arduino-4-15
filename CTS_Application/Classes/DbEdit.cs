@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Text;
 using System.Windows.Forms;
-using System.Threading.Tasks;
+//using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 
 namespace CTS_Application
@@ -14,6 +14,13 @@ namespace CTS_Application
         {
 
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="settingID"></param>
+        /// <param name="setPointLowIn"></param>
+        /// <param name="setPointHighIn"></param>
+        /// <returns></returns>
         public bool ChangeSetPoint(int settingID, double setPointLowIn, double setPointHighIn)
         {
             try
@@ -42,6 +49,11 @@ namespace CTS_Application
             }
             return false;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tablename"></param>
+        /// <returns></returns>
         public bool DeleteRecordsInTable(string tablename)
         {
             try
@@ -63,6 +75,12 @@ namespace CTS_Application
             }
             return false;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="settingID"></param>
+        /// <param name="comPortIn"></param>
+        /// <returns></returns>
         public bool EditComPort(int settingID, string comPortIn)
         {
             try

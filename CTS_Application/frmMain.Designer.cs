@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.lblPercentage = new System.Windows.Forms.Label();
             this.btnSubscribers = new System.Windows.Forms.Button();
             this.lblTimeLeft = new System.Windows.Forms.Label();
@@ -68,6 +68,7 @@
             this.tmrAlarm = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.btnSubView = new System.Windows.Forms.Button();
+            this.lblMySql = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -100,7 +101,7 @@
             // lblTimeLeft
             // 
             this.lblTimeLeft.AutoSize = true;
-            this.lblTimeLeft.Location = new System.Drawing.Point(216, 16);
+            this.lblTimeLeft.Location = new System.Drawing.Point(237, 16);
             this.lblTimeLeft.Name = "lblTimeLeft";
             this.lblTimeLeft.Size = new System.Drawing.Size(51, 13);
             this.lblTimeLeft.TabIndex = 20;
@@ -171,6 +172,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.panel1.Controls.Add(this.lblMySql);
             this.panel1.Controls.Add(this.lblMemory);
             this.panel1.Controls.Add(this.btnStartAlarm);
             this.panel1.Controls.Add(this.btnStopAlarm);
@@ -292,37 +294,37 @@
             // 
             // chrtTemp
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chrtTemp.ChartAreas.Add(chartArea3);
+            chartArea2.Name = "ChartArea1";
+            this.chrtTemp.ChartAreas.Add(chartArea2);
             this.chrtTemp.DataSource = this.historianBindingSource;
-            legend3.Enabled = false;
-            legend3.Name = "Legend1";
-            this.chrtTemp.Legends.Add(legend3);
+            legend2.Enabled = false;
+            legend2.Name = "Legend1";
+            this.chrtTemp.Legends.Add(legend2);
             this.chrtTemp.Location = new System.Drawing.Point(8, 144);
             this.chrtTemp.Name = "chrtTemp";
-            series7.ChartArea = "ChartArea1";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series7.Legend = "Legend1";
-            series7.Name = "Series1";
-            series7.XValueMember = "datetime_recorded";
-            series7.YValueMembers = "value";
-            series8.ChartArea = "ChartArea1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series8.Color = System.Drawing.Color.Red;
-            series8.Legend = "Legend1";
-            series8.Name = "SpLow";
-            series8.XValueMember = "datetime_recorded";
-            series8.YValueMembers = "setpoint_low";
-            series9.ChartArea = "ChartArea1";
-            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series9.Color = System.Drawing.Color.Red;
-            series9.Legend = "Legend1";
-            series9.Name = "SpHigh";
-            series9.XValueMember = "datetime_recorded";
-            series9.YValueMembers = "setpoint_high";
-            this.chrtTemp.Series.Add(series7);
-            this.chrtTemp.Series.Add(series8);
-            this.chrtTemp.Series.Add(series9);
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            series4.XValueMember = "datetime_recorded";
+            series4.YValueMembers = "value";
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series5.Color = System.Drawing.Color.Red;
+            series5.Legend = "Legend1";
+            series5.Name = "SpLow";
+            series5.XValueMember = "datetime_recorded";
+            series5.YValueMembers = "setpoint_low";
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series6.Color = System.Drawing.Color.Red;
+            series6.Legend = "Legend1";
+            series6.Name = "SpHigh";
+            series6.XValueMember = "datetime_recorded";
+            series6.YValueMembers = "setpoint_high";
+            this.chrtTemp.Series.Add(series4);
+            this.chrtTemp.Series.Add(series5);
+            this.chrtTemp.Series.Add(series6);
             this.chrtTemp.Size = new System.Drawing.Size(1156, 312);
             this.chrtTemp.TabIndex = 30;
             this.chrtTemp.Text = "chart1";
@@ -379,6 +381,15 @@
             this.btnSubView.Text = "Submit View";
             this.btnSubView.UseVisualStyleBackColor = true;
             this.btnSubView.Click += new System.EventHandler(this.btnSubView_Click_1);
+            // 
+            // lblMySql
+            // 
+            this.lblMySql.AutoSize = true;
+            this.lblMySql.Location = new System.Drawing.Point(872, 16);
+            this.lblMySql.Name = "lblMySql";
+            this.lblMySql.Size = new System.Drawing.Size(141, 13);
+            this.lblMySql.TabIndex = 58;
+            this.lblMySql.Text = "MySQL Status: Not Running";
             // 
             // frmMain
             // 
@@ -454,5 +465,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnSubView;
+        private System.Windows.Forms.Label lblMySql;
     }
 }

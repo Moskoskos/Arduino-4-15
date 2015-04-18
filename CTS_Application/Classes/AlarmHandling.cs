@@ -24,6 +24,12 @@ namespace CTS_Application
 
         public AlarmHandling()
         {       }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sp"></param>
+        /// <param name="pv"></param>
+        /// <returns></returns>
         public bool LowTempAlarm(double sp, double pv) // returnerer true, hvis alarm. Temperatur må gå tilbake til "normal" før man får ny alarm.
         {            
                 if ((pv < sp) && (currentLowAlarm == false))//pv lavere enn sp og ikke alarmstatus = ny alarm
@@ -42,6 +48,12 @@ namespace CTS_Application
             
             return lowAlarm;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sp"></param>
+        /// <param name="pv"></param>
+        /// <returns></returns>
             public bool HighTempAlarm(double sp, double pv)//høy alarm
             {
                 if ((pv > sp) && (currentHighAlarm == false))//pv høyere enn sp og ikke alarmstatus = ny alarm
@@ -59,7 +71,13 @@ namespace CTS_Application
                 }
                 return highAlarm;
              }
+        
         //gir alarm hvis temperaturverdi er utenfor gitte verdier
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pv"></param>
+        /// <returns></returns>
             public bool TempOutOfRange(double pv)
             {
                 if (pv < -100)
@@ -77,6 +95,11 @@ namespace CTS_Application
                 return outOfRangeAlarm;
             }
         //gir alarm hvis nettspenning forsvinner
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="powerstatus"></param>
+        /// <returns></returns>
             public bool BatteryAlarm(bool powerstatus)
             {
                 if ((powerstatus == true) && (currentBatteryAlarm == false))
@@ -95,6 +118,11 @@ namespace CTS_Application
                 return batteryAlarm;
             }
         //gir alarm hvis com feil
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="comStatus"></param>
+        /// <returns></returns>
             public bool ArduComAlarm(bool comStatus)
             {
                 if ((comStatus == true) && (currentComAlarm == false))

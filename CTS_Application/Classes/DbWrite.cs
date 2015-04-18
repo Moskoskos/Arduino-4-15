@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Text;
 using System.Windows.Forms;
-using System.Threading.Tasks;
+//using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 
 namespace CTS_Application
@@ -15,7 +15,15 @@ namespace CTS_Application
         {
 
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="usernameIn"></param>
+        /// <param name="firstnameIn"></param>
+        /// <param name="lastnameIn"></param>
+        /// <param name="emailIn"></param>
+        /// <param name="numberIn"></param>
+        /// <returns></returns>
         public bool InsertIntoUsers(string usernameIn, string firstnameIn, string lastnameIn, string emailIn, int numberIn)
         {
             //Source:
@@ -55,6 +63,11 @@ namespace CTS_Application
             }
         }
                  //Writes temperature values to database
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="valueIn"></param>
+        /// <returns></returns>
         public bool WriteTempToHistorian(double valueIn)
         {
             //
@@ -90,6 +103,12 @@ namespace CTS_Application
         }
 
         //Write to alarm table
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="alarmCodeIn"></param>
+        /// <param name="descriptionIn"></param>
+        /// <returns></returns>
         public bool WriteToAlarmHistorian(int alarmCodeIn, string descriptionIn)
         {
             if (alarmCodeIn > 0)
