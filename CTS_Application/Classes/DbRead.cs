@@ -18,7 +18,7 @@ namespace CTS_Application
         /// <summary>
         /// Metoden GetLoWSP kjører en spørring for å hente setpoint_low fra databasen, hvor settings_id er like id.
         /// </summary>
-        /// <param name="id">id tilsvarer raden i settings tabellen.</param>
+        /// <param name="id">id tilsvarer raden i tabellen settings.</param>
         /// <returns>Returnerer verdien for settpunktet.</returns>
          public string GetLowSP(int id)
         {
@@ -33,6 +33,7 @@ namespace CTS_Application
                         using (MySqlCommand cmd = new MySqlCommand(query, connection))
                         {
                             cmd.Parameters.AddWithValue("@id", id);
+                            //Kjører spørringen og får en verdi tilbake.
                             result = cmd.ExecuteScalar().ToString();
                             CloseConnection();
                         }
@@ -62,6 +63,7 @@ namespace CTS_Application
                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
                 {
                     cmd.Parameters.AddWithValue("@id", id);
+                    //Kjører spørringen og får en verdi tilbake.
                     result = cmd.ExecuteScalar().ToString();
                     CloseConnection();
                 }
@@ -82,6 +84,7 @@ namespace CTS_Application
                 //Bruker spørringen ovenfor og tilkoblingstrengen i DbConnect.
                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
                 {
+                    //Kjører spørringen og får en verdi tilbake.
                     result = cmd.ExecuteScalar().ToString();
                     CloseConnection();
                 }
@@ -89,10 +92,11 @@ namespace CTS_Application
             return result;
         }
         /// <summary>
-        /// 
+        /// Denne metoden kjører en spørring mot tabellen users i databasen hvor den skal hente ut 1 email addresse.
+        /// Metoden velger email utifra hvilken ID raden har. Denne er koblet mot metoden GetTotalRow for å itterere igjennom alle radene.
         /// </summary>
-        /// <param name="idIn"></param>
-        /// <returns></returns>
+        /// <param name="idIn">tilsvarende userID i tabelelen users. </param>
+        /// <returns>Returnerer en email-addresse.</returns>
         public string GetEmail(int idIn)
         {
             string result = "";
@@ -104,6 +108,7 @@ namespace CTS_Application
                 using(MySqlCommand cmd = new MySqlCommand(query,connection))
                 {
                     cmd.Parameters.AddWithValue("@id",idIn );
+                    //Kjører spørringen og får en verdi tilbake.
                         result = cmd.ExecuteScalar().ToString();
                         CloseConnection();
                 }
@@ -111,10 +116,10 @@ namespace CTS_Application
               return result;  
         }
         /// <summary>
-        /// 
+        /// Metoden GetComPort kjører en spørring mot tabellen settings og henter ComPort-verdien definert utifra idin.
         /// </summary>
-        /// <param name="idIn"></param>
-        /// <returns></returns>
+        /// <param name="idIn">id tilsvarer raden i tabellen settings.</param>
+        /// <returns>Returnerer comport verdien. Feks: "COM3"</returns>
         public string GetComPort(int idIn)
         {
             string result = "";
@@ -126,6 +131,7 @@ namespace CTS_Application
                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
                 {
                     cmd.Parameters.AddWithValue("@id", idIn);
+                    //Kjører spørringen og får en verdi tilbake.
                     result = cmd.ExecuteScalar().ToString();
                     CloseConnection();
                 }
