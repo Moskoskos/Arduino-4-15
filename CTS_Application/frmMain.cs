@@ -34,15 +34,13 @@ namespace CTS_Application
             tmrStatus.Start();
             tmrRecToDb.Start();
             tmrTemp.Start();
+            tmrAlarm.Start();
             
         }
         private void frmMain_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'dataSetToGrah.historian' table. You can move, or remove it, as needed.
-            this.historianTableAdapter.Fill(this.dataSetToGrah.historian);
-            // TODO: This line of code loads data into the 'dataSetAlarmEvents.alarm_historian' table. You can move, or remove it, as needed.
+            UpdateGraph();
             UpdateAlarmGrid();           
-         
         }
 
 
@@ -73,25 +71,6 @@ namespace CTS_Application
                MessageBox.Show(ex.Message);
            }
        }
-       private void btnStartAlarm_Click(object sender, EventArgs e)
-        {
-            /*
-             * WARNING! WARNING
-             * To prevent mails from firing off like a Palestinian milita during the liberation of Gaza.
-             * REMOVE BEFORE FINAL VERSION
-             */
-            tmrAlarm.Start();
-        }
-
-        private void btnStopAlarm_Click(object sender, EventArgs e)
-        {
-            /*
-             * WARNING! WARNING
-             * To prevent mails from firing off like a Palestinian milita during the liberation of Gaza.
-             * REMOVE BEFORE FINAL VERSION
-             */
-            tmrAlarm.Stop();
-        }
 
         private void tmrStatus_Tick(object sender, EventArgs e)
         {
@@ -120,21 +99,21 @@ namespace CTS_Application
 
             if (highTemp == true)
             {
-                string message = "Temperature extended setpoint: High (" + spH + "). Temperature =" + realTemp.ToString();
+                string message = "Temperature extended setpoint: High (" + spH + "°C). Temperature =" + realTemp.ToString() + "°C";
                 dbWrite.WriteToAlarmHistorian(1, message);
                 mail.SendMessage( message);
                 UpdateAlarmGrid();
             }
             if (lowTemp ==true)
             {
-                string message = "Temperature extended setpoint: Low (" + spL + "). Temperature =" + realTemp.ToString();
+                string message = "Temperature extended setpoint: Low (" + spL + "°C). Temperature =" + realTemp.ToString() + "°C";
                 dbWrite.WriteToAlarmHistorian(2, message);
                 mail.SendMessage( message);
                 UpdateAlarmGrid();
             }
             if (tempOOR == true)
             {
-                string message = "Temperature out of range. Temperature =" + realTemp.ToString();
+                string message = "Temperature out of range. Temperature =" + realTemp.ToString() + "°C";
                 dbWrite.WriteToAlarmHistorian(3, message);
                 mail.SendMessage( message);
                 UpdateAlarmGrid();
@@ -155,19 +134,37 @@ namespace CTS_Application
                 
             }
         }
+        public void UpdateGraph()
+        {
+            // TODO: This line of code loads data into the 'dataSetToGrah.historian' table. You can move, or remove it, as needed.
+            this.historianTableAdapter.Fill(this.dataSetToGrah.historian);
+        }
         public void UpdateAlarmGrid()
         {
-            this.alarm_historianTableAdapter.Fill(this.dataSetAlarmEvents.alarm_historian);
+            // TODO: This line of code loads data into the 'dataSetAlarmEvents.alarm_historian' table. You can move, or remove it, as needed.
+            this.alarm_historianTableAdapter.Fill(this.ctsDataSetAlarm.alarm_historian);
         }
 
         private void btnSubView_Click_1(object sender, EventArgs e)
         {
             DateTime temp = dateTimePicker1.Value;
             DateTime temp2 = dateTimePicker2.Value;
+         
+                if (temp.ToOADate() > temp2.ToOADate())
+                {
+                    MessageBox.Show("Cannot have a start date later than the end date.");
+                }
+                else
+                {
+                    chrtTemp.ChartAreas[0].AxisX.Minimum = temp.ToOADate();
+                    chrtTemp.ChartAreas[0].AxisX.Maximum = temp2.ToOADate();
+                }
 
-            chrtTemp.ChartAreas[0].AxisX.Minimum = temp.ToOADate();
-            chrtTemp.ChartAreas[0].AxisX.Maximum = temp2.ToOADate();
-        }
+            }
+        
+           
+            
+        
 
         private void preferencesToolStripMenuItem_Click(object sender, EventArgs e)
         {

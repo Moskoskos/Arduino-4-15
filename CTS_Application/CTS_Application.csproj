@@ -54,15 +54,15 @@
     <Compile Include="Classes\Email.cs" />
     <Compile Include="Classes\DbRead.cs" />
     <Compile Include="Classes\DbWrite.cs" />
+    <Compile Include="ctsDataSetAlarm.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ctsDataSetAlarm.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ctsDataSetUsers.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ctsDataSetUsers.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="dataSetAlarmEvents.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>dataSetAlarmEvents.xsd</DependentUpon>
     </Compile>
     <Compile Include="DataSetToGrah.cs">
       <DependentUpon>DataSetToGrah.xsd</DependentUpon>
@@ -112,6 +112,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="ctsDataSetAlarm.xsc">
+      <DependentUpon>ctsDataSetAlarm.xsd</DependentUpon>
+    </None>
+    <None Include="ctsDataSetAlarm.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ctsDataSetAlarm.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ctsDataSetAlarm.xss">
+      <DependentUpon>ctsDataSetAlarm.xsd</DependentUpon>
+    </None>
     <None Include="ctsDataSetUsers.xsc">
       <DependentUpon>ctsDataSetUsers.xsd</DependentUpon>
     </None>
@@ -122,17 +133,6 @@
     </None>
     <None Include="ctsDataSetUsers.xss">
       <DependentUpon>ctsDataSetUsers.xsd</DependentUpon>
-    </None>
-    <None Include="dataSetAlarmEvents.xsc">
-      <DependentUpon>dataSetAlarmEvents.xsd</DependentUpon>
-    </None>
-    <None Include="dataSetAlarmEvents.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dataSetAlarmEvents.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="dataSetAlarmEvents.xss">
-      <DependentUpon>dataSetAlarmEvents.xsd</DependentUpon>
     </None>
     <None Include="DataSetToGrah.xsc">
       <DependentUpon>DataSetToGrah.xsd</DependentUpon>

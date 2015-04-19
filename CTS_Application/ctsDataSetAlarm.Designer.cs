@@ -20,9 +20,9 @@ namespace CTS_Application {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("dataSetAlarmEvents")]
+    [global::System.Xml.Serialization.XmlRootAttribute("ctsDataSetAlarm")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class dataSetAlarmEvents : global::System.Data.DataSet {
+    public partial class ctsDataSetAlarm : global::System.Data.DataSet {
         
         private alarm_historianDataTable tablealarm_historian;
         
@@ -30,7 +30,7 @@ namespace CTS_Application {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public dataSetAlarmEvents() {
+        public ctsDataSetAlarm() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace CTS_Application {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected dataSetAlarmEvents(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected ctsDataSetAlarm(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -127,7 +127,7 @@ namespace CTS_Application {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            dataSetAlarmEvents cln = ((dataSetAlarmEvents)(base.Clone()));
+            ctsDataSetAlarm cln = ((ctsDataSetAlarm)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -199,9 +199,9 @@ namespace CTS_Application {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "dataSetAlarmEvents";
+            this.DataSetName = "ctsDataSetAlarm";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/dataSetAlarmEvents.xsd";
+            this.Namespace = "http://tempuri.org/ctsDataSetAlarm.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tablealarm_historian = new alarm_historianDataTable();
@@ -225,7 +225,7 @@ namespace CTS_Application {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            dataSetAlarmEvents ds = new dataSetAlarmEvents();
+            ctsDataSetAlarm ds = new ctsDataSetAlarm();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -283,6 +283,8 @@ namespace CTS_Application {
             
             private global::System.Data.DataColumn columndatetime_recorded;
             
+            private global::System.Data.DataColumn columnalarm_id;
+            
             private global::System.Data.DataColumn columndescription;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -336,6 +338,14 @@ namespace CTS_Application {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn alarm_idColumn {
+                get {
+                    return this.columnalarm_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn descriptionColumn {
                 get {
                     return this.columndescription;
@@ -379,11 +389,12 @@ namespace CTS_Application {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public alarm_historianRow Addalarm_historianRow(uint alarm_event_id, System.DateTime datetime_recorded, string description) {
+            public alarm_historianRow Addalarm_historianRow(uint alarm_event_id, System.DateTime datetime_recorded, int alarm_id, string description) {
                 alarm_historianRow rowalarm_historianRow = ((alarm_historianRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         alarm_event_id,
                         datetime_recorded,
+                        alarm_id,
                         description};
                 rowalarm_historianRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowalarm_historianRow);
@@ -416,6 +427,7 @@ namespace CTS_Application {
             internal void InitVars() {
                 this.columnalarm_event_id = base.Columns["alarm_event_id"];
                 this.columndatetime_recorded = base.Columns["datetime_recorded"];
+                this.columnalarm_id = base.Columns["alarm_id"];
                 this.columndescription = base.Columns["description"];
             }
             
@@ -426,6 +438,8 @@ namespace CTS_Application {
                 base.Columns.Add(this.columnalarm_event_id);
                 this.columndatetime_recorded = new global::System.Data.DataColumn("datetime_recorded", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndatetime_recorded);
+                this.columnalarm_id = new global::System.Data.DataColumn("alarm_id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnalarm_id);
                 this.columndescription = new global::System.Data.DataColumn("description", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndescription);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
@@ -433,7 +447,8 @@ namespace CTS_Application {
                 this.columnalarm_event_id.AllowDBNull = false;
                 this.columnalarm_event_id.Unique = true;
                 this.columndatetime_recorded.AllowDBNull = false;
-                this.columndescription.MaxLength = 45;
+                this.columnalarm_id.AllowDBNull = false;
+                this.columndescription.MaxLength = 350;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -501,7 +516,7 @@ namespace CTS_Application {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                dataSetAlarmEvents ds = new dataSetAlarmEvents();
+                ctsDataSetAlarm ds = new ctsDataSetAlarm();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -598,6 +613,17 @@ namespace CTS_Application {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int alarm_id {
+                get {
+                    return ((int)(this[this.tablealarm_historian.alarm_idColumn]));
+                }
+                set {
+                    this[this.tablealarm_historian.alarm_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string description {
                 get {
                     try {
@@ -660,7 +686,7 @@ namespace CTS_Application {
         }
     }
 }
-namespace CTS_Application.dataSetAlarmEventsTableAdapters {
+namespace CTS_Application.ctsDataSetAlarmTableAdapters {
     
     
     /// <summary>
@@ -786,13 +812,14 @@ namespace CTS_Application.dataSetAlarmEventsTableAdapters {
             tableMapping.DataSetTable = "alarm_historian";
             tableMapping.ColumnMappings.Add("alarm_event_id", "alarm_event_id");
             tableMapping.ColumnMappings.Add("datetime_recorded", "datetime_recorded");
+            tableMapping.ColumnMappings.Add("alarm_id", "alarm_id");
             tableMapping.ColumnMappings.Add("description", "description");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
             this._adapter.DeleteCommand.CommandText = "DELETE FROM `alarm_historian` WHERE ((`alarm_event_id` = @p1) AND (`datetime_reco" +
-                "rded` = @p2) AND ((@p3 = 1 AND `description` IS NULL) OR (`description` = @p4)))" +
-                "";
+                "rded` = @p2) AND (`alarm_id` = @p3) AND ((@p4 = 1 AND `description` IS NULL) OR " +
+                "(`description` = @p5)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
@@ -815,23 +842,58 @@ namespace CTS_Application.dataSetAlarmEventsTableAdapters {
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
+            param.SourceColumn = "alarm_id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p4";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
             param.SourceColumn = "description";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             param.SourceColumnNullMapping = true;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p4";
+            param.ParameterName = "@p5";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
             param.SourceColumn = "description";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
+            this._adapter.InsertCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO `alarm_historian` (`datetime_recorded`, `alarm_id`, `description`) VA" +
+                "LUES (@p1, @p2, @p3)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p1";
+            param.DbType = global::System.Data.DbType.DateTime;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.DateTime;
+            param.IsNullable = true;
+            param.SourceColumn = "datetime_recorded";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p2";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "alarm_id";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p3";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.IsNullable = true;
+            param.SourceColumn = "description";
+            this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE `alarm_historian` SET `datetime_recorded` = @p1, `description` = @p2 WHERE" +
-                " ((`alarm_event_id` = @p3) AND (`datetime_recorded` = @p4) AND ((@p5 = 1 AND `de" +
-                "scription` IS NULL) OR (`description` = @p6)))";
+            this._adapter.UpdateCommand.CommandText = "UPDATE `alarm_historian` SET `datetime_recorded` = @p1, `alarm_id` = @p2, `descri" +
+                "ption` = @p3 WHERE ((`alarm_event_id` = @p4) AND (`datetime_recorded` = @p5) AND" +
+                " (`alarm_id` = @p6) AND ((@p7 = 1 AND `description` IS NULL) OR (`description` =" +
+                " @p8)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
@@ -842,13 +904,20 @@ namespace CTS_Application.dataSetAlarmEventsTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p2";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "alarm_id";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p3";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
             param.SourceColumn = "description";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p3";
+            param.ParameterName = "@p4";
             param.DbType = global::System.Data.DbType.UInt32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.UInt32;
             param.IsNullable = true;
@@ -856,7 +925,7 @@ namespace CTS_Application.dataSetAlarmEventsTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p4";
+            param.ParameterName = "@p5";
             param.DbType = global::System.Data.DbType.DateTime;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.DateTime;
             param.IsNullable = true;
@@ -864,7 +933,15 @@ namespace CTS_Application.dataSetAlarmEventsTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p5";
+            param.ParameterName = "@p6";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "alarm_id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p7";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
@@ -873,7 +950,7 @@ namespace CTS_Application.dataSetAlarmEventsTableAdapters {
             param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p6";
+            param.ParameterName = "@p8";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
@@ -895,8 +972,8 @@ namespace CTS_Application.dataSetAlarmEventsTableAdapters {
             this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        alarm_event_id, datetime_recorded, description\r\nFROM            ala" +
-                "rm_historian\r\nORDER BY alarm_event_id DESC";
+            this._commandCollection[0].CommandText = "SELECT        alarm_event_id, datetime_recorded, alarm_id, description\r\nFROM     " +
+                "       alarm_historian\r\nORDER BY alarm_event_id DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -904,7 +981,7 @@ namespace CTS_Application.dataSetAlarmEventsTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(dataSetAlarmEvents.alarm_historianDataTable dataTable) {
+        public virtual int Fill(ctsDataSetAlarm.alarm_historianDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -917,9 +994,9 @@ namespace CTS_Application.dataSetAlarmEventsTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual dataSetAlarmEvents.alarm_historianDataTable GetData() {
+        public virtual ctsDataSetAlarm.alarm_historianDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            dataSetAlarmEvents.alarm_historianDataTable dataTable = new dataSetAlarmEvents.alarm_historianDataTable();
+            ctsDataSetAlarm.alarm_historianDataTable dataTable = new ctsDataSetAlarm.alarm_historianDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -927,14 +1004,14 @@ namespace CTS_Application.dataSetAlarmEventsTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(dataSetAlarmEvents.alarm_historianDataTable dataTable) {
+        public virtual int Update(ctsDataSetAlarm.alarm_historianDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(dataSetAlarmEvents dataSet) {
+        public virtual int Update(ctsDataSetAlarm dataSet) {
             return this.Adapter.Update(dataSet, "alarm_historian");
         }
         
@@ -957,16 +1034,17 @@ namespace CTS_Application.dataSetAlarmEventsTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(uint p1, System.DateTime p2, string p4) {
+        public virtual int Delete(uint p1, System.DateTime p2, int p3, string p5) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((uint)(p1));
             this.Adapter.DeleteCommand.Parameters[1].Value = ((System.DateTime)(p2));
-            if ((p4 == null)) {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[3].Value = global::System.DBNull.Value;
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(p3));
+            if ((p5 == null)) {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(p4));
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(p5));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -987,24 +1065,55 @@ namespace CTS_Application.dataSetAlarmEventsTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(System.DateTime p1, int p2, string p3) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((System.DateTime)(p1));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(p2));
+            if ((p3 == null)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(p3));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(System.DateTime p1, string p2, uint p3, System.DateTime p4, string p6) {
+        public virtual int Update(System.DateTime p1, int p2, string p3, uint p4, System.DateTime p5, int p6, string p8) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((System.DateTime)(p1));
-            if ((p2 == null)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(p2));
+            if ((p3 == null)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(p2));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(p3));
             }
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((uint)(p3));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((System.DateTime)(p4));
-            if ((p6 == null)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((uint)(p4));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(p5));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(p6));
+            if ((p8 == null)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(p6));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(p8));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1114,7 +1223,7 @@ namespace CTS_Application.dataSetAlarmEventsTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateUpdatedRows(dataSetAlarmEvents dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(ctsDataSetAlarm dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._alarm_historianTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.alarm_historian.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
@@ -1133,7 +1242,7 @@ namespace CTS_Application.dataSetAlarmEventsTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateInsertedRows(dataSetAlarmEvents dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(ctsDataSetAlarm dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._alarm_historianTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.alarm_historian.Select(null, null, global::System.Data.DataViewRowState.Added);
@@ -1151,7 +1260,7 @@ namespace CTS_Application.dataSetAlarmEventsTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateDeletedRows(dataSetAlarmEvents dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(ctsDataSetAlarm dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             if ((this._alarm_historianTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.alarm_historian.Select(null, null, global::System.Data.DataViewRowState.Deleted);
@@ -1193,7 +1302,7 @@ namespace CTS_Application.dataSetAlarmEventsTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public virtual int UpdateAll(dataSetAlarmEvents dataSet) {
+        public virtual int UpdateAll(ctsDataSetAlarm dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }
