@@ -26,8 +26,10 @@ namespace CTS_Application
                 string query = "SELECT setpoint_low FROM settings WHERE settings_id = @id";
                 try
                 {
+                    //Sjekker at tilkoblingen er åpen.
                     if (this.OpenConnection() == true)
                     {
+                        //Bruker spørringen ovenfor og tilkoblingstrengen i DbConnect.
                         using (MySqlCommand cmd = new MySqlCommand(query, connection))
                         {
                             cmd.Parameters.AddWithValue("@id", id);
@@ -53,8 +55,10 @@ namespace CTS_Application
         {
             string result = "";
             string query = "SELECT setpoint_high FROM settings WHERE settings_id = @id";
+            //Sjekker at tilkoblingen er åpen.
             if (this.OpenConnection() == true)
             {
+                //Bruker spørringen ovenfor og tilkoblingstrengen i DbConnect.
                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
                 {
                     cmd.Parameters.AddWithValue("@id", id);
@@ -72,8 +76,10 @@ namespace CTS_Application
         {
             string result = "";
             string query = "SELECT COUNT(*) FROM users";
+            //Sjekker at tilkoblingen er åpen.
             if (this.OpenConnection() == true)
             {
+                //Bruker spørringen ovenfor og tilkoblingstrengen i DbConnect.
                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
                 {
                     result = cmd.ExecuteScalar().ToString();
@@ -91,8 +97,10 @@ namespace CTS_Application
         {
             string result = "";
             string query = "SELECT email FROM users WHERE userID = @id";
+            //Sjekker at tilkoblingen er åpen.
             if (this.OpenConnection() == true)
             {
+                //Bruker spørringen ovenfor og tilkoblingstrengen i DbConnect.
                 using(MySqlCommand cmd = new MySqlCommand(query,connection))
                 {
                     cmd.Parameters.AddWithValue("@id",idIn );
@@ -111,8 +119,10 @@ namespace CTS_Application
         {
             string result = "";
             string query = "SELECT COM_port FROM settings WHERE settings_id = @id";
+            //Sjekker at tilkoblingen er åpen.
             if (this.OpenConnection() == true)
             {
+                //Bruker spørringen ovenfor og tilkoblingstrengen i DbConnect.
                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
                 {
                     cmd.Parameters.AddWithValue("@id", idIn);
