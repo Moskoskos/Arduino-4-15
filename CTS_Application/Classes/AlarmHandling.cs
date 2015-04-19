@@ -16,6 +16,7 @@ namespace CTS_Application
         private bool currentLowAlarm = false;
         private bool currentHighAlarm = false;
         private bool outOfRangeAlarm = false;
+        private bool currentOutOfRange = false;
         private bool batteryAlarm = false;
         private bool currentBatteryAlarm = false;
         private bool comAlarm = false;
@@ -79,13 +80,14 @@ namespace CTS_Application
         /// <returns>Temperatur out of range alarm</returns>
             public bool TempOutOfRange(double pv)
             {
-                if (pv < -100)
+                if (((pv < -100) || (pv > 100)) && (currentOutOfRange == false))
                 {
                     outOfRangeAlarm = true;
+                    currentOutOfRange = true;
                 }
-                else if (pv > 100)
+                else if ((currentOutOfRange == true) && ((pv > -100) && (pv < 100)))
                 {
-                    outOfRangeAlarm = true;
+                    currentOutOfRange = false;
                 }
                 else
                 {

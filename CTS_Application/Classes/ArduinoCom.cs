@@ -12,12 +12,9 @@ namespace CTS_Application
     {
         DbRead dbRead = new DbRead();
         public bool comFault;
-        public double temp { get; set; }
         SerialPort mySerialPort = new SerialPort("COM5", 9600, Parity.None, 8, StopBits.One);
-       /* public ArduinoCom(string initComPort)
-        {
-            mySerialPort.PortName = initComPort;
-        }*/
+        public double tempC = 0.0;
+
         public ArduinoCom()
         {
             try
@@ -28,18 +25,16 @@ namespace CTS_Application
             catch (Exception)
             {
                 MessageBox.Show("Could not find COM Port value. Make sure that the MySQL-server is running!");
-
             } 
         }
-        //Metode som leser verdi fra comport, deler på 9,31 for å få temp
         /// <summary>
-        /// 
+        /// Metode som leser verdi fra comport, deler på 9,31 for å få temp
         /// </summary>
         /// <returns></returns>
         public double Readtemp()
         {
             string temp = "";
-            double tempC = 0.0;
+            //double tempC = 0.0;
             try
             {
                 if (mySerialPort.IsOpen)
@@ -56,8 +51,8 @@ namespace CTS_Application
             catch (Exception)
             {
                 comFault = true;
-             
-                
+                //MessageBox.Show("feil ved avlesning av temperatur");
+                tempC = -999.9;
             }
             return Math.Round(tempC, 2);
         }
@@ -69,6 +64,6 @@ namespace CTS_Application
         {
             bool fault = comFault;
             return fault;
-        }        //Source:oiughdfjh
+        } 
     }
 }
