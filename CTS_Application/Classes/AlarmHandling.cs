@@ -38,7 +38,7 @@ namespace CTS_Application
                     lowAlarm = true;
                     currentLowAlarm = true;
                 }
-                else if ((currentLowAlarm == true) && (pv > sp))
+                else if ((currentLowAlarm == true) && (pv > (sp + 1.0)))
                 {
                     currentLowAlarm = false;
                 }
@@ -62,7 +62,7 @@ namespace CTS_Application
                     highAlarm = true;
                     currentHighAlarm = true;
                 }
-                else if ((currentHighAlarm == true) && (pv < sp))
+                else if ((currentHighAlarm == true) && (pv < (sp - 1.0)))
                 {
                     currentHighAlarm = false;
                 }
