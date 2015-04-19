@@ -12,7 +12,7 @@ namespace CTS_Application
     {
         public DbRead()
         {
-
+            //Jau
         }
         DbEdit dbEdit = new DbEdit();
         /// <summary>
