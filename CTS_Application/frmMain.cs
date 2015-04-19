@@ -215,7 +215,7 @@ namespace CTS_Application
                 dbWrite.WriteToAlarmHistorian(5, message);
                 mail.SendMessage(message);
                 UpdateAlarmGrid();
-
+                MessageBox.Show("The program could not find the Arduino. Go to Preferences to change COM port");
             }
         }
     }
