@@ -81,58 +81,7 @@ namespace CTS_Application
 
         private void tmrAlarm_Tick(object sender, EventArgs e)
         {
-            bool highTemp = false;
-            bool lowTemp = false;
-            bool tempOOR = false;
-            bool batAlarm = false;
-            bool arcomAlarm = false;
-            double spH = Convert.ToDouble(dbRead.GetHighSp(1));
-            double spL = Convert.ToDouble(dbRead.GetLowSP(1));
-            double realTemp = realTemp = arCom.Readtemp();
-
-            highTemp = alarm.HighTempAlarm(spH, realTemp);
-            lowTemp = alarm.LowTempAlarm(spL, realTemp);
-            tempOOR = alarm.TempOutOfRange(realTemp);
-            batAlarm = alarm.BatteryAlarm(batteryMonitoring.StatusChanged());
-            arcomAlarm = alarm.ArduComAlarm(arCom.ComFault());
-
-
-            if (highTemp == true)
-            {
-                string message = "Temperature extended setpoint: High (" + spH + "°C). Temperature =" + realTemp.ToString() + "°C";
-                dbWrite.WriteToAlarmHistorian(1, message);
-                mail.SendMessage( message);
-                UpdateAlarmGrid();
-            }
-            if (lowTemp ==true)
-            {
-                string message = "Temperature extended setpoint: Low (" + spL + "°C). Temperature =" + realTemp.ToString() + "°C";
-                dbWrite.WriteToAlarmHistorian(2, message);
-                mail.SendMessage( message);
-                UpdateAlarmGrid();
-            }
-            if (tempOOR == true)
-            {
-                string message = "Temperature out of range. Temperature =" + realTemp.ToString() + "°C";
-                dbWrite.WriteToAlarmHistorian(3, message);
-                mail.SendMessage( message);
-                UpdateAlarmGrid();
-            }
-            if (batAlarm == true)
-            {
-                string message = "Lost powerline. Laptop is running on battery";
-                dbWrite.WriteToAlarmHistorian(4, message);
-                mail.SendMessage( message);
-                UpdateAlarmGrid();
-            }
-            if (arcomAlarm == true)
-            {
-                string message = "Lost Connection to Arduino";
-                dbWrite.WriteToAlarmHistorian(5, message);
-                mail.SendMessage( message);
-                UpdateAlarmGrid();
-                
-            }
+            CheckAlarmStatus();
         }
         public void UpdateGraph()
         {
@@ -210,7 +159,58 @@ namespace CTS_Application
         }
         private void CheckAlarmStatus()
         {
+            bool highTemp = false;
+            bool lowTemp = false;
+            bool tempOOR = false;
+            bool batAlarm = false;
+            bool arcomAlarm = false;
+            double spH = Convert.ToDouble(dbRead.GetHighSp(1));
+            double spL = Convert.ToDouble(dbRead.GetLowSP(1));
+            double realTemp = realTemp = arCom.Readtemp();
 
+            highTemp = alarm.HighTempAlarm(spH, realTemp);
+            lowTemp = alarm.LowTempAlarm(spL, realTemp);
+            tempOOR = alarm.TempOutOfRange(realTemp);
+            batAlarm = alarm.BatteryAlarm(batteryMonitoring.StatusChanged());
+            arcomAlarm = alarm.ArduComAlarm(arCom.ComFault());
+
+
+            if (highTemp == true)
+            {
+                string message = "Temperature extended setpoint: High (" + spH + "°C). Temperature =" + realTemp.ToString() + "°C";
+                dbWrite.WriteToAlarmHistorian(1, message);
+                mail.SendMessage(message);
+                UpdateAlarmGrid();
+            }
+            if (lowTemp == true)
+            {
+                string message = "Temperature extended setpoint: Low (" + spL + "°C). Temperature =" + realTemp.ToString() + "°C";
+                dbWrite.WriteToAlarmHistorian(2, message);
+                mail.SendMessage(message);
+                UpdateAlarmGrid();
+            }
+            if (tempOOR == true)
+            {
+                string message = "Temperature out of range. Temperature =" + realTemp.ToString() + "°C";
+                dbWrite.WriteToAlarmHistorian(3, message);
+                mail.SendMessage(message);
+                UpdateAlarmGrid();
+            }
+            if (batAlarm == true)
+            {
+                string message = "Lost powerline. Laptop is running on battery";
+                dbWrite.WriteToAlarmHistorian(4, message);
+                mail.SendMessage(message);
+                UpdateAlarmGrid();
+            }
+            if (arcomAlarm == true)
+            {
+                string message = "Lost Connection to Arduino";
+                dbWrite.WriteToAlarmHistorian(5, message);
+                mail.SendMessage(message);
+                UpdateAlarmGrid();
+
+            }
         }
     }
 }
