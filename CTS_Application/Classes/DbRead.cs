@@ -16,10 +16,10 @@ namespace CTS_Application
         }
         DbEdit dbEdit = new DbEdit();
         /// <summary>
-        /// 
+        /// Metoden GetLoWSP kjører en spørring for å hente setpoint_low fra databasen, hvor settings_id er like id.
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">id tilsvarer raden i settings tabellen.</param>
+        /// <returns>Returnerer verdien for settpunktet.</returns>
          public string GetLowSP(int id)
         {
                 string result = "";
@@ -47,9 +47,9 @@ namespace CTS_Application
                 return result;
         }
         /// <summary>
-        /// 
+        /// Metoden GetHighSp kjører en spørring for å hente ut setpoint_high fra tabellen settings.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">id tilsvarer raden i tabellen settings.</param>
         /// <returns></returns>
         public string GetHighSp(int id)
         {
@@ -69,9 +69,9 @@ namespace CTS_Application
             return result;
         }
        /// <summary>
-       /// 
+       /// Metoden GetTotalRow kjører en spørring for å hente informasjon om antall rader i users.
        /// </summary>
-       /// <returns></returns>
+       /// <returns>Returnerer antall rader.</returns>
         public string GetTotalRow()
         {
             string result = "";

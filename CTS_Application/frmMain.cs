@@ -12,9 +12,6 @@ using System.Threading;
 using System.Diagnostics;
 
 
-
-
-
 namespace CTS_Application
 {
     public partial class frmMain : Form
@@ -33,7 +30,7 @@ namespace CTS_Application
         public frmMain()
         {
             InitializeComponent();
-            Status();
+            
             tmrStatus.Start();
             tmrRecToDb.Start();
             tmrTemp.Start();
@@ -46,14 +43,8 @@ namespace CTS_Application
             // TODO: This line of code loads data into the 'dataSetAlarmEvents.alarm_historian' table. You can move, or remove it, as needed.
             UpdateAlarmGrid();           
          
-          //  dateTimePicker1.Value = dbRead.GetInitialDateTimeMin();
         }
-        //Opens the subscriber window
-        private void btnSubscribers_Click(object sender, EventArgs e)
-        {
-            Subscribers sub = new Subscribers();
-            sub.Show();
-        }
+
 
        private void tmrTemp_Tick(object sender, EventArgs e)
        {
@@ -82,23 +73,6 @@ namespace CTS_Application
                MessageBox.Show(ex.Message);
            }
        }
-       private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-       {
-           
-           chrtTemp.ChartAreas["Series1"].AxisX.Minimum = 0;
-       }
-       private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
-       {
-          // var temp = dateTimePicker1.Value;
-           //chrtTemp.ChartAreas["Series1"].AxisX.Maximum = temp;
-           //test test
-       }
-
-       private void menuSettings_Click(object sender, EventArgs e)
-       {
-           
-       }
-
        private void btnStartAlarm_Click(object sender, EventArgs e)
         {
             /*
@@ -121,22 +95,8 @@ namespace CTS_Application
 
         private void tmrStatus_Tick(object sender, EventArgs e)
         {
-            Status();
-        }
-        private void Status()
-        {
-            BatteryMonitoring batteryMonitoring = new BatteryMonitoring();
-            lblPercentage.Text = "Battery at " + batteryMonitoring.PercentBatteryLeft.ToString() + "%";
-            if (batteryMonitoring.TimeLeft >= 1) { lblTimeLeft.Text = batteryMonitoring.TimeLeft.ToString(); }
-            else { lblTimeLeft.Text = "System could not calculate remaining time. Driver missing"; }
-            lblState.Text = batteryMonitoring.Status;
-            //Displays the programs current memory Usage. 
-            //Source:
-            //http://stackoverflow.com/questions/1440720/how-can-i-determine-how-much-memory-my-program-is-currently-occupying
-            //
-            long memory = System.Diagnostics.Process.GetCurrentProcess().WorkingSet64;
-            if (memory > 1048576) { lblMemory.Text = "Memory usage: " + (memory / 1024 / 1024).ToString() + "MB"; }
-            else { lblMemory.Text = "Memory usage: " + (memory / 1024).ToString() + "KB"; }
+            BatteryRemaining();
+            MemoryUsage();
             MySqlStatus();
         }
 
@@ -149,8 +109,7 @@ namespace CTS_Application
             bool arcomAlarm = false;
             double spH = Convert.ToDouble(dbRead.GetHighSp(1));
             double spL = Convert.ToDouble(dbRead.GetLowSP(1));
-            double realTemp = 0;
-            realTemp = arCom.Readtemp();
+            double realTemp = realTemp = arCom.Readtemp();
 
             highTemp = alarm.HighTempAlarm(spH, realTemp);
             lowTemp = alarm.LowTempAlarm(spL, realTemp);
@@ -161,14 +120,14 @@ namespace CTS_Application
 
             if (highTemp == true)
             {
-                string message = "Temperature extended setpoint: High. Temperature =" + realTemp.ToString();
+                string message = "Temperature extended setpoint: High (" + spH + "). Temperature =" + realTemp.ToString();
                 dbWrite.WriteToAlarmHistorian(1, message);
                 mail.SendMessage( message);
                 UpdateAlarmGrid();
             }
             if (lowTemp ==true)
             {
-                string message = "Temperature extended setpoint: Low. Temperature =" + realTemp.ToString();
+                string message = "Temperature extended setpoint: Low (" + spL + "). Temperature =" + realTemp.ToString();
                 dbWrite.WriteToAlarmHistorian(2, message);
                 mail.SendMessage( message);
                 UpdateAlarmGrid();
@@ -226,6 +185,36 @@ namespace CTS_Application
             {
                 lblMySql.Text = "MySql Status: Not Running";
             }
+        }
+        private void MemoryUsage()
+        {
+            long memory = System.Diagnostics.Process.GetCurrentProcess().WorkingSet64;
+
+            lblMemory.Text = "Memory usage: " + (memory / 1024 / 1024).ToString() + "MB"; 
+        }
+        private void BatteryRemaining()
+        {
+            //Displays the programs current memory Usage. 
+            //Source:
+            //http://stackoverflow.com/questions/1440720/how-can-i-determine-how-much-memory-my-program-is-currently-occupying
+            //
+            BatteryMonitoring batteryMonitoring = new BatteryMonitoring();
+            lblPercentage.Text = "Battery at " + batteryMonitoring.PercentBatteryLeft.ToString() + "%";
+            if (batteryMonitoring.TimeLeft >= 1)
+            {
+                lblTimeLeft.Text = batteryMonitoring.TimeLeft.ToString();
+            }
+            else
+            {
+                lblTimeLeft.Text = "System could not calculate remaining time. Driver missing";
+            }
+            lblState.Text = batteryMonitoring.Status;
+        }
+
+        private void subscribersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Subscribers sub = new Subscribers();
+            sub.Show();
         }
     }
 }

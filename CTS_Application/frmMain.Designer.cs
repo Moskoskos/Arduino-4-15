@@ -35,7 +35,6 @@
             System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.lblPercentage = new System.Windows.Forms.Label();
-            this.btnSubscribers = new System.Windows.Forms.Button();
             this.lblTimeLeft = new System.Windows.Forms.Label();
             this.lblState = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -46,6 +45,7 @@
             this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblMySql = new System.Windows.Forms.Label();
             this.lblMemory = new System.Windows.Forms.Label();
             this.btnStartAlarm = new System.Windows.Forms.Button();
             this.btnStopAlarm = new System.Windows.Forms.Button();
@@ -68,7 +68,7 @@
             this.tmrAlarm = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.btnSubView = new System.Windows.Forms.Button();
-            this.lblMySql = new System.Windows.Forms.Label();
+            this.subscribersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -87,16 +87,6 @@
             this.lblPercentage.Size = new System.Drawing.Size(62, 13);
             this.lblPercentage.TabIndex = 18;
             this.lblPercentage.Text = "Percentage";
-            // 
-            // btnSubscribers
-            // 
-            this.btnSubscribers.Location = new System.Drawing.Point(240, 56);
-            this.btnSubscribers.Name = "btnSubscribers";
-            this.btnSubscribers.Size = new System.Drawing.Size(75, 23);
-            this.btnSubscribers.TabIndex = 6;
-            this.btnSubscribers.Text = "Subscribers";
-            this.btnSubscribers.UseVisualStyleBackColor = true;
-            this.btnSubscribers.Click += new System.EventHandler(this.btnSubscribers_Click);
             // 
             // lblTimeLeft
             // 
@@ -149,6 +139,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.preferencesToolStripMenuItem,
+            this.subscribersToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -183,6 +174,15 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1168, 40);
             this.panel1.TabIndex = 47;
+            // 
+            // lblMySql
+            // 
+            this.lblMySql.AutoSize = true;
+            this.lblMySql.Location = new System.Drawing.Point(872, 16);
+            this.lblMySql.Name = "lblMySql";
+            this.lblMySql.Size = new System.Drawing.Size(141, 13);
+            this.lblMySql.TabIndex = 58;
+            this.lblMySql.Text = "MySQL Status: Not Running";
             // 
             // lblMemory
             // 
@@ -219,7 +219,6 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 7;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // dateTimePicker2
             // 
@@ -227,7 +226,6 @@
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker2.TabIndex = 8;
-            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // label6
             // 
@@ -382,14 +380,12 @@
             this.btnSubView.UseVisualStyleBackColor = true;
             this.btnSubView.Click += new System.EventHandler(this.btnSubView_Click_1);
             // 
-            // lblMySql
+            // subscribersToolStripMenuItem
             // 
-            this.lblMySql.AutoSize = true;
-            this.lblMySql.Location = new System.Drawing.Point(872, 16);
-            this.lblMySql.Name = "lblMySql";
-            this.lblMySql.Size = new System.Drawing.Size(141, 13);
-            this.lblMySql.TabIndex = 58;
-            this.lblMySql.Text = "MySQL Status: Not Running";
+            this.subscribersToolStripMenuItem.Name = "subscribersToolStripMenuItem";
+            this.subscribersToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
+            this.subscribersToolStripMenuItem.Text = "Subscribers";
+            this.subscribersToolStripMenuItem.Click += new System.EventHandler(this.subscribersToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -407,7 +403,6 @@
             this.Controls.Add(this.chrtTemp);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.lblCV);
-            this.Controls.Add(this.btnSubscribers);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmMain";
@@ -432,7 +427,6 @@
         #endregion
 
         private System.Windows.Forms.Label lblPercentage;
-        private System.Windows.Forms.Button btnSubscribers;
         private System.Windows.Forms.Label lblTimeLeft;
         private System.Windows.Forms.Label lblState;
         private System.Windows.Forms.Label label5;
@@ -466,5 +460,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnSubView;
         private System.Windows.Forms.Label lblMySql;
+        private System.Windows.Forms.ToolStripMenuItem subscribersToolStripMenuItem;
     }
 }
