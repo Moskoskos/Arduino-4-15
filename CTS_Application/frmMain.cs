@@ -47,13 +47,18 @@ namespace CTS_Application
        private void tmrTemp_Tick(object sender, EventArgs e)
        {
 
-           temp_Arduino = arCom.Readtemp();
-           lblCV.Text = Convert.ToString(temp_Arduino) + "°C";
+           //temp_Arduino = arCom.Readtemp();
+           //lblCV.Text = Convert.ToString(temp_Arduino) + "°C";
            if (arCom.comFault == true)
            {
                //tmrTemp.Stop();
                //MessageBox.Show("The program could not find the Arduino. Go to Preferences to change COM port");
-           };
+           }
+           else
+           {
+               temp_Arduino = arCom.Readtemp();
+               lblCV.Text = Convert.ToString(temp_Arduino) + "°C";
+           }
        }
        private void tmrRecToDb_Tick(object sender, EventArgs e)
        {
