@@ -161,11 +161,6 @@ namespace CTS_Application
                 }
 
             }
-        
-           
-            
-        
-
         private void preferencesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmSettings SettingsWindow = new frmSettings();
@@ -212,6 +207,10 @@ namespace CTS_Application
         {
             Subscribers sub = new Subscribers();
             sub.Show();
+        }
+        private void CheckAlarmStatus()
+        {
+
         }
     }
 }
