@@ -18,30 +18,22 @@ namespace CTS_Application
         //Get powerStatus class for monitoring
         PowerStatus power = SystemInformation.PowerStatus;
         
-        string powerPercent;
+        int powerPercent;
         string powerStatus;
         int timeLeft;
 
         public BatteryMonitoring()
         {
 
-         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// 
-        //Viser batterikapasitet i PROSENT
+        }
         public int PercentBatteryLeft
         {
             get
             {
-                return (int)(power.BatteryLifePercent * 100);
+               powerPercent = Convert.ToInt32(power.BatteryLifePercent *100);
+               return powerPercent;
             }
         }
-        /// <summary>
-        /// 
-        /// </summary>
-
         public string Status
         {
             get
@@ -58,30 +50,14 @@ namespace CTS_Application
                return powerStatus;
             }
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        //Viser gjennværende TID.
-        public string TimeLeft
+        public double TimeLeft
         {
              get
             {
                timeLeft = power.BatteryLifeRemaining / 60 ;
-               if (timeLeft >= 1)
-               {
-                   return timeLeft.ToString();
-               }
-               else
-               {
-                    return "System could not calculate remaining time. Driver missing";
-               }
-                 
+                 return timeLeft;
             }
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
      public bool StatusChanged()
      {
          bool powerDisconnected = false ;
@@ -94,12 +70,10 @@ namespace CTS_Application
          if(System.Windows.Forms.SystemInformation.PowerStatus.PowerLineStatus == PowerLineStatus.Online)
          {
              powerDisconnected = false;
-         }        //Source:oiughdfjh
+         }
          return powerDisconnected;
 
-     }
-
-
+     } 
 }
  
 }
