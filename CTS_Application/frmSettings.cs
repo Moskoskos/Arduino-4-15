@@ -79,6 +79,7 @@ namespace CTS_Application
         private void btnSubCom_Click(object sender, EventArgs e)
         {
             dbEdit.EditComPort(1, txtCom.Text);
+            ArduinoCom arCom = new ArduinoCom();
         }
 
 
