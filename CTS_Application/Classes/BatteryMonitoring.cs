@@ -25,7 +25,7 @@ namespace CTS_Application
         public BatteryMonitoring()
         {
 
-         }
+        }
         public int PercentBatteryLeft
         {
             get
