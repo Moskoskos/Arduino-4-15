@@ -29,23 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            this.lblPercentage = new System.Windows.Forms.Label();
-            this.lblTimeLeft = new System.Windows.Forms.Label();
-            this.lblState = new System.Windows.Forms.Label();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label5 = new System.Windows.Forms.Label();
             this.lblCV = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.subscribersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.lblMySql = new System.Windows.Forms.Label();
-            this.lblMemory = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
@@ -64,42 +58,33 @@
             this.ctsDataSetAlarm = new CTS_Application.ctsDataSetAlarm();
             this.alarm_historianTableAdapter = new CTS_Application.ctsDataSetAlarmTableAdapters.alarm_historianTableAdapter();
             this.tmrUpdateGui = new System.Windows.Forms.Timer(this.components);
+            this.lblState = new System.Windows.Forms.Label();
+            this.lblTimeLeft = new System.Windows.Forms.Label();
+            this.lblPercentage = new System.Windows.Forms.Label();
+            this.lblMemory = new System.Windows.Forms.Label();
+            this.lblMySql = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.tslblStateConst = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tslblState = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tslblBatConst = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsprgBat = new System.Windows.Forms.ToolStripProgressBar();
+            this.tslblBat = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tslblDBStatConst = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tslblDBStat = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tslblRAMConst = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsprgRAM = new System.Windows.Forms.ToolStripProgressBar();
+            this.tslblRAM = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chrtTemp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.historianBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetToGrah)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.alarmhistorianBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctsDataSetAlarm)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lblPercentage
-            // 
-            this.lblPercentage.AutoSize = true;
-            this.lblPercentage.Location = new System.Drawing.Point(136, 16);
-            this.lblPercentage.Name = "lblPercentage";
-            this.lblPercentage.Size = new System.Drawing.Size(62, 13);
-            this.lblPercentage.TabIndex = 18;
-            this.lblPercentage.Text = "Percentage";
-            // 
-            // lblTimeLeft
-            // 
-            this.lblTimeLeft.AutoSize = true;
-            this.lblTimeLeft.Location = new System.Drawing.Point(237, 16);
-            this.lblTimeLeft.Name = "lblTimeLeft";
-            this.lblTimeLeft.Size = new System.Drawing.Size(51, 13);
-            this.lblTimeLeft.TabIndex = 20;
-            this.lblTimeLeft.Text = "Time Left";
-            // 
-            // lblState
-            // 
-            this.lblState.AutoSize = true;
-            this.lblState.Location = new System.Drawing.Point(16, 16);
-            this.lblState.Name = "lblState";
-            this.lblState.Size = new System.Drawing.Size(32, 13);
-            this.lblState.TabIndex = 21;
-            this.lblState.Text = "State";
             // 
             // label5
             // 
@@ -152,37 +137,6 @@
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.panel1.Controls.Add(this.lblMySql);
-            this.panel1.Controls.Add(this.lblMemory);
-            this.panel1.Controls.Add(this.lblPercentage);
-            this.panel1.Controls.Add(this.lblTimeLeft);
-            this.panel1.Controls.Add(this.lblState);
-            this.panel1.Location = new System.Drawing.Point(0, 464);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1168, 40);
-            this.panel1.TabIndex = 47;
-            // 
-            // lblMySql
-            // 
-            this.lblMySql.AutoSize = true;
-            this.lblMySql.Location = new System.Drawing.Point(872, 16);
-            this.lblMySql.Name = "lblMySql";
-            this.lblMySql.Size = new System.Drawing.Size(141, 13);
-            this.lblMySql.TabIndex = 58;
-            this.lblMySql.Text = "MySQL Status: Not Running";
-            // 
-            // lblMemory
-            // 
-            this.lblMemory.AutoSize = true;
-            this.lblMemory.Location = new System.Drawing.Point(1044, 16);
-            this.lblMemory.Name = "lblMemory";
-            this.lblMemory.Size = new System.Drawing.Size(78, 13);
-            this.lblMemory.TabIndex = 22;
-            this.lblMemory.Text = "Memory Usage";
-            // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(24, 56);
@@ -210,41 +164,41 @@
             // 
             // chrtTemp
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chrtTemp.ChartAreas.Add(chartArea4);
+            chartArea2.Name = "ChartArea1";
+            this.chrtTemp.ChartAreas.Add(chartArea2);
             this.chrtTemp.DataSource = this.historianBindingSource;
-            legend4.Enabled = false;
-            legend4.Name = "Legend1";
-            this.chrtTemp.Legends.Add(legend4);
+            legend2.Enabled = false;
+            legend2.Name = "Legend1";
+            this.chrtTemp.Legends.Add(legend2);
             this.chrtTemp.Location = new System.Drawing.Point(8, 144);
             this.chrtTemp.Name = "chrtTemp";
-            series10.BorderWidth = 2;
-            series10.ChartArea = "ChartArea1";
-            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series10.Color = System.Drawing.Color.Blue;
-            series10.Legend = "Legend1";
-            series10.Name = "Series1";
-            series10.XValueMember = "datetime_recorded";
-            series10.YValueMembers = "value";
-            series11.BorderWidth = 2;
-            series11.ChartArea = "ChartArea1";
-            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series11.Color = System.Drawing.Color.Orange;
-            series11.Legend = "Legend1";
-            series11.Name = "SpLow";
-            series11.XValueMember = "datetime_recorded";
-            series11.YValueMembers = "setpoint_low";
-            series12.BorderWidth = 2;
-            series12.ChartArea = "ChartArea1";
-            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series12.Color = System.Drawing.Color.Red;
-            series12.Legend = "Legend1";
-            series12.Name = "SpHigh";
-            series12.XValueMember = "datetime_recorded";
-            series12.YValueMembers = "setpoint_high";
-            this.chrtTemp.Series.Add(series10);
-            this.chrtTemp.Series.Add(series11);
-            this.chrtTemp.Series.Add(series12);
+            series4.BorderWidth = 2;
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series4.Color = System.Drawing.Color.Blue;
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            series4.XValueMember = "datetime_recorded";
+            series4.YValueMembers = "value";
+            series5.BorderWidth = 2;
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series5.Color = System.Drawing.Color.Orange;
+            series5.Legend = "Legend1";
+            series5.Name = "SpLow";
+            series5.XValueMember = "datetime_recorded";
+            series5.YValueMembers = "setpoint_low";
+            series6.BorderWidth = 2;
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series6.Color = System.Drawing.Color.Red;
+            series6.Legend = "Legend1";
+            series6.Name = "SpHigh";
+            series6.XValueMember = "datetime_recorded";
+            series6.YValueMembers = "setpoint_high";
+            this.chrtTemp.Series.Add(series4);
+            this.chrtTemp.Series.Add(series5);
+            this.chrtTemp.Series.Add(series6);
             this.chrtTemp.Size = new System.Drawing.Size(1156, 312);
             this.chrtTemp.TabIndex = 30;
             this.chrtTemp.Text = "chart1";
@@ -348,11 +302,147 @@
             this.tmrUpdateGui.Interval = 2000;
             this.tmrUpdateGui.Tick += new System.EventHandler(this.tmrUpdateGui_Tick);
             // 
+            // lblState
+            // 
+            this.lblState.AutoSize = true;
+            this.lblState.Location = new System.Drawing.Point(16, 4);
+            this.lblState.Name = "lblState";
+            this.lblState.Size = new System.Drawing.Size(32, 13);
+            this.lblState.TabIndex = 21;
+            this.lblState.Text = "State";
+            // 
+            // lblTimeLeft
+            // 
+            this.lblTimeLeft.AutoSize = true;
+            this.lblTimeLeft.Location = new System.Drawing.Point(237, 4);
+            this.lblTimeLeft.Name = "lblTimeLeft";
+            this.lblTimeLeft.Size = new System.Drawing.Size(51, 13);
+            this.lblTimeLeft.TabIndex = 20;
+            this.lblTimeLeft.Text = "Time Left";
+            // 
+            // lblPercentage
+            // 
+            this.lblPercentage.AutoSize = true;
+            this.lblPercentage.Location = new System.Drawing.Point(136, 4);
+            this.lblPercentage.Name = "lblPercentage";
+            this.lblPercentage.Size = new System.Drawing.Size(62, 13);
+            this.lblPercentage.TabIndex = 18;
+            this.lblPercentage.Text = "Percentage";
+            // 
+            // lblMemory
+            // 
+            this.lblMemory.AutoSize = true;
+            this.lblMemory.Location = new System.Drawing.Point(1044, 4);
+            this.lblMemory.Name = "lblMemory";
+            this.lblMemory.Size = new System.Drawing.Size(78, 13);
+            this.lblMemory.TabIndex = 22;
+            this.lblMemory.Text = "Memory Usage";
+            // 
+            // lblMySql
+            // 
+            this.lblMySql.AutoSize = true;
+            this.lblMySql.Location = new System.Drawing.Point(872, 4);
+            this.lblMySql.Name = "lblMySql";
+            this.lblMySql.Size = new System.Drawing.Size(141, 13);
+            this.lblMySql.TabIndex = 58;
+            this.lblMySql.Text = "MySQL Status: Not Running";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.panel1.Controls.Add(this.lblMySql);
+            this.panel1.Controls.Add(this.lblMemory);
+            this.panel1.Controls.Add(this.lblPercentage);
+            this.panel1.Controls.Add(this.lblTimeLeft);
+            this.panel1.Controls.Add(this.lblState);
+            this.panel1.Location = new System.Drawing.Point(0, 464);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1119, 40);
+            this.panel1.TabIndex = 47;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tslblStateConst,
+            this.tslblState,
+            this.tslblBatConst,
+            this.tsprgBat,
+            this.tslblBat,
+            this.tslblDBStatConst,
+            this.tslblDBStat,
+            this.tslblRAMConst,
+            this.tsprgRAM,
+            this.tslblRAM});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 482);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1161, 22);
+            this.statusStrip1.TabIndex = 61;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // tslblStateConst
+            // 
+            this.tslblStateConst.Name = "tslblStateConst";
+            this.tslblStateConst.Size = new System.Drawing.Size(36, 17);
+            this.tslblStateConst.Text = "State:";
+            // 
+            // tslblState
+            // 
+            this.tslblState.Name = "tslblState";
+            this.tslblState.Size = new System.Drawing.Size(29, 17);
+            this.tslblState.Text = "N/A";
+            // 
+            // tslblBatConst
+            // 
+            this.tslblBatConst.Name = "tslblBatConst";
+            this.tslblBatConst.Size = new System.Drawing.Size(47, 17);
+            this.tslblBatConst.Text = "Battery:";
+            // 
+            // tsprgBat
+            // 
+            this.tsprgBat.Name = "tsprgBat";
+            this.tsprgBat.Size = new System.Drawing.Size(100, 16);
+            // 
+            // tslblBat
+            // 
+            this.tslblBat.Name = "tslblBat";
+            this.tslblBat.Size = new System.Drawing.Size(29, 17);
+            this.tslblBat.Text = "N/A";
+            // 
+            // tslblDBStatConst
+            // 
+            this.tslblDBStatConst.Name = "tslblDBStatConst";
+            this.tslblDBStatConst.Size = new System.Drawing.Size(92, 17);
+            this.tslblDBStatConst.Text = "Database status:";
+            // 
+            // tslblDBStat
+            // 
+            this.tslblDBStat.Name = "tslblDBStat";
+            this.tslblDBStat.Size = new System.Drawing.Size(29, 17);
+            this.tslblDBStat.Text = "N/A";
+            // 
+            // tslblRAMConst
+            // 
+            this.tslblRAMConst.Name = "tslblRAMConst";
+            this.tslblRAMConst.Size = new System.Drawing.Size(110, 17);
+            this.tslblRAMConst.Text = "Memory utilization:";
+            // 
+            // tsprgRAM
+            // 
+            this.tsprgRAM.Name = "tsprgRAM";
+            this.tsprgRAM.Size = new System.Drawing.Size(100, 16);
+            // 
+            // tslblRAM
+            // 
+            this.tslblRAM.Name = "tslblRAM";
+            this.tslblRAM.Size = new System.Drawing.Size(30, 17);
+            this.tslblRAM.Text = ".../...";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1161, 504);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnSubView);
             this.Controls.Add(this.label3);
@@ -372,14 +462,16 @@
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chrtTemp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.historianBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetToGrah)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.alarmhistorianBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctsDataSetAlarm)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -387,19 +479,14 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lblPercentage;
-        private System.Windows.Forms.Label lblTimeLeft;
-        private System.Windows.Forms.Label lblState;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblCV;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem preferencesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label lblMemory;
         private System.Windows.Forms.DataVisualization.Charting.Chart chrtTemp;
         private DataSetToGrah dataSetToGrah;
         private System.Windows.Forms.BindingSource historianBindingSource;
@@ -407,7 +494,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnSubView;
-        private System.Windows.Forms.Label lblMySql;
         private System.Windows.Forms.ToolStripMenuItem subscribersToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGridView1;
         private ctsDataSetAlarm ctsDataSetAlarm;
@@ -417,5 +503,22 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn datetimerecordedDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private System.Windows.Forms.Timer tmrUpdateGui;
+        private System.Windows.Forms.Label lblState;
+        private System.Windows.Forms.Label lblTimeLeft;
+        private System.Windows.Forms.Label lblPercentage;
+        private System.Windows.Forms.Label lblMemory;
+        private System.Windows.Forms.Label lblMySql;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel tslblStateConst;
+        private System.Windows.Forms.ToolStripStatusLabel tslblState;
+        private System.Windows.Forms.ToolStripStatusLabel tslblBatConst;
+        private System.Windows.Forms.ToolStripProgressBar tsprgBat;
+        private System.Windows.Forms.ToolStripStatusLabel tslblBat;
+        private System.Windows.Forms.ToolStripStatusLabel tslblDBStatConst;
+        private System.Windows.Forms.ToolStripStatusLabel tslblDBStat;
+        private System.Windows.Forms.ToolStripStatusLabel tslblRAMConst;
+        private System.Windows.Forms.ToolStripProgressBar tsprgRAM;
+        private System.Windows.Forms.ToolStripStatusLabel tslblRAM;
     }
 }
