@@ -19,7 +19,7 @@ namespace CTS_Application
         {
             try
             {
-                string port = dbRead.GetComPort(1);
+                string port = "COM" + dbRead.GetComPort(1);
                 mySerialPort.PortName = port;
             }
             catch (Exception)
