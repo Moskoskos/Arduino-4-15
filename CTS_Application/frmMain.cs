@@ -47,10 +47,11 @@ namespace CTS_Application
         //Settings for the timer tmrAlarm
         private void tmrAlarmInit()
         {
-            tmrAlarm.Interval = 200000;
+            tmrAlarm.Interval = 3000;
             tmrAlarm.Elapsed += tmrAlarm_Elapsed;
             tmrAlarm.AutoReset = true;
         }
+
         //What happens after tmrAlarm is started.
         void tmrAlarm_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
@@ -66,7 +67,7 @@ namespace CTS_Application
         }
         private void tmrRecToDbInit()
         {
-            tmrRecToDb.Interval = 2000;
+            tmrRecToDb.Interval = 10000;
             tmrRecToDb.Elapsed +=tmrRecToDb_Elapsed;
             tmrRecToDb.AutoReset = true;
         }
@@ -74,7 +75,7 @@ namespace CTS_Application
         void tmrRecToDb_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
             RecordToDatabase();
-           // Invoke((MethodInvoker)delegate { UpdateGraph(); }); //Denne metoden gjør at programmet henger seg i 0.5s hvert interval.
+            Invoke((MethodInvoker)delegate { UpdateGraph(); }); //Denne metoden gjør at programmet henger seg i 0.5s hvert interval.
 
         }
         public void UpdateGraph()
@@ -84,6 +85,7 @@ namespace CTS_Application
             //Update chart with temp
             chrtTemp.DataBind();
             chrtTemp.Refresh();
+
         }
         public void UpdateAlarmGrid()
         {
@@ -157,12 +159,7 @@ namespace CTS_Application
         }
         private void UpdateTemp()
         {
-            if (arCom.comFault == true)
-            {
-                //tmrTemp.Stop();
-                //MessageBox.Show("The program could not find the Arduino. Go to Preferences to change COM port");
-            }
-            else
+            if (arCom.comFault == false)
             {
                 temp_Arduino = arCom.Readtemp();
                 lblCV.Text = Convert.ToString(temp_Arduino) + "°C";
