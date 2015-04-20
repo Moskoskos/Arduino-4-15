@@ -30,10 +30,6 @@ namespace CTS_Application
             txtSpL.Text = dbRead.GetLowSP(1);
             txtSpH.Text = dbRead.GetHighSp(1);
             txtCom.Text = dbRead.GetComPort(1);
-            if (txtSpH.Text == "" && txtSpL.Text == "" && txtCom.Text == "")
-            {
-                MessageBox.Show("If this is the first time the application has been started there are no values present. Close this window and open it again. \r\r\n  If this is the second time you are opening this window please make sure that the Mysql server is running. Processname = mysqld");
-            }
 
         }
 
@@ -88,12 +84,7 @@ namespace CTS_Application
                 lblChange.Text = "Could not update COM port!";
                 throw;
             }
-           
-            
-
         }
-
-
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {

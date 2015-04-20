@@ -138,28 +138,45 @@ namespace CTS_Application
             }
             return result;
         }
+        
+        /// <summary>
+        /// Metoden GetLatestValue kjører en spørring mot tabellen  og henter siste temperatur-verdien som har blitt skrevet..
+        /// </summary>
+        /// <returns>Returnerer en verdi i form av double.</returns>
         public double GetLatestValue()
         {
             string result = "";
             string query = "SELECT value FROM historian LIMIT 1;";
+            //Sjekker at tilkoblingen er åpen.
             if (this.OpenConnection() == true)
             {
+                //Bruker spørringen ovenfor og tilkoblingstrengen i DbConnect.
                 using(MySqlCommand cmd = new MySqlCommand(query,connection))
                 {
+                    //Kjører spørringen og får en verdi tilbake
                     result = cmd.ExecuteScalar().ToString();
                     CloseConnection();
                 }
             }
             return Convert.ToDouble(result);
+            
+         
         }
+        /// <summary>
+        /// Kjører en spørring mot tabellen settings for å se om den er tom eller ikke.
+        /// </summary>
+        /// <returns>Returnerer en int-verdi.</returns>
         public string CheckIfTableIsEmpty()
         {
             string result = "";
             string query = "Select COUNT(*) FROM settings;" ;
+            //Sjekker at tilkoblingen er åpen.
             if (this.OpenConnection() == true)
             {
+                //Bruker spørringen ovenfor og tilkoblingstrengen i DbConnect.
                 using (MySqlCommand cmd = new MySqlCommand(query,connection))
                 {
+                    //Kjører spørringen og får en verdi tilbake
                     result = cmd.ExecuteScalar().ToString();
                     CloseConnection();
                 }
