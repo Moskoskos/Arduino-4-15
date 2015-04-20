@@ -242,7 +242,7 @@ namespace CTS_Application
                 MessageBox.Show("The program could not find the Arduino. Go to Preferences to change COM port");
             }
         }
-
+        
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             DateTime temp = dateTimePicker1.Value;

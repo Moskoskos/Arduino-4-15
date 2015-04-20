@@ -12,6 +12,7 @@ namespace CTS_Application
         
         /// <summary>
         /// The main entry point for the application.
+        /// Lag til en sjekk som skal sørge for at databasen kjører og at det er innstillinger i tabellen settings.
         /// </summary>
         [STAThread]
         static void Main()
@@ -28,7 +29,7 @@ namespace CTS_Application
                 //Hvis databasen er tilgjengelig, sjekker den om det finnes en rad for settings. Hvis det ikke gjør det, putter den inn default verdier.
                 if (dbRead.CheckIfTableIsEmpty() == "0" )
                 {
-                    dbEdit.ChangeSetPoint(1, -20, 20);
+                    dbEdit.ChangeSetPoint(1, -20, 30);
                     dbEdit.EditComPort(1, "3");
                     Application.Run(new frmMain());
                 }

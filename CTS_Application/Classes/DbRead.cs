@@ -42,7 +42,7 @@ namespace CTS_Application
                 catch (Exception)
                 {
                     //Hvis tabellen for instillinger er tom vil dbEdit bli kalt for å gi den verdier.
-                    dbEdit.ChangeSetPoint(1, -20, 20);
+                    dbEdit.ChangeSetPoint(1, -20, 30);
                     dbEdit.EditComPort(1, "COM3");
                 } 
                 return result;
