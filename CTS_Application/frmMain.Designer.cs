@@ -67,6 +67,11 @@
             this.alarmhistorianBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ctsDataSetAlarm = new CTS_Application.ctsDataSetAlarm();
             this.alarm_historianTableAdapter = new CTS_Application.ctsDataSetAlarmTableAdapters.alarm_historianTableAdapter();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chrtTemp)).BeginInit();
@@ -364,11 +369,66 @@
             // 
             this.alarm_historianTableAdapter.ClearBeforeFill = true;
             // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(240, 27);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(66, 17);
+            this.radioButton1.TabIndex = 61;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Realtime";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(27, 20);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(57, 17);
+            this.radioButton2.TabIndex = 62;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "History";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(420, 109);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 63;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Days",
+            "Hours",
+            "Minutes"});
+            this.comboBox1.Location = new System.Drawing.Point(276, 56);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(54, 21);
+            this.comboBox1.TabIndex = 65;
+            this.comboBox1.Text = "Hours";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(240, 56);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(30, 20);
+            this.textBox2.TabIndex = 66;
+            this.textBox2.Text = "1";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1161, 504);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.radioButton2);
+            this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnSubView);
             this.Controls.Add(this.label3);
@@ -436,5 +496,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn alarmeventidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn datetimerecordedDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }
