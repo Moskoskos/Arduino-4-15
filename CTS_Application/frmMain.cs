@@ -142,8 +142,8 @@ namespace CTS_Application
                 else
                 {
                     //write temp to db
-                    dbWrite.WriteTempToHistorian(temp_Arduino);
-                    
+                 dbWrite.WriteTempToHistorian(temp_Arduino);
+                  
                 }
             }
             catch (Exception ex)

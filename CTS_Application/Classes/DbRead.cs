@@ -166,10 +166,10 @@ namespace CTS_Application
         /// Kjører en spørring mot tabellen settings for å se om den er tom eller ikke.
         /// </summary>
         /// <returns>Returnerer en int-verdi.</returns>
-        public string CheckIfTableIsEmpty()
+        public string CheckIfTableIsEmpty(string tableName)
         {
             string result = "";
-            string query = "Select COUNT(*) FROM settings;" ;
+            string query = "Select COUNT(*) FROM " + tableName + ";" ;
             //Sjekker at tilkoblingen er åpen.
             if (this.OpenConnection() == true)
             {
