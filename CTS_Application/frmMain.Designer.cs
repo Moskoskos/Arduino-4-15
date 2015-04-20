@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label5 = new System.Windows.Forms.Label();
             this.lblCV = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -141,6 +141,7 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 7;
+            this.dateTimePicker1.Value = new System.DateTime(2015, 4, 19, 0, 0, 0, 0);
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // dateTimePicker2
@@ -149,6 +150,7 @@
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker2.TabIndex = 8;
+            this.dateTimePicker2.Value = new System.DateTime(2015, 4, 19, 0, 0, 0, 0);
             this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // label6
@@ -162,41 +164,41 @@
             // 
             // chrtTemp
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chrtTemp.ChartAreas.Add(chartArea2);
+            chartArea1.Name = "ChartArea1";
+            this.chrtTemp.ChartAreas.Add(chartArea1);
             this.chrtTemp.DataSource = this.historianBindingSource;
-            legend2.Enabled = false;
-            legend2.Name = "Legend1";
-            this.chrtTemp.Legends.Add(legend2);
+            legend1.Enabled = false;
+            legend1.Name = "Legend1";
+            this.chrtTemp.Legends.Add(legend1);
             this.chrtTemp.Location = new System.Drawing.Point(8, 144);
             this.chrtTemp.Name = "chrtTemp";
-            series4.BorderWidth = 2;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series4.Color = System.Drawing.Color.Blue;
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            series4.XValueMember = "datetime_recorded";
-            series4.YValueMembers = "value";
-            series5.BorderWidth = 2;
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series5.Color = System.Drawing.Color.Orange;
-            series5.Legend = "Legend1";
-            series5.Name = "SpLow";
-            series5.XValueMember = "datetime_recorded";
-            series5.YValueMembers = "setpoint_low";
-            series6.BorderWidth = 2;
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series6.Color = System.Drawing.Color.Red;
-            series6.Legend = "Legend1";
-            series6.Name = "SpHigh";
-            series6.XValueMember = "datetime_recorded";
-            series6.YValueMembers = "setpoint_high";
-            this.chrtTemp.Series.Add(series4);
-            this.chrtTemp.Series.Add(series5);
-            this.chrtTemp.Series.Add(series6);
+            series1.BorderWidth = 2;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Color = System.Drawing.Color.Blue;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            series1.XValueMember = "datetime_recorded";
+            series1.YValueMembers = "value";
+            series2.BorderWidth = 2;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Color = System.Drawing.Color.Orange;
+            series2.Legend = "Legend1";
+            series2.Name = "SpLow";
+            series2.XValueMember = "datetime_recorded";
+            series2.YValueMembers = "setpoint_low";
+            series3.BorderWidth = 2;
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.Color = System.Drawing.Color.Red;
+            series3.Legend = "Legend1";
+            series3.Name = "SpHigh";
+            series3.XValueMember = "datetime_recorded";
+            series3.YValueMembers = "setpoint_high";
+            this.chrtTemp.Series.Add(series1);
+            this.chrtTemp.Series.Add(series2);
+            this.chrtTemp.Series.Add(series3);
             this.chrtTemp.Size = new System.Drawing.Size(1156, 312);
             this.chrtTemp.TabIndex = 30;
             this.chrtTemp.Text = "chart1";
