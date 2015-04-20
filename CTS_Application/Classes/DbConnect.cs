@@ -40,9 +40,9 @@ namespace CTS_Application
         }
         //open connection to database
         /// <summary>
-        /// 
+        /// Åpner en tilkobling mot databasen ved å benytte informasjonen i konstructoren. Sjekker først om tilkoblingen er åpen, forså å stenge og åpne den igjen.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Returnerer BOOL</returns>
         public bool OpenConnection()
         {
             try
@@ -74,9 +74,9 @@ namespace CTS_Application
             }
         }
         /// <summary>
-        /// 
+        /// Stenger tilkoblingen til databasen.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Returnerer BOOL.</returns>
         public bool CloseConnection()
         {
             try
