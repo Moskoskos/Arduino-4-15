@@ -157,12 +157,7 @@ namespace CTS_Application
         }
         private void UpdateTemp()
         {
-            if (arCom.comFault == true)
-            {
-                //tmrTemp.Stop();
-                //MessageBox.Show("The program could not find the Arduino. Go to Preferences to change COM port");
-            }
-            else
+            if (arCom.comFault == false)
             {
                 temp_Arduino = arCom.Readtemp();
                 lblCV.Text = Convert.ToString(temp_Arduino) + "°C";
