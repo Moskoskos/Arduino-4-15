@@ -49,7 +49,6 @@
             this.historianTableAdapter = new CTS_Application.DataSetToGrahTableAdapters.historianTableAdapter();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnSubView = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.alarmeventidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.datetimerecordedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,12 +57,6 @@
             this.ctsDataSetAlarm = new CTS_Application.ctsDataSetAlarm();
             this.alarm_historianTableAdapter = new CTS_Application.ctsDataSetAlarmTableAdapters.alarm_historianTableAdapter();
             this.tmrUpdateGui = new System.Windows.Forms.Timer(this.components);
-            this.lblState = new System.Windows.Forms.Label();
-            this.lblTimeLeft = new System.Windows.Forms.Label();
-            this.lblPercentage = new System.Windows.Forms.Label();
-            this.lblMemory = new System.Windows.Forms.Label();
-            this.lblMySql = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tslblStateConst = new System.Windows.Forms.ToolStripStatusLabel();
             this.tslblState = new System.Windows.Forms.ToolStripStatusLabel();
@@ -73,6 +66,11 @@
             this.tslblDBStat = new System.Windows.Forms.ToolStripStatusLabel();
             this.tslblRAMConst = new System.Windows.Forms.ToolStripStatusLabel();
             this.tslblRAM = new System.Windows.Forms.ToolStripStatusLabel();
+            this.rbtnRealtime = new System.Windows.Forms.RadioButton();
+            this.rbtnHistory = new System.Windows.Forms.RadioButton();
+            this.mtxtRealtimeRange = new System.Windows.Forms.MaskedTextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cbRealtimeUnit = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chrtTemp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.historianBindingSource)).BeginInit();
@@ -80,14 +78,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.alarmhistorianBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctsDataSetAlarm)).BeginInit();
-            this.panel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(16, 128);
+            this.label5.Location = new System.Drawing.Point(160, 118);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(0, 13);
             this.label5.TabIndex = 26;
@@ -137,26 +134,24 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(24, 56);
+            this.dateTimePicker1.Location = new System.Drawing.Point(135, 66);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(139, 20);
             this.dateTimePicker1.TabIndex = 7;
-            this.dateTimePicker1.Value = new System.DateTime(2015, 4, 19, 0, 0, 0, 0);
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(24, 112);
+            this.dateTimePicker2.Location = new System.Drawing.Point(135, 111);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker2.Size = new System.Drawing.Size(139, 20);
             this.dateTimePicker2.TabIndex = 8;
-            this.dateTimePicker2.Value = new System.DateTime(2015, 4, 19, 0, 0, 0, 0);
             this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(24, 96);
+            this.label6.Location = new System.Drawing.Point(135, 95);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(52, 13);
             this.label6.TabIndex = 52;
@@ -199,7 +194,7 @@
             this.chrtTemp.Series.Add(series4);
             this.chrtTemp.Series.Add(series5);
             this.chrtTemp.Series.Add(series6);
-            this.chrtTemp.Size = new System.Drawing.Size(1156, 312);
+            this.chrtTemp.Size = new System.Drawing.Size(1156, 335);
             this.chrtTemp.TabIndex = 30;
             this.chrtTemp.Text = "chart1";
             // 
@@ -230,21 +225,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 40);
+            this.label1.Location = new System.Drawing.Point(135, 50);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 51;
             this.label1.Text = "Start Date";
-            // 
-            // btnSubView
-            // 
-            this.btnSubView.Location = new System.Drawing.Point(240, 109);
-            this.btnSubView.Name = "btnSubView";
-            this.btnSubView.Size = new System.Drawing.Size(75, 23);
-            this.btnSubView.TabIndex = 59;
-            this.btnSubView.Text = "Submit View";
-            this.btnSubView.UseVisualStyleBackColor = true;
-            this.btnSubView.Click += new System.EventHandler(this.btnSubView_Click_1);
             // 
             // dataGridView1
             // 
@@ -301,64 +286,6 @@
             // 
             this.tmrUpdateGui.Interval = 2000;
             this.tmrUpdateGui.Tick += new System.EventHandler(this.tmrUpdateGui_Tick);
-            // 
-            // lblState
-            // 
-            this.lblState.AutoSize = true;
-            this.lblState.Location = new System.Drawing.Point(16, 4);
-            this.lblState.Name = "lblState";
-            this.lblState.Size = new System.Drawing.Size(32, 13);
-            this.lblState.TabIndex = 21;
-            this.lblState.Text = "State";
-            // 
-            // lblTimeLeft
-            // 
-            this.lblTimeLeft.AutoSize = true;
-            this.lblTimeLeft.Location = new System.Drawing.Point(237, 4);
-            this.lblTimeLeft.Name = "lblTimeLeft";
-            this.lblTimeLeft.Size = new System.Drawing.Size(51, 13);
-            this.lblTimeLeft.TabIndex = 20;
-            this.lblTimeLeft.Text = "Time Left";
-            // 
-            // lblPercentage
-            // 
-            this.lblPercentage.AutoSize = true;
-            this.lblPercentage.Location = new System.Drawing.Point(136, 4);
-            this.lblPercentage.Name = "lblPercentage";
-            this.lblPercentage.Size = new System.Drawing.Size(62, 13);
-            this.lblPercentage.TabIndex = 18;
-            this.lblPercentage.Text = "Percentage";
-            // 
-            // lblMemory
-            // 
-            this.lblMemory.AutoSize = true;
-            this.lblMemory.Location = new System.Drawing.Point(1044, 4);
-            this.lblMemory.Name = "lblMemory";
-            this.lblMemory.Size = new System.Drawing.Size(78, 13);
-            this.lblMemory.TabIndex = 22;
-            this.lblMemory.Text = "Memory Usage";
-            // 
-            // lblMySql
-            // 
-            this.lblMySql.AutoSize = true;
-            this.lblMySql.Location = new System.Drawing.Point(872, 4);
-            this.lblMySql.Name = "lblMySql";
-            this.lblMySql.Size = new System.Drawing.Size(141, 13);
-            this.lblMySql.TabIndex = 58;
-            this.lblMySql.Text = "MySQL Status: Not Running";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.panel1.Controls.Add(this.lblMySql);
-            this.panel1.Controls.Add(this.lblMemory);
-            this.panel1.Controls.Add(this.lblPercentage);
-            this.panel1.Controls.Add(this.lblTimeLeft);
-            this.panel1.Controls.Add(this.lblState);
-            this.panel1.Location = new System.Drawing.Point(0, 464);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1119, 40);
-            this.panel1.TabIndex = 47;
             // 
             // statusStrip1
             // 
@@ -427,29 +354,82 @@
             this.tslblRAM.Size = new System.Drawing.Size(16, 17);
             this.tslblRAM.Text = "...";
             // 
+            // rbtnRealtime
+            // 
+            this.rbtnRealtime.AutoSize = true;
+            this.rbtnRealtime.Checked = true;
+            this.rbtnRealtime.Location = new System.Drawing.Point(12, 27);
+            this.rbtnRealtime.Name = "rbtnRealtime";
+            this.rbtnRealtime.Size = new System.Drawing.Size(66, 17);
+            this.rbtnRealtime.TabIndex = 62;
+            this.rbtnRealtime.TabStop = true;
+            this.rbtnRealtime.Text = "Realtime";
+            this.rbtnRealtime.UseVisualStyleBackColor = true;
+            // 
+            // rbtnHistory
+            // 
+            this.rbtnHistory.AutoSize = true;
+            this.rbtnHistory.Location = new System.Drawing.Point(135, 27);
+            this.rbtnHistory.Name = "rbtnHistory";
+            this.rbtnHistory.Size = new System.Drawing.Size(57, 17);
+            this.rbtnHistory.TabIndex = 63;
+            this.rbtnHistory.Text = "History";
+            this.rbtnHistory.UseVisualStyleBackColor = true;
+            // 
+            // mtxtRealtimeRange
+            // 
+            this.mtxtRealtimeRange.Location = new System.Drawing.Point(15, 66);
+            this.mtxtRealtimeRange.Name = "mtxtRealtimeRange";
+            this.mtxtRealtimeRange.Size = new System.Drawing.Size(39, 20);
+            this.mtxtRealtimeRange.TabIndex = 64;
+            this.mtxtRealtimeRange.Text = "12";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 50);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(39, 13);
+            this.label2.TabIndex = 65;
+            this.label2.Text = "Range";
+            // 
+            // cbRealtimeUnit
+            // 
+            this.cbRealtimeUnit.FormattingEnabled = true;
+            this.cbRealtimeUnit.Items.AddRange(new object[] {
+            "Hours",
+            "Days"});
+            this.cbRealtimeUnit.Location = new System.Drawing.Point(57, 66);
+            this.cbRealtimeUnit.Name = "cbRealtimeUnit";
+            this.cbRealtimeUnit.Size = new System.Drawing.Size(72, 21);
+            this.cbRealtimeUnit.TabIndex = 66;
+            this.cbRealtimeUnit.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1161, 504);
+            this.Controls.Add(this.cbRealtimeUnit);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.mtxtRealtimeRange);
+            this.Controls.Add(this.rbtnHistory);
+            this.Controls.Add(this.rbtnRealtime);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.btnSubView);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.chrtTemp);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.lblCV);
             this.Controls.Add(this.menuStrip1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cabin Temperature System";
+            this.Text = "z";
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -459,8 +439,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.alarmhistorianBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctsDataSetAlarm)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -484,7 +462,6 @@
         private DataSetToGrahTableAdapters.historianTableAdapter historianTableAdapter;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnSubView;
         private System.Windows.Forms.ToolStripMenuItem subscribersToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGridView1;
         private ctsDataSetAlarm ctsDataSetAlarm;
@@ -494,12 +471,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn datetimerecordedDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private System.Windows.Forms.Timer tmrUpdateGui;
-        private System.Windows.Forms.Label lblState;
-        private System.Windows.Forms.Label lblTimeLeft;
-        private System.Windows.Forms.Label lblPercentage;
-        private System.Windows.Forms.Label lblMemory;
-        private System.Windows.Forms.Label lblMySql;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel tslblStateConst;
         private System.Windows.Forms.ToolStripStatusLabel tslblState;
@@ -509,5 +480,10 @@
         private System.Windows.Forms.ToolStripStatusLabel tslblDBStat;
         private System.Windows.Forms.ToolStripStatusLabel tslblRAMConst;
         private System.Windows.Forms.ToolStripStatusLabel tslblRAM;
+        private System.Windows.Forms.RadioButton rbtnRealtime;
+        private System.Windows.Forms.RadioButton rbtnHistory;
+        private System.Windows.Forms.MaskedTextBox mtxtRealtimeRange;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cbRealtimeUnit;
     }
 }

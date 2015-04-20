@@ -33,6 +33,7 @@ namespace CTS_Application
         {
             InitializeComponent();
            tmrUpdateGui.Start();
+           cbRealtimeUnit.SelectedIndex = 1;
            tmrAlarmInit();
            tmrAlarm.Start();
            tmrRecToDbInit();
@@ -270,6 +271,11 @@ namespace CTS_Application
             {
                 chrtTemp.ChartAreas[0].AxisX.Maximum = temp2.ToOADate();
             }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
 
 
