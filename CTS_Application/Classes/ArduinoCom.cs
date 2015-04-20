@@ -19,7 +19,7 @@ namespace CTS_Application
         {
             try
             {
-                string port = "COM" + dbRead.GetComPort(1);
+                string port = "COM" + dbRead.GetComPort(1);//leser comport fra database
                 mySerialPort.PortName = port;
             }
             catch (Exception)
@@ -28,7 +28,7 @@ namespace CTS_Application
             } 
         }
         /// <summary>
-        /// Metode som leser verdi fra comport, ganger med 0,0318 for å få temp
+        /// Metode som leser verdi fra comport, ganger med 0,0318 for å få temp, setter comFault true ved feil
         /// </summary>
         /// <returns>Returnerer temperatur</returns>
         public double Readtemp()
@@ -54,14 +54,5 @@ namespace CTS_Application
             }
             return Math.Round(tempC, 2);
         }
-        /// <summary>
-        /// Metode som
-        /// </summary>
-        /// <returns></returns>
-        //public bool ComFault()
-        //{
-        //    bool fault = comFault;
-        //    return fault;
-        //} 
     }
 }
