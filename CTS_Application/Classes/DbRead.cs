@@ -152,6 +152,20 @@ namespace CTS_Application
             }
             return Convert.ToDouble(result);
         }
+        public string CheckIfTableIsEmpty()
+        {
+            string result = "";
+            string query = "Select COUNT(*) FROM settings;" ;
+            if (this.OpenConnection() == true)
+            {
+                using (MySqlCommand cmd = new MySqlCommand(query,connection))
+                {
+                    result = cmd.ExecuteScalar().ToString();
+                    CloseConnection();
+                }
+            }
+            return result;
+        }
 
     }
   }

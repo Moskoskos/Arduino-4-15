@@ -8,6 +8,7 @@ namespace CTS_Application
 {
     static class Program
     {
+        
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -16,7 +17,20 @@ namespace CTS_Application
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);        //Source:oiughdfjh
-            Application.Run(new frmMain());
+            DbRead dbRead = new DbRead();
+            DbEdit dbEdit = new DbEdit();
+            if (dbRead.CheckIfTableIsEmpty() == "0" )
+            {
+                dbEdit.ChangeSetPoint(1, -20, 20);
+                dbEdit.EditComPort(1, "3");
+                Application.Run(new frmMain());
+            }
+            
+            else
+            {
+                Application.Run(new frmMain());
+            }
+            
         }
    }
 }

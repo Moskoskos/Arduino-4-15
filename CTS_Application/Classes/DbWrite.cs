@@ -19,6 +19,7 @@ namespace CTS_Application
     class DbWrite : DbConnect
     {
         DbRead dbRead = new DbRead();
+        double dbValue = 0;
         
         public DbWrite() 
         {
@@ -71,15 +72,15 @@ namespace CTS_Application
         /// <param name="valueIn">Temperaturverdien.</param>
         public void WriteTempToHistorian(double valueIn)
         {
-            double dbtemp = dbRead.GetLatestValue();
+            
             //
             //Source:
             //http://stackoverflow.com/questions/19527554/inserting-values-into-mysql-database-from-c-sharp-application-text-box
             {
                 try
                 {
-                    if (valueIn >= dbtemp + 0.1 || valueIn <= dbtemp - 0.1) //For å unngå duplicate data.
-                    {
+                   if (valueIn >= dbValue + 0.1 || valueIn <= dbValue - 0.1) //For å unngå duplicate data.
+                   {
                         string query = "INSERT INTO historian(value)VALUES(@value);";
                         //Sjekker at tilkoblingen er åpen.
                         if (this.OpenConnection() == true)
@@ -95,6 +96,7 @@ namespace CTS_Application
                             }
                         }
                     }
+                   dbValue = dbRead.GetLatestValue();
                    
                 }
                 catch (MySqlException ex)

@@ -39,6 +39,7 @@
             this.txtSpL = new System.Windows.Forms.TextBox();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
+            this.lblChange = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnDelRec
@@ -141,11 +142,21 @@
             this.label7.TabIndex = 49;
             this.label7.Text = "Setpoint Low";
             // 
+            // lblChange
+            // 
+            this.lblChange.AutoSize = true;
+            this.lblChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblChange.Location = new System.Drawing.Point(8, 208);
+            this.lblChange.Name = "lblChange";
+            this.lblChange.Size = new System.Drawing.Size(0, 17);
+            this.lblChange.TabIndex = 51;
+            // 
             // frmSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(306, 218);
+            this.ClientSize = new System.Drawing.Size(306, 233);
+            this.Controls.Add(this.lblChange);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtSpH);
             this.Controls.Add(this.txtSpL);
@@ -179,5 +190,6 @@
         private System.Windows.Forms.TextBox txtSpL;
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblChange;
     }
 }

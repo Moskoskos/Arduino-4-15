@@ -78,8 +78,19 @@ namespace CTS_Application
 
         private void btnSubCom_Click(object sender, EventArgs e)
         {
-            dbEdit.EditComPort(1, txtCom.Text);
-            ArduinoCom arCom = new ArduinoCom();
+            try
+            {
+                dbEdit.EditComPort(1, txtCom.Text);
+                lblChange.Text = "COM updated!";
+            }
+            catch (Exception)
+            {
+                lblChange.Text = "Could not update COM port!";
+                throw;
+            }
+           
+            
+
         }
 
 
@@ -91,9 +102,11 @@ namespace CTS_Application
                 int setPointLow = Convert.ToInt32(txtSpL.Text);
                 int setPointHigh = Convert.ToInt32(txtSpH.Text);
                 dbEdit.ChangeSetPoint(1, setPointLow, setPointHigh);
+                lblChange.Text = "Setpoint(s) updated!";
             }
             catch (Exception ex)
             {
+                lblChange.Text = "Could not update!";
                 MessageBox.Show(ex.Message);
             }
         }

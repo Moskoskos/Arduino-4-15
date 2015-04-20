@@ -171,7 +171,11 @@ namespace CTS_Application
             BatteryMonitoring batteryMonitoring = new BatteryMonitoring();
             tslblBat.Text = batteryMonitoring.PercentBatteryLeft.ToString() +"%";
             //To disable animation, decrement progress bar.
-            tsprgBat.Value = batteryMonitoring.PercentBatteryLeft+1;
+            if (batteryMonitoring.PercentBatteryLeft < tsprgBat.Maximum)
+            {
+                tsprgBat.Value = batteryMonitoring.PercentBatteryLeft + 1;
+            }
+            
             tsprgBat.Value = batteryMonitoring.PercentBatteryLeft;
 
             tslblState.Text = batteryMonitoring.Status;
