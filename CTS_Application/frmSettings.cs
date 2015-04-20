@@ -12,13 +12,29 @@ namespace CTS_Application
 {
     public partial class frmSettings : Form
     {
-        //The DbConnect class cannot be declared globaly. If one want to delete several tables it will only work if its declared in each event.
-        
+        DbEdit dbEdit = new DbEdit();
+        DbRead dbRead = new DbRead();
+        DbWrite dbWrite = new DbWrite();
         
         public frmSettings()
-        {
+        {        
             InitializeComponent();
-            DbConnect cmd = new DbConnect();
+            FillTextBoxes();
+        }
+        private void frmSettings_Load(object sender, EventArgs e)
+        {
+
+        }
+        private void FillTextBoxes()
+        {
+            txtSpL.Text = dbRead.GetLowSP(1);
+            txtSpH.Text = dbRead.GetHighSp(1);
+            txtCom.Text = dbRead.GetComPort(1);
+            if (txtSpH.Text == "" && txtSpL.Text == "" && txtCom.Text == "")
+            {
+                MessageBox.Show("If this is the first time the application has been started there are no values present. Close this window and open it again. \r\r\n  If this is the second time you are opening this window please make sure that the Mysql server is running. Processname = mysqld");
+            }
+
         }
 
         private void btnDelRec_Click(object sender, EventArgs e)
@@ -26,8 +42,7 @@ namespace CTS_Application
             DialogResult dialogResult = MessageBox.Show("This will delete all temperature recordings", "WARNING!", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                DbConnect con = new DbConnect();
-                con.DeleteRecordsInTable("historian");
+                dbEdit.DeleteRecordsInTable("historian");
             }
             else if (dialogResult == DialogResult.No)
             {
@@ -40,8 +55,7 @@ namespace CTS_Application
             DialogResult dialogResult = MessageBox.Show("This will delete all alarm recordings", "WARNING!", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                DbConnect con = new DbConnect();
-                con.DeleteRecordsInTable("alarm_historian");
+                dbEdit.DeleteRecordsInTable("alarm_historian");
             }
             else if (dialogResult == DialogResult.No)
             {
@@ -54,8 +68,7 @@ namespace CTS_Application
             DialogResult dialogResult = MessageBox.Show("This will delete all subscribers", "WARNING!", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                DbConnect con = new DbConnect();
-                con.DeleteRecordsInTable("users");
+                dbEdit.DeleteRecordsInTable("users");
             }
             else if (dialogResult == DialogResult.No)
             {
@@ -63,9 +76,39 @@ namespace CTS_Application
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnSubCom_Click(object sender, EventArgs e)
         {
+            try
+            {
+                dbEdit.EditComPort(1, txtCom.Text);
+                lblChange.Text = "COM updated!";
+            }
+            catch (Exception)
+            {
+                lblChange.Text = "Could not update COM port!";
+                throw;
+            }
+           
+            
 
+        }
+
+
+
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int setPointLow = Convert.ToInt32(txtSpL.Text);
+                int setPointHigh = Convert.ToInt32(txtSpH.Text);
+                dbEdit.ChangeSetPoint(1, setPointLow, setPointHigh);
+                lblChange.Text = "Setpoint(s) updated!";
+            }
+            catch (Exception ex)
+            {
+                lblChange.Text = "Could not update!";
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

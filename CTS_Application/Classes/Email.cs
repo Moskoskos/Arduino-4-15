@@ -20,42 +20,43 @@ namespace CTS_Application
        private SmtpClient client;
        private MailMessage message;
        private string from;
+
         public Email()
         {
             //from = "arduino.ia2.4.15@gmail.com" PW=Arduino4.15;
             from = "prebenarduino@gmail.com";
             client = new SmtpClient("smtp.gmail.com", 587);
-            client.Credentials = new System.Net.NetworkCredential(from, "arduino123");
+            client.Credentials = new System.Net.NetworkCredential(from, "arduino123");       
             client.EnableSsl = true;
          }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="body1"></param>
         public void SendMessage(string body1)
         {
-            DbConnect con = new DbConnect();
+            DbRead dbRead = new DbRead();
             string body = body1;
             string subject1 = "Alarm fra CTS";
             //Then get the number of rows in the table to iterate IDs
-            int numOfRows = Convert.ToInt32(con.GetTotalRow());
+            int numOfRows = Convert.ToInt32(dbRead.GetTotalRow());
             //For each unique id in the table, send email.
             for (int i = 1; i <= numOfRows; i++)
             {
                 try
                 {
-                    string userId = con.GetEmail(i);
+                    string userId = dbRead.GetEmail(i);
                     message = new MailMessage(from, userId, subject1, body);
                     client.Send(message);
 
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.Message + "HEYHEY ");
                 }
                 
             }
-            
-            
         }
-             
     }
        
 

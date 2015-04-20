@@ -8,15 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-//Almost complete.
-//Missing:
-//Ability to delete entries in database
-//Ability to modify entries in database
-//
-//
-//
-//
-//YO YO YO!
 
 
 
@@ -27,11 +18,13 @@ namespace CTS_Application
         public Subscribers()
         {
             InitializeComponent();
-           // int num = dataGridView1.Rows.Count;
-        
-           
         }
         //Submits the input in the textboxes to the SQL database.
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtSubmit_Click(object sender, EventArgs e)
         {
             string username;
@@ -47,16 +40,11 @@ namespace CTS_Application
                 number = Convert.ToInt32(txtNumber.Text);
                 email = txtMail.Text;
              
-                //When using dbConnect.OpenConnection and dbConnect.CloseConnection it did not write to database. Wh?
-                DbConnect dbConnect = new DbConnect();
-                //Inserts the desierd input into the DbConnect method
-                dbConnect.InsertIntoUsers(username, firstname, lastname, email, number);
-                //After the query is ran and the connection is closed, retrieve rows and update the table.
+                DbWrite dbWrite = new DbWrite();
+                dbWrite.InsertIntoUsers(username, firstname, lastname, email, number);
                 usersTableAdapter.Fill(ctsDataSetUsers.users);
                 lblMessage.Text = "Transfer Succesful";
                 lblMessage.ForeColor = Color.Green;
-                
-                
             }
             catch (Exception ex)
             {
@@ -65,13 +53,14 @@ namespace CTS_Application
                 MessageBox.Show("There is a missmatch in your input\r\r\nCheck that your input is correct (telephonenumbers only consisting of digits)\r\r\n" + ex.Message);
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmSub_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'ctsDataSetUsers.users' table. You can move, or remove it, as needed.
-            this.usersTableAdapter.Fill(this.ctsDataSetUsers.users);
-            // TODO: This line of code loads data into the 'ctsDataSet.users' table. You can move, or remove it, as needed.
-            // The data comes from the connection created to the MySql Server.
-            //this.Location = new Point(1287, 0);
             this.usersTableAdapter.Fill(this.ctsDataSetUsers.users);
         }
         private void btnRefresh_Click(object sender, EventArgs e)
@@ -80,7 +69,10 @@ namespace CTS_Application
             lblMessage.Text = "Table Updated";
             lblMessage.ForeColor = Color.Green;
         }
-        //THIS U NEED TO LEARN
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="conConCol"></param>
         private void ClearTextBoxes(Control.ControlCollection conConCol)
         { 
             //Source:

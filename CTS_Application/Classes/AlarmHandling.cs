@@ -4,32 +4,41 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-//test
+
 namespace CTS_Application
 {
-    class AlarmHandling//klasse for temperaturalarmer
+    class AlarmHandling
     {
-
+        
         //private instansvariabler brukt i raiseAlarm metode
         private bool lowAlarm = false;
         private bool highAlarm = false;
         private bool currentLowAlarm = false;
         private bool currentHighAlarm = false;
         private bool outOfRangeAlarm = false;
+        private bool currentOutOfRange = false;
         private bool batteryAlarm = false;
         private bool currentBatteryAlarm = false;
         private bool comAlarm = false;
+        private bool currentComAlarm = false;
+
 
         public AlarmHandling()
         {       }
-        public bool LowTempAlarm(double sp, double pv) // returnerer true, hvis alarm. Temperatur må gå tilbake til "normal" før man får ny alarm.
+        /// <summary>
+        /// returnerer true hvis temperatur er under setpunkt
+        /// </summary>
+        /// <param name="sp">Setpunkt for lav temperaturalarm</param>
+        /// <param name="pv">Temperatur</param>
+        /// <returns>lav temperatur alarm</returns>
+        public bool LowTempAlarm(double sp, double pv)
         {            
-                if ((pv < sp) && (currentLowAlarm == false))//pv lavere enn sp og ikke alarmstatus = ny alarm
+                if ((pv < sp) && (currentLowAlarm == false))
                 {
                     lowAlarm = true;
                     currentLowAlarm = true;
                 }
-                else if ((currentLowAlarm == true) && (pv > sp))//pv går over sp igjen etter alarmstatus = vi kan få ny alarm
+                else if ((currentLowAlarm == true) && (pv > (sp + 1.0)))
                 {
                     currentLowAlarm = false;
                 }
@@ -40,14 +49,20 @@ namespace CTS_Application
             
             return lowAlarm;
         }
-            public bool HighTempAlarm(double sp, double pv)//høy alarm
+        /// <summary>
+        /// returnerer true hvis temperatur er over setpunkt
+        /// </summary>
+        /// <param name="sp">Setpunkt for høy temperaturalarm</param>
+        /// <param name="pv">Temperatur</param>
+        /// <returns>høy temperatur alarm</returns>
+            public bool HighTempAlarm(double sp, double pv)
             {
-                if ((pv > sp) && (currentHighAlarm == false))//pv høyere enn sp og ikke alarmstatus = ny alarm
+                if ((pv > sp) && (currentHighAlarm == false))
                 {
                     highAlarm = true;
                     currentHighAlarm = true;
                 }
-                else if ((currentHighAlarm == true) && (pv < sp))//pv går under sp igjen etter alarmstatus = vi kan få ny alarm
+                else if ((currentHighAlarm == true) && (pv < (sp - 1.0)))
                 {
                     currentHighAlarm = false;
                 }
@@ -57,16 +72,22 @@ namespace CTS_Application
                 }
                 return highAlarm;
              }
-        //gir alarm hvis temperaturverdi er utenfor gitte verdier
+        
+        /// <summary>
+        /// gir alarm hvis temperaturverdi er utenfor gitte verdier
+        /// </summary>
+        /// <param name="pv">Temperatur</param>
+        /// <returns>Temperatur out of range alarm</returns>
             public bool TempOutOfRange(double pv)
             {
-                if (pv < -100)
+                if (((pv < -100) || (pv > 100)) && (currentOutOfRange == false))
                 {
                     outOfRangeAlarm = true;
+                    currentOutOfRange = true;
                 }
-                else if (pv > 100)
+                else if ((currentOutOfRange == true) && ((pv > -100) && (pv < 100)))
                 {
-                    outOfRangeAlarm = true;
+                    currentOutOfRange = false;
                 }
                 else
                 {
@@ -74,7 +95,11 @@ namespace CTS_Application
                 }
                 return outOfRangeAlarm;
             }
-        //gir alarm hvis nettspenning forsvinner
+        /// <summary>
+        /// Gir alarm hvis nettspenning forsvinner
+        /// </summary>
+        /// <param name="powerstatus">Status på strømtilførsel fra Battery monitoring klasse</param>
+        /// <returns>Alarm hvis Strømtilførsel blir frakoblet</returns>
             public bool BatteryAlarm(bool powerstatus)
             {
                 if ((powerstatus == true) && (currentBatteryAlarm == false))
@@ -92,20 +117,28 @@ namespace CTS_Application
                 }
                 return batteryAlarm;
             }
-        //gir alarm hvis com feil
+        /// <summary>
+        /// gir alarm hvis com feil
+        /// </summary>
+        /// <param name="comStatus">Status på tilkobling mellom Arduino og COM port fra ArduinoCom klasse</param>
+        /// <returns>Alarm hvis Arduino blir frakoblet</returns>
             public bool ArduComAlarm(bool comStatus)
             {
-                if (comStatus == true)
+                if ((comStatus == true) && (currentComAlarm == false))
                 {
                     comAlarm = true;
+                    currentComAlarm = true;
                 }
-                else if (comStatus == false)
+                else if ((comStatus == false) && (currentComAlarm == true))
+                {
+                    currentComAlarm = false;
+                }
+                else
                 {
                     comAlarm = false;
                 }
                 return comAlarm;
             }
-        //Lag en metode som skriver feilmeldingen og verdi til database. Jeg lager databasespørringen for deg. <3 :*
      }
     
 }

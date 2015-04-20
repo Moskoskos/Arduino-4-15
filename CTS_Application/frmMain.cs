@@ -9,168 +9,194 @@ using Microsoft.Win32;
 using System.Media;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Diagnostics;
 
 
 namespace CTS_Application
 {
     public partial class frmMain : Form
     {
-        double temp_Arduino = 0.0;
-        double days = 0.0;
+        double temp_Arduino = 0.0;        
+       
         DbConnect con = new DbConnect();
-        ArduinoCom arCom = new ArduinoCom("COM3");
+        DbWrite dbWrite = new DbWrite();
+        DbRead dbRead = new DbRead();
+        DbEdit dbEdit = new DbEdit();
+        ArduinoCom arCom = new ArduinoCom();
         AlarmHandling alarm = new AlarmHandling();
         Email mail = new Email();
         BatteryMonitoring batteryMonitoring = new BatteryMonitoring(); //Declare batterymonitoring class
+        System.Timers.Timer tmrAlarm = new System.Timers.Timer(); //Timer to monitor alarm events.
+        System.Timers.Timer tmrRecToDb = new System.Timers.Timer(); //Timer to record temperature recordings to database.
        
         public frmMain()
         {
             InitializeComponent();
-            Status();
-            tmrStatus.Start();
-            tmrRecToDb.Start();
-            tmrSimTemp.Start();
-           // tmrAlarm.Start();
-            // See btnSim_tick for reasoning. Like...Things why we do the things we do. 
-            
+           tmrUpdateGui.Start();
+           tmrAlarmInit();
+           tmrAlarm.Start();
+           tmrRecToDbInit();
+           tmrRecToDb.Start();
         }
+
         private void frmMain_Load(object sender, EventArgs e)
         {
-           
+            UpdateGraph();
+            UpdateAlarmGrid();           
+        }
+        //Settings for the timer tmrAlarm
+        private void tmrAlarmInit()
+        {
+            tmrAlarm.Interval = 3000;
+            tmrAlarm.Elapsed += tmrAlarm_Elapsed;
+            tmrAlarm.AutoReset = true;
+        }
+
+        //What happens after tmrAlarm is started.
+        void tmrAlarm_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            CheckAlarmStatus();
+        }
+    
+        private void tmrUpdateGui_Tick(object sender, EventArgs e)
+        {
+            BatteryRemaining();
+            MemoryUsage();
+            MySqlStatus();
+            UpdateTemp();
+        }
+        private void tmrRecToDbInit()
+        {
+            tmrRecToDb.Interval = 4000;
+            tmrRecToDb.Elapsed +=tmrRecToDb_Elapsed;
+            tmrRecToDb.AutoReset = true;
+        }
+
+        void tmrRecToDb_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            RecordToDatabase();
+            Invoke((MethodInvoker)delegate { UpdateGraph(); }); //Denne metoden gjør at programmet henger seg i 0.5s hvert interval.
+
+        }
+        public void UpdateGraph()
+        {
             // TODO: This line of code loads data into the 'dataSetToGrah.historian' table. You can move, or remove it, as needed.
             this.historianTableAdapter.Fill(this.dataSetToGrah.historian);
+            //Update chart with temp
+            chrtTemp.DataBind();
+            chrtTemp.Refresh();
+
+        }
+        public void UpdateAlarmGrid()
+        {
             // TODO: This line of code loads data into the 'dataSetAlarmEvents.alarm_historian' table. You can move, or remove it, as needed.
-            UpdateAlarmGrid();           
-            //Source:
-            //http://stackoverflow.com/questions/12033448/how-to-connect-two-different-windows-forms-keeping-both-open
-            //Where to place the window at startup
-            this.Location = new Point(0, 0);
-           txtSpL.Text = con.GetLowSP(1);
-           txtSpH.Text = con.GetHighSp(1);
-            
-           
+            this.alarm_historianTableAdapter.Fill(this.ctsDataSetAlarm.alarm_historian);
         }
 
-        //Opens the subscriber window
-        private void btnSubscribers_Click(object sender, EventArgs e)
+        private void btnSubView_Click_1(object sender, EventArgs e)
         {
-            Subscribers sub = new Subscribers();
-            sub.Show();
+            DateTime temp = dateTimePicker1.Value;
+            DateTime temp2 = dateTimePicker2.Value;
+         
+                if (temp.ToOADate() > temp2.ToOADate())
+                {
+                    MessageBox.Show("Cannot have a start date later than the end date.");
+                }
+                else
+                {
+                    chrtTemp.ChartAreas[0].AxisX.Minimum = temp.ToOADate();
+                    chrtTemp.ChartAreas[0].AxisX.Maximum = temp2.ToOADate();
+                }
+
+            }
+        private void preferencesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmSettings SettingsWindow = new frmSettings();
+            SettingsWindow.Show();
+        }
+        private void MySqlStatus()
+        {
+            Process[] instance = Process.GetProcessesByName("mysqld");
+            tslblDBStat.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right; //Right alignment.
+            if (instance.Length != 0)
+            {
+                tslblDBStat.Text = "Running";
+            }
+            else
+            {
+                tslblDBStat.Text = "Stopped";
+            }
         }
 
-       private void tmrSimTemp_Tick(object sender, EventArgs e)
-       {
-           if (arCom.comFault == true)
-           {
-               tmrSimTemp.Stop();
-               MessageBox.Show("\r\r\nThe program could not find the Arduino. Go to Preferences to change COM port");
-           };
-           temp_Arduino = arCom.Readtemp();
-           lblCV.Text = Convert.ToString(temp_Arduino) + "°C";
-           days = days + 2;
-           
-       }
-
-       private void btnSubmit_Click(object sender, EventArgs e)
-       {
-           try
-           {
-               con.WriteToAlarmHistorian(1, "Temperature extended setpoint: High. PV =");
-               int setPointLow = Convert.ToInt32(txtSpL.Text);
-               int setPointHigh = Convert.ToInt32(txtSpH.Text);
-               con.ChangeSetPoint(1, setPointLow, setPointHigh);
-           }
-           catch (Exception ex)
-           {
-               MessageBox.Show(ex.Message);
-           }
-       }
-
-       private void tmrRecToDb_Tick(object sender, EventArgs e)
-       {
-           try
-           {
-               //write temp to db
-               con.WriteTempemperatureToHistorian(temp_Arduino);
-               // Update chart with temp
-               this.historianTableAdapter.Fill(this.dataSetToGrah.historian);
-               chrtTemp.DataBind();
-               chrtTemp.Refresh();
-           }
-           catch (Exception ex)
-           {
-               tmrRecToDb.Stop();
-               MessageBox.Show(ex.Message);
-           }
-       }
-       private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-       {
-           
-           chrtTemp.ChartAreas["Series1"].AxisX.Minimum = 0;
-       }
-       private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
-       {
-          // var temp = dateTimePicker1.Value;
-           //chrtTemp.ChartAreas["Series1"].AxisX.Maximum = temp;
-           //test test
-       }
-
-       private void menuSettings_Click(object sender, EventArgs e)
-       {
-           frmSettings SettingsWindow = new frmSettings();
-           SettingsWindow.Show();
-       }
-
-        private void btnStartSim_Click(object sender, EventArgs e)
+        private void RecordToDatabase()
         {
-            /*
-             * WARNING! WARNING
-             * To prevent mails from firing off like a Palestinian milita during program testing.
-             * REMOVE BEFORE FINAL VERSION
-             */
-            tmrAlarm.Start();
+            try
+            {
+                if (temp_Arduino == -300)
+                {
+                    
+                }
+                else
+                {
+                    //write temp to db
+                    dbWrite.WriteTempToHistorian(temp_Arduino);
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
-
-        private void btnStopSim_Click(object sender, EventArgs e)
+        private void MemoryUsage()
         {
-            /*
-             * WARNING! WARNING
-             * To prevent mails from firing off like a Palestinian milita during program testing.
-             * REMOVE BEFORE FINAL VERSION
-             */
-            tmrAlarm.Stop();
-        }
-
-        private void tmrStatus_Tick(object sender, EventArgs e)
-        {
-            Status();
-        }
-        private void Status()
-        {
-            BatteryMonitoring batteryMonitoring = new BatteryMonitoring();
-            lblPercentage.Text = batteryMonitoring.PercentBatteryLeft.ToString() + "% available";
-            if (batteryMonitoring.TimeLeft >= 1) { lblTimeLeft.Text = batteryMonitoring.TimeLeft.ToString(); }
-            else { lblTimeLeft.Text = "System could not calculate remaining time. Driver missing"; }
-            lblState.Text = batteryMonitoring.Status;
             //Displays the programs current memory Usage. 
             //Source:
             //http://stackoverflow.com/questions/1440720/how-can-i-determine-how-much-memory-my-program-is-currently-occupying
             //
             long memory = System.Diagnostics.Process.GetCurrentProcess().WorkingSet64;
-            if (memory > 1048576) { lblMemory.Text = "Memory usage: " + (memory / 1024 / 1024).ToString() + "MB"; }
-            else { lblMemory.Text = "Memory usage: " + (memory / 1024).ToString() + "KB"; }
+
+            tslblRAM.Text  =(memory / 1024 / 1024).ToString() + "MB"; 
+        }
+        private void UpdateTemp()
+        {
+            if (arCom.comFault == false)
+            {
+                temp_Arduino = arCom.Readtemp();
+                lblCV.Text = Convert.ToString(temp_Arduino) + "°C";
+            }
+        }
+        private void BatteryRemaining()
+        {
+            BatteryMonitoring batteryMonitoring = new BatteryMonitoring();
+            tslblBat.Text = batteryMonitoring.PercentBatteryLeft.ToString() +"%";
+            //To disable animation, decrement progress bar.
+            if (batteryMonitoring.PercentBatteryLeft < tsprgBat.Maximum)
+            {
+                tsprgBat.Value = batteryMonitoring.PercentBatteryLeft + 1;
+            }
+            
+            tsprgBat.Value = batteryMonitoring.PercentBatteryLeft;
+
+            tslblState.Text = batteryMonitoring.Status;
+
         }
 
-        private void tmrAlarm_Tick(object sender, EventArgs e)
+        private void subscribersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            bool highTemp = false;
-            bool lowTemp = false;
-            bool tempOOR = false;
-            bool batAlarm = false;
-            bool arcomAlarm = false;
-            double spH = Convert.ToDouble(con.GetHighSp(1));
-            double spL = Convert.ToDouble(con.GetLowSP(1));
-            double realTemp = arCom.Readtemp();
+            Subscribers sub = new Subscribers();
+            sub.Show();
+        }
+        private void CheckAlarmStatus()
+        {
+            bool highTemp;
+            bool lowTemp;
+            bool tempOOR;
+            bool batAlarm;
+            bool arcomAlarm;
+            double spH = Convert.ToDouble(dbRead.GetHighSp(1));
+            double spL = Convert.ToDouble(dbRead.GetLowSP(1));
+            double realTemp = realTemp = arCom.Readtemp();
 
             highTemp = alarm.HighTempAlarm(spH, realTemp);
             lowTemp = alarm.LowTempAlarm(spL, realTemp);
@@ -181,50 +207,70 @@ namespace CTS_Application
 
             if (highTemp == true)
             {
-                string message = "Temperature extended setpoint: High. Temperature =" + realTemp.ToString();
-                con.WriteToAlarmHistorian(1, message);
-                mail.SendMessage( message);
-                UpdateAlarmGrid();
+                string message = "Temperature extended setpoint: High (" + spH + "°C). Temperature =" + realTemp.ToString() + "°C";
+                dbWrite.WriteToAlarmHistorian(1, message);
+                mail.SendMessage(message);
+                this.Invoke((MethodInvoker)delegate { UpdateAlarmGrid(); });
             }
-            if (lowTemp ==true)
+            if (lowTemp == true)
             {
-                string message = "Temperature extended setpoint: Low. Temperature =" + realTemp.ToString();
-                con.WriteToAlarmHistorian(2, message);
-                mail.SendMessage( message);
-                UpdateAlarmGrid();
+                string message = "Temperature extended setpoint: Low (" + spL + "°C). Temperature =" + realTemp.ToString() + "°C";
+                dbWrite.WriteToAlarmHistorian(2, message);
+                mail.SendMessage(message);
+                this.Invoke((MethodInvoker)delegate { UpdateAlarmGrid(); });
             }
             if (tempOOR == true)
             {
-                string message = "Temperature out of range. Temperature =" + realTemp.ToString();
-                con.WriteToAlarmHistorian(3, message);
-                mail.SendMessage( message);
-                UpdateAlarmGrid();
+                string message = "Temperature out of range. Temperature =" + realTemp.ToString() + "°C";
+                dbWrite.WriteToAlarmHistorian(3, message);
+                mail.SendMessage(message);
+                this.Invoke((MethodInvoker)delegate { UpdateAlarmGrid(); });
             }
             if (batAlarm == true)
             {
                 string message = "Lost powerline. Laptop is running on battery";
-                con.WriteToAlarmHistorian(4, message);
-                mail.SendMessage( message);
-                UpdateAlarmGrid();
+                dbWrite.WriteToAlarmHistorian(4, message);
+                mail.SendMessage(message);
+                this.Invoke((MethodInvoker)delegate { UpdateAlarmGrid(); });
             }
             if (arcomAlarm == true)
             {
                 string message = "Lost Connection to Arduino";
-                con.WriteToAlarmHistorian(5, message);
-                mail.SendMessage( message);
-                UpdateAlarmGrid();
+                dbWrite.WriteToAlarmHistorian(5, message);
+                mail.SendMessage(message);
+                this.Invoke((MethodInvoker)delegate { UpdateAlarmGrid(); });
+                MessageBox.Show("The program could not find the Arduino. Go to Preferences to change COM port");
             }
         }
-        public void UpdateAlarmGrid()
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            this.alarm_historianTableAdapter.Fill(this.dataSetAlarmEvents.alarm_historian);
+            DateTime temp = dateTimePicker1.Value;
+            DateTime temp2 = dateTimePicker2.Value;
+
+            if (temp.ToOADate() > temp2.ToOADate())
+            {
+                MessageBox.Show("Cannot have a start date later than the end date.");
+            }
+            else
+            {
+                chrtTemp.ChartAreas[0].AxisX.Minimum = temp.ToOADate();
+            }
         }
-        public void SendAlarms()
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
         {
-
+            DateTime temp = dateTimePicker1.Value;
+            DateTime temp2 = dateTimePicker2.Value;
+            if (temp.ToOADate() > temp2.ToOADate())
+            {
+                MessageBox.Show("Cannot have a start date later than the end date.");
+            }
+            else
+            {
+                chrtTemp.ChartAreas[0].AxisX.Maximum = temp2.ToOADate();
+            }
         }
-
-
 
 
     }
