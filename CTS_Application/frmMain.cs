@@ -117,13 +117,14 @@ namespace CTS_Application
         private void MySqlStatus()
         {
             Process[] instance = Process.GetProcessesByName("mysqld");
+            tslblDBStat.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right; //Right alignment.
             if (instance.Length != 0)
             {
-                lblMySql.Text = "MySql Status: Running";
+                tslblDBStat.Text = "Running";
             }
             else
             {
-                lblMySql.Text = "MySql Status: Not Running";
+                tslblDBStat.Text = "Stopped";
             }
         }
 
@@ -155,7 +156,7 @@ namespace CTS_Application
             //
             long memory = System.Diagnostics.Process.GetCurrentProcess().WorkingSet64;
 
-            lblMemory.Text = "Memory usage: " + (memory / 1024 / 1024).ToString() + "MB"; 
+            tslblRAM.Text  =(memory / 1024 / 1024).ToString() + "MB"; 
         }
         private void UpdateTemp()
         {
@@ -169,11 +170,12 @@ namespace CTS_Application
         {
             BatteryMonitoring batteryMonitoring = new BatteryMonitoring();
             tslblBat.Text = batteryMonitoring.PercentBatteryLeft.ToString() +"%";
+            //To disable animation, decrement progress bar.
+            tsprgBat.Value = batteryMonitoring.PercentBatteryLeft+1;
             tsprgBat.Value = batteryMonitoring.PercentBatteryLeft;
+
             tslblState.Text = batteryMonitoring.Status;
-            //lblPercentage.Text =  batteryMonitoring.PercentBatteryLeft.ToString();
-            ///lblTimeLeft.Text = batteryMonitoring.TimeLeft;
-            //lblState.Text = batteryMonitoring.Status;
+
         }
 
         private void subscribersToolStripMenuItem_Click(object sender, EventArgs e)

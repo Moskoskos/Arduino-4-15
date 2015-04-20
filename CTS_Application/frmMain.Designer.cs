@@ -67,13 +67,11 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tslblStateConst = new System.Windows.Forms.ToolStripStatusLabel();
             this.tslblState = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tslblBatConst = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsprgBat = new System.Windows.Forms.ToolStripProgressBar();
             this.tslblBat = new System.Windows.Forms.ToolStripStatusLabel();
             this.tslblDBStatConst = new System.Windows.Forms.ToolStripStatusLabel();
             this.tslblDBStat = new System.Windows.Forms.ToolStripStatusLabel();
             this.tslblRAMConst = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tsprgRAM = new System.Windows.Forms.ToolStripProgressBar();
             this.tslblRAM = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chrtTemp)).BeginInit();
@@ -365,13 +363,11 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tslblStateConst,
             this.tslblState,
-            this.tslblBatConst,
             this.tsprgBat,
             this.tslblBat,
             this.tslblDBStatConst,
             this.tslblDBStat,
             this.tslblRAMConst,
-            this.tsprgRAM,
             this.tslblRAM});
             this.statusStrip1.Location = new System.Drawing.Point(0, 482);
             this.statusStrip1.Name = "statusStrip1";
@@ -382,8 +378,8 @@
             // tslblStateConst
             // 
             this.tslblStateConst.Name = "tslblStateConst";
-            this.tslblStateConst.Size = new System.Drawing.Size(36, 17);
-            this.tslblStateConst.Text = "State:";
+            this.tslblStateConst.Size = new System.Drawing.Size(75, 17);
+            this.tslblStateConst.Text = "Battery state:";
             // 
             // tslblState
             // 
@@ -391,27 +387,23 @@
             this.tslblState.Size = new System.Drawing.Size(29, 17);
             this.tslblState.Text = "N/A";
             // 
-            // tslblBatConst
-            // 
-            this.tslblBatConst.Name = "tslblBatConst";
-            this.tslblBatConst.Size = new System.Drawing.Size(47, 17);
-            this.tslblBatConst.Text = "Battery:";
-            // 
             // tsprgBat
             // 
             this.tsprgBat.Name = "tsprgBat";
             this.tsprgBat.Size = new System.Drawing.Size(100, 16);
+            this.tsprgBat.Value = 50;
             // 
             // tslblBat
             // 
             this.tslblBat.Name = "tslblBat";
-            this.tslblBat.Size = new System.Drawing.Size(29, 17);
-            this.tslblBat.Text = "N/A";
+            this.tslblBat.Size = new System.Drawing.Size(16, 17);
+            this.tslblBat.Text = "...";
             // 
             // tslblDBStatConst
             // 
             this.tslblDBStatConst.Name = "tslblDBStatConst";
-            this.tslblDBStatConst.Size = new System.Drawing.Size(92, 17);
+            this.tslblDBStatConst.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
+            this.tslblDBStatConst.Size = new System.Drawing.Size(117, 17);
             this.tslblDBStatConst.Text = "Database status:";
             // 
             // tslblDBStat
@@ -423,19 +415,15 @@
             // tslblRAMConst
             // 
             this.tslblRAMConst.Name = "tslblRAMConst";
-            this.tslblRAMConst.Size = new System.Drawing.Size(110, 17);
+            this.tslblRAMConst.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
+            this.tslblRAMConst.Size = new System.Drawing.Size(135, 17);
             this.tslblRAMConst.Text = "Memory utilization:";
-            // 
-            // tsprgRAM
-            // 
-            this.tsprgRAM.Name = "tsprgRAM";
-            this.tsprgRAM.Size = new System.Drawing.Size(100, 16);
             // 
             // tslblRAM
             // 
             this.tslblRAM.Name = "tslblRAM";
-            this.tslblRAM.Size = new System.Drawing.Size(30, 17);
-            this.tslblRAM.Text = ".../...";
+            this.tslblRAM.Size = new System.Drawing.Size(16, 17);
+            this.tslblRAM.Text = "...";
             // 
             // frmMain
             // 
@@ -512,13 +500,11 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel tslblStateConst;
         private System.Windows.Forms.ToolStripStatusLabel tslblState;
-        private System.Windows.Forms.ToolStripStatusLabel tslblBatConst;
         private System.Windows.Forms.ToolStripProgressBar tsprgBat;
         private System.Windows.Forms.ToolStripStatusLabel tslblBat;
         private System.Windows.Forms.ToolStripStatusLabel tslblDBStatConst;
         private System.Windows.Forms.ToolStripStatusLabel tslblDBStat;
         private System.Windows.Forms.ToolStripStatusLabel tslblRAMConst;
-        private System.Windows.Forms.ToolStripProgressBar tsprgRAM;
         private System.Windows.Forms.ToolStripStatusLabel tslblRAM;
     }
 }
