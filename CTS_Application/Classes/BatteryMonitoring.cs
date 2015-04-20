@@ -26,6 +26,9 @@ namespace CTS_Application
         {
 
          }
+        /// <summary>
+        /// 
+        /// </summary>
         public int PercentBatteryLeft
         {
             get
@@ -34,6 +37,9 @@ namespace CTS_Application
                return powerPercent;
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
         public string Status
         {
             get
@@ -50,6 +56,9 @@ namespace CTS_Application
                return powerStatus;
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
         public double TimeLeft
         {
              get
@@ -58,6 +67,10 @@ namespace CTS_Application
                  return timeLeft;
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
      public bool StatusChanged()
      {
          bool powerDisconnected = false ;
