@@ -52,7 +52,7 @@ namespace CTS_Application
             {
                 comFault = true;
                 //MessageBox.Show("feil ved avlesning av temperatur");
-                tempC = -999.9;
+                tempC = -300;
             }
             return Math.Round(tempC, 2);
         }

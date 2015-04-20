@@ -18,7 +18,7 @@ namespace CTS_Application
         //Get powerStatus class for monitoring
         PowerStatus power = SystemInformation.PowerStatus;
         
-        int powerPercent;
+        string powerPercent;
         string powerStatus;
         int timeLeft;
 
@@ -29,17 +29,20 @@ namespace CTS_Application
         /// <summary>
         /// 
         /// </summary>
-        public int PercentBatteryLeft
+        /// 
+        //Viser batterikapasitet i PROSENT
+        public string PercentBatteryLeft
         {
             get
             {
-               powerPercent = Convert.ToInt32(power.BatteryLifePercent *100);
+                powerPercent = "Battery at " + (power.BatteryLifePercent * 100).ToString() + "%";
                return powerPercent;
             }
         }
         /// <summary>
         /// 
         /// </summary>
+
         public string Status
         {
             get
@@ -59,12 +62,21 @@ namespace CTS_Application
         /// <summary>
         /// 
         /// </summary>
-        public double TimeLeft
+        //Viser gjennværende TID.
+        public string TimeLeft
         {
              get
             {
                timeLeft = power.BatteryLifeRemaining / 60 ;
-                 return timeLeft;
+               if (timeLeft >= 1)
+               {
+                   return timeLeft.ToString();
+               }
+               else
+               {
+                    return "System could not calculate remaining time. Driver missing";
+               }
+                 
             }
         }
         /// <summary>
@@ -86,7 +98,9 @@ namespace CTS_Application
          }        //Source:oiughdfjh
          return powerDisconnected;
 
-     } 
+     }
+
+
 }
  
 }

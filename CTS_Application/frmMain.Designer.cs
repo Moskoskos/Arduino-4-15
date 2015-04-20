@@ -29,18 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.lblPercentage = new System.Windows.Forms.Label();
             this.lblTimeLeft = new System.Windows.Forms.Label();
             this.lblState = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.lblCV = new System.Windows.Forms.Label();
-            this.tmrTemp = new System.Windows.Forms.Timer(this.components);
-            this.tmrRecToDb = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.subscribersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,10 +52,8 @@
             this.chrtTemp = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.historianBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSetToGrah = new CTS_Application.DataSetToGrah();
-            this.tmrStatus = new System.Windows.Forms.Timer(this.components);
             this.historianTableAdapter = new CTS_Application.DataSetToGrahTableAdapters.historianTableAdapter();
             this.label3 = new System.Windows.Forms.Label();
-            this.tmrAlarm = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.btnSubView = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -67,6 +63,7 @@
             this.alarmhistorianBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ctsDataSetAlarm = new CTS_Application.ctsDataSetAlarm();
             this.alarm_historianTableAdapter = new CTS_Application.ctsDataSetAlarmTableAdapters.alarm_historianTableAdapter();
+            this.tmrUpdateGui = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chrtTemp)).BeginInit();
@@ -122,16 +119,6 @@
             this.lblCV.Size = new System.Drawing.Size(60, 31);
             this.lblCV.TabIndex = 27;
             this.lblCV.Text = "N/A";
-            // 
-            // tmrTemp
-            // 
-            this.tmrTemp.Interval = 2000;
-            this.tmrTemp.Tick += new System.EventHandler(this.tmrTemp_Tick);
-            // 
-            // tmrRecToDb
-            // 
-            this.tmrRecToDb.Interval = 10000;
-            this.tmrRecToDb.Tick += new System.EventHandler(this.tmrRecToDb_Tick);
             // 
             // menuStrip1
             // 
@@ -202,6 +189,7 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 7;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // dateTimePicker2
             // 
@@ -209,6 +197,7 @@
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker2.TabIndex = 8;
+            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // label6
             // 
@@ -221,41 +210,41 @@
             // 
             // chrtTemp
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chrtTemp.ChartAreas.Add(chartArea1);
+            chartArea4.Name = "ChartArea1";
+            this.chrtTemp.ChartAreas.Add(chartArea4);
             this.chrtTemp.DataSource = this.historianBindingSource;
-            legend1.Enabled = false;
-            legend1.Name = "Legend1";
-            this.chrtTemp.Legends.Add(legend1);
+            legend4.Enabled = false;
+            legend4.Name = "Legend1";
+            this.chrtTemp.Legends.Add(legend4);
             this.chrtTemp.Location = new System.Drawing.Point(8, 144);
             this.chrtTemp.Name = "chrtTemp";
-            series1.BorderWidth = 2;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.Color = System.Drawing.Color.Blue;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            series1.XValueMember = "datetime_recorded";
-            series1.YValueMembers = "value";
-            series2.BorderWidth = 2;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.Color = System.Drawing.Color.Orange;
-            series2.Legend = "Legend1";
-            series2.Name = "SpLow";
-            series2.XValueMember = "datetime_recorded";
-            series2.YValueMembers = "setpoint_low";
-            series3.BorderWidth = 2;
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series3.Color = System.Drawing.Color.Red;
-            series3.Legend = "Legend1";
-            series3.Name = "SpHigh";
-            series3.XValueMember = "datetime_recorded";
-            series3.YValueMembers = "setpoint_high";
-            this.chrtTemp.Series.Add(series1);
-            this.chrtTemp.Series.Add(series2);
-            this.chrtTemp.Series.Add(series3);
+            series10.BorderWidth = 2;
+            series10.ChartArea = "ChartArea1";
+            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series10.Color = System.Drawing.Color.Blue;
+            series10.Legend = "Legend1";
+            series10.Name = "Series1";
+            series10.XValueMember = "datetime_recorded";
+            series10.YValueMembers = "value";
+            series11.BorderWidth = 2;
+            series11.ChartArea = "ChartArea1";
+            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series11.Color = System.Drawing.Color.Orange;
+            series11.Legend = "Legend1";
+            series11.Name = "SpLow";
+            series11.XValueMember = "datetime_recorded";
+            series11.YValueMembers = "setpoint_low";
+            series12.BorderWidth = 2;
+            series12.ChartArea = "ChartArea1";
+            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series12.Color = System.Drawing.Color.Red;
+            series12.Legend = "Legend1";
+            series12.Name = "SpHigh";
+            series12.XValueMember = "datetime_recorded";
+            series12.YValueMembers = "setpoint_high";
+            this.chrtTemp.Series.Add(series10);
+            this.chrtTemp.Series.Add(series11);
+            this.chrtTemp.Series.Add(series12);
             this.chrtTemp.Size = new System.Drawing.Size(1156, 312);
             this.chrtTemp.TabIndex = 30;
             this.chrtTemp.Text = "chart1";
@@ -270,11 +259,6 @@
             this.dataSetToGrah.DataSetName = "DataSetToGrah";
             this.dataSetToGrah.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // tmrStatus
-            // 
-            this.tmrStatus.Interval = 1000;
-            this.tmrStatus.Tick += new System.EventHandler(this.tmrStatus_Tick);
-            // 
             // historianTableAdapter
             // 
             this.historianTableAdapter.ClearBeforeFill = true;
@@ -288,11 +272,6 @@
             this.label3.Size = new System.Drawing.Size(157, 20);
             this.label3.TabIndex = 58;
             this.label3.Text = "Current Temperature";
-            // 
-            // tmrAlarm
-            // 
-            this.tmrAlarm.Interval = 5000;
-            this.tmrAlarm.Tick += new System.EventHandler(this.tmrAlarm_Tick);
             // 
             // label1
             // 
@@ -364,6 +343,11 @@
             // 
             this.alarm_historianTableAdapter.ClearBeforeFill = true;
             // 
+            // tmrUpdateGui
+            // 
+            this.tmrUpdateGui.Interval = 2000;
+            this.tmrUpdateGui.Tick += new System.EventHandler(this.tmrUpdateGui_Tick);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -408,8 +392,6 @@
         private System.Windows.Forms.Label lblState;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblCV;
-        private System.Windows.Forms.Timer tmrTemp;
-        private System.Windows.Forms.Timer tmrRecToDb;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem preferencesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
@@ -422,9 +404,7 @@
         private DataSetToGrah dataSetToGrah;
         private System.Windows.Forms.BindingSource historianBindingSource;
         private DataSetToGrahTableAdapters.historianTableAdapter historianTableAdapter;
-        private System.Windows.Forms.Timer tmrStatus;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Timer tmrAlarm;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnSubView;
         private System.Windows.Forms.Label lblMySql;
@@ -436,5 +416,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn alarmeventidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn datetimerecordedDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Timer tmrUpdateGui;
     }
 }
