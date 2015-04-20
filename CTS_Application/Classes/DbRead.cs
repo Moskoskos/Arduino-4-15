@@ -12,7 +12,7 @@ namespace CTS_Application
     {
         public DbRead()
         {
-            //Jau
+            
         }
         DbEdit dbEdit = new DbEdit();
         /// <summary>
@@ -137,6 +137,20 @@ namespace CTS_Application
                 }
             }
             return result;
+        }
+        public double GetLatestValue()
+        {
+            string result = "";
+            string query = "SELECT value FROM historian LIMIT 1;";
+            if (this.OpenConnection() == true)
+            {
+                using(MySqlCommand cmd = new MySqlCommand(query,connection))
+                {
+                    result = cmd.ExecuteScalar().ToString();
+                    CloseConnection();
+                }
+            }
+            return Convert.ToDouble(result);
         }
 
     }

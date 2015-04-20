@@ -67,7 +67,7 @@ namespace CTS_Application
         }
         private void tmrRecToDbInit()
         {
-            tmrRecToDb.Interval = 10000;
+            tmrRecToDb.Interval = 4000;
             tmrRecToDb.Elapsed +=tmrRecToDb_Elapsed;
             tmrRecToDb.AutoReset = true;
         }
