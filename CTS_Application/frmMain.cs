@@ -168,9 +168,12 @@ namespace CTS_Application
         private void BatteryRemaining()
         {
             BatteryMonitoring batteryMonitoring = new BatteryMonitoring();
-            lblPercentage.Text =  batteryMonitoring.PercentBatteryLeft.ToString();
-            lblTimeLeft.Text = batteryMonitoring.TimeLeft;
-            lblState.Text = batteryMonitoring.Status;
+            tslblBat.Text = batteryMonitoring.PercentBatteryLeft.ToString() +"%";
+            tsprgBat.Value = batteryMonitoring.PercentBatteryLeft;
+            tslblState.Text = batteryMonitoring.Status;
+            //lblPercentage.Text =  batteryMonitoring.PercentBatteryLeft.ToString();
+            ///lblTimeLeft.Text = batteryMonitoring.TimeLeft;
+            //lblState.Text = batteryMonitoring.Status;
         }
 
         private void subscribersToolStripMenuItem_Click(object sender, EventArgs e)

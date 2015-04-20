@@ -31,12 +31,11 @@ namespace CTS_Application
         /// </summary>
         /// 
         //Viser batterikapasitet i PROSENT
-        public string PercentBatteryLeft
+        public int PercentBatteryLeft
         {
             get
             {
-                powerPercent = "Battery at " + (power.BatteryLifePercent * 100).ToString() + "%";
-               return powerPercent;
+                return (int)(power.BatteryLifePercent * 100);
             }
         }
         /// <summary>
