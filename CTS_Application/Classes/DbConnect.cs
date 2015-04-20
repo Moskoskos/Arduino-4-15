@@ -23,6 +23,8 @@ namespace CTS_Application
         private string password;
 
         /// <summary>
+        /// Source:
+        /// http://www.codeproject.com/Articles/43438/Connect-C-to-MySQL
         /// DbConnect-klassen tar kun seg av login-informasjon, åpning og lukking av tilkoblinger. Dette er baseklassen for DbRead, DbWrite, dbEdit.
         /// </summary>
         public DbConnect()
