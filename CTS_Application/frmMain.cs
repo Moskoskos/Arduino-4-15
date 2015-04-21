@@ -163,17 +163,24 @@ namespace CTS_Application
         }
         private void UpdateTemp()
         {
-            if (arCom.comFault == false)
+            try
             {
-                temp_Arduino = arCom.Readtemp();
-                if (temp_Arduino == -300)
+                if (arCom.comFault == false)
                 {
-                    lblCV.Text = "NO INPUT";
+                    temp_Arduino = arCom.Readtemp();
+                    if (temp_Arduino == -300)
+                    {
+                        lblCV.Text = "NO INPUT";
+                    }
+                    else
+                    {
+                        lblCV.Text = Convert.ToString(temp_Arduino) + "°C";
+                    }
                 }
-                else
-                {
-                    lblCV.Text = Convert.ToString(temp_Arduino) + "°C";
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
         private void BatteryRemaining()
