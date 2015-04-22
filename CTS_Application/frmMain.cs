@@ -23,6 +23,7 @@ namespace CTS_Application
         DbRead dbRead = new DbRead();
         DbEdit dbEdit = new DbEdit();
         ArduinoCom arCom = new ArduinoCom();
+
         AlarmHandling alarm = new AlarmHandling();
         Email mail = new Email();
         BatteryMonitoring batteryMonitoring = new BatteryMonitoring(); //Declare batterymonitoring class
@@ -34,7 +35,6 @@ namespace CTS_Application
         {
            InitializeComponent();
            tmrUpdateGui.Start();
-
             //Initialize GUI time ranges
             cboRealtimeRange.SelectedIndex = 12-1; //12 hours initial range.
             cboRealtimeUnit.SelectedIndex = 1; //hours initial unit.
@@ -48,6 +48,7 @@ namespace CTS_Application
             tmrRecToDb.Start(); //Start timeren.
             tmrTestInit();
             tmrTest.Start();
+
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -203,6 +204,7 @@ namespace CTS_Application
                     if (temp_Arduino == -300)
                     {
                         lblCV.Text = "NO INPUT";
+
                     }
                     else
                     {
@@ -407,7 +409,7 @@ namespace CTS_Application
         {
             updateRange();
         }
-
+        
         private void cboRealtimeRange_SelectedIndexChanged(object sender, EventArgs e)
         {
             updateRange();

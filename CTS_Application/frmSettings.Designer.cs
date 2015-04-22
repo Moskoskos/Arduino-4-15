@@ -142,6 +142,7 @@
             this.cboCOMPort.Size = new System.Drawing.Size(69, 21);
             this.cboCOMPort.TabIndex = 52;
             this.cboCOMPort.SelectedIndexChanged += new System.EventHandler(this.cboCOMPort_SelectedIndexChanged);
+            this.cboCOMPort.SelectionChangeCommitted += new System.EventHandler(this.cboCOMPort_SelectionChangeCommitted_1);
             // 
             // frmSettings
             // 

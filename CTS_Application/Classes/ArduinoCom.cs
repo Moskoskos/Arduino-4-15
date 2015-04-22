@@ -28,6 +28,15 @@ namespace CTS_Application
                 MessageBox.Show("Could not find COM Port value. Make sure that the MySQL-server is running!");
             } 
         }
+
+        private string _type;
+
+        public string ComPort
+        {
+            get { return mySerialPort.PortName; }
+            set { mySerialPort.PortName = value; }
+        }
+
         /// <summary>
         /// Metode som leser verdi fra comport, ganger med 0,0318 for å få temp, setter comFault true ved feil
         /// </summary>
@@ -43,6 +52,7 @@ namespace CTS_Application
                 }
                 else
                 {
+                    mySerialPort.Close();
                     mySerialPort.Open();
                     temp = mySerialPort.ReadLine();
                     

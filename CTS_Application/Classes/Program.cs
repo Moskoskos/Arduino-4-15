@@ -9,7 +9,7 @@ namespace CTS_Application
 {
     static class Program
     {
-        
+
         
         /// <summary>
         /// The main entry point for the application.
@@ -25,6 +25,7 @@ namespace CTS_Application
             DbWrite dbWrite = new DbWrite();
             string chkSettings = dbRead.CheckIfTableIsEmpty("settings");
             string chkHistorian = dbRead.CheckIfTableIsEmpty("historian");
+            
             
             //For å unngå en drøss med feilmeldinger i starten at programmet ikke finner setpunkter eller Comport så kjører den en sjekk i starten.
             Process[] instance = Process.GetProcessesByName("mysqld");
