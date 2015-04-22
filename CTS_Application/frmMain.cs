@@ -168,15 +168,9 @@ namespace CTS_Application
         {
             try
             {
-                if (temp_Arduino == -300)
+                if (temp_Arduino != -300)
                 {
-                    
-                }
-                else
-                {
-                    //write temp to db
-                 dbWrite.WriteTempToHistorian(temp_Arduino);
-                  
+                 dbWrite.WriteTempToHistorian(temp_Arduino);                    
                 }
             }
             catch (Exception ex)
@@ -196,8 +190,8 @@ namespace CTS_Application
         }
         private void UpdateTemp()
         {
-            //try
-            //{
+            try
+            {
                 if (arCom.comFault == false)
                 {
                     temp_Arduino = arCom.Readtemp();
@@ -211,11 +205,11 @@ namespace CTS_Application
                         lblCV.Text = Convert.ToString(temp_Arduino) + "°C";
                     }
                 }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         private void BatteryRemaining()
         {
