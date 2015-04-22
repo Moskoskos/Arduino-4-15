@@ -168,6 +168,7 @@
             this.Controls.Add(this.btnDelSub);
             this.Controls.Add(this.btnDelAla);
             this.Controls.Add(this.btnDelRec);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmSettings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Preferences";

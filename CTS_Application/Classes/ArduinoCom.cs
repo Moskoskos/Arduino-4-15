@@ -11,7 +11,7 @@ namespace CTS_Application
     class ArduinoCom
     {
         DbRead dbRead = new DbRead();
-        public bool comFault;
+        public bool comFault{get; set;}
         SerialPort mySerialPort = new SerialPort("COM5", 9600, Parity.None, 8, StopBits.One);
         public double tempC = 0.0;
 
@@ -19,7 +19,7 @@ namespace CTS_Application
         {
             try
             {
-                string port = "COM" + dbRead.GetComPort(1);
+                string port = "COM" + dbRead.GetComPort(1);//leser comport fra database
                 mySerialPort.PortName = port;
             }
             catch (Exception)
@@ -28,13 +28,12 @@ namespace CTS_Application
             } 
         }
         /// <summary>
-        /// Metode som leser verdi fra comport, deler på 9,31 for å få temp
+        /// Metode som leser verdi fra comport, ganger med 0,0318 for å få temp, setter comFault true ved feil
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Returnerer temperatur</returns>
         public double Readtemp()
         {
             string temp = "";
-            //double tempC = 0.0;
             try
             {
                 if (mySerialPort.IsOpen)
@@ -51,19 +50,9 @@ namespace CTS_Application
             catch (Exception)
             {
                 comFault = true;
-                //MessageBox.Show("feil ved avlesning av temperatur");
                 tempC = -300;
             }
             return Math.Round(tempC, 2);
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public bool ComFault()
-        {
-            bool fault = comFault;
-            return fault;
-        } 
     }
 }

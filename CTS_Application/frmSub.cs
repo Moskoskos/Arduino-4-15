@@ -19,9 +19,9 @@ namespace CTS_Application
         {
             InitializeComponent();
         }
-        //Submits the input in the textboxes to the SQL database.
+        
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -34,16 +34,17 @@ namespace CTS_Application
             string email;
             try
             {
+                //
                 username = txtUsername.Text;
                 firstname = txtFirstName.Text;
                 lastname = txtLastName.Text;
                 number = Convert.ToInt32(txtNumber.Text);
                 email = txtMail.Text;
-             
+                
                 DbWrite dbWrite = new DbWrite();
-                dbWrite.InsertIntoUsers(username, firstname, lastname, email, number);
-                usersTableAdapter.Fill(ctsDataSetUsers.users);
-                lblMessage.Text = "Transfer Succesful";
+                dbWrite.InsertIntoUsers(username, firstname, lastname, email, number); //Sender informasjonen fra variablene til metoden dbWrite.InsertIntoUsers.
+                usersTableAdapter.Fill(ctsDataSetUsers.users); //Oppdaterer GridView.
+                lblMessage.Text = "Transfer Succesful"; //Informasjon til brukeren at spørringen var en suksess.
                 lblMessage.ForeColor = Color.Green;
             }
             catch (Exception ex)
@@ -53,11 +54,8 @@ namespace CTS_Application
                 MessageBox.Show("There is a missmatch in your input\r\r\nCheck that your input is correct (telephonenumbers only consisting of digits)\r\r\n" + ex.Message);
             }
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
+        //Oppdaterer GridView ved å oppdatere DataSetUsers.Users og fylle dette inn i usersTableAdapter.
         private void frmSub_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'ctsDataSetUsers.users' table. You can move, or remove it, as needed.
@@ -69,6 +67,7 @@ namespace CTS_Application
             lblMessage.Text = "Table Updated";
             lblMessage.ForeColor = Color.Green;
         }
+      
         /// <summary>
         /// 
         /// </summary>
@@ -92,10 +91,7 @@ namespace CTS_Application
             ClearTextBoxes(this.Controls);
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
-        }
 
 
     }

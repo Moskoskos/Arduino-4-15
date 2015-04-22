@@ -19,7 +19,7 @@ namespace CTS_Application
     class DbWrite : DbConnect
     {
         DbRead dbRead = new DbRead();
-        double dbValue = 0;
+        double dbValue;
         
         public DbWrite() 
         {
@@ -62,7 +62,7 @@ namespace CTS_Application
                 }
                 catch (MySqlException ex)
                 {
-                    MessageBox.Show("Could not insert into users" + ex.Message);
+                    MessageBox.Show("Could not insert into users\r\r\n" + ex.Message);
                 }
             }
         }
@@ -72,11 +72,10 @@ namespace CTS_Application
         /// <param name="valueIn">Temperaturverdien.</param>
         public void WriteTempToHistorian(double valueIn)
         {
-            
             //
             //Source:
             //http://stackoverflow.com/questions/19527554/inserting-values-into-mysql-database-from-c-sharp-application-text-box
-            {
+           
                 try
                 {
                    if (valueIn >= dbValue + 0.1 || valueIn <= dbValue - 0.1) //For å unngå duplicate data.
@@ -101,9 +100,9 @@ namespace CTS_Application
                 }
                 catch (MySqlException ex)
                 {
-                    MessageBox.Show("Could not insert into historian" + ex.Message);
+                    MessageBox.Show("Could not insert into historian\r\r\n" + ex.Message);
                 }
-            }
+            
         }
 
         //Write to alarm table
@@ -136,9 +135,40 @@ namespace CTS_Application
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Could not insert into alarm_historian" + ex.Message + "\r\r\n");
+                    MessageBox.Show("Could not insert into alarm_historian\r\r\n" + ex.Message + "\r\r\n");
                 }
             }
+        }
+        public void WriteTempToHistorianInit(double valueIn)
+        {
+            //
+            //Source:
+            //http://stackoverflow.com/questions/19527554/inserting-values-into-mysql-database-from-c-sharp-application-text-box
+
+            try
+            {
+                {
+                    string query = "INSERT INTO historian(value)VALUES(@value);";
+                    //Sjekker at tilkoblingen er åpen.
+                    if (this.OpenConnection() == true)
+                    {
+                        //Bruker spørringen ovenfor og tilkoblingstrengen i DbConnect.
+                        using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                        {
+                            // Henter inn verdien parameteren og legger den til som en verdi i spørringen query
+                            cmd.Parameters.AddWithValue("@value", valueIn);
+                            //Kjører en SQL-commando uten å få noen verdi tilbake.
+                            cmd.ExecuteNonQuery();
+                            CloseConnection();
+                        }
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Could not insert into historian\r\r\n" + ex.Message);
+            }
+
         }
  
     }

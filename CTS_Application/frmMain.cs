@@ -34,41 +34,43 @@ namespace CTS_Application
             InitializeComponent();
            tmrUpdateGui.Start();
            cbRealtimeUnit.SelectedIndex = 1;
-           tmrAlarmInit();
-           tmrAlarm.Start();
-           tmrRecToDbInit();
-           tmrRecToDb.Start();
+           tmrAlarmInit();  //Innstillingene til timeren.
+           tmrAlarm.Start(); //Start timeren.
+           tmrRecToDbInit(); //Innstillingene til timeren.
+           tmrRecToDb.Start(); //Start timeren.
         }
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            UpdateGraph();
+            UpdateGraph(); 
             UpdateAlarmGrid();           
         }
-        //Settings for the timer tmrAlarm
+        /// <summary>
+        /// Innstillingene til tmrAlarm.
+        /// </summary>
         private void tmrAlarmInit()
         {
-            tmrAlarm.Interval = 3000;
-            tmrAlarm.Elapsed += tmrAlarm_Elapsed;
-            tmrAlarm.AutoReset = true;
+            tmrAlarm.Interval = 3000; // Interval = 3 Sekunder.
+            tmrAlarm.Elapsed += tmrAlarm_Elapsed; // Etter 3 sekunder skal en hendelse skje.
+            tmrAlarm.AutoReset = true; // Reseter timeren etter at timeren har kalt hendelsen.
         }
 
-        //What happens after tmrAlarm is started.
+        //tmrAlarm_eventet 
         void tmrAlarm_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            CheckAlarmStatus();
+            CheckAlarmStatus(); //Henter metoden som sjekker om det finnes noen aktive alarmer.
         }
-    
+        //
         private void tmrUpdateGui_Tick(object sender, EventArgs e)
         {
-            BatteryRemaining();
-            MemoryUsage();
-            MySqlStatus();
-            UpdateTemp();
+            BatteryRemaining(); //PATRICK !
+            MemoryUsage(); //Viser den fysiske minnebruken til applikasjonen.
+            MySqlStatus(); //Sjekker om DatabaseServeren kjører.
+            UpdateTemp(); //Oppdaterer temperaturverdien i frmMain fra klassen arduinoCOM.
         }
         private void tmrRecToDbInit()
         {
-            tmrRecToDb.Interval = 4000;
+            tmrRecToDb.Interval = 4000; 
             tmrRecToDb.Elapsed +=tmrRecToDb_Elapsed;
             tmrRecToDb.AutoReset = true;
         }
@@ -140,8 +142,8 @@ namespace CTS_Application
                 else
                 {
                     //write temp to db
-                    dbWrite.WriteTempToHistorian(temp_Arduino);
-                    
+                 dbWrite.WriteTempToHistorian(temp_Arduino);
+                  
                 }
             }
             catch (Exception ex)
@@ -161,10 +163,24 @@ namespace CTS_Application
         }
         private void UpdateTemp()
         {
-            if (arCom.comFault == false)
+            try
             {
-                temp_Arduino = arCom.Readtemp();
-                lblCV.Text = Convert.ToString(temp_Arduino) + "°C";
+                if (arCom.comFault == false)
+                {
+                    temp_Arduino = arCom.Readtemp();
+                    if (temp_Arduino == -300)
+                    {
+                        lblCV.Text = "NO INPUT";
+                    }
+                    else
+                    {
+                        lblCV.Text = Convert.ToString(temp_Arduino) + "°C";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
         private void BatteryRemaining()
@@ -203,7 +219,7 @@ namespace CTS_Application
             lowTemp = alarm.LowTempAlarm(spL, realTemp);
             tempOOR = alarm.TempOutOfRange(realTemp);
             batAlarm = alarm.BatteryAlarm(batteryMonitoring.StatusChanged());
-            arcomAlarm = alarm.ArduComAlarm(arCom.ComFault());
+            arcomAlarm = alarm.ArduComAlarm(arCom.comFault);
 
 
             if (highTemp == true)
@@ -243,7 +259,7 @@ namespace CTS_Application
                 MessageBox.Show("The program could not find the Arduino. Go to Preferences to change COM port");
             }
         }
-
+        
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             DateTime temp = dateTimePicker1.Value;

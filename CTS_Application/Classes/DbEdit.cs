@@ -108,5 +108,6 @@ namespace CTS_Application
                 MessageBox.Show("Could not insert into settings com" + ex.Message);
             }
         }
+       
     }
 }
