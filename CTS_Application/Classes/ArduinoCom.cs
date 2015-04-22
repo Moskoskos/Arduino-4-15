@@ -36,16 +36,16 @@ namespace CTS_Application
             string temp = "";
             try
             {
-                //if (mySerialPort.IsOpen)
-                //{
-                //    temp = mySerialPort.ReadLine();
-                //}
-                //else
-                //{
+                if (mySerialPort.IsOpen)
+                {
+                    temp = mySerialPort.ReadLine();
+                }
+                else
+                {
                     mySerialPort.Open();
                     temp = mySerialPort.ReadLine();
-                    mySerialPort.Close();
-                //}
+                    
+                }
                 tempC = ((Convert.ToDouble(temp)) * 0.0318);
             }
             catch (Exception)
