@@ -33,7 +33,7 @@ namespace CTS_Application
         /// <returns>lav temperatur alarm</returns>
         public bool LowTempAlarm(double sp, double pv)
         {            
-                if ((pv < sp) && (currentLowAlarm == false))
+                if ((pv < sp) && (currentLowAlarm == false) && (currentComAlarm == false))
                 {
                     lowAlarm = true;
                     currentLowAlarm = true;
@@ -80,7 +80,7 @@ namespace CTS_Application
         /// <returns>Temperatur out of range alarm</returns>
             public bool TempOutOfRange(double pv)
             {
-                if (((pv < -100) || (pv > 100)) && (currentOutOfRange == false))
+                if (((pv < -100) || (pv > 100)) && (currentOutOfRange == false) && (currentComAlarm == false))
                 {
                     outOfRangeAlarm = true;
                     currentOutOfRange = true;
