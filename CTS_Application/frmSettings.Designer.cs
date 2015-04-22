@@ -31,17 +31,14 @@
             this.btnDelRec = new System.Windows.Forms.Button();
             this.btnDelAla = new System.Windows.Forms.Button();
             this.btnDelSub = new System.Windows.Forms.Button();
-            this.txtCom = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnSubCom = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txtSpH = new System.Windows.Forms.TextBox();
             this.txtSpL = new System.Windows.Forms.TextBox();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.lblChange = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.cboCOMPort = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // btnDelRec
@@ -74,13 +71,6 @@
             this.btnDelSub.UseVisualStyleBackColor = true;
             this.btnDelSub.Click += new System.EventHandler(this.btnDelSub_Click);
             // 
-            // txtCom
-            // 
-            this.txtCom.Location = new System.Drawing.Point(8, 120);
-            this.txtCom.Name = "txtCom";
-            this.txtCom.Size = new System.Drawing.Size(100, 20);
-            this.txtCom.TabIndex = 6;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -89,16 +79,6 @@
             this.label1.Size = new System.Drawing.Size(47, 13);
             this.label1.TabIndex = 7;
             this.label1.Text = "ComPort";
-            // 
-            // btnSubCom
-            // 
-            this.btnSubCom.Location = new System.Drawing.Point(120, 120);
-            this.btnSubCom.Name = "btnSubCom";
-            this.btnSubCom.Size = new System.Drawing.Size(75, 23);
-            this.btnSubCom.TabIndex = 8;
-            this.btnSubCom.Text = "Submit";
-            this.btnSubCom.UseVisualStyleBackColor = true;
-            this.btnSubCom.Click += new System.EventHandler(this.btnSubCom_Click);
             // 
             // label2
             // 
@@ -153,40 +133,29 @@
             this.lblChange.Size = new System.Drawing.Size(0, 17);
             this.lblChange.TabIndex = 51;
             // 
-            // comboBox1
+            // cboCOMPort
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(128, 200);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(69, 21);
-            this.comboBox1.TabIndex = 52;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(8, 203);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(114, 13);
-            this.label3.TabIndex = 53;
-            this.label3.Text = "TEST! Dynamisk COM";
+            this.cboCOMPort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCOMPort.FormattingEnabled = true;
+            this.cboCOMPort.Location = new System.Drawing.Point(8, 120);
+            this.cboCOMPort.Name = "cboCOMPort";
+            this.cboCOMPort.Size = new System.Drawing.Size(69, 21);
+            this.cboCOMPort.TabIndex = 52;
+            this.cboCOMPort.SelectedIndexChanged += new System.EventHandler(this.cboCOMPort_SelectedIndexChanged);
             // 
             // frmSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(306, 233);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cboCOMPort);
             this.Controls.Add(this.lblChange);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtSpH);
             this.Controls.Add(this.txtSpL);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.btnSubCom);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtCom);
             this.Controls.Add(this.btnDelSub);
             this.Controls.Add(this.btnDelAla);
             this.Controls.Add(this.btnDelRec);
@@ -205,16 +174,13 @@
         private System.Windows.Forms.Button btnDelRec;
         private System.Windows.Forms.Button btnDelAla;
         private System.Windows.Forms.Button btnDelSub;
-        private System.Windows.Forms.TextBox txtCom;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnSubCom;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtSpH;
         private System.Windows.Forms.TextBox txtSpL;
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lblChange;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cboCOMPort;
     }
 }

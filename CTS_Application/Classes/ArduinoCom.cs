@@ -12,14 +12,15 @@ namespace CTS_Application
     {
         DbRead dbRead = new DbRead();
         public bool comFault{get; set;}
-        SerialPort mySerialPort = new SerialPort("COM5", 9600, Parity.None, 8, StopBits.One);
+        SerialPort mySerialPort;
         public double tempC = 0.0;
 
         public ArduinoCom()
         {
             try
             {
-                string port = "COM" + dbRead.GetComPort(1);//leser comport fra database
+                mySerialPort = new SerialPort(dbRead.GetComPort(1), 9600, Parity.None, 8, StopBits.One);
+                string port = dbRead.GetComPort(1);//leser comport fra database
                 mySerialPort.PortName = port;
             }
             catch (Exception)

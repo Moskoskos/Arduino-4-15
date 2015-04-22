@@ -22,13 +22,14 @@ namespace CTS_Application
             InitializeComponent();
             FillTextBoxes();
 
-            MessageBox.Show("Test");
             //show list of valid com ports
             foreach (string s in SerialPort.GetPortNames())
             {
                 MessageBox.Show(s.ToString());
-                comboBox1.Items.Add(s);
-            }  
+                cboCOMPort.Items.Add(s);
+            }
+
+            cboCOMPort.Text = dbRead.GetComPort(1); //Fill cbo with current COM-port on start.
         }
         private void frmSettings_Load(object sender, EventArgs e)
         {
@@ -38,7 +39,6 @@ namespace CTS_Application
         {
             txtSpL.Text = dbRead.GetLowSP(1);
             txtSpH.Text = dbRead.GetHighSp(1);
-            txtCom.Text = dbRead.GetComPort(1);
 
         }
 
@@ -83,16 +83,7 @@ namespace CTS_Application
 
         private void btnSubCom_Click(object sender, EventArgs e)
         {
-            try
-            {
-                dbEdit.EditComPort(1, txtCom.Text);
-                lblChange.Text = "COM updated!";
-            }
-            catch (Exception)
-            {
-                lblChange.Text = "Could not update COM port!";
-                throw;
-            }
+
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
@@ -108,6 +99,20 @@ namespace CTS_Application
             {
                 lblChange.Text = "Could not update!";
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void cboCOMPort_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                dbEdit.EditComPort(1, cboCOMPort.SelectedText);
+                lblChange.Text = "COM port selected.";
+            }
+            catch (Exception)
+            {
+                lblChange.Text = "Could not set COM port.";
+                throw;
             }
         }
     }
