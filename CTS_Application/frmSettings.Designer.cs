@@ -40,6 +40,8 @@
             this.btnSubmit = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.lblChange = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnDelRec
@@ -151,11 +153,31 @@
             this.lblChange.Size = new System.Drawing.Size(0, 17);
             this.lblChange.TabIndex = 51;
             // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(128, 200);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(69, 21);
+            this.comboBox1.TabIndex = 52;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(8, 203);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(114, 13);
+            this.label3.TabIndex = 53;
+            this.label3.Text = "TEST! Dynamisk COM";
+            // 
             // frmSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(306, 233);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.lblChange);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtSpH);
@@ -192,5 +214,7 @@
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lblChange;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label3;
     }
 }

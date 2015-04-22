@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label5 = new System.Windows.Forms.Label();
             this.lblCV = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.subscribersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dtpHistoryStart = new System.Windows.Forms.DateTimePicker();
+            this.dtpHistoryEnd = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.chrtTemp = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.historianBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -68,9 +68,9 @@
             this.tslblRAM = new System.Windows.Forms.ToolStripStatusLabel();
             this.rbtnRealtime = new System.Windows.Forms.RadioButton();
             this.rbtnHistory = new System.Windows.Forms.RadioButton();
-            this.mtxtRealtimeRange = new System.Windows.Forms.MaskedTextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.cbRealtimeUnit = new System.Windows.Forms.ComboBox();
+            this.cboRealtimeUnit = new System.Windows.Forms.ComboBox();
+            this.cboRealtimeRange = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chrtTemp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.historianBindingSource)).BeginInit();
@@ -132,21 +132,21 @@
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
             // 
-            // dateTimePicker1
+            // dtpHistoryStart
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(135, 66);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(139, 20);
-            this.dateTimePicker1.TabIndex = 7;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            this.dtpHistoryStart.Location = new System.Drawing.Point(135, 66);
+            this.dtpHistoryStart.Name = "dtpHistoryStart";
+            this.dtpHistoryStart.Size = new System.Drawing.Size(139, 20);
+            this.dtpHistoryStart.TabIndex = 7;
+            this.dtpHistoryStart.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
-            // dateTimePicker2
+            // dtpHistoryEnd
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(135, 111);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(139, 20);
-            this.dateTimePicker2.TabIndex = 8;
-            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
+            this.dtpHistoryEnd.Location = new System.Drawing.Point(135, 111);
+            this.dtpHistoryEnd.Name = "dtpHistoryEnd";
+            this.dtpHistoryEnd.Size = new System.Drawing.Size(139, 20);
+            this.dtpHistoryEnd.TabIndex = 8;
+            this.dtpHistoryEnd.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // label6
             // 
@@ -159,41 +159,52 @@
             // 
             // chrtTemp
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chrtTemp.ChartAreas.Add(chartArea2);
+            chartArea1.AxisX.LabelStyle.Format = "dd/MM/yy HH:mm";
+            chartArea1.AxisX.LabelStyle.Interval = 0D;
+            chartArea1.AxisX.LabelStyle.IntervalOffset = 0D;
+            chartArea1.AxisX.MajorGrid.Enabled = false;
+            chartArea1.AxisY.LabelStyle.Format = "#0°C";
+            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.Gray;
+            chartArea1.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea1.Name = "Temperature";
+            this.chrtTemp.ChartAreas.Add(chartArea1);
             this.chrtTemp.DataSource = this.historianBindingSource;
-            legend2.Enabled = false;
-            legend2.Name = "Legend1";
-            this.chrtTemp.Legends.Add(legend2);
+            legend1.Enabled = false;
+            legend1.Name = "Legend1";
+            this.chrtTemp.Legends.Add(legend1);
             this.chrtTemp.Location = new System.Drawing.Point(8, 144);
             this.chrtTemp.Name = "chrtTemp";
-            series4.BorderWidth = 2;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series4.Color = System.Drawing.Color.Blue;
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            series4.XValueMember = "datetime_recorded";
-            series4.YValueMembers = "value";
-            series5.BorderWidth = 2;
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series5.Color = System.Drawing.Color.Orange;
-            series5.Legend = "Legend1";
-            series5.Name = "SpLow";
-            series5.XValueMember = "datetime_recorded";
-            series5.YValueMembers = "setpoint_low";
-            series6.BorderWidth = 2;
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series6.Color = System.Drawing.Color.Red;
-            series6.Legend = "Legend1";
-            series6.Name = "SpHigh";
-            series6.XValueMember = "datetime_recorded";
-            series6.YValueMembers = "setpoint_high";
-            this.chrtTemp.Series.Add(series4);
-            this.chrtTemp.Series.Add(series5);
-            this.chrtTemp.Series.Add(series6);
+            series1.BorderWidth = 2;
+            series1.ChartArea = "Temperature";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Color = System.Drawing.Color.Blue;
+            series1.LabelFormat = "\"yyyy-MM-dd HH:mm\"";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            series1.XValueMember = "datetime_recorded";
+            series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.DateTime;
+            series1.YValueMembers = "value";
+            series2.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            series2.ChartArea = "Temperature";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Color = System.Drawing.Color.Orange;
+            series2.LabelFormat = "\"yyyy-MM-dd HH:mm\"";
+            series2.Legend = "Legend1";
+            series2.Name = "SpLow";
+            series2.XValueMember = "datetime_recorded";
+            series2.YValueMembers = "setpoint_low";
+            series3.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            series3.ChartArea = "Temperature";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.Color = System.Drawing.Color.Red;
+            series3.LabelFormat = "\"yyyy-MM-dd HH:mm\"";
+            series3.Legend = "Legend1";
+            series3.Name = "SpHigh";
+            series3.XValueMember = "datetime_recorded";
+            series3.YValueMembers = "setpoint_high";
+            this.chrtTemp.Series.Add(series1);
+            this.chrtTemp.Series.Add(series2);
+            this.chrtTemp.Series.Add(series3);
             this.chrtTemp.Size = new System.Drawing.Size(1156, 335);
             this.chrtTemp.TabIndex = 30;
             this.chrtTemp.Text = "chart1";
@@ -202,6 +213,7 @@
             // 
             this.historianBindingSource.DataMember = "historian";
             this.historianBindingSource.DataSource = this.dataSetToGrah;
+            this.historianBindingSource.CurrentChanged += new System.EventHandler(this.historianBindingSource_CurrentChanged);
             // 
             // dataSetToGrah
             // 
@@ -365,6 +377,7 @@
             this.rbtnRealtime.TabStop = true;
             this.rbtnRealtime.Text = "Realtime";
             this.rbtnRealtime.UseVisualStyleBackColor = true;
+            this.rbtnRealtime.CheckedChanged += new System.EventHandler(this.rbtnRealtime_CheckedChanged);
             // 
             // rbtnHistory
             // 
@@ -375,14 +388,7 @@
             this.rbtnHistory.TabIndex = 63;
             this.rbtnHistory.Text = "History";
             this.rbtnHistory.UseVisualStyleBackColor = true;
-            // 
-            // mtxtRealtimeRange
-            // 
-            this.mtxtRealtimeRange.Location = new System.Drawing.Point(15, 66);
-            this.mtxtRealtimeRange.Name = "mtxtRealtimeRange";
-            this.mtxtRealtimeRange.Size = new System.Drawing.Size(39, 20);
-            this.mtxtRealtimeRange.TabIndex = 64;
-            this.mtxtRealtimeRange.Text = "12";
+            this.rbtnHistory.CheckedChanged += new System.EventHandler(this.rbtnHistory_CheckedChanged);
             // 
             // label2
             // 
@@ -393,26 +399,63 @@
             this.label2.TabIndex = 65;
             this.label2.Text = "Range";
             // 
-            // cbRealtimeUnit
+            // cboRealtimeUnit
             // 
-            this.cbRealtimeUnit.FormattingEnabled = true;
-            this.cbRealtimeUnit.Items.AddRange(new object[] {
-            "Hours",
-            "Days"});
-            this.cbRealtimeUnit.Location = new System.Drawing.Point(57, 66);
-            this.cbRealtimeUnit.Name = "cbRealtimeUnit";
-            this.cbRealtimeUnit.Size = new System.Drawing.Size(72, 21);
-            this.cbRealtimeUnit.TabIndex = 66;
-            this.cbRealtimeUnit.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.cboRealtimeUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboRealtimeUnit.FormattingEnabled = true;
+            this.cboRealtimeUnit.Items.AddRange(new object[] {
+            "minutes",
+            "hours",
+            "days"});
+            this.cboRealtimeUnit.Location = new System.Drawing.Point(57, 66);
+            this.cboRealtimeUnit.Name = "cboRealtimeUnit";
+            this.cboRealtimeUnit.Size = new System.Drawing.Size(72, 21);
+            this.cboRealtimeUnit.TabIndex = 66;
+            this.cboRealtimeUnit.SelectedIndexChanged += new System.EventHandler(this.cboRealtimeUnit_SelectedIndexChanged);
+            // 
+            // cboRealtimeRange
+            // 
+            this.cboRealtimeRange.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboRealtimeRange.FormattingEnabled = true;
+            this.cboRealtimeRange.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24"});
+            this.cboRealtimeRange.Location = new System.Drawing.Point(15, 66);
+            this.cboRealtimeRange.Name = "cboRealtimeRange";
+            this.cboRealtimeRange.Size = new System.Drawing.Size(39, 21);
+            this.cboRealtimeRange.TabIndex = 1;
+            this.cboRealtimeRange.SelectedIndexChanged += new System.EventHandler(this.cboRealtimeRange_SelectedIndexChanged);
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1161, 504);
-            this.Controls.Add(this.cbRealtimeUnit);
+            this.Controls.Add(this.cboRealtimeRange);
+            this.Controls.Add(this.cboRealtimeUnit);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.mtxtRealtimeRange);
             this.Controls.Add(this.rbtnHistory);
             this.Controls.Add(this.rbtnRealtime);
             this.Controls.Add(this.statusStrip1);
@@ -420,8 +463,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dateTimePicker2);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dtpHistoryEnd);
+            this.Controls.Add(this.dtpHistoryStart);
             this.Controls.Add(this.chrtTemp);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.lblCV);
@@ -429,7 +472,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "z";
+            this.Text = "Cabin Temperature Monitoring System";
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -453,8 +496,8 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem preferencesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dtpHistoryStart;
+        private System.Windows.Forms.DateTimePicker dtpHistoryEnd;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataVisualization.Charting.Chart chrtTemp;
         private DataSetToGrah dataSetToGrah;
@@ -482,8 +525,8 @@
         private System.Windows.Forms.ToolStripStatusLabel tslblRAM;
         private System.Windows.Forms.RadioButton rbtnRealtime;
         private System.Windows.Forms.RadioButton rbtnHistory;
-        private System.Windows.Forms.MaskedTextBox mtxtRealtimeRange;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cbRealtimeUnit;
+        private System.Windows.Forms.ComboBox cboRealtimeUnit;
+        private System.Windows.Forms.ComboBox cboRealtimeRange;
     }
 }

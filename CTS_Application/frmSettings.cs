@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO.Ports;
 
 namespace CTS_Application
 {
@@ -20,6 +21,12 @@ namespace CTS_Application
         {        
             InitializeComponent();
             FillTextBoxes();
+
+            //show list of valid com ports
+            foreach (string s in SerialPort.GetPortNames())
+            {
+                comboBox1.Items.Add(s);
+            }  
         }
         private void frmSettings_Load(object sender, EventArgs e)
         {

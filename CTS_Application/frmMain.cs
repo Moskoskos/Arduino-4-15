@@ -31,13 +31,20 @@ namespace CTS_Application
        
         public frmMain()
         {
-            InitializeComponent();
+           InitializeComponent();
            tmrUpdateGui.Start();
-           cbRealtimeUnit.SelectedIndex = 1;
-           tmrAlarmInit();  //Innstillingene til timeren.
-           tmrAlarm.Start(); //Start timeren.
-           tmrRecToDbInit(); //Innstillingene til timeren.
-           tmrRecToDb.Start(); //Start timeren.
+
+            //Initialize GUI time ranges
+            cboRealtimeRange.SelectedIndex = 12-1; //12 hours initial range.
+            cboRealtimeUnit.SelectedIndex = 1; //hours initial unit.
+            dtpHistoryEnd.Value = DateTime.Now;
+            dtpHistoryStart.Value = DateTime.Now.AddMonths(-1); //One month initial range.
+
+
+            tmrAlarmInit();  //Innstillingene til timeren.
+            tmrAlarm.Start(); //Start timeren.
+            tmrRecToDbInit(); //Innstillingene til timeren.
+            tmrRecToDb.Start(); //Start timeren.
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -67,6 +74,11 @@ namespace CTS_Application
             MemoryUsage(); //Viser den fysiske minnebruken til applikasjonen.
             MySqlStatus(); //Sjekker om DatabaseServeren kjører.
             UpdateTemp(); //Oppdaterer temperaturverdien i frmMain fra klassen arduinoCOM.
+            if (rbtnRealtime.Checked)
+            {
+                updateRange(); //Oppdaterer range til graf i realtime.
+            }
+
         }
         private void tmrRecToDbInit()
         {
@@ -98,8 +110,8 @@ namespace CTS_Application
 
         private void btnSubView_Click_1(object sender, EventArgs e)
         {
-            DateTime temp = dateTimePicker1.Value;
-            DateTime temp2 = dateTimePicker2.Value;
+            DateTime temp = dtpHistoryStart.Value;
+            DateTime temp2 = dtpHistoryEnd.Value;
          
                 if (temp.ToOADate() > temp2.ToOADate())
                 {
@@ -229,14 +241,14 @@ namespace CTS_Application
                 mail.SendMessage(message);
                 this.Invoke((MethodInvoker)delegate { UpdateAlarmGrid(); });
             }
-            if ((lowTemp == true) && (arcomAlarm == false))
+            if (lowTemp == true)
             {
                 string message = "Temperature extended setpoint: Low (" + spL + "°C). Temperature =" + realTemp.ToString() + "°C";
                 dbWrite.WriteToAlarmHistorian(2, message);
                 mail.SendMessage(message);
                 this.Invoke((MethodInvoker)delegate { UpdateAlarmGrid(); });
             }
-            if ((tempOOR == true) && (arcomAlarm == false))
+            if (tempOOR == true)
             {
                 string message = "Temperature out of range. Temperature =" + realTemp.ToString() + "°C";
                 dbWrite.WriteToAlarmHistorian(3, message);
@@ -259,39 +271,118 @@ namespace CTS_Application
                 MessageBox.Show("The program could not find the Arduino. Go to Preferences to change COM port");
             }
         }
-        
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-            DateTime temp = dateTimePicker1.Value;
-            DateTime temp2 = dateTimePicker2.Value;
 
-            if (temp.ToOADate() > temp2.ToOADate())
+        private void updateRange()
+        {
+            DateTime end = DateTime.Now;
+            DateTime start = DateTime.Now;
+
+            //Realtime mode selected
+            if (rbtnRealtime.Checked)
             {
-                MessageBox.Show("Cannot have a start date later than the end date.");
+                //Calculate the range to DateTime format
+                int minutes = cboRealtimeRange.SelectedIndex+1;
+                if (cboRealtimeUnit.SelectedIndex >= 1) //minutes to hours
+                {
+                    minutes *= 60;
+                    if (cboRealtimeUnit.SelectedIndex >= 2) //hours to days
+                    {
+                        minutes *= 24;
+                    }
+                }
+
+
+                //Set end and start of range.
+                end = DateTime.Now;
+                start = end.AddMinutes((float)(minutes * -1)); //Add the negative number of minutes to subtract from current time.
+
+
+            }
+            //History mode selected
+            else if (rbtnHistory.Checked)
+            {
+                if (dtpHistoryEnd.Value > DateTime.Now)
+                {
+                    MessageBox.Show("End date is greater than todays date");
+                    dtpHistoryEnd.Value = DateTime.Now;
+                }
+                if (dtpHistoryStart.Value >= dtpHistoryEnd.Value)
+                {
+                    dtpHistoryStart.Value = dtpHistoryEnd.Value.AddDays(-1);
+                    MessageBox.Show("Start date must be set earlier than end date");
+                }
+                else
+                {
+                    end = dtpHistoryEnd.Value;
+                    start = dtpHistoryStart.Value;
+                }
+            }
+            //No range mode selected
+            else
+            {
+                MessageBox.Show("No time range is set");
+                start = DateTime.Now;
+                end = DateTime.Now;
+            }
+
+            //Set the label format
+            if (((end-start).Days) > 5 )
+            {
+                chrtTemp.ChartAreas["Temperature"].AxisX.LabelStyle.Format = "dd/MM/yyyy";
+            }
+            else if (((end-start).Days) > 1 )
+            {
+                chrtTemp.ChartAreas["Temperature"].AxisX.LabelStyle.Format = "dd/MM/yy - HH:mm";
             }
             else
             {
-                chrtTemp.ChartAreas[0].AxisX.Minimum = temp.ToOADate();
+                chrtTemp.ChartAreas["Temperature"].AxisX.LabelStyle.Format = "HH:mm"; 
             }
+
+            //Write the range to the charting component.
+            chrtTemp.ChartAreas[0].AxisX.Minimum = start.ToOADate();
+            chrtTemp.ChartAreas[0].AxisX.Maximum = end.ToOADate();
+        }
+        
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            updateRange();
         }
 
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
         {
-            DateTime temp = dateTimePicker1.Value;
-            DateTime temp2 = dateTimePicker2.Value;
-            if (temp.ToOADate() > temp2.ToOADate())
-            {
-                MessageBox.Show("Cannot have a start date later than the end date.");
-            }
-            else
-            {
-                chrtTemp.ChartAreas[0].AxisX.Maximum = temp2.ToOADate();
-            }
+            updateRange();
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+
+        private void historianBindingSource_CurrentChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void rbtnRealtime_CheckedChanged(object sender, EventArgs e)
+        {
+            updateRange();
+        }
+
+        private void rbtnHistory_CheckedChanged(object sender, EventArgs e)
+        {
+            updateRange();
+        }
+
+        private void mtxtRealtimeRange_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+            updateRange();
+        }
+
+        private void cboRealtimeRange_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            updateRange();
+        }
+
+        private void cboRealtimeUnit_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            updateRange();
         }
 
 
