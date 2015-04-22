@@ -250,6 +250,8 @@ namespace CTS_Application
                 mail.SendMessage(message);
                 this.Invoke((MethodInvoker)delegate { UpdateAlarmGrid(); });
             }
+            try
+            { 
             if (arcomAlarm == true)
             {
                 string message = "Lost Connection to Arduino";
@@ -257,6 +259,11 @@ namespace CTS_Application
                 mail.SendMessage(message);
                 this.Invoke((MethodInvoker)delegate { UpdateAlarmGrid(); });
                 MessageBox.Show("The program could not find the Arduino. Go to Preferences to change COM port");
+            }
+            }
+                catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
         
