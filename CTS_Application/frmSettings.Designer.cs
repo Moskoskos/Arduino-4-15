@@ -83,7 +83,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(120, 160);
+            this.label2.Location = new System.Drawing.Point(120, 153);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(71, 13);
             this.label2.TabIndex = 50;
@@ -91,7 +91,7 @@
             // 
             // txtSpH
             // 
-            this.txtSpH.Location = new System.Drawing.Point(120, 176);
+            this.txtSpH.Location = new System.Drawing.Point(120, 169);
             this.txtSpH.Name = "txtSpH";
             this.txtSpH.Size = new System.Drawing.Size(100, 20);
             this.txtSpH.TabIndex = 47;
@@ -99,7 +99,7 @@
             // 
             // txtSpL
             // 
-            this.txtSpL.Location = new System.Drawing.Point(8, 176);
+            this.txtSpL.Location = new System.Drawing.Point(8, 169);
             this.txtSpL.Name = "txtSpL";
             this.txtSpL.Size = new System.Drawing.Size(100, 20);
             this.txtSpL.TabIndex = 46;
@@ -107,9 +107,9 @@
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(232, 176);
+            this.btnSubmit.Location = new System.Drawing.Point(8, 191);
             this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(64, 23);
+            this.btnSubmit.Size = new System.Drawing.Size(212, 23);
             this.btnSubmit.TabIndex = 48;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
@@ -118,7 +118,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(8, 160);
+            this.label7.Location = new System.Drawing.Point(8, 153);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(69, 13);
             this.label7.TabIndex = 49;
@@ -128,7 +128,7 @@
             // 
             this.lblChange.AutoSize = true;
             this.lblChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblChange.Location = new System.Drawing.Point(8, 208);
+            this.lblChange.Location = new System.Drawing.Point(8, 201);
             this.lblChange.Name = "lblChange";
             this.lblChange.Size = new System.Drawing.Size(0, 17);
             this.lblChange.TabIndex = 51;
@@ -147,7 +147,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(306, 233);
+            this.ClientSize = new System.Drawing.Size(241, 233);
             this.Controls.Add(this.cboCOMPort);
             this.Controls.Add(this.lblChange);
             this.Controls.Add(this.label2);
