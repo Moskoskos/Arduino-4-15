@@ -41,19 +41,29 @@ namespace CTS_Application
             //Then get the number of rows in the table to iterate IDs
             int numOfRows = Convert.ToInt32(dbRead.GetTotalRow());
             //For each unique id in the table, send email.
+            
+
+
             for (int i = 1; i <= numOfRows; i++)
             {
-                try
+                string userId = dbRead.GetEmail(i);
+                
+                if (userId.Length > 0) //Only execute if receiver exists.
                 {
-                    string userId = dbRead.GetEmail(i);
-                    message = new MailMessage(from, userId, subject1, body);
-                    client.Send(message);
+                    try
+                    {
 
+                        message = new MailMessage(from, userId, subject1, body);
+                        client.Send(message);
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message + "HEYHEY ");
-                }
+
+               
                 
             }
         }
