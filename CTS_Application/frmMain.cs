@@ -68,7 +68,7 @@ namespace CTS_Application
                 MemoryUsage(); //Viser den fysiske minnebruken til applikasjonen.
                 MySqlStatus(); //Sjekker om DatabaseServeren kjører.
                 UpdateTemp(); //Oppdaterer temperaturverdien i frmMain fra klassen arduinoCOM.
-            }
+            
         }
         private void tmrRecToDbInit()
         {
