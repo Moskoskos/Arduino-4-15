@@ -70,14 +70,19 @@ namespace CTS_Application
         //
         private void tmrUpdateGui_Tick(object sender, EventArgs e)
         {
-            BatteryRemaining(); //PATRICK !
-            MemoryUsage(); //Viser den fysiske minnebruken til applikasjonen.
-            MySqlStatus(); //Sjekker om DatabaseServeren kjører.
-            UpdateTemp(); //Oppdaterer temperaturverdien i frmMain fra klassen arduinoCOM.
-            if (rbtnRealtime.Checked)
+            try
             {
-                updateRange(); //Oppdaterer range til graf i realtime.
+                BatteryRemaining(); //PATRICK !
+                MemoryUsage(); //Viser den fysiske minnebruken til applikasjonen.
+                MySqlStatus(); //Sjekker om DatabaseServeren kjører.
+                UpdateTemp(); //Oppdaterer temperaturverdien i frmMain fra klassen arduinoCOM.
+                if (rbtnRealtime.Checked)
+                {
+                    updateRange(); //Oppdaterer range til graf i realtime.
+                }
             }
+            catch(Exception ex)
+            { MessageBox.Show(ex.Message); }
 
         }
         private void tmrRecToDbInit()
@@ -175,8 +180,8 @@ namespace CTS_Application
         }
         private void UpdateTemp()
         {
-            try
-            {
+            //try
+            //{
                 if (arCom.comFault == false)
                 {
                     temp_Arduino = arCom.Readtemp();
@@ -189,11 +194,11 @@ namespace CTS_Application
                         lblCV.Text = Convert.ToString(temp_Arduino) + "°C";
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
         }
         private void BatteryRemaining()
         {
@@ -241,14 +246,14 @@ namespace CTS_Application
                 mail.SendMessage(message);
                 this.Invoke((MethodInvoker)delegate { UpdateAlarmGrid(); });
             }
-            if (lowTemp == true)
+            if ((lowTemp == true)&&(arcomAlarm==false))
             {
                 string message = "Temperature extended setpoint: Low (" + spL + "°C). Temperature =" + realTemp.ToString() + "°C";
                 dbWrite.WriteToAlarmHistorian(2, message);
                 mail.SendMessage(message);
                 this.Invoke((MethodInvoker)delegate { UpdateAlarmGrid(); });
             }
-            if (tempOOR == true)
+            if ((tempOOR == true)&&(arcomAlarm==false))
             {
                 string message = "Temperature out of range. Temperature =" + realTemp.ToString() + "°C";
                 dbWrite.WriteToAlarmHistorian(3, message);

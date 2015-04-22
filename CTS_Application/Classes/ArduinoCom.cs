@@ -48,6 +48,7 @@ namespace CTS_Application
                     
                 }
                 tempC = ((Convert.ToDouble(temp)) * 0.0318);
+
             }
             catch (Exception)
             {
