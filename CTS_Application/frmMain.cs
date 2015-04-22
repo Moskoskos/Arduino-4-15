@@ -280,6 +280,12 @@ namespace CTS_Application
             //Realtime mode selected
             if (rbtnRealtime.Checked)
             {
+                //Disable and enable controls.
+                cboRealtimeRange.Enabled = true;
+                cboRealtimeUnit.Enabled = true;
+                dtpHistoryStart.Enabled = false;
+                dtpHistoryEnd.Enabled = false;
+
                 //Calculate the range to DateTime format
                 int minutes = cboRealtimeRange.SelectedIndex+1;
                 if (cboRealtimeUnit.SelectedIndex >= 1) //minutes to hours
@@ -296,11 +302,18 @@ namespace CTS_Application
                 end = DateTime.Now;
                 start = end.AddMinutes((float)(minutes * -1)); //Add the negative number of minutes to subtract from current time.
 
-
             }
+
             //History mode selected
             else if (rbtnHistory.Checked)
             {
+
+                //Disable and enable controls.
+                cboRealtimeRange.Enabled = false;
+                cboRealtimeUnit.Enabled = false;
+                dtpHistoryStart.Enabled = true;
+                dtpHistoryEnd.Enabled = true;
+
                 if (dtpHistoryEnd.Value > DateTime.Now)
                 {
                     MessageBox.Show("End date is greater than todays date");

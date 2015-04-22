@@ -22,9 +22,11 @@ namespace CTS_Application
             InitializeComponent();
             FillTextBoxes();
 
+            MessageBox.Show("Test");
             //show list of valid com ports
             foreach (string s in SerialPort.GetPortNames())
             {
+                MessageBox.Show(s.ToString());
                 comboBox1.Items.Add(s);
             }  
         }
