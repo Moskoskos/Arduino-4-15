@@ -398,6 +398,11 @@ namespace CTS_Application
             updateRange();
         }
 
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("LOLOLOLOLOLOL!");
+        }
+
 
     }
 }

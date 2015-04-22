@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series19 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series20 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series21 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label5 = new System.Windows.Forms.Label();
             this.lblCV = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -131,6 +131,7 @@
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
+            this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
             // dtpHistoryStart
             // 
@@ -159,52 +160,52 @@
             // 
             // chrtTemp
             // 
-            chartArea2.AxisX.LabelStyle.Format = "dd/MM/yy HH:mm";
-            chartArea2.AxisX.LabelStyle.Interval = 0D;
-            chartArea2.AxisX.LabelStyle.IntervalOffset = 0D;
-            chartArea2.AxisX.MajorGrid.Enabled = false;
-            chartArea2.AxisY.LabelStyle.Format = "#0°C";
-            chartArea2.AxisY.MajorGrid.LineColor = System.Drawing.Color.Gray;
-            chartArea2.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea2.Name = "Temperature";
-            this.chrtTemp.ChartAreas.Add(chartArea2);
+            chartArea7.AxisX.LabelStyle.Format = "dd/MM/yy HH:mm";
+            chartArea7.AxisX.LabelStyle.Interval = 0D;
+            chartArea7.AxisX.LabelStyle.IntervalOffset = 0D;
+            chartArea7.AxisX.MajorGrid.Enabled = false;
+            chartArea7.AxisY.LabelStyle.Format = "#0°C";
+            chartArea7.AxisY.MajorGrid.LineColor = System.Drawing.Color.Gray;
+            chartArea7.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea7.Name = "Temperature";
+            this.chrtTemp.ChartAreas.Add(chartArea7);
             this.chrtTemp.DataSource = this.historianBindingSource;
-            legend2.Enabled = false;
-            legend2.Name = "Legend1";
-            this.chrtTemp.Legends.Add(legend2);
+            legend7.Enabled = false;
+            legend7.Name = "Legend1";
+            this.chrtTemp.Legends.Add(legend7);
             this.chrtTemp.Location = new System.Drawing.Point(8, 144);
             this.chrtTemp.Name = "chrtTemp";
-            series4.BorderWidth = 2;
-            series4.ChartArea = "Temperature";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series4.Color = System.Drawing.Color.Blue;
-            series4.LabelFormat = "\"yyyy-MM-dd HH:mm\"";
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            series4.XValueMember = "datetime_recorded";
-            series4.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.DateTime;
-            series4.YValueMembers = "value";
-            series5.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            series5.ChartArea = "Temperature";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series5.Color = System.Drawing.Color.Orange;
-            series5.LabelFormat = "\"yyyy-MM-dd HH:mm\"";
-            series5.Legend = "Legend1";
-            series5.Name = "SpLow";
-            series5.XValueMember = "datetime_recorded";
-            series5.YValueMembers = "setpoint_low";
-            series6.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            series6.ChartArea = "Temperature";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series6.Color = System.Drawing.Color.Red;
-            series6.LabelFormat = "\"yyyy-MM-dd HH:mm\"";
-            series6.Legend = "Legend1";
-            series6.Name = "SpHigh";
-            series6.XValueMember = "datetime_recorded";
-            series6.YValueMembers = "setpoint_high";
-            this.chrtTemp.Series.Add(series4);
-            this.chrtTemp.Series.Add(series5);
-            this.chrtTemp.Series.Add(series6);
+            series19.BorderWidth = 2;
+            series19.ChartArea = "Temperature";
+            series19.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series19.Color = System.Drawing.Color.Blue;
+            series19.LabelFormat = "\"yyyy-MM-dd HH:mm\"";
+            series19.Legend = "Legend1";
+            series19.Name = "Series1";
+            series19.XValueMember = "datetime_recorded";
+            series19.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.DateTime;
+            series19.YValueMembers = "value";
+            series20.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            series20.ChartArea = "Temperature";
+            series20.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series20.Color = System.Drawing.Color.Orange;
+            series20.LabelFormat = "\"yyyy-MM-dd HH:mm\"";
+            series20.Legend = "Legend1";
+            series20.Name = "SpLow";
+            series20.XValueMember = "datetime_recorded";
+            series20.YValueMembers = "setpoint_low";
+            series21.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            series21.ChartArea = "Temperature";
+            series21.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series21.Color = System.Drawing.Color.Red;
+            series21.LabelFormat = "\"yyyy-MM-dd HH:mm\"";
+            series21.Legend = "Legend1";
+            series21.Name = "SpHigh";
+            series21.XValueMember = "datetime_recorded";
+            series21.YValueMembers = "setpoint_high";
+            this.chrtTemp.Series.Add(series19);
+            this.chrtTemp.Series.Add(series20);
+            this.chrtTemp.Series.Add(series21);
             this.chrtTemp.Size = new System.Drawing.Size(1156, 335);
             this.chrtTemp.TabIndex = 30;
             this.chrtTemp.Text = "chart1";
@@ -245,6 +246,8 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -254,6 +257,9 @@
             this.dataGridView1.DataSource = this.alarmhistorianBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(536, 32);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(624, 104);
             this.dataGridView1.TabIndex = 60;
             // 
@@ -473,7 +479,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cabin Temperature Monitoring System";
+            this.Text = "Cabin Temperature System";
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
