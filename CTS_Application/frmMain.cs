@@ -63,15 +63,12 @@ namespace CTS_Application
         //
         private void tmrUpdateGui_Tick(object sender, EventArgs e)
         {
-            try
-            {
+
                 BatteryRemaining(); //PATRICK !
                 MemoryUsage(); //Viser den fysiske minnebruken til applikasjonen.
                 MySqlStatus(); //Sjekker om DatabaseServeren kjører.
                 UpdateTemp(); //Oppdaterer temperaturverdien i frmMain fra klassen arduinoCOM.
             }
-            catch(Exception ex)
-            { MessageBox.Show(ex.Message); }
         }
         private void tmrRecToDbInit()
         {
@@ -162,8 +159,8 @@ namespace CTS_Application
         }
         private void UpdateTemp()
         {
-            //try
-            //{
+            try
+            {
                 if (arCom.comFault == false)
                 {
                     temp_Arduino = arCom.Readtemp();
@@ -176,11 +173,11 @@ namespace CTS_Application
                         lblCV.Text = Convert.ToString(temp_Arduino) + "°C";
                     }
                 }
-            //}
-            //catch (Exception ex)
-            //{
-                //MessageBox.Show(ex.Message);
-            //}
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         private void BatteryRemaining()
         {
