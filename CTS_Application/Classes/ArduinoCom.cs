@@ -44,6 +44,7 @@ namespace CTS_Application
                 //{
                     mySerialPort.Open();
                     temp = mySerialPort.ReadLine();
+                    mySerialPort.Close();
                 //}
                 tempC = ((Convert.ToDouble(temp)) * 0.0318);
             }
