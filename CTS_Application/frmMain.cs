@@ -135,15 +135,9 @@ namespace CTS_Application
         {
             try
             {
-                if (temp_Arduino == -300)
+                if (temp_Arduino > -300)
                 {
-                    
-                }
-                else
-                {
-                    //write temp to db
-                 dbWrite.WriteTempToHistorian(temp_Arduino);
-                  
+                 dbWrite.WriteTempToHistorian(temp_Arduino);                    
                 }
             }
             catch (Exception ex)
