@@ -28,6 +28,7 @@ namespace CTS_Application
         BatteryMonitoring batteryMonitoring = new BatteryMonitoring(); //Declare batterymonitoring class
         System.Timers.Timer tmrAlarm = new System.Timers.Timer(); //Timer to monitor alarm events.
         System.Timers.Timer tmrRecToDb = new System.Timers.Timer(); //Timer to record temperature recordings to database.
+        System.Timers.Timer tmrTest = new System.Timers.Timer();//testing
        
         public frmMain()
         {
@@ -45,12 +46,26 @@ namespace CTS_Application
             tmrAlarm.Start(); //Start timeren.
             tmrRecToDbInit(); //Innstillingene til timeren.
             tmrRecToDb.Start(); //Start timeren.
+            tmrTestInit();
+            tmrTest.Start();
         }
 
         private void frmMain_Load(object sender, EventArgs e)
         {
             UpdateGraph(); 
             UpdateAlarmGrid();           
+        }
+        private void tmrTestInit()
+        {
+            tmrTest.Interval = 2000;
+            tmrTest.Elapsed += tmrTest_Elapsed;
+            tmrTest.AutoReset = true;
+        }
+
+        void tmrTest_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            //UpdateTemp(); //Oppdaterer temperaturverdien i frmMain fra klassen arduinoCOM.
+            this.Invoke((MethodInvoker)delegate { UpdateTemp(); });
         }
         /// <summary>
         /// Innstillingene til tmrAlarm.
@@ -75,7 +90,7 @@ namespace CTS_Application
                 BatteryRemaining(); //PATRICK !
                 MemoryUsage(); //Viser den fysiske minnebruken til applikasjonen.
                 MySqlStatus(); //Sjekker om DatabaseServeren kjører.
-                UpdateTemp(); //Oppdaterer temperaturverdien i frmMain fra klassen arduinoCOM.
+                //UpdateTemp(); //Oppdaterer temperaturverdien i frmMain fra klassen arduinoCOM.
                 if (rbtnRealtime.Checked)
                 {
                     updateRange(); //Oppdaterer range til graf i realtime.
