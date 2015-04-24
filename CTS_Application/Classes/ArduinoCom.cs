@@ -14,7 +14,6 @@ namespace CTS_Application
         public bool comFault{get; set;}
         SerialPort mySerialPort;
         public double tempC = 0.0;
-
         public ArduinoCom()
         {
             try
@@ -28,44 +27,50 @@ namespace CTS_Application
                 MessageBox.Show("Could not find COM Port value. Make sure that the MySQL-server is running!");
             } 
         }
-
         private string _type;
-
         public string ComPort
         {
             get { return mySerialPort.PortName; }
             set { mySerialPort.PortName = value; }
         }
-
         /// <summary>
         /// Metode som leser verdi fra comport, ganger med 0,0318 for å få temp, setter comFault true ved feil
         /// </summary>
         /// <returns>Returnerer temperatur</returns>
         public double Readtemp()
         {
-            string temp = "";
-            try
-            {
-                if (mySerialPort.IsOpen)
-                {
-                    temp = mySerialPort.ReadLine();
-                }
-                else
-                {
-                    mySerialPort.Close();
-                    mySerialPort.Open();
-                    temp = mySerialPort.ReadLine();
+            //string temp = "";
+            //try
+            //{
+            //    if (mySerialPort.IsOpen)
+            //    {
+            //        temp = mySerialPort.ReadLine();
+            //    }
+            //    else
+            //    {
+            //        mySerialPort.Close();
+            //        mySerialPort.Open();
+            //        temp = mySerialPort.ReadLine();
                     
-                }
-                tempC = ((Convert.ToDouble(temp)) * 0.0318);
+            //    }
+            //    tempC = ((Convert.ToDouble(temp)) * 0.0318);
 
-            }
-            catch (Exception)
-            {
-                comFault = true;
-                tempC = -300;
-            }
+            //}
+            //catch (Exception)
+            //{
+            //    comFault = true;
+            //    tempC = -300;
+            //}
             return Math.Round(tempC, 2);
         }
+
+        private void DataReceivedHandler(object sender,SerialDataReceivedEventArgs e)
+        {
+            //SerialPort sp = (SerialPort)sender;
+            //string indata = sp.ReadExisting();
+            string temp = mySerialPort.ReadLine();            
+            tempC = ((Convert.ToDouble(temp)) * 0.0318);
+        }
+
     }
 }

@@ -46,8 +46,8 @@ namespace CTS_Application
             tmrAlarm.Start(); //Start timeren.
             tmrRecToDbInit(); //Innstillingene til timeren.
             tmrRecToDb.Start(); //Start timeren.
-            tmrTestInit();
-            tmrTest.Start();
+            //tmrTestInit();
+            //tmrTest.Start();
 
         }
 
@@ -56,18 +56,18 @@ namespace CTS_Application
             UpdateGraph(); 
             UpdateAlarmGrid();           
         }
-        private void tmrTestInit()
-        {
-            tmrTest.Interval = 2000;
-            tmrTest.Elapsed += tmrTest_Elapsed;
-            tmrTest.AutoReset = true;
-        }
+        //private void tmrTestInit()
+        //{
+        //    tmrTest.Interval = 2000;
+        //    tmrTest.Elapsed += tmrTest_Elapsed;
+        //    tmrTest.AutoReset = true;
+        //}
 
-        void tmrTest_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
-        {
-            //UpdateTemp(); //Oppdaterer temperaturverdien i frmMain fra klassen arduinoCOM.
-            this.Invoke((MethodInvoker)delegate { UpdateTemp(); });
-        }
+        //void tmrTest_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        //{
+        //    //UpdateTemp(); //Oppdaterer temperaturverdien i frmMain fra klassen arduinoCOM.
+        //    this.Invoke((MethodInvoker)delegate { UpdateTemp(); });
+        //}
         /// <summary>
         /// Innstillingene til tmrAlarm.
         /// </summary>
@@ -91,7 +91,7 @@ namespace CTS_Application
                 BatteryRemaining(); //PATRICK !
                 MemoryUsage(); //Viser den fysiske minnebruken til applikasjonen.
                 MySqlStatus(); //Sjekker om DatabaseServeren kjører.
-                //UpdateTemp(); //Oppdaterer temperaturverdien i frmMain fra klassen arduinoCOM.
+                UpdateTemp(); //Oppdaterer temperaturverdien i frmMain fra klassen arduinoCOM.
                 if (rbtnRealtime.Checked)
                 {
                     UpdateRange(); //Oppdaterer range til graf i realtime.
