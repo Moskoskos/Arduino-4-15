@@ -18,9 +18,7 @@ namespace CTS_Application
         public string oldTemp = "";
         public string temp = "";
         public int timeOut = 0;
-        Timer tmrCom = new Timer();
-
-        
+        Timer tmrCom = new Timer();        
         public ArduinoCom()
         {
             try
@@ -51,7 +49,6 @@ namespace CTS_Application
         {
             tmrCom.Interval = 1000;
             tmrCom.Start();
-
             if (timeOut > 4)
             {
                 comFault = true;
