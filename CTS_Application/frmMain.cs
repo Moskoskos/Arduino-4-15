@@ -180,13 +180,15 @@ namespace CTS_Application
         }
         private void MemoryUsage()
         {
-            //Displays the programs current memory Usage. 
+            //Displays the programs current physical memory Usage. 
             //Source:
             //http://stackoverflow.com/questions/1440720/how-can-i-determine-how-much-memory-my-program-is-currently-occupying
             //
-            long memory = System.Diagnostics.Process.GetCurrentProcess().WorkingSet64;
+            Process[] usage = System.Diagnostics.Process.GetProcessesByName("mysqld");
+            long mySqlMem = usage[0].WorkingSet64;
 
-            tslblRAM.Text  =(memory / 1024 / 1024).ToString() + "MB"; 
+            long memory = System.Diagnostics.Process.GetCurrentProcess().WorkingSet64;
+            tslblRAM.Text  = "CTMS: " + (memory / 1024 / 1024).ToString() + " MB" + " / Database: " + (mySqlMem /1024 /1024).ToString() + " MB"; 
         }
         private void UpdateTemp()
         {

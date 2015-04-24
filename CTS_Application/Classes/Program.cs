@@ -55,7 +55,7 @@ namespace CTS_Application
                 //Hvis databasen ikke er tilgjengelig sier programmet i fra til brukerern.
             else 
             {
-                MessageBox.Show("The MySQL server is not running! Start it in order to run the CTS software.");
+                MessageBox.Show("The MySQL server is not running! Start it in order to run the CTMS software.");
                 
             }
         }
