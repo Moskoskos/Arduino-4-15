@@ -128,7 +128,7 @@
             // 
             this.lblChange.AutoSize = true;
             this.lblChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblChange.Location = new System.Drawing.Point(8, 201);
+            this.lblChange.Location = new System.Drawing.Point(16, 224);
             this.lblChange.Name = "lblChange";
             this.lblChange.Size = new System.Drawing.Size(0, 17);
             this.lblChange.TabIndex = 51;
@@ -148,7 +148,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(241, 233);
+            this.ClientSize = new System.Drawing.Size(241, 250);
             this.Controls.Add(this.cboCOMPort);
             this.Controls.Add(this.lblChange);
             this.Controls.Add(this.label2);

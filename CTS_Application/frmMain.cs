@@ -94,7 +94,7 @@ namespace CTS_Application
                 //UpdateTemp(); //Oppdaterer temperaturverdien i frmMain fra klassen arduinoCOM.
                 if (rbtnRealtime.Checked)
                 {
-                    updateRange(); //Oppdaterer range til graf i realtime.
+                    UpdateRange(); //Oppdaterer range til graf i realtime.
                 }
             }
             catch(Exception ex)
@@ -288,7 +288,7 @@ namespace CTS_Application
             }
         }
 
-        private void updateRange()
+        private void UpdateRange()
         {
             DateTime end = DateTime.Now;
             DateTime start = DateTime.Now;
@@ -375,12 +375,12 @@ namespace CTS_Application
         
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            updateRange();
+            UpdateRange();
         }
 
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
         {
-            updateRange();
+            UpdateRange();
         }
 
 
@@ -391,27 +391,27 @@ namespace CTS_Application
 
         private void rbtnRealtime_CheckedChanged(object sender, EventArgs e)
         {
-            updateRange();
+            UpdateRange();
         }
 
         private void rbtnHistory_CheckedChanged(object sender, EventArgs e)
         {
-            updateRange();
+            UpdateRange();
         }
 
         private void mtxtRealtimeRange_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
-            updateRange();
+            UpdateRange();
         }
         
         private void cboRealtimeRange_SelectedIndexChanged(object sender, EventArgs e)
         {
-            updateRange();
+            UpdateRange();
         }
 
         private void cboRealtimeUnit_SelectedIndexChanged(object sender, EventArgs e)
         {
-            updateRange();
+            UpdateRange();
         }
 
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
