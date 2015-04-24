@@ -241,15 +241,20 @@ namespace CTS_Application
             bool tempOOR;
             bool batAlarm;
             bool arcomAlarm;
+            bool batteryAlarm;
             double spH = Convert.ToDouble(dbRead.GetHighSp(1));
             double spL = Convert.ToDouble(dbRead.GetLowSP(1));
             double realTemp = realTemp = arCom.Readtemp();
+            int spLBattery = 40;
+            int batteryPercent = batteryMonitoring.PercentBatteryLeft;
+            double timeLeft = batteryMonitoring.TimeLeft;
 
             highTemp = alarm.HighTempAlarm(spH, realTemp);
             lowTemp = alarm.LowTempAlarm(spL, realTemp);
             tempOOR = alarm.TempOutOfRange(realTemp);
             batAlarm = alarm.BatteryAlarm(batteryMonitoring.StatusChanged());
             arcomAlarm = alarm.ArduComAlarm(arCom.comFault);
+            batteryAlarm = alarm.LowBatteryPercent(spLBattery,batteryPercent);
 
 
             if (highTemp == true)
@@ -287,6 +292,14 @@ namespace CTS_Application
                 mail.SendMessage(message);
                 this.Invoke((MethodInvoker)delegate { UpdateAlarmGrid(); });
                 MessageBox.Show("The program could not find the Arduino. Go to Preferences to change COM port");
+            }
+            if(batteryAlarm == true)
+            {
+                string message = ("Low Battery percent. "+timeLeft+" minuttes until system shut down"+ batteryPercent + "% left");
+                dbWrite.WriteToAlarmHistorian(6, message);
+                mail.SendMessage(message);
+                this.Invoke((MethodInvoker)delegate { UpdateAlarmGrid(); });
+                MessageBox.Show("Low Battery percent. " + timeLeft + " minuttes until system shut down" + batteryPercent + "% left. Connect charger");
             }
         }
 
