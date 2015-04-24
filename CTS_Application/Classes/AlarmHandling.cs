@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
 
 
 namespace CTS_Application
@@ -21,6 +21,8 @@ namespace CTS_Application
         private bool currentBatteryAlarm = false;
         private bool comAlarm = false;
         private bool currentComAlarm = false;
+        private bool currentLowBatteryalarm = false;
+        private bool lowBatteryAlarm = false;
 
 
         public AlarmHandling()
@@ -138,6 +140,24 @@ namespace CTS_Application
                     comAlarm = false;
                 }
                 return comAlarm;
+            }
+            public bool LowBatteryPercent(int sp, int percent)
+            {
+                if ((percent < sp) && (currentLowBatteryalarm == false))
+                {
+                    lowBatteryAlarm = true;
+                    currentLowBatteryalarm = true;
+                }
+                else if ((currentLowBatteryalarm == true) && (percent > (sp + 1.0)))
+                {
+                    currentLowBatteryalarm = false;
+                }
+                else
+                {
+                    lowBatteryAlarm = false;
+                }
+
+                return lowBatteryAlarm;
             }
      }
     

@@ -1,9 +1,5 @@
 ﻿using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
 using System.Windows.Forms;
-//using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 
 namespace CTS_Application
@@ -27,6 +23,8 @@ namespace CTS_Application
         {
             try
             {
+                //Souce:
+                //http://stackoverflow.com/questions/15383852/sql-if-exists-update-else-insert-into
                 string query = "INSERT INTO settings(settings_ID, setpoint_low, setpoint_high) VALUES (@settingID, @setPoint_low, @setPoint_high) ON DUPLICATE KEY UPDATE setpoint_low = VALUES(setpoint_low), setpoint_high = VALUES(setpoint_high);";
                 //Sjekker at tilkoblingen er åpen.
                 if (this.OpenConnection() == true)

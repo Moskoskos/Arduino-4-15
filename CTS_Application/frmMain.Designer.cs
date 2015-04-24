@@ -40,6 +40,8 @@
             this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.subscribersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.comTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.selectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dtpHistoryStart = new System.Windows.Forms.DateTimePicker();
             this.dtpHistoryEnd = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
@@ -71,8 +73,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cboRealtimeUnit = new System.Windows.Forms.ComboBox();
             this.cboRealtimeRange = new System.Windows.Forms.ComboBox();
-            this.comTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.selectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chrtTemp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.historianBindingSource)).BeginInit();
@@ -135,6 +136,20 @@
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
             this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
+            // 
+            // comTestToolStripMenuItem
+            // 
+            this.comTestToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.selectToolStripMenuItem});
+            this.comTestToolStripMenuItem.Name = "comTestToolStripMenuItem";
+            this.comTestToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.comTestToolStripMenuItem.Text = "ComTest";
+            // 
+            // selectToolStripMenuItem
+            // 
+            this.selectToolStripMenuItem.Name = "selectToolStripMenuItem";
+            this.selectToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
+            this.selectToolStripMenuItem.Text = "Select";
             // 
             // dtpHistoryStart
             // 
@@ -321,7 +336,8 @@
             this.tslblDBStatConst,
             this.tslblDBStat,
             this.tslblRAMConst,
-            this.tslblRAM});
+            this.tslblRAM,
+            this.toolStripStatusLabel1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 482);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1161, 22);
@@ -460,19 +476,10 @@
             this.cboRealtimeRange.TabIndex = 1;
             this.cboRealtimeRange.SelectedIndexChanged += new System.EventHandler(this.cboRealtimeRange_SelectedIndexChanged);
             // 
-            // comTestToolStripMenuItem
+            // toolStripStatusLabel1
             // 
-            this.comTestToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.selectToolStripMenuItem});
-            this.comTestToolStripMenuItem.Name = "comTestToolStripMenuItem";
-            this.comTestToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
-            this.comTestToolStripMenuItem.Text = "ComTest";
-            // 
-            // selectToolStripMenuItem
-            // 
-            this.selectToolStripMenuItem.Name = "selectToolStripMenuItem";
-            this.selectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.selectToolStripMenuItem.Text = "Select";
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 17);
             // 
             // frmMain
             // 
@@ -557,5 +564,6 @@
         private System.Windows.Forms.ComboBox cboRealtimeRange;
         private System.Windows.Forms.ToolStripMenuItem comTestToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem selectToolStripMenuItem;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
     }
 }
