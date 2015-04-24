@@ -49,6 +49,7 @@ namespace CTS_Application
         {
             tmrCom.Interval = 1000;
             tmrCom.Start();
+           
             if (timeOut > 4)
             {
                 comFault = true;
@@ -59,6 +60,7 @@ namespace CTS_Application
         }
         private void DataReceivedHandler(object sender,SerialDataReceivedEventArgs e)
         {
+
             timeOut = 0;
             comFault = false;
             temp = mySerialPort.ReadLine();
