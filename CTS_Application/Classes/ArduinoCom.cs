@@ -6,6 +6,7 @@
 using System.Windows.Forms;
 using System.IO.Ports;
 
+
 namespace CTS_Application
 {
     class ArduinoCom
@@ -14,7 +15,12 @@ namespace CTS_Application
         public bool comFault{get; set;}
         SerialPort mySerialPort;
         public double tempC = 0.0;
+        public string oldTemp = "";
         public string temp = "";
+        public int timeOut = 0;
+        Timer tmrCom = new Timer();
+
+        
         public ArduinoCom()
         {
             try
@@ -24,6 +30,7 @@ namespace CTS_Application
                 mySerialPort.PortName = port;
                 mySerialPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
                 mySerialPort.Open();
+                tmrCom.Tick += new EventHandler(timer_Tick);
             }
             catch (Exception)
             {
@@ -42,38 +49,27 @@ namespace CTS_Application
         /// <returns>Returnerer temperatur</returns>
         public double Readtemp()
         {
-            //string temp = "";
-            //try
-            //{
-            //    if (mySerialPort.IsOpen)
-            //    {
-            //        temp = mySerialPort.ReadLine();
-            //    }
-            //    else
-            //    {
-            //        mySerialPort.Close();
-            //        mySerialPort.Open();
-            //        temp = mySerialPort.ReadLine();
-                    
-            //    }
-            //    tempC = ((Convert.ToDouble(temp)) * 0.0318);
+            tmrCom.Interval = 1000;
+            tmrCom.Start();
 
-            //}
-            //catch (Exception)
-            //{
-            //    comFault = true;
-            //    tempC = -300;
-            //}
+            if (timeOut > 4)
+            {
+                comFault = true;
+                tempC = -300.0;
+            }
+
             return Math.Round(tempC, 2);
         }
-
         private void DataReceivedHandler(object sender,SerialDataReceivedEventArgs e)
         {
-            //SerialPort sp = (SerialPort)sender;
-            //indata = sp.ReadExisting();
-            temp = mySerialPort.ReadLine();            
-            tempC = ((Convert.ToDouble(temp)) * 0.0318);
-        }
 
+            timeOut = 0;
+            temp = mySerialPort.ReadLine();
+            tempC = ((Convert.ToDouble(temp)) * 0.0318);                    
+        }
+        void timer_Tick(object sender, EventArgs e)
+        {
+            timeOut += 1 ;
+        }
     }
 }
