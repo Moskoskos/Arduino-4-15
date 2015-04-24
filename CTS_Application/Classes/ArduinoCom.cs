@@ -14,6 +14,7 @@ namespace CTS_Application
         public bool comFault{get; set;}
         SerialPort mySerialPort;
         public double tempC = 0.0;
+        public string temp = "";
         public ArduinoCom()
         {
             try
@@ -21,6 +22,8 @@ namespace CTS_Application
                 mySerialPort = new SerialPort(dbRead.GetComPort(1), 9600, Parity.None, 8, StopBits.One);
                 string port = dbRead.GetComPort(1);//leser comport fra database
                 mySerialPort.PortName = port;
+                mySerialPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
+                mySerialPort.Open();
             }
             catch (Exception)
             {
@@ -67,8 +70,8 @@ namespace CTS_Application
         private void DataReceivedHandler(object sender,SerialDataReceivedEventArgs e)
         {
             //SerialPort sp = (SerialPort)sender;
-            //string indata = sp.ReadExisting();
-            string temp = mySerialPort.ReadLine();            
+            //indata = sp.ReadExisting();
+            temp = mySerialPort.ReadLine();            
             tempC = ((Convert.ToDouble(temp)) * 0.0318);
         }
 
