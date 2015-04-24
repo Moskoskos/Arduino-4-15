@@ -194,19 +194,15 @@ namespace CTS_Application
         {
             try
             {
-                if (arCom.comFault == false)
-                {
                     temp_Arduino = arCom.Readtemp();
-                    if (temp_Arduino == -300)
+                    if (temp_Arduino == -300.0)
                     {
                         lblCV.Text = "NO INPUT";
-
                     }
                     else
                     {
                         lblCV.Text = Convert.ToString(temp_Arduino) + "°C";
-                    }
-                }
+                    }               
             }
             catch (Exception ex)
             {

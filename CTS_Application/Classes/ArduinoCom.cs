@@ -62,8 +62,8 @@ namespace CTS_Application
         }
         private void DataReceivedHandler(object sender,SerialDataReceivedEventArgs e)
         {
-
             timeOut = 0;
+            comFault = false;
             temp = mySerialPort.ReadLine();
             tempC = ((Convert.ToDouble(temp)) * 0.0318);                    
         }
