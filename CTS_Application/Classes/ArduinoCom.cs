@@ -12,13 +12,14 @@ namespace CTS_Application
     class ArduinoCom
     {
         DbRead dbRead = new DbRead();
-        public bool comFault{get; set;}
         SerialPort mySerialPort;
+        Timer tmrCom = new Timer(); 
+        public bool comFault{get; set;}
         public double tempC = 0.0;
         public string oldTemp = "";
         public string temp = "";
         public int timeOut = 0;
-        Timer tmrCom = new Timer();        
+       
         public ArduinoCom()
         {
             try
@@ -50,7 +51,7 @@ namespace CTS_Application
             tmrCom.Interval = 1000;
             tmrCom.Start();
            
-            if (timeOut > 4)
+            if (timeOut > 4)//hvis timeoutverdi overstiger 4 blir comfault satt og -300 returneres isedenfor temp
             {
                 comFault = true;
                 tempC = -300.0;
@@ -58,17 +59,18 @@ namespace CTS_Application
 
             return Math.Round(tempC, 2);
         }
+
+        // Event som intreffer hvis programmet mottar noe fra comport
         private void DataReceivedHandler(object sender,SerialDataReceivedEventArgs e)
         {
-
-            timeOut = 0;
+            timeOut = 0;//Timeoutverdi blir satt til 0 hver gang data mottas
             comFault = false;
-            temp = mySerialPort.ReadLine();
-            tempC = ((Convert.ToDouble(temp)) * 0.0318);                    
+            temp = mySerialPort.ReadLine();//leser verdi fra arduino
+            tempC = ((Convert.ToDouble(temp)) * 0.0318);//gjør om til grader celsius                    
         }
         void timer_Tick(object sender, EventArgs e)
         {
-            timeOut += 1 ;
+            timeOut += 1 ;//teller opp timeoutverdi 1 gang per sek
         }
     }
 }
