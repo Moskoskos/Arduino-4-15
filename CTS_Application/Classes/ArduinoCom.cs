@@ -35,7 +35,7 @@ namespace CTS_Application
                 MessageBox.Show("Could not find COM Port value. Make sure that the MySQL-server is running!");
             } 
         }
-        private string _type;
+        
         public string ComPort
         {
             get { return mySerialPort.PortName; }
