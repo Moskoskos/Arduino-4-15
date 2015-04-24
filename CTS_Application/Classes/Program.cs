@@ -9,7 +9,7 @@ namespace CTS_Application
 {
     static class Program
     {
-        
+
         
         /// <summary>
         /// The main entry point for the application.
@@ -26,13 +26,14 @@ namespace CTS_Application
             string chkSettings = dbRead.CheckIfTableIsEmpty("settings");
             string chkHistorian = dbRead.CheckIfTableIsEmpty("historian");
             
+            
             //For å unngå en drøss med feilmeldinger i starten at programmet ikke finner setpunkter eller Comport så kjører den en sjekk i starten.
             Process[] instance = Process.GetProcessesByName("mysqld");
-            //Sjekker om databasen er tilgjengelig.
+            //Sjekker om databasen kjører
             if (instance.Length != 0)
             {
                
-            //Hvis databasen er tilgjengelig, sjekker den om det finnes en rad for settings. Hvis det ikke gjør det, putter den inn default verdier.
+                //Hvis databasen er kjører, sjekker den om det finnes en rad for settings. Hvis det ikke gjør det, putter den inn default verdier.
                if (chkSettings == "0")
                 {
                     dbEdit.ChangeSetPoint(1, -20, 30);

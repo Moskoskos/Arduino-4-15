@@ -80,10 +80,6 @@ namespace CTS_Application
             }
         }
 
-        private void btnSubCom_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
@@ -103,10 +99,40 @@ namespace CTS_Application
 
         private void cboCOMPort_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //try
+            //{
+            //    dbEdit.EditComPort(1, cboCOMPort.Text);
+            //    MessageBox.Show("COM port selected.");
+            //}
+            //catch (Exception)
+            //{
+            //    lblChange.Text = "Could not set COM port.";
+            //    throw;
+            //}
+        }
+
+        private void cboCOMPort_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            //try
+            //{
+            //    MessageBox.Show(cboCOMPort.SelectedText);
+            //    dbEdit.EditComPort(1, cboCOMPort.SelectedText);
+            //    MessageBox.Show("COM port selected.");
+            //}
+            //catch (Exception)
+            //{
+            //    lblChange.Text = "Could not set COM port.";
+            //    throw;
+            //}
+        }
+
+        private void cboCOMPort_SelectionChangeCommitted_1(object sender, EventArgs e)
+        {
             try
             {
-                dbEdit.EditComPort(1, cboCOMPort.SelectedText);
-                lblChange.Text = "COM port selected.";
+                dbEdit.EditComPort(1, cboCOMPort.Text);
+                MessageBox.Show("COM port selected.");
+
             }
             catch (Exception)
             {

@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series19 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series20 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series21 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label5 = new System.Windows.Forms.Label();
             this.lblCV = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -71,6 +71,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cboRealtimeUnit = new System.Windows.Forms.ComboBox();
             this.cboRealtimeRange = new System.Windows.Forms.ComboBox();
+            this.comTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.selectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chrtTemp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.historianBindingSource)).BeginInit();
@@ -105,7 +107,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.preferencesToolStripMenuItem,
             this.subscribersToolStripMenuItem,
-            this.helpToolStripMenuItem});
+            this.helpToolStripMenuItem,
+            this.comTestToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1161, 24);
@@ -160,52 +163,52 @@
             // 
             // chrtTemp
             // 
-            chartArea7.AxisX.LabelStyle.Format = "dd/MM/yy HH:mm";
-            chartArea7.AxisX.LabelStyle.Interval = 0D;
-            chartArea7.AxisX.LabelStyle.IntervalOffset = 0D;
-            chartArea7.AxisX.MajorGrid.Enabled = false;
-            chartArea7.AxisY.LabelStyle.Format = "#0°C";
-            chartArea7.AxisY.MajorGrid.LineColor = System.Drawing.Color.Gray;
-            chartArea7.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea7.Name = "Temperature";
-            this.chrtTemp.ChartAreas.Add(chartArea7);
+            chartArea1.AxisX.LabelStyle.Format = "dd/MM/yy HH:mm";
+            chartArea1.AxisX.LabelStyle.Interval = 0D;
+            chartArea1.AxisX.LabelStyle.IntervalOffset = 0D;
+            chartArea1.AxisX.MajorGrid.Enabled = false;
+            chartArea1.AxisY.LabelStyle.Format = "#0°C";
+            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.Gray;
+            chartArea1.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea1.Name = "Temperature";
+            this.chrtTemp.ChartAreas.Add(chartArea1);
             this.chrtTemp.DataSource = this.historianBindingSource;
-            legend7.Enabled = false;
-            legend7.Name = "Legend1";
-            this.chrtTemp.Legends.Add(legend7);
+            legend1.Enabled = false;
+            legend1.Name = "Legend1";
+            this.chrtTemp.Legends.Add(legend1);
             this.chrtTemp.Location = new System.Drawing.Point(8, 144);
             this.chrtTemp.Name = "chrtTemp";
-            series19.BorderWidth = 2;
-            series19.ChartArea = "Temperature";
-            series19.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series19.Color = System.Drawing.Color.Blue;
-            series19.LabelFormat = "\"yyyy-MM-dd HH:mm\"";
-            series19.Legend = "Legend1";
-            series19.Name = "Series1";
-            series19.XValueMember = "datetime_recorded";
-            series19.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.DateTime;
-            series19.YValueMembers = "value";
-            series20.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            series20.ChartArea = "Temperature";
-            series20.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series20.Color = System.Drawing.Color.Orange;
-            series20.LabelFormat = "\"yyyy-MM-dd HH:mm\"";
-            series20.Legend = "Legend1";
-            series20.Name = "SpLow";
-            series20.XValueMember = "datetime_recorded";
-            series20.YValueMembers = "setpoint_low";
-            series21.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            series21.ChartArea = "Temperature";
-            series21.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series21.Color = System.Drawing.Color.Red;
-            series21.LabelFormat = "\"yyyy-MM-dd HH:mm\"";
-            series21.Legend = "Legend1";
-            series21.Name = "SpHigh";
-            series21.XValueMember = "datetime_recorded";
-            series21.YValueMembers = "setpoint_high";
-            this.chrtTemp.Series.Add(series19);
-            this.chrtTemp.Series.Add(series20);
-            this.chrtTemp.Series.Add(series21);
+            series1.BorderWidth = 2;
+            series1.ChartArea = "Temperature";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Color = System.Drawing.Color.Blue;
+            series1.LabelFormat = "\"yyyy-MM-dd HH:mm\"";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            series1.XValueMember = "datetime_recorded";
+            series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.DateTime;
+            series1.YValueMembers = "value";
+            series2.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            series2.ChartArea = "Temperature";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Color = System.Drawing.Color.Orange;
+            series2.LabelFormat = "\"yyyy-MM-dd HH:mm\"";
+            series2.Legend = "Legend1";
+            series2.Name = "SpLow";
+            series2.XValueMember = "datetime_recorded";
+            series2.YValueMembers = "setpoint_low";
+            series3.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            series3.ChartArea = "Temperature";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.Color = System.Drawing.Color.Red;
+            series3.LabelFormat = "\"yyyy-MM-dd HH:mm\"";
+            series3.Legend = "Legend1";
+            series3.Name = "SpHigh";
+            series3.XValueMember = "datetime_recorded";
+            series3.YValueMembers = "setpoint_high";
+            this.chrtTemp.Series.Add(series1);
+            this.chrtTemp.Series.Add(series2);
+            this.chrtTemp.Series.Add(series3);
             this.chrtTemp.Size = new System.Drawing.Size(1156, 335);
             this.chrtTemp.TabIndex = 30;
             this.chrtTemp.Text = "chart1";
@@ -269,6 +272,7 @@
             this.alarmeventidDataGridViewTextBoxColumn.DataPropertyName = "alarm_event_id";
             this.alarmeventidDataGridViewTextBoxColumn.HeaderText = "ID";
             this.alarmeventidDataGridViewTextBoxColumn.Name = "alarmeventidDataGridViewTextBoxColumn";
+            this.alarmeventidDataGridViewTextBoxColumn.ReadOnly = true;
             this.alarmeventidDataGridViewTextBoxColumn.Width = 43;
             // 
             // datetimerecordedDataGridViewTextBoxColumn
@@ -277,6 +281,7 @@
             this.datetimerecordedDataGridViewTextBoxColumn.DataPropertyName = "datetime_recorded";
             this.datetimerecordedDataGridViewTextBoxColumn.HeaderText = "Occurred";
             this.datetimerecordedDataGridViewTextBoxColumn.Name = "datetimerecordedDataGridViewTextBoxColumn";
+            this.datetimerecordedDataGridViewTextBoxColumn.ReadOnly = true;
             this.datetimerecordedDataGridViewTextBoxColumn.Width = 76;
             // 
             // descriptionDataGridViewTextBoxColumn
@@ -285,6 +290,7 @@
             this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "description";
             this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
             this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // alarmhistorianBindingSource
             // 
@@ -454,6 +460,20 @@
             this.cboRealtimeRange.TabIndex = 1;
             this.cboRealtimeRange.SelectedIndexChanged += new System.EventHandler(this.cboRealtimeRange_SelectedIndexChanged);
             // 
+            // comTestToolStripMenuItem
+            // 
+            this.comTestToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.selectToolStripMenuItem});
+            this.comTestToolStripMenuItem.Name = "comTestToolStripMenuItem";
+            this.comTestToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.comTestToolStripMenuItem.Text = "ComTest";
+            // 
+            // selectToolStripMenuItem
+            // 
+            this.selectToolStripMenuItem.Name = "selectToolStripMenuItem";
+            this.selectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.selectToolStripMenuItem.Text = "Select";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -535,5 +555,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cboRealtimeUnit;
         private System.Windows.Forms.ComboBox cboRealtimeRange;
+        private System.Windows.Forms.ToolStripMenuItem comTestToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem selectToolStripMenuItem;
     }
 }

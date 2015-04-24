@@ -23,6 +23,7 @@ namespace CTS_Application
         DbRead dbRead = new DbRead();
         DbEdit dbEdit = new DbEdit();
         ArduinoCom arCom = new ArduinoCom();
+
         AlarmHandling alarm = new AlarmHandling();
         Email mail = new Email();
         BatteryMonitoring batteryMonitoring = new BatteryMonitoring(); //Declare batterymonitoring class
@@ -34,7 +35,6 @@ namespace CTS_Application
         {
            InitializeComponent();
            tmrUpdateGui.Start();
-
             //Initialize GUI time ranges
             cboRealtimeRange.SelectedIndex = 12-1; //12 hours initial range.
             cboRealtimeUnit.SelectedIndex = 1; //hours initial unit.
@@ -48,6 +48,7 @@ namespace CTS_Application
             tmrRecToDb.Start(); //Start timeren.
             tmrTestInit();
             tmrTest.Start();
+
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -93,7 +94,7 @@ namespace CTS_Application
                 //UpdateTemp(); //Oppdaterer temperaturverdien i frmMain fra klassen arduinoCOM.
                 if (rbtnRealtime.Checked)
                 {
-                    updateRange(); //Oppdaterer range til graf i realtime.
+                    UpdateRange(); //Oppdaterer range til graf i realtime.
                 }
             }
             catch(Exception ex)
@@ -197,6 +198,7 @@ namespace CTS_Application
                     if (temp_Arduino == -300)
                     {
                         lblCV.Text = "NO INPUT";
+
                     }
                     else
                     {
@@ -299,7 +301,7 @@ namespace CTS_Application
             }
         }
 
-        private void updateRange()
+        private void UpdateRange()
         {
             DateTime end = DateTime.Now;
             DateTime start = DateTime.Now;
@@ -386,12 +388,12 @@ namespace CTS_Application
         
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            updateRange();
+            UpdateRange();
         }
 
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
         {
-            updateRange();
+            UpdateRange();
         }
 
 
@@ -402,27 +404,27 @@ namespace CTS_Application
 
         private void rbtnRealtime_CheckedChanged(object sender, EventArgs e)
         {
-            updateRange();
+            UpdateRange();
         }
 
         private void rbtnHistory_CheckedChanged(object sender, EventArgs e)
         {
-            updateRange();
+            UpdateRange();
         }
 
         private void mtxtRealtimeRange_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
-            updateRange();
+            UpdateRange();
         }
-
+        
         private void cboRealtimeRange_SelectedIndexChanged(object sender, EventArgs e)
         {
-            updateRange();
+            UpdateRange();
         }
 
         private void cboRealtimeUnit_SelectedIndexChanged(object sender, EventArgs e)
         {
-            updateRange();
+            UpdateRange();
         }
 
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
