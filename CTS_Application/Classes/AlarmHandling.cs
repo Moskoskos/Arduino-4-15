@@ -141,9 +141,9 @@ namespace CTS_Application
                 }
                 return comAlarm;
             }
-            public bool LowBatteryPercent(int sp, int percent)
+            public bool LowBatteryPercent(int sp, int percent, bool chargingStatus)
             {
-                if ((percent < sp) && (currentLowBatteryalarm == false))
+                if ((percent < sp) && (currentLowBatteryalarm == false) && (chargingStatus == true) )
                 {
                     lowBatteryAlarm = true;
                     currentLowBatteryalarm = true;
