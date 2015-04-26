@@ -75,7 +75,7 @@ namespace CTS_Application
              }
         
         /// <summary>
-        /// gir alarm hvis temperaturverdi er utenfor gitte verdier
+        /// Gir alarm hvis temperaturverdi er utenfor gitte verdier
         /// </summary>
         /// <param name="pv">Temperatur</param>
         /// <returns>True hvis temperatur out of range</returns>
