@@ -250,7 +250,7 @@ namespace CTS_Application
             tempOOR = alarm.TempOutOfRange(realTemp);
             batAlarm = alarm.BatteryAlarm(batteryMonitoring.StatusChanged());
             arcomAlarm = alarm.ArduComAlarm(arCom.comFault);
-            batteryAlarm = alarm.LowBatteryPercent(spLBattery,batteryPercent);
+            batteryAlarm = alarm.LowBatteryPercent(spLBattery,batteryPercent,batAlarm);
 
 
             if (highTemp == true)
