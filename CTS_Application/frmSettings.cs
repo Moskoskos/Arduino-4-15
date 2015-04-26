@@ -43,6 +43,9 @@ namespace CTS_Application
 
         private void btnDelRec_Click(object sender, EventArgs e)
         {
+            //Source:
+            //http://stackoverflow.com/questions/3036829/how-to-create-a-message-box-with-yes-no-choices-and-a-dialogresult-in-c
+            //
             DialogResult dialogResult = MessageBox.Show("This will delete all temperature recordings", "WARNING!", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {

@@ -55,6 +55,8 @@ namespace CTS_Application
         {
             try
             {
+                //Source for TRUNCATE TABLE:
+                //http://stackoverflow.com/questions/12651867/mysql-delete-all-rows-from-table-and-reset-id-to-zero
                 string query = "TRUNCATE TABLE " + tablename;
                 //Sjekker at tilkoblingen er åpen.
                 if (this.OpenConnection() == true)

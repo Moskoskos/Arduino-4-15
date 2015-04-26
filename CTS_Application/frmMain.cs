@@ -110,7 +110,7 @@ namespace CTS_Application
 
         void tmrRecToDb_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            RecordToDatabase();
+            RecordTempToDatabase();
             Invoke((MethodInvoker)delegate { UpdateGraph(); }); //Denne metoden gjør at programmet henger seg i 0.5s hvert interval.
 
         }
@@ -164,7 +164,7 @@ namespace CTS_Application
             }
         }
 
-        private void RecordToDatabase()
+        private void RecordTempToDatabase()
         {
             try
             {
@@ -232,19 +232,21 @@ namespace CTS_Application
         }
         private void CheckAlarmStatus()
         {
+            //Deklarerer variabler.
             bool highTemp;
             bool lowTemp;
             bool tempOOR;
             bool batAlarm;
             bool arcomAlarm;
             bool batteryAlarm;
+            // Gir verdier til variabler.
             double spH = Convert.ToDouble(dbRead.GetHighSp(1));
             double spL = Convert.ToDouble(dbRead.GetLowSP(1));
             double realTemp = realTemp = arCom.Readtemp();
             int spLBattery = 40;
             int batteryPercent = batteryMonitoring.PercentBatteryLeft;
             double timeLeft = batteryMonitoring.TimeLeft;
-
+            //Kaller opp metoder i alarmklassen og sender med parametere. Returnerer true eller false utifra verdier.
             highTemp = alarm.HighTempAlarm(spH, realTemp);
             lowTemp = alarm.LowTempAlarm(spL, realTemp);
             tempOOR = alarm.TempOutOfRange(realTemp);
@@ -252,7 +254,8 @@ namespace CTS_Application
             arcomAlarm = alarm.ArduComAlarm(arCom.comFault);
             batteryAlarm = alarm.LowBatteryPercent(spLBattery,batteryPercent,batAlarm);
 
-
+            //Her sjekkes verdien til variablene. Hvis der "true" vil det skrives en alarm til databasen og det vil sendes en mail.
+            //Til slutt oppdateres AlarmGrid.
             if (highTemp == true)
             {
                 string message = "Temperature extended setpoint: High (" + spH + "°C). Temperature =" + realTemp.ToString() + "°C";
