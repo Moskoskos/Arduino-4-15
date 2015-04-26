@@ -73,4 +73,6 @@ namespace CTS_Application
             timeOut += 1 ;//teller opp timeoutverdi 1 gang per sek
         }
     }
+    //kilde: https://msdn.microsoft.com/en-us/library/system.io.ports.serialport%28v=vs.110%29.aspx
+    //SerialPort class msdn
 }

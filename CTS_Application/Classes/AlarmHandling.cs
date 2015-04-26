@@ -10,7 +10,7 @@ namespace CTS_Application
     class AlarmHandling
     {
         
-        //private instansvariabler brukt i raiseAlarm metode
+        //private instansvariabler brukt i alarm metoder
         private bool lowAlarm = false;
         private bool highAlarm = false;
         private bool currentLowAlarm = false;
@@ -24,15 +24,14 @@ namespace CTS_Application
         private bool currentLowBatteryalarm = false;
         private bool lowBatteryAlarm = false;
 
-
         public AlarmHandling()
         {       }
         /// <summary>
-        /// returnerer true hvis temperatur er under setpunkt
+        /// Lav temperaturalarm
         /// </summary>
         /// <param name="sp">Setpunkt for lav temperaturalarm</param>
         /// <param name="pv">Temperatur</param>
-        /// <returns>lav temperatur alarm</returns>
+        /// <returns>True hvis lav temperatur alarm</returns>
         public bool LowTempAlarm(double sp, double pv)
         {            
                 if ((pv < sp) && (currentLowAlarm == false))
@@ -52,11 +51,11 @@ namespace CTS_Application
             return lowAlarm;
         }
         /// <summary>
-        /// returnerer true hvis temperatur er over setpunkt
+        /// Høy temperaturalarm
         /// </summary>
         /// <param name="sp">Setpunkt for høy temperaturalarm</param>
         /// <param name="pv">Temperatur</param>
-        /// <returns>høy temperatur alarm</returns>
+        /// <returns>True hvis høy temperatur alarm</returns>
             public bool HighTempAlarm(double sp, double pv)
             {
                 if ((pv > sp) && (currentHighAlarm == false))
@@ -79,7 +78,7 @@ namespace CTS_Application
         /// gir alarm hvis temperaturverdi er utenfor gitte verdier
         /// </summary>
         /// <param name="pv">Temperatur</param>
-        /// <returns>Temperatur out of range alarm</returns>
+        /// <returns>True hvis temperatur out of range</returns>
             public bool TempOutOfRange(double pv)
             {
                 if (((pv < -100) || (pv > 100)) && (currentOutOfRange == false))
@@ -101,7 +100,7 @@ namespace CTS_Application
         /// Gir alarm hvis nettspenning forsvinner
         /// </summary>
         /// <param name="powerstatus">Status på strømtilførsel fra Battery monitoring klasse</param>
-        /// <returns>Alarm hvis Strømtilførsel blir frakoblet</returns>
+        /// <returns>True hvis strømtilførsel blir frakoblet</returns>
             public bool BatteryAlarm(bool powerstatus)
             {
                 if ((powerstatus == true) && (currentBatteryAlarm == false))
@@ -120,10 +119,10 @@ namespace CTS_Application
                 return batteryAlarm;
             }
         /// <summary>
-        /// gir alarm hvis com feil
+        /// Gir alarm hvis com feil
         /// </summary>
         /// <param name="comStatus">Status på tilkobling mellom Arduino og COM port fra ArduinoCom klasse</param>
-        /// <returns>Alarm hvis Arduino blir frakoblet</returns>
+        /// <returns>True hvis Arduino blir frakoblet</returns>
             public bool ArduComAlarm(bool comStatus)
             {
                 if ((comStatus == true) && (currentComAlarm == false))
@@ -141,6 +140,12 @@ namespace CTS_Application
                 }
                 return comAlarm;
             }
+        /// <summary>
+        /// Gir alarm hvis batteriprosent går under alarmgrense
+        /// </summary>
+        /// <param name="sp">settpunkt for alarmgrense</param>
+        /// <param name="percent">batteriprosent</param>
+        /// <returns>true hvis batteriprosent går under alarmgrense</returns>
             public bool LowBatteryPercent(int sp, int percent)
             {
                 if ((percent < sp) && (currentLowBatteryalarm == false))
