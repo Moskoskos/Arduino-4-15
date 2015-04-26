@@ -140,15 +140,15 @@ namespace CTS_Application
                 }
                 return comAlarm;
             }
-        /// <summary>
-        /// Gir alarm hvis batteriprosent går under alarmgrense
-        /// </summary>
-        /// <param name="sp">settpunkt for alarmgrense</param>
-        /// <param name="percent">batteriprosent</param>
-        /// <returns>true hvis batteriprosent går under alarmgrense</returns>
-            public bool LowBatteryPercent(int sp, int percent)
+            /// <summary>
+            /// Gir alarm hvis batteriprosent går under alarmgrense
+            /// </summary>
+            /// <param name="sp">settpunkt for alarmgrense</param>
+            /// <param name="percent">batteriprosent</param>
+            /// <returns>true hvis batteriprosent går under alarmgrense</returns>
+            public bool LowBatteryPercent(int sp, int percent, bool chargingStatus)
             {
-                if ((percent < sp) && (currentLowBatteryalarm == false))
+                if ((percent < sp) && (currentLowBatteryalarm == false) && (chargingStatus == true) )
                 {
                     lowBatteryAlarm = true;
                     currentLowBatteryalarm = true;
