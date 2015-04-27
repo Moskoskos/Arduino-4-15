@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.IO.Ports;
 
 namespace CTS_Application
 {
@@ -13,13 +14,12 @@ namespace CTS_Application
         DbWrite dbWrite = new DbWrite();
         DbRead dbRead = new DbRead();
         DbEdit dbEdit = new DbEdit();
-        ArduinoCom arCom = new ArduinoCom();
+        ArduinoCom arCom = new ArduinoCom(9600, Parity.None, 8, StopBits.One);
         AlarmHandling alarm = new AlarmHandling();
         Email mail = new Email();
         BatteryMonitoring batteryMonitoring = new BatteryMonitoring(); //Declare batterymonitoring class
         System.Timers.Timer tmrAlarm = new System.Timers.Timer(); //Timer to monitor alarm events.
         System.Timers.Timer tmrRecToDb = new System.Timers.Timer(); //Timer to record temperature recordings to database.
-        System.Timers.Timer tmrTest = new System.Timers.Timer();//testing
 
         public frmMain()
         {

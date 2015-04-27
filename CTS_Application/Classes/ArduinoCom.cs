@@ -16,16 +16,25 @@ namespace CTS_Application
         public int timeOut = 0;
 
 
-        public ArduinoCom()
+        public ArduinoCom(int baudrate, Parity parity, int startBits, StopBits stopBits)
         {
             try
             {
-                arduinoSerialPort = new SerialPort(dbRead.GetComPort(1), 9600, Parity.None, 8, StopBits.One);
+                //arduinoSerialPort = new SerialPort(dbRead.GetComPort(1), 9600, Parity.None, 8, StopBits.One);
+                //string port = dbRead.GetComPort(1);//leser comport fra database
+                //arduinoSerialPort.PortName = port;
+                //arduinoSerialPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
+                //arduinoSerialPort.Open();
+                //tmrCom.Tick += new EventHandler(timer_Tick);
+
+                arduinoSerialPort = new SerialPort(dbRead.GetComPort(1), baudrate, parity, startBits, stopBits);
                 string port = dbRead.GetComPort(1);//leser comport fra database
                 arduinoSerialPort.PortName = port;
                 arduinoSerialPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
                 arduinoSerialPort.Open();
                 tmrCom.Tick += new EventHandler(timer_Tick);
+
+
             }
             catch (Exception)
             {
