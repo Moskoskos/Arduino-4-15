@@ -3,7 +3,6 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Diagnostics;
 
-
 namespace CTS_Application
 {
     public partial class frmMain : Form

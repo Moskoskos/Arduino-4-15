@@ -2,9 +2,6 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-
-
-
 namespace CTS_Application
 {
     public partial class Subscribers : Form
