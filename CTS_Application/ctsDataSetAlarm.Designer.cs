@@ -1290,7 +1290,7 @@ namespace CTS_Application.ctsDataSetAlarmTableAdapters {
             global::System.Collections.Generic.List<global::System.Data.DataRow> realUpdatedRows = new global::System.Collections.Generic.List<global::System.Data.DataRow>();
             for (int i = 0; (i < updatedRows.Length); i = (i + 1)) {
                 global::System.Data.DataRow row = updatedRows[i];
-                if ((allAddedRows.Contains(row) == false)) {
+                if ((!allAddedRows.Contains(row))) {
                     realUpdatedRows.Add(row);
                 }
             }
@@ -1306,7 +1306,7 @@ namespace CTS_Application.ctsDataSetAlarmTableAdapters {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }
-            if ((dataSet.HasChanges() == false)) {
+            if ((!dataSet.HasChanges())) {
                 return 0;
             }
             if (((this._alarm_historianTableAdapter != null) 
@@ -1497,7 +1497,7 @@ namespace CTS_Application.ctsDataSetAlarmTableAdapters {
                 global::System.Data.DataRow parent = row.GetParentRow(this._relation, global::System.Data.DataRowVersion.Default);
                 for (
                 ; ((parent != null) 
-                            && (traversedRows.ContainsKey(parent) == false)); 
+                            && (!traversedRows.ContainsKey(parent))); 
                 ) {
                     distance = (distance + 1);
                     root = parent;
@@ -1511,7 +1511,7 @@ namespace CTS_Application.ctsDataSetAlarmTableAdapters {
                     parent = row.GetParentRow(this._relation, global::System.Data.DataRowVersion.Original);
                     for (
                     ; ((parent != null) 
-                                && (traversedRows.ContainsKey(parent) == false)); 
+                                && (!traversedRows.ContainsKey(parent))); 
                     ) {
                         distance = (distance + 1);
                         root = parent;

@@ -1078,7 +1078,7 @@ WHERE        (historian.datetime_recorded BETWEEN @startDate AND @endDate)";
             global::System.Collections.Generic.List<global::System.Data.DataRow> realUpdatedRows = new global::System.Collections.Generic.List<global::System.Data.DataRow>();
             for (int i = 0; (i < updatedRows.Length); i = (i + 1)) {
                 global::System.Data.DataRow row = updatedRows[i];
-                if ((allAddedRows.Contains(row) == false)) {
+                if ((!allAddedRows.Contains(row))) {
                     realUpdatedRows.Add(row);
                 }
             }
@@ -1094,7 +1094,7 @@ WHERE        (historian.datetime_recorded BETWEEN @startDate AND @endDate)";
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }
-            if ((dataSet.HasChanges() == false)) {
+            if ((!dataSet.HasChanges())) {
                 return 0;
             }
             global::System.Data.IDbConnection workConnection = this.Connection;
@@ -1267,7 +1267,7 @@ WHERE        (historian.datetime_recorded BETWEEN @startDate AND @endDate)";
                 global::System.Data.DataRow parent = row.GetParentRow(this._relation, global::System.Data.DataRowVersion.Default);
                 for (
                 ; ((parent != null) 
-                            && (traversedRows.ContainsKey(parent) == false)); 
+                            && (!traversedRows.ContainsKey(parent))); 
                 ) {
                     distance = (distance + 1);
                     root = parent;
@@ -1281,7 +1281,7 @@ WHERE        (historian.datetime_recorded BETWEEN @startDate AND @endDate)";
                     parent = row.GetParentRow(this._relation, global::System.Data.DataRowVersion.Original);
                     for (
                     ; ((parent != null) 
-                                && (traversedRows.ContainsKey(parent) == false)); 
+                                && (!traversedRows.ContainsKey(parent))); 
                     ) {
                         distance = (distance + 1);
                         root = parent;

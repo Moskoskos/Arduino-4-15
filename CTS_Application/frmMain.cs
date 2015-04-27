@@ -246,14 +246,14 @@ namespace CTS_Application
                 mail.SendMessage(message);
                 this.Invoke((MethodInvoker)delegate { UpdateAlarmGrid(); });
             }
-            if ((lowTemp) && (arcomAlarm == false))
+            if ((lowTemp) && (!arcomAlarm))
             {
                 string message = "Temperature extended setpoint: Low (" + spL + "°C). Temperature =" + realTemp.ToString() + "°C";
                 dbWrite.WriteToAlarmHistorian(2, message);
                 mail.SendMessage(message);
                 this.Invoke((MethodInvoker)delegate { UpdateAlarmGrid(); });
             }
-            if ((tempOOR) && (arcomAlarm == false))
+            if ((tempOOR) && (!arcomAlarm))
             {
                 string message = "Temperature out of range. Temperature =" + realTemp.ToString() + "°C";
                 dbWrite.WriteToAlarmHistorian(3, message);
