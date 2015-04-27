@@ -23,7 +23,7 @@ namespace CTS_Application
                 try
                 {
                     //Sjekker at tilkoblingen er åpen.
-                    if (this.OpenConnection() == true)
+                    if (this.OpenConnection())
                     {
                         //Bruker spørringen ovenfor og tilkoblingstrengen i DbConnect.
                         using (MySqlCommand cmd = new MySqlCommand(query, connection))
@@ -53,7 +53,7 @@ namespace CTS_Application
             string result = "";
             string query = "SELECT setpoint_high FROM settings WHERE settings_id = @id";
             //Sjekker at tilkoblingen er åpen.
-            if (this.OpenConnection() == true)
+            if (this.OpenConnection())
             {
                 //Bruker spørringen ovenfor og tilkoblingstrengen i DbConnect.
                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
@@ -75,7 +75,7 @@ namespace CTS_Application
             string result = "";
             string query = "SELECT COUNT(*) FROM users";
             //Sjekker at tilkoblingen er åpen.
-            if (this.OpenConnection() == true)
+            if (this.OpenConnection())
             {
                 //Bruker spørringen ovenfor og tilkoblingstrengen i DbConnect.
                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
@@ -98,7 +98,7 @@ namespace CTS_Application
             string result = "";
             string query = "SELECT email FROM users WHERE userID = @id";
             //Sjekker at tilkoblingen er åpen.
-            if (this.OpenConnection() == true)
+            if (this.OpenConnection())
             {
                 //Bruker spørringen ovenfor og tilkoblingstrengen i DbConnect.
                 using(MySqlCommand cmd = new MySqlCommand(query,connection))
@@ -121,7 +121,7 @@ namespace CTS_Application
             string result = "";
             string query = "SELECT COM_port FROM settings WHERE settings_id = @id";
             //Sjekker at tilkoblingen er åpen.
-            if (this.OpenConnection() == true)
+            if (this.OpenConnection())
             {
                 //Bruker spørringen ovenfor og tilkoblingstrengen i DbConnect.
                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
@@ -144,7 +144,7 @@ namespace CTS_Application
             string result = "";
             string query = "SELECT value FROM historian LIMIT 1;";
             //Sjekker at tilkoblingen er åpen.
-            if (this.OpenConnection() == true)
+            if (this.OpenConnection())
             {
                 //Bruker spørringen ovenfor og tilkoblingstrengen i DbConnect.
                 using(MySqlCommand cmd = new MySqlCommand(query,connection))
@@ -167,7 +167,7 @@ namespace CTS_Application
             string result = "";
             string query = "Select COUNT(*) FROM " + tableName + ";" ;
             //Sjekker at tilkoblingen er åpen.
-            if (this.OpenConnection() == true)
+            if (this.OpenConnection())
             {
                 //Bruker spørringen ovenfor og tilkoblingstrengen i DbConnect.
                 using (MySqlCommand cmd = new MySqlCommand(query,connection))

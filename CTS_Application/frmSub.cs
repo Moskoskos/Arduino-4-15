@@ -21,7 +21,7 @@ namespace CTS_Application
         }
         
         /// <summary>
-        ///
+        /// Skriver informasjon fra tekstboksene i frmSub til databasen
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -34,7 +34,6 @@ namespace CTS_Application
             string email;
             try
             {
-                //
                 username = txtUsername.Text;
                 firstname = txtFirstName.Text;
                 lastname = txtLastName.Text;
@@ -58,7 +57,7 @@ namespace CTS_Application
         //Oppdaterer GridView ved å oppdatere DataSetUsers.Users og fylle dette inn i usersTableAdapter.
         private void frmSub_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'ctsDataSetUsers.users' table. You can move, or remove it, as needed.
+            // This line of code loads data into the 'ctsDataSetUsers.users' table. You can move, or remove it, as needed.
             this.usersTableAdapter.Fill(this.ctsDataSetUsers.users);
         }
         private void btnRefresh_Click(object sender, EventArgs e)
@@ -69,7 +68,7 @@ namespace CTS_Application
         }
       
         /// <summary>
-        /// 
+        /// Sletter all inofrmasjon i tekstboksene i frmSub
         /// </summary>
         /// <param name="conConCol"></param>
         private void ClearTextBoxes(Control.ControlCollection conConCol)

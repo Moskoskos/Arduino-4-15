@@ -13,7 +13,6 @@ namespace CTS_Application
 
         public Email()
         {
-            //from = "arduino.ia2.4.15@gmail.com" PW=Arduino4.15;
             from = "ardumailen@gmail.com"; //Vil være systemmailen til firmaet som leverer produktet. feks. alarm.ctms@<InsertCompanyName>.no
             client = new SmtpClient("smtp.gmail.com", 587);
             client.Credentials = new System.Net.NetworkCredential(from, "fluefiske");       

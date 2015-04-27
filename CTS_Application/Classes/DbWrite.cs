@@ -39,7 +39,7 @@ namespace CTS_Application
 
                     string query = "INSERT INTO users(username, firstname, lastname, email, phonenumber)VALUES(@username, @firstname, @lastname,@email,@number);";
                     //Sjekker at tilkoblingen er åpen.
-                    if (base.OpenConnection() == true)
+                    if (base.OpenConnection())
                     {
                         //Bruker spørringen ovenfor og tilkoblingstrengen i DbConnect.
                         using (MySqlCommand cmd = new MySqlCommand(query, connection))
@@ -78,7 +78,7 @@ namespace CTS_Application
                    {
                         string query = "INSERT INTO historian(value)VALUES(@value);";
                         //Sjekker at tilkoblingen er åpen.
-                        if (this.OpenConnection() == true)
+                        if (this.OpenConnection())
                         {
                             //Bruker spørringen ovenfor og tilkoblingstrengen i DbConnect.
                             using (MySqlCommand cmd = new MySqlCommand(query, connection))
@@ -114,7 +114,7 @@ namespace CTS_Application
                 {
                     string query = "INSERT INTO alarm_historian(alarm_id, description) VALUES(@alarmvar,@description);";
                     //Sjekker at tilkoblingen er åpen.
-                    if (this.OpenConnection() == true)
+                    if (this.OpenConnection())
                     {
                         //Bruker spørringen ovenfor og tilkoblingstrengen i DbConnect.
                         using (MySqlCommand cmd = new MySqlCommand(query, connection))
@@ -145,7 +145,7 @@ namespace CTS_Application
                 {
                     string query = "INSERT INTO historian(value)VALUES(@value);";
                     //Sjekker at tilkoblingen er åpen.
-                    if (this.OpenConnection() == true)
+                    if (this.OpenConnection())
                     {
                         //Bruker spørringen ovenfor og tilkoblingstrengen i DbConnect.
                         using (MySqlCommand cmd = new MySqlCommand(query, connection))

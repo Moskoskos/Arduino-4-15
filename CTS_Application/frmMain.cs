@@ -37,8 +37,6 @@ namespace CTS_Application
             tmrAlarm.Start(); //Start timeren.
             tmrRecToDbInit(); //Innstillingene til timeren.
             tmrRecToDb.Start(); //Start timeren.
-            //tmrTestInit();
-            //tmrTest.Start();
 
         }
 
@@ -55,17 +53,17 @@ namespace CTS_Application
             tmrAlarm.AutoReset = true; // Reseter timeren etter at timeren har kalt hendelsen.
         }
 
-        //tmrAlarm_eventet 
+        //tmrAlarm_Elapsed kjører ved hvert tikk
         void tmrAlarm_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
             CheckAlarmStatus(); //Henter metoden som sjekker om det finnes noen aktive alarmer.
         }
-        //
+        
         private void tmrUpdateGui_Tick(object sender, EventArgs e)
         {
             try
             {
-                BatteryRemaining(); //PATRICK !
+                BatteryRemaining(); //Viser tid igjen før batteriet er tomt
                 MemoryUsage(); //Viser den fysiske minnebruken til applikasjonen.
                 MySqlStatus(); //Sjekker om DatabaseServeren kjører.
                 UpdateTemp(); //Oppdaterer temperaturverdien i frmMain fra klassen arduinoCOM.
@@ -79,7 +77,7 @@ namespace CTS_Application
 
         }
         /// <summary>
-        /// 
+        /// Innstillinger for timer som skal skrive til database
         /// </summary>
         private void tmrRecToDbInit()
         {
@@ -95,7 +93,7 @@ namespace CTS_Application
 
         }
         /// <summary>
-        /// 
+        /// Metode som oppdaterer grafen med data fra databasen
         /// </summary>
         public void UpdateGraph()
         {
@@ -107,7 +105,7 @@ namespace CTS_Application
 
         }
         /// <summary>
-        /// 
+        /// Metode som oppdaterer alarmliste fra databasen
         /// </summary>
         public void UpdateAlarmGrid()
         {
@@ -125,7 +123,7 @@ namespace CTS_Application
         //https://msdn.microsoft.com/en-us/library/z3w4xdc9(v=vs.110).aspx
         //
         /// <summary>
-        /// 
+        /// Metode som skjekker om databasen kjører eller ikke
         /// </summary>
         private void MySqlStatus()
         {
@@ -141,7 +139,7 @@ namespace CTS_Application
             }
         }
         /// <summary>
-        /// 
+        /// Metode som skriver teperaturverdier til databasen
         /// </summary>
         private void RecordTempToDatabase()
         {
@@ -174,7 +172,7 @@ namespace CTS_Application
             tslblRAM.Text  = "CTMS: " + (memory / 1024 / 1024).ToString() + " MB" + " / Database: " + (mySqlMem /1024 /1024).ToString() + " MB";  //Info til statusbar.
         }
         /// <summary>
-        /// 
+        /// Metode som oppdaterer temepraturvisning av siste temp verdi og vises i frmMain
         /// </summary>
         private void UpdateTemp()
         {
@@ -242,35 +240,35 @@ namespace CTS_Application
 
             //Her sjekkes verdien til variablene. Hvis der "true" vil det skrives en alarm til databasen og det vil sendes en mail.
             //Til slutt oppdateres AlarmGrid.
-            if (highTemp == true)
+            if (highTemp)
             {
                 string message = "Temperature extended setpoint: High (" + spH + "°C). Temperature =" + realTemp.ToString() + "°C";
                 dbWrite.WriteToAlarmHistorian(1, message);
                 mail.SendMessage(message);
                 this.Invoke((MethodInvoker)delegate { UpdateAlarmGrid(); });
             }
-            if ((lowTemp == true)&&(arcomAlarm==false))
+            if ((lowTemp)&&(arcomAlarm==false))
             {
                 string message = "Temperature extended setpoint: Low (" + spL + "°C). Temperature =" + realTemp.ToString() + "°C";
                 dbWrite.WriteToAlarmHistorian(2, message);
                 mail.SendMessage(message);
                 this.Invoke((MethodInvoker)delegate { UpdateAlarmGrid(); });
             }
-            if ((tempOOR == true)&&(arcomAlarm==false))
+            if ((tempOOR)&&(arcomAlarm==false))
             {
                 string message = "Temperature out of range. Temperature =" + realTemp.ToString() + "°C";
                 dbWrite.WriteToAlarmHistorian(3, message);
                 mail.SendMessage(message);
                 this.Invoke((MethodInvoker)delegate { UpdateAlarmGrid(); });
             }
-            if (batAlarm == true)
+            if (batAlarm)
             {
                 string message = "Lost powerline. Laptop is running on battery";
                 dbWrite.WriteToAlarmHistorian(4, message);
                 mail.SendMessage(message);
                 this.Invoke((MethodInvoker)delegate { UpdateAlarmGrid(); });
             }
-            if (arcomAlarm == true)
+            if (arcomAlarm)
             {
                 string message = "Lost Connection to Arduino";
                 dbWrite.WriteToAlarmHistorian(5, message);
@@ -278,7 +276,7 @@ namespace CTS_Application
                 this.Invoke((MethodInvoker)delegate { UpdateAlarmGrid(); });
                 MessageBox.Show("The program could not find the Arduino. Go to Preferences to change COM port");
             }
-            if(batteryAlarm == true)
+            if(batteryAlarm)
             {
                 string message = ("Low Battery percent. "+timeLeft+" minuttes until system shut down"+ batteryPercent + "% left");
                 dbWrite.WriteToAlarmHistorian(6, message);
@@ -381,12 +379,6 @@ namespace CTS_Application
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
         {
             UpdateRange();
-        }
-
-
-        private void historianBindingSource_CurrentChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void rbtnRealtime_CheckedChanged(object sender, EventArgs e)

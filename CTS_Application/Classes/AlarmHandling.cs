@@ -35,7 +35,7 @@ namespace CTS_Application
                     lowAlarm = true;
                     currentLowAlarm = true;
                 }
-                else if ((currentLowAlarm == true) && (pv > (sp + 1.0)))
+                else if ((currentLowAlarm) && (pv > (sp + 1.0)))
                 {
                     currentLowAlarm = false;
                 }
@@ -59,7 +59,7 @@ namespace CTS_Application
                     highAlarm = true;
                     currentHighAlarm = true;
                 }
-                else if ((currentHighAlarm == true) && (pv < (sp - 1.0)))
+                else if ((currentHighAlarm) && (pv < (sp - 1.0)))
                 {
                     currentHighAlarm = false;
                 }
@@ -82,7 +82,7 @@ namespace CTS_Application
                     outOfRangeAlarm = true;
                     currentOutOfRange = true;
                 }
-                else if ((currentOutOfRange == true) && ((pv > -100) && (pv < 100)))
+                else if ((currentOutOfRange) && ((pv > -100) && (pv < 100)))
                 {
                     currentOutOfRange = false;
                 }
@@ -99,12 +99,12 @@ namespace CTS_Application
         /// <returns>True hvis strømtilførsel blir frakoblet</returns>
             public bool BatteryAlarm(bool powerstatus)
             {
-                if ((powerstatus == true) && (currentBatteryAlarm == false))
+                if ((powerstatus) && (currentBatteryAlarm == false))
                 {
                     batteryAlarm = true;
                     currentBatteryAlarm = true;
                 }
-                else if ((powerstatus == false) && (currentBatteryAlarm == true))
+                else if ((powerstatus == false) && (currentBatteryAlarm))
                 {
                     currentBatteryAlarm = false;
                 }
@@ -121,12 +121,12 @@ namespace CTS_Application
         /// <returns>True hvis Arduino blir frakoblet</returns>
             public bool ArduComAlarm(bool comStatus)
             {
-                if ((comStatus == true) && (currentComAlarm == false))
+                if ((comStatus) && (currentComAlarm == false))
                 {
                     comAlarm = true;
                     currentComAlarm = true;
                 }
-                else if ((comStatus == false) && (currentComAlarm == true))
+                else if ((comStatus == false) && (currentComAlarm))
                 {
                     currentComAlarm = false;
                 }
@@ -144,12 +144,12 @@ namespace CTS_Application
             /// <returns>true hvis batteriprosent går under alarmgrense</returns>
             public bool LowBatteryPercent(int sp, int percent, bool chargingStatus)
             {
-                if ((percent < sp) && (currentLowBatteryalarm == false) && (chargingStatus == true) )
+                if ((percent < sp) && (currentLowBatteryalarm == false) && (chargingStatus) )
                 {
                     lowBatteryAlarm = true;
                     currentLowBatteryalarm = true;
                 }
-                else if ((currentLowBatteryalarm == true) && (percent > (sp + 1.0)))
+                else if ((currentLowBatteryalarm) && (percent > (sp + 1.0)))
                 {
                     currentLowBatteryalarm = false;
                 }

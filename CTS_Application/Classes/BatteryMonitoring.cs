@@ -21,7 +21,7 @@ namespace CTS_Application
 
         }
         /// <summary>
-        /// 
+        /// Egenskap som henter ut hvor mye batteriprosent det er igjen
         /// </summary>
         public int PercentBatteryLeft
         {

@@ -27,7 +27,7 @@ namespace CTS_Application
                 //http://stackoverflow.com/questions/15383852/sql-if-exists-update-else-insert-into
                 string query = "INSERT INTO settings(settings_ID, setpoint_low, setpoint_high) VALUES (@settingID, @setPoint_low, @setPoint_high) ON DUPLICATE KEY UPDATE setpoint_low = VALUES(setpoint_low), setpoint_high = VALUES(setpoint_high);";
                 //Sjekker at tilkoblingen er åpen.
-                if (this.OpenConnection() == true)
+                if (this.OpenConnection())
                 {
                     ///Bruker spørringen ovenfor og tilkoblingstrengen i DbConnect.
                     using (MySqlCommand cmd = new MySqlCommand(query, connection))
@@ -59,7 +59,7 @@ namespace CTS_Application
                 //http://stackoverflow.com/questions/12651867/mysql-delete-all-rows-from-table-and-reset-id-to-zero
                 string query = "TRUNCATE TABLE " + tablename;
                 //Sjekker at tilkoblingen er åpen.
-                if (this.OpenConnection() == true)
+                if (this.OpenConnection())
                 {
                     //Bruker spørringen ovenfor og tilkoblingstrengen i DbConnect.
                     using (MySqlCommand cmd = new MySqlCommand(query, connection))
@@ -89,7 +89,7 @@ namespace CTS_Application
             {
                 string query = "INSERT INTO settings(settings_ID, COM_port) VALUES (@settingID, @comPort) ON DUPLICATE KEY UPDATE COM_port = VALUES(COM_port);";
                 //Sjekker at tilkoblingen er åpen.
-                if (this.OpenConnection() == true)
+                if (this.OpenConnection())
                 {
                     //Bruker spørringen ovenfor og tilkoblingstrengen i DbConnect.
                     using (MySqlCommand cmd = new MySqlCommand(query, connection))

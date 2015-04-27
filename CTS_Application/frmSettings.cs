@@ -54,10 +54,7 @@ namespace CTS_Application
             {
                 dbEdit.DeleteRecordsInTable("alarm_historian");
             }
-            else if (dialogResult == DialogResult.No)
-            {
-                //do something else
-            }
+          
         }
 
         private void btnDelSub_Click(object sender, EventArgs e)
@@ -67,10 +64,7 @@ namespace CTS_Application
             {
                 dbEdit.DeleteRecordsInTable("users");
             }
-            else if (dialogResult == DialogResult.No)
-            {
-                //do something else
-            }
+         
         }
 
 
@@ -88,20 +82,6 @@ namespace CTS_Application
                 lblChange.Text = "Could not update!";
                 MessageBox.Show(ex.Message);
             }
-        }
-
-        private void cboCOMPort_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //try
-            //{
-            //    dbEdit.EditComPort(1, cboCOMPort.Text);
-            //    MessageBox.Show("COM port selected.");
-            //}
-            //catch (Exception)
-            //{
-            //    lblChange.Text = "Could not set COM port.";
-            //    throw;
-            //}
         }
 
         private void cboCOMPort_SelectionChangeCommitted_1(object sender, EventArgs e)
