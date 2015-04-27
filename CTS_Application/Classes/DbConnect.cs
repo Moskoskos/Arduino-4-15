@@ -37,9 +37,33 @@ namespace CTS_Application
         /// Åpner en tilkobling mot databasen ved å benytte informasjonen i konstructoren. Sjekker først om tilkoblingen er åpen, forså å stenge og åpne den igjen.
         /// </summary>
         /// <returns>Returnerer BOOL</returns>
+        public bool OpenConnection()
+        {
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Close();
+                    connection.Open();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+               
+                return false;
+            }
+        }
         
         public bool CloseConnection()
         {
+            
             try
             {
                 connection.Close();
