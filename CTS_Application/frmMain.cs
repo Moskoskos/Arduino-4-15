@@ -1,14 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+//using System.Collections.Generic;
+//using System.ComponentModel;
+//using System.Data;
 using System.Drawing;
-using System.Text;
+//using System.Text;
 using System.Windows.Forms;
-using Microsoft.Win32;
-using System.Media;
-using System.Threading.Tasks;
-using System.Threading;
+//using Microsoft.Win32;
+//using System.Media;
+//using System.Threading.Tasks;
+//using System.Threading;
 using System.Diagnostics;
 
 
@@ -18,12 +18,11 @@ namespace CTS_Application
     {
         double temp_Arduino = 0.0;        
        
-        DbConnect con = new DbConnect();
+      //  DbConnect con = new DbConnect();
         DbWrite dbWrite = new DbWrite();
         DbRead dbRead = new DbRead();
         DbEdit dbEdit = new DbEdit();
         ArduinoCom arCom = new ArduinoCom();
-
         AlarmHandling alarm = new AlarmHandling();
         Email mail = new Email();
         BatteryMonitoring batteryMonitoring = new BatteryMonitoring(); //Declare batterymonitoring class
@@ -56,6 +55,7 @@ namespace CTS_Application
             UpdateGraph(); 
             UpdateAlarmGrid();           
         }
+        //UBRUKT KODE! -------------UBRUKT KODE! -----------------UBRUKT KODE!
         //private void tmrTestInit()
         //{
         //    tmrTest.Interval = 2000;
@@ -101,6 +101,9 @@ namespace CTS_Application
             { MessageBox.Show(ex.Message); }
 
         }
+        /// <summary>
+        /// 
+        /// </summary>
         private void tmrRecToDbInit()
         {
             tmrRecToDb.Interval = 4000; 
@@ -114,6 +117,9 @@ namespace CTS_Application
             Invoke((MethodInvoker)delegate { UpdateGraph(); }); //Denne metoden gjør at programmet henger seg i 0.5s hvert interval.
 
         }
+        /// <summary>
+        /// 
+        /// </summary>
         public void UpdateGraph()
         {
             // TODO: This line of code loads data into the 'dataSetToGrah.historian' table. You can move, or remove it, as needed.
@@ -123,13 +129,16 @@ namespace CTS_Application
             chrtTemp.Refresh();
 
         }
+        /// <summary>
+        /// 
+        /// </summary>
         public void UpdateAlarmGrid()
         {
             // TODO: This line of code loads data into the 'dataSetAlarmEvents.alarm_historian' table. You can move, or remove it, as needed.
             this.alarm_historianTableAdapter.Fill(this.ctsDataSetAlarm.alarm_historian);
         }
 
-        private void btnSubView_Click_1(object sender, EventArgs e)
+       /* private void btnSubView_Click_1(object sender, EventArgs e)
         {
             DateTime temp = dtpHistoryStart.Value;
             DateTime temp2 = dtpHistoryEnd.Value;
@@ -144,12 +153,18 @@ namespace CTS_Application
                     chrtTemp.ChartAreas[0].AxisX.Maximum = temp2.ToOADate();
                 }
 
-            }
+            } */
         private void preferencesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmSettings SettingsWindow = new frmSettings();
             SettingsWindow.Show();
         }
+        //Source:
+        //https://msdn.microsoft.com/en-us/library/z3w4xdc9(v=vs.110).aspx
+        //
+        /// <summary>
+        /// 
+        /// </summary>
         private void MySqlStatus()
         {
             Process[] instance = Process.GetProcessesByName("mysqld");
@@ -163,7 +178,9 @@ namespace CTS_Application
                 tslblDBStat.Text = "Stopped";
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         private void RecordTempToDatabase()
         {
             try
@@ -178,18 +195,25 @@ namespace CTS_Application
                 MessageBox.Show(ex.Message);
             }
         }
+        /// <summary>
+        /// Metode brukt for å hente opp den totale minnemengden programmet og mysql bruker.
+        /// </summary>
         private void MemoryUsage()
         {
             //Displays the programs current physical memory Usage. 
             //Source:
+            //https://msdn.microsoft.com/en-us/library/system.diagnostics.process.workingset64(v=vs.110).aspx
+            //2nd Source:
             //http://stackoverflow.com/questions/1440720/how-can-i-determine-how-much-memory-my-program-is-currently-occupying
             //
-            Process[] usage = System.Diagnostics.Process.GetProcessesByName("mysqld");
-            long mySqlMem = usage[0].WorkingSet64;
-
-            long memory = System.Diagnostics.Process.GetCurrentProcess().WorkingSet64;
-            tslblRAM.Text  = "CTMS: " + (memory / 1024 / 1024).ToString() + " MB" + " / Database: " + (mySqlMem /1024 /1024).ToString() + " MB"; 
+            Process[] usage = System.Diagnostics.Process.GetProcessesByName("mysqld"); //Henter informasjonen om processen med det tilhørende navnet.
+            long mySqlMem = usage[0].WorkingSet64; //Henter informasjon om hvor mye fysisk minne prosessen bruker.
+            long memory = System.Diagnostics.Process.GetCurrentProcess().WorkingSet64; //Henter informasjon om hvor mye fysisk minne prosessen bruker.
+            tslblRAM.Text  = "CTMS: " + (memory / 1024 / 1024).ToString() + " MB" + " / Database: " + (mySqlMem /1024 /1024).ToString() + " MB";  //Info til statusbar.
         }
+        /// <summary>
+        /// 
+        /// </summary>
         private void UpdateTemp()
         {
             try
@@ -427,12 +451,6 @@ namespace CTS_Application
         {
             UpdateRange();
         }
-
-        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("LOLOLOLOLOLOL!");
-        }
-
 
     }
 }

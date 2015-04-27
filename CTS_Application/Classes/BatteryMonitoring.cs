@@ -10,6 +10,9 @@ using System.Windows.Forms;
 //using MySql.Data;
 //using MySql.Data.MySqlClient;
 
+//Source:
+//https://myashkap.wordpress.com/2011/03/08/c-sharp-how-to-make-your-own-battery-monitor/
+//
 
 namespace CTS_Application
 {
@@ -26,6 +29,9 @@ namespace CTS_Application
         {
 
         }
+        /// <summary>
+        /// 
+        /// </summary>
         public int PercentBatteryLeft
         {
             get
@@ -34,6 +40,9 @@ namespace CTS_Application
                return powerPercent;
             }
         }
+        /// <summary>
+        /// Egenskap som henter status om systemet  / PCn er koblet til 230V. 
+        /// </summary>
         public string Status
         {
             get
@@ -50,6 +59,9 @@ namespace CTS_Application
                return powerStatus;
             }
         }
+        /// <summary>
+        /// Henter estimert tid før PCn er tom for strøm.
+        /// </summary>
         public double TimeLeft
         {
              get
@@ -58,6 +70,10 @@ namespace CTS_Application
                  return timeLeft;
             }
         }
+        /// <summary>
+        /// En metode for å sjekke om systemet er koblet til 230V.
+        /// </summary>
+        /// <returns></returns>
      public bool StatusChanged()
      {
          bool powerDisconnected = false ;

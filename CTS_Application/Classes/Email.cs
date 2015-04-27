@@ -1,17 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Net;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
+//using System.Net;
 using System.Net.Mail;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+//using System.ComponentModel;
+//using System.Data;
+//using System.Drawing;
 using System.Windows.Forms;
-using Microsoft.Win32;
-using System.Media;
-using System.Threading;
+//using Microsoft.Win32;
+//using System.Media;
+//using System.Threading;
 
 namespace CTS_Application
 {
@@ -24,15 +24,15 @@ namespace CTS_Application
         public Email()
         {
             //from = "arduino.ia2.4.15@gmail.com" PW=Arduino4.15;
-            from = "prebenarduino@gmail.com";
+            from = "prebenarduino@gmail.com"; //Vil være systemmailen til firmaet som leverer produktet. feks. alarm.ctms@<InsertCompanyName>.no
             client = new SmtpClient("smtp.gmail.com", 587);
             client.Credentials = new System.Net.NetworkCredential(from, "arduino123");       
             client.EnableSsl = true;
          }
         /// <summary>
-        /// 
+        /// Sender mail med feilmelding til bruker.
         /// </summary>
-        /// <param name="body1"></param>
+        /// <param name="body1">Alarm-teksten</param>
         public void SendMessage(string body1)
         {
             DbRead dbRead = new DbRead();
@@ -40,31 +40,23 @@ namespace CTS_Application
             string subject1 = "Alarm fra CTS";
             //Then get the number of rows in the table to iterate IDs
             int numOfRows = Convert.ToInt32(dbRead.GetTotalRow());
-            //For each unique id in the table, send email.
-            
-
-
+            //For hver unike ID i databasen, send en mail.
             for (int i = 1; i <= numOfRows; i++)
             {
                 string userId = dbRead.GetEmail(i);
                 
-                if (userId.Length > 0) //Only execute if receiver exists.
+                if (userId.Length > 0) //Kjør kun hvis det finnes innhold.
                 {
                     try
                     {
-
                         message = new MailMessage(from, userId, subject1, body);
                         client.Send(message);
-
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);
                     }
                 }
-
-               
-                
             }
         }
     }

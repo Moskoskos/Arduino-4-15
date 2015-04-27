@@ -87,7 +87,7 @@ namespace CTS_Application
                             //Bruker spørringen ovenfor og tilkoblingstrengen i DbConnect.
                             using (MySqlCommand cmd = new MySqlCommand(query, connection))
                             {
-                                // Henter inn verdien parameteren og legger den til som en verdi i spørringen query
+                                // Henter inn verdien til parameteren og legger den til som en verdi i spørringen query
                                 cmd.Parameters.AddWithValue("@value", valueIn);
                                 //Kjører en SQL-commando uten å få noen verdi tilbake.
                                 cmd.ExecuteNonQuery();
@@ -105,7 +105,6 @@ namespace CTS_Application
             
         }
 
-        //Write to alarm table
         /// <summary>
         /// Skriver alarmer til alarm_historian.
         /// </summary>

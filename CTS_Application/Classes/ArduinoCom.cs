@@ -20,6 +20,7 @@ namespace CTS_Application
         public string temp = "";
         public int timeOut = 0;
        
+
         public ArduinoCom()
         {
             try
@@ -36,7 +37,7 @@ namespace CTS_Application
                 MessageBox.Show("Could not find COM Port value. Make sure that the MySQL-server is running!");
             } 
         }
-        
+       // UBRUKT KODE! -------------UBRUKT KODE! -----------------UBRUKT KODE!
         public string ComPort
         {
             get { return mySerialPort.PortName; }
