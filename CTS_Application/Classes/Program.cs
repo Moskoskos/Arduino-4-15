@@ -19,7 +19,7 @@ namespace CTS_Application
         static void Main()
         {
             Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);        //Source:oiughdfjh
+            Application.SetCompatibleTextRenderingDefault(false);
             DbRead dbRead = new DbRead();
             DbEdit dbEdit = new DbEdit();
             DbWrite dbWrite = new DbWrite();
