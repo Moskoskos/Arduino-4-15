@@ -115,22 +115,7 @@ namespace CTS_Application
             this.alarm_historianTableAdapter.Fill(this.ctsDataSetAlarm.alarm_historian);
         }
 
-       /* private void btnSubView_Click_1(object sender, EventArgs e)
-        {
-            DateTime temp = dtpHistoryStart.Value;
-            DateTime temp2 = dtpHistoryEnd.Value;
-         
-                if (temp.ToOADate() > temp2.ToOADate())
-                {
-                    MessageBox.Show("Cannot have a start date later than the end date.");
-                }
-                else
-                {
-                    chrtTemp.ChartAreas[0].AxisX.Minimum = temp.ToOADate();
-                    chrtTemp.ChartAreas[0].AxisX.Maximum = temp2.ToOADate();
-                }
-
-            } */
+      
         private void preferencesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmSettings SettingsWindow = new frmSettings();
@@ -410,11 +395,6 @@ namespace CTS_Application
         }
 
         private void rbtnHistory_CheckedChanged(object sender, EventArgs e)
-        {
-            UpdateRange();
-        }
-
-        private void mtxtRealtimeRange_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
             UpdateRange();
         }

@@ -107,21 +107,6 @@ namespace CTS_Application
             //}
         }
 
-        private void cboCOMPort_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            //try
-            //{
-            //    MessageBox.Show(cboCOMPort.SelectedText);
-            //    dbEdit.EditComPort(1, cboCOMPort.SelectedText);
-            //    MessageBox.Show("COM port selected.");
-            //}
-            //catch (Exception)
-            //{
-            //    lblChange.Text = "Could not set COM port.";
-            //    throw;
-            //}
-        }
-
         private void cboCOMPort_SelectionChangeCommitted_1(object sender, EventArgs e)
         {
             try
