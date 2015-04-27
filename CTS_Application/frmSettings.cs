@@ -44,10 +44,7 @@ namespace CTS_Application
             {
                 dbEdit.DeleteRecordsInTable("historian");
             }
-            else if (dialogResult == DialogResult.No)
-            {
-                //do something else
-            }
+        
         }
 
         private void btnDelAla_Click(object sender, EventArgs e)
