@@ -8,11 +8,10 @@ namespace CTS_Application
     class ArduinoCom
     {
         DbRead dbRead = new DbRead();
-        SerialPort mySerialPort;
+        SerialPort arduinoSerialPort;
         Timer tmrCom = new Timer();
         public bool comFault { get; set; }
         public double tempC = 0.0;
-        public string oldTemp = "";
         public string temp = "";
         public int timeOut = 0;
 
@@ -21,16 +20,16 @@ namespace CTS_Application
         {
             try
             {
-                mySerialPort = new SerialPort(dbRead.GetComPort(1), 9600, Parity.None, 8, StopBits.One);
+                arduinoSerialPort = new SerialPort(dbRead.GetComPort(1), 9600, Parity.None, 8, StopBits.One);
                 string port = dbRead.GetComPort(1);//leser comport fra database
-                mySerialPort.PortName = port;
-                mySerialPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
-                mySerialPort.Open();
+                arduinoSerialPort.PortName = port;
+                arduinoSerialPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
+                arduinoSerialPort.Open();
                 tmrCom.Tick += new EventHandler(timer_Tick);
             }
             catch (Exception)
             {
-                MessageBox.Show("Could not find COM Port value. Make sure that the MySQL-server is running!");
+                MessageBox.Show("Could not open selected COM port. Make sure that the MySQL-server is running!");
             }
         }
 
@@ -42,7 +41,7 @@ namespace CTS_Application
             if (timeOut > 4)//hvis timeoutverdi overstiger 4 blir comfault satt og -300 returneres isedenfor temp
             {
                 comFault = true;
-                tempC = -300.0;
+                tempC = float.NegativeInfinity;
             }
 
             return Math.Round(tempC, 2);
@@ -53,7 +52,7 @@ namespace CTS_Application
         {
             timeOut = 0;//Timeoutverdi blir satt til 0 hver gang data mottas
             comFault = false;
-            temp = mySerialPort.ReadLine();//leser verdi fra arduino
+            temp = arduinoSerialPort.ReadLine();//leser verdi fra arduino
             tempC = ((Convert.ToDouble(temp)) * 0.0318);//gjør om til grader celsius                    
         }
         void timer_Tick(object sender, EventArgs e)

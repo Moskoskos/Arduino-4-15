@@ -144,7 +144,7 @@ namespace CTS_Application
         {
             try
             {
-                if (temp_Arduino != -300)
+                if ((temp_Arduino> float.NegativeInfinity)&&(temp_Arduino < float.PositiveInfinity))
                 {
                     dbWrite.WriteTempToHistorian(temp_Arduino);
                 }
@@ -178,13 +178,13 @@ namespace CTS_Application
             try
             {
                 temp_Arduino = arCom.Readtemp();
-                if (temp_Arduino == -300.0)
+                if ((temp_Arduino > float.NegativeInfinity) && (temp_Arduino < float.PositiveInfinity))
                 {
-                    lblCV.Text = "NO INPUT";
+                    lblCV.Text = Convert.ToString(temp_Arduino) + "°C";
                 }
                 else
                 {
-                    lblCV.Text = Convert.ToString(temp_Arduino) + "°C";
+                    lblCV.Text = "NO INPUT";   
                 }
             }
             catch (Exception ex)
