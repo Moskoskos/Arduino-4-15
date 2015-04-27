@@ -38,7 +38,7 @@ namespace CTS_Application
             tmrCom.Interval = 1000;
             tmrCom.Start();
 
-            if (timeOut > 4)//hvis timeoutverdi overstiger 4 blir comfault satt og -300 returneres isedenfor temp
+            if (timeOut > 4)//hvis timeoutverdi overstiger 4 blir comfault satt til float.negativinfinity og returneres isedenfor temp
             {
                 comFault = true;
                 tempC = float.NegativeInfinity;
