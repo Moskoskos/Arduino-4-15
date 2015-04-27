@@ -19,7 +19,7 @@ namespace CTS_Application
         {
             InitializeComponent();
         }
-        
+
         /// <summary>
         /// Skriver informasjon fra tekstboksene i frmSub til databasen
         /// </summary>
@@ -39,7 +39,7 @@ namespace CTS_Application
                 lastname = txtLastName.Text;
                 number = Convert.ToInt32(txtNumber.Text);
                 email = txtMail.Text;
-                
+
                 DbWrite dbWrite = new DbWrite();
                 dbWrite.InsertIntoUsers(username, firstname, lastname, email, number); //Sender informasjonen fra variablene til metoden dbWrite.InsertIntoUsers.
                 usersTableAdapter.Fill(ctsDataSetUsers.users); //Oppdaterer GridView.
@@ -66,13 +66,13 @@ namespace CTS_Application
             lblMessage.Text = "Table Updated";
             lblMessage.ForeColor = Color.Green;
         }
-      
+
         /// <summary>
         /// Sletter all inofrmasjon i tekstboksene i frmSub
         /// </summary>
         /// <param name="conConCol"></param>
         private void ClearTextBoxes(Control.ControlCollection conConCol)
-        { 
+        {
             //Source:
             //http://www.codeproject.com/Questions/567848/ClearplusallplustextboxplusinplusC
             //Checks all textboxes for text and deletes it.

@@ -11,7 +11,7 @@ namespace CTS_Application
     {
         //Get powerStatus class for monitoring
         PowerStatus power = SystemInformation.PowerStatus;
-        
+
         int powerPercent;
         string powerStatus;
         int timeLeft;
@@ -27,8 +27,8 @@ namespace CTS_Application
         {
             get
             {
-               powerPercent = Convert.ToInt32(power.BatteryLifePercent *100);
-               return powerPercent;
+                powerPercent = Convert.ToInt32(power.BatteryLifePercent * 100);
+                return powerPercent;
             }
         }
         /// <summary>
@@ -38,16 +38,16 @@ namespace CTS_Application
         {
             get
             {
-               powerStatus = power.PowerLineStatus.ToString();
-               if (power.PowerLineStatus.ToString() == "Online")
-               {
-                   powerStatus = "Laptop is charging";
-               }
-               else
-               {
-                   powerStatus = "Laptop is not charging";
-               }
-               return powerStatus;
+                powerStatus = power.PowerLineStatus.ToString();
+                if (power.PowerLineStatus.ToString() == "Online")
+                {
+                    powerStatus = "Laptop is charging";
+                }
+                else
+                {
+                    powerStatus = "Laptop is not charging";
+                }
+                return powerStatus;
             }
         }
         /// <summary>
@@ -55,37 +55,37 @@ namespace CTS_Application
         /// </summary>
         public double TimeLeft
         {
-             get
+            get
             {
-               timeLeft = power.BatteryLifeRemaining / 60 ;
-                 return timeLeft;
+                timeLeft = power.BatteryLifeRemaining / 60;
+                return timeLeft;
             }
         }
         /// <summary>
         /// En metode for å sjekke om systemet er koblet til 230V.
         /// </summary>
         /// <returns></returns>
-     public bool StatusChanged()
-     {
-         bool powerDisconnected = false ;
-         
+        public bool StatusChanged()
+        {
+            bool powerDisconnected = false;
 
-         if ( System.Windows.Forms.SystemInformation.PowerStatus.PowerLineStatus == PowerLineStatus.Offline)
-         {
-             powerDisconnected = true;
-         }
-         if(System.Windows.Forms.SystemInformation.PowerStatus.PowerLineStatus == PowerLineStatus.Online)
-         {
-             powerDisconnected = false;
-         }
-         return powerDisconnected;
 
-     } 
+            if (System.Windows.Forms.SystemInformation.PowerStatus.PowerLineStatus == PowerLineStatus.Offline)
+            {
+                powerDisconnected = true;
+            }
+            if (System.Windows.Forms.SystemInformation.PowerStatus.PowerLineStatus == PowerLineStatus.Online)
+            {
+                powerDisconnected = false;
+            }
+            return powerDisconnected;
+
+        }
+    }
+
 }
- 
-}
-     
-    
-   
+
+
+
 
 

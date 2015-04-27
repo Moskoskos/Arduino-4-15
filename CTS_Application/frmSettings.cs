@@ -9,9 +9,9 @@ namespace CTS_Application
         DbEdit dbEdit = new DbEdit();
         DbRead dbRead = new DbRead();
         DbWrite dbWrite = new DbWrite();
-        
+
         public frmSettings()
-        {        
+        {
             InitializeComponent();
             FillTextBoxes();
 
@@ -44,7 +44,7 @@ namespace CTS_Application
             {
                 dbEdit.DeleteRecordsInTable("historian");
             }
-        
+
         }
 
         private void btnDelAla_Click(object sender, EventArgs e)
@@ -54,7 +54,7 @@ namespace CTS_Application
             {
                 dbEdit.DeleteRecordsInTable("alarm_historian");
             }
-          
+
         }
 
         private void btnDelSub_Click(object sender, EventArgs e)
@@ -64,7 +64,7 @@ namespace CTS_Application
             {
                 dbEdit.DeleteRecordsInTable("users");
             }
-         
+
         }
 
 

@@ -8,9 +8,9 @@ namespace CTS_Application
 {
     public partial class frmMain : Form
     {
-        double temp_Arduino = 0.0;        
-       
-      //  DbConnect con = new DbConnect();
+        double temp_Arduino = 0.0;
+
+        //  DbConnect con = new DbConnect();
         DbWrite dbWrite = new DbWrite();
         DbRead dbRead = new DbRead();
         DbEdit dbEdit = new DbEdit();
@@ -21,13 +21,13 @@ namespace CTS_Application
         System.Timers.Timer tmrAlarm = new System.Timers.Timer(); //Timer to monitor alarm events.
         System.Timers.Timer tmrRecToDb = new System.Timers.Timer(); //Timer to record temperature recordings to database.
         System.Timers.Timer tmrTest = new System.Timers.Timer();//testing
-       
+
         public frmMain()
         {
-           InitializeComponent();
-           tmrUpdateGui.Start();
+            InitializeComponent();
+            tmrUpdateGui.Start();
             //Initialize GUI time ranges
-            cboRealtimeRange.SelectedIndex = 12-1; //12 hours initial range.
+            cboRealtimeRange.SelectedIndex = 12 - 1; //12 hours initial range.
             cboRealtimeUnit.SelectedIndex = 1; //hours initial unit.
             dtpHistoryEnd.Value = DateTime.Now;
             dtpHistoryStart.Value = DateTime.Now.AddMonths(-1); //One month initial range.
@@ -42,10 +42,10 @@ namespace CTS_Application
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            UpdateGraph(); 
-            UpdateAlarmGrid();           
+            UpdateGraph();
+            UpdateAlarmGrid();
         }
-       
+
         private void tmrAlarmInit()
         {
             tmrAlarm.Interval = 3000; // Interval = 3 Sekunder.
@@ -58,7 +58,7 @@ namespace CTS_Application
         {
             CheckAlarmStatus(); //Henter metoden som sjekker om det finnes noen aktive alarmer.
         }
-        
+
         private void tmrUpdateGui_Tick(object sender, EventArgs e)
         {
             try
@@ -72,7 +72,7 @@ namespace CTS_Application
                     UpdateRange(); //Oppdaterer range til graf i realtime.
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             { MessageBox.Show(ex.Message); }
 
         }
@@ -81,8 +81,8 @@ namespace CTS_Application
         /// </summary>
         private void tmrRecToDbInit()
         {
-            tmrRecToDb.Interval = 4000; 
-            tmrRecToDb.Elapsed +=tmrRecToDb_Elapsed;
+            tmrRecToDb.Interval = 4000;
+            tmrRecToDb.Elapsed += tmrRecToDb_Elapsed;
             tmrRecToDb.AutoReset = true;
         }
 
@@ -113,7 +113,7 @@ namespace CTS_Application
             this.alarm_historianTableAdapter.Fill(this.ctsDataSetAlarm.alarm_historian);
         }
 
-      
+
         private void preferencesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmSettings SettingsWindow = new frmSettings();
@@ -147,7 +147,7 @@ namespace CTS_Application
             {
                 if (temp_Arduino != -300)
                 {
-                 dbWrite.WriteTempToHistorian(temp_Arduino);                    
+                    dbWrite.WriteTempToHistorian(temp_Arduino);
                 }
             }
             catch (Exception ex)
@@ -169,7 +169,7 @@ namespace CTS_Application
             Process[] usage = System.Diagnostics.Process.GetProcessesByName("mysqld"); //Henter informasjonen om processen med det tilhørende navnet.
             long mySqlMem = usage[0].WorkingSet64; //Henter informasjon om hvor mye fysisk minne prosessen bruker.
             long memory = System.Diagnostics.Process.GetCurrentProcess().WorkingSet64; //Henter informasjon om hvor mye fysisk minne prosessen bruker.
-            tslblRAM.Text  = "CTMS: " + (memory / 1024 / 1024).ToString() + " MB" + " / Database: " + (mySqlMem /1024 /1024).ToString() + " MB";  //Info til statusbar.
+            tslblRAM.Text = "CTMS: " + (memory / 1024 / 1024).ToString() + " MB" + " / Database: " + (mySqlMem / 1024 / 1024).ToString() + " MB";  //Info til statusbar.
         }
         /// <summary>
         /// Metode som oppdaterer temepraturvisning av siste temp verdi og vises i frmMain
@@ -178,15 +178,15 @@ namespace CTS_Application
         {
             try
             {
-                    temp_Arduino = arCom.Readtemp();
-                    if (temp_Arduino == -300.0)
-                    {
-                        lblCV.Text = "NO INPUT";
-                    }
-                    else
-                    {
-                        lblCV.Text = Convert.ToString(temp_Arduino) + "°C";
-                    }               
+                temp_Arduino = arCom.Readtemp();
+                if (temp_Arduino == -300.0)
+                {
+                    lblCV.Text = "NO INPUT";
+                }
+                else
+                {
+                    lblCV.Text = Convert.ToString(temp_Arduino) + "°C";
+                }
             }
             catch (Exception ex)
             {
@@ -196,13 +196,13 @@ namespace CTS_Application
         private void BatteryRemaining()
         {
             BatteryMonitoring batteryMonitoring = new BatteryMonitoring();
-            tslblBat.Text = batteryMonitoring.PercentBatteryLeft.ToString() +"%";
+            tslblBat.Text = batteryMonitoring.PercentBatteryLeft.ToString() + "%";
             //To disable animation, decrement progress bar.
             if (batteryMonitoring.PercentBatteryLeft < tsprgBat.Maximum)
             {
                 tsprgBat.Value = batteryMonitoring.PercentBatteryLeft + 1;
             }
-            
+
             tsprgBat.Value = batteryMonitoring.PercentBatteryLeft;
 
             tslblState.Text = batteryMonitoring.Status;
@@ -236,7 +236,7 @@ namespace CTS_Application
             tempOOR = alarm.TempOutOfRange(realTemp);
             batAlarm = alarm.BatteryAlarm(batteryMonitoring.StatusChanged());
             arcomAlarm = alarm.ArduComAlarm(arCom.comFault);
-            batteryAlarm = alarm.LowBatteryPercent(spLBattery,batteryPercent,batAlarm);
+            batteryAlarm = alarm.LowBatteryPercent(spLBattery, batteryPercent, batAlarm);
 
             //Her sjekkes verdien til variablene. Hvis der "true" vil det skrives en alarm til databasen og det vil sendes en mail.
             //Til slutt oppdateres AlarmGrid.
@@ -247,14 +247,14 @@ namespace CTS_Application
                 mail.SendMessage(message);
                 this.Invoke((MethodInvoker)delegate { UpdateAlarmGrid(); });
             }
-            if ((lowTemp)&&(arcomAlarm==false))
+            if ((lowTemp) && (arcomAlarm == false))
             {
                 string message = "Temperature extended setpoint: Low (" + spL + "°C). Temperature =" + realTemp.ToString() + "°C";
                 dbWrite.WriteToAlarmHistorian(2, message);
                 mail.SendMessage(message);
                 this.Invoke((MethodInvoker)delegate { UpdateAlarmGrid(); });
             }
-            if ((tempOOR)&&(arcomAlarm==false))
+            if ((tempOOR) && (arcomAlarm == false))
             {
                 string message = "Temperature out of range. Temperature =" + realTemp.ToString() + "°C";
                 dbWrite.WriteToAlarmHistorian(3, message);
@@ -276,9 +276,9 @@ namespace CTS_Application
                 this.Invoke((MethodInvoker)delegate { UpdateAlarmGrid(); });
                 MessageBox.Show("The program could not find the Arduino. Go to Preferences to change COM port");
             }
-            if(batteryAlarm)
+            if (batteryAlarm)
             {
-                string message = ("Low Battery percent. "+timeLeft+" minuttes until system shut down"+ batteryPercent + "% left");
+                string message = ("Low Battery percent. " + timeLeft + " minuttes until system shut down" + batteryPercent + "% left");
                 dbWrite.WriteToAlarmHistorian(6, message);
                 mail.SendMessage(message);
                 this.Invoke((MethodInvoker)delegate { UpdateAlarmGrid(); });
@@ -301,7 +301,7 @@ namespace CTS_Application
                 dtpHistoryEnd.Enabled = false;
 
                 //Calculate the range to DateTime format
-                int minutes = cboRealtimeRange.SelectedIndex+1;
+                int minutes = cboRealtimeRange.SelectedIndex + 1;
                 if (cboRealtimeUnit.SelectedIndex >= 1) //minutes to hours
                 {
                     minutes *= 60;
@@ -353,24 +353,24 @@ namespace CTS_Application
             }
 
             //Set the label format
-            if (((end-start).Days) > 5 )
+            if (((end - start).Days) > 5)
             {
                 chrtTemp.ChartAreas["Temperature"].AxisX.LabelStyle.Format = "dd/MM/yyyy";
             }
-            else if (((end-start).Days) > 1 )
+            else if (((end - start).Days) > 1)
             {
                 chrtTemp.ChartAreas["Temperature"].AxisX.LabelStyle.Format = "dd/MM/yy - HH:mm";
             }
             else
             {
-                chrtTemp.ChartAreas["Temperature"].AxisX.LabelStyle.Format = "HH:mm"; 
+                chrtTemp.ChartAreas["Temperature"].AxisX.LabelStyle.Format = "HH:mm";
             }
 
             //Write the range to the charting component.
             chrtTemp.ChartAreas[0].AxisX.Minimum = start.ToOADate();
             chrtTemp.ChartAreas[0].AxisX.Maximum = end.ToOADate();
         }
-        
+
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             UpdateRange();
@@ -390,7 +390,7 @@ namespace CTS_Application
         {
             UpdateRange();
         }
-        
+
         private void cboRealtimeRange_SelectedIndexChanged(object sender, EventArgs e)
         {
             UpdateRange();

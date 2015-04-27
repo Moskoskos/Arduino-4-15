@@ -16,8 +16,8 @@ namespace CTS_Application
     {
         DbRead dbRead = new DbRead();
         double dbValue;
-        
-        public DbWrite() 
+
+        public DbWrite()
         {
 
         }
@@ -71,34 +71,34 @@ namespace CTS_Application
             //
             //Source:
             //http://stackoverflow.com/questions/19527554/inserting-values-into-mysql-database-from-c-sharp-application-text-box
-           
-                try
+
+            try
+            {
+                if (valueIn >= dbValue + 0.1 || valueIn <= dbValue - 0.1) //For å unngå duplicate data.
                 {
-                   if (valueIn >= dbValue + 0.1 || valueIn <= dbValue - 0.1) //For å unngå duplicate data.
-                   {
-                        string query = "INSERT INTO historian(value)VALUES(@value);";
-                        //Sjekker at tilkoblingen er åpen.
-                        if (this.OpenConnection())
+                    string query = "INSERT INTO historian(value)VALUES(@value);";
+                    //Sjekker at tilkoblingen er åpen.
+                    if (this.OpenConnection())
+                    {
+                        //Bruker spørringen ovenfor og tilkoblingstrengen i DbConnect.
+                        using (MySqlCommand cmd = new MySqlCommand(query, connection))
                         {
-                            //Bruker spørringen ovenfor og tilkoblingstrengen i DbConnect.
-                            using (MySqlCommand cmd = new MySqlCommand(query, connection))
-                            {
-                                // Henter inn verdien til parameteren og legger den til som en verdi i spørringen query
-                                cmd.Parameters.AddWithValue("@value", valueIn);
-                                //Kjører en SQL-commando uten å få noen verdi tilbake.
-                                cmd.ExecuteNonQuery();
-                                CloseConnection();
-                            }
+                            // Henter inn verdien til parameteren og legger den til som en verdi i spørringen query
+                            cmd.Parameters.AddWithValue("@value", valueIn);
+                            //Kjører en SQL-commando uten å få noen verdi tilbake.
+                            cmd.ExecuteNonQuery();
+                            CloseConnection();
                         }
                     }
-                   dbValue = dbRead.GetLatestValue();
-                   
                 }
-                catch (MySqlException ex)
-                {
-                    MessageBox.Show("Could not insert into historian\r\r\n" + ex.Message);
-                }
-            
+                dbValue = dbRead.GetLatestValue();
+
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Could not insert into historian\r\r\n" + ex.Message);
+            }
+
         }
 
         /// <summary>
@@ -165,6 +165,6 @@ namespace CTS_Application
             }
 
         }
- 
+
     }
 }

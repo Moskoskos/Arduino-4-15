@@ -7,17 +7,17 @@ namespace CTS_Application
 {
     class Email
     {
-       private SmtpClient client;
-       private MailMessage message;
-       private string from;
+        private SmtpClient client;
+        private MailMessage message;
+        private string from;
 
         public Email()
         {
             from = "ardumailen@gmail.com"; //Vil være systemmailen til firmaet som leverer produktet. feks. alarm.ctms@<InsertCompanyName>.no
             client = new SmtpClient("smtp.gmail.com", 587);
-            client.Credentials = new System.Net.NetworkCredential(from, "fluefiske");       
+            client.Credentials = new System.Net.NetworkCredential(from, "fluefiske");
             client.EnableSsl = true;
-         }
+        }
         /// <summary>
         /// Sender mail med feilmelding til bruker.
         /// </summary>
@@ -33,7 +33,7 @@ namespace CTS_Application
             for (int i = 1; i <= numOfRows; i++)
             {
                 string userId = dbRead.GetEmail(i);
-                
+
                 if (userId.Length > 0) //Kjør kun hvis det finnes innhold.
                 {
                     try
@@ -49,9 +49,9 @@ namespace CTS_Application
             }
         }
     }
-       
 
 
-        
-    
+
+
+
 }

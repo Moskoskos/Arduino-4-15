@@ -27,7 +27,7 @@ namespace CTS_Application
             database = "cts"; // Navnet til databasen som skal kobles til.
             uid = "root"; //Brukernavnet for å få logget seg på databasen,
             password = ""; //Passordet som blir brukt i samsvar med brukernavnet.
-            string connectionString;  
+            string connectionString;
             connectionString = "SERVER=" + server + ";" + "DATABASE=" +
             database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
             connection = new MySqlConnection(connectionString);
@@ -56,14 +56,14 @@ namespace CTS_Application
             catch (MySqlException ex)
             {
                 MessageBox.Show(ex.Message);
-               
+
                 return false;
             }
         }
-        
+
         public bool CloseConnection()
         {
-            
+
             try
             {
                 connection.Close();
@@ -77,4 +77,3 @@ namespace CTS_Application
         }
     }
 }
-        

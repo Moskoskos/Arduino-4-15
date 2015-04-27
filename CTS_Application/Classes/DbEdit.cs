@@ -10,15 +10,15 @@ namespace CTS_Application
         {
 
         }
-       /// <summary>
-       /// Metoden ChangeSetPoint skal primært sett oppdatere cellene for setpunktene i tabellen "settings" i databasen.
-       /// Ved første oppstart av systemet vil derimot denne raden mangle, og dermed må denne raden generes. (INSERT INTO)
-       /// For å unngå DUPLICATE error brukes spørringen i variables "query".
-       /// Hvis det finnes en rad med samme ID endres bare settpunktene.
-       /// </summary>
-       /// <param name="settingID">Brukt for å verifisere rad 1. Lagt til som et parameter i metoden i tilfelle det ønskes flere predefinerte innstillinger.  </param>
-       /// <param name="setPointLowIn">Det nedre settpunktet for temperatur.</param>
-       /// <param name="setPointHighIn">Det øvre settpunktet for temperatur.</param>
+        /// <summary>
+        /// Metoden ChangeSetPoint skal primært sett oppdatere cellene for setpunktene i tabellen "settings" i databasen.
+        /// Ved første oppstart av systemet vil derimot denne raden mangle, og dermed må denne raden generes. (INSERT INTO)
+        /// For å unngå DUPLICATE error brukes spørringen i variables "query".
+        /// Hvis det finnes en rad med samme ID endres bare settpunktene.
+        /// </summary>
+        /// <param name="settingID">Brukt for å verifisere rad 1. Lagt til som et parameter i metoden i tilfelle det ønskes flere predefinerte innstillinger.  </param>
+        /// <param name="setPointLowIn">Det nedre settpunktet for temperatur.</param>
+        /// <param name="setPointHighIn">Det øvre settpunktet for temperatur.</param>
         public void ChangeSetPoint(int settingID, double setPointLowIn, double setPointHighIn)
         {
             try
@@ -75,14 +75,14 @@ namespace CTS_Application
                 MessageBox.Show(ex.Message + "\r\r\n");
             }
         }
-       /// <summary>
-       /// Metoden EditComPort skal primært sett oppdatere verdien til COM_port i tabellen "settings" i databasen.
-       /// Ved første oppstart av systemet vil derimot raden hvor cellen er mangle, og dermed må denne raden generes. (INSERT INTO)
-       /// For å unngå DUPLICATE error brukes spørringen i variables "query".
-       /// Hvis det finnes en rad med samme ID endres bare settpunktene.
-       /// </summary>
+        /// <summary>
+        /// Metoden EditComPort skal primært sett oppdatere verdien til COM_port i tabellen "settings" i databasen.
+        /// Ved første oppstart av systemet vil derimot raden hvor cellen er mangle, og dermed må denne raden generes. (INSERT INTO)
+        /// For å unngå DUPLICATE error brukes spørringen i variables "query".
+        /// Hvis det finnes en rad med samme ID endres bare settpunktene.
+        /// </summary>
         /// <param name="settingID">Brukt for å verifisere rad 1. Lagt til som et parameter i metoden i tilfelle det ønskes flere predefinerte innstillinger.</param>
-       /// <param name="comPortIn">Verdien til comporten. "COM3" for eksempel.</param>
+        /// <param name="comPortIn">Verdien til comporten. "COM3" for eksempel.</param>
         public void EditComPort(int settingID, string comPortIn)
         {
             try
@@ -108,6 +108,6 @@ namespace CTS_Application
                 MessageBox.Show("Could not insert into settings com" + ex.Message);
             }
         }
-       
+
     }
 }

@@ -9,13 +9,13 @@ namespace CTS_Application
     {
         DbRead dbRead = new DbRead();
         SerialPort mySerialPort;
-        Timer tmrCom = new Timer(); 
-        public bool comFault{get; set;}
+        Timer tmrCom = new Timer();
+        public bool comFault { get; set; }
         public double tempC = 0.0;
         public string oldTemp = "";
         public string temp = "";
         public int timeOut = 0;
-       
+
 
         public ArduinoCom()
         {
@@ -31,14 +31,14 @@ namespace CTS_Application
             catch (Exception)
             {
                 MessageBox.Show("Could not find COM Port value. Make sure that the MySQL-server is running!");
-            } 
+            }
         }
-       
+
         public double Readtemp()
         {
             tmrCom.Interval = 1000;
             tmrCom.Start();
-           
+
             if (timeOut > 4)//hvis timeoutverdi overstiger 4 blir comfault satt og -300 returneres isedenfor temp
             {
                 comFault = true;
@@ -49,7 +49,7 @@ namespace CTS_Application
         }
 
         // Event som intreffer hvis programmet mottar noe fra comport
-        private void DataReceivedHandler(object sender,SerialDataReceivedEventArgs e)
+        private void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
         {
             timeOut = 0;//Timeoutverdi blir satt til 0 hver gang data mottas
             comFault = false;
@@ -58,7 +58,7 @@ namespace CTS_Application
         }
         void timer_Tick(object sender, EventArgs e)
         {
-            timeOut += 1 ;//teller opp timeoutverdi 1 gang per sek
+            timeOut += 1;//teller opp timeoutverdi 1 gang per sek
         }
     }
     //kilde: https://msdn.microsoft.com/en-us/library/system.io.ports.serialport%28v=vs.110%29.aspx
