@@ -1,14 +1,5 @@
 ﻿using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
-//using System.Management;
-//using Microsoft.Win32;
-//using System.Data;
 using System.Windows.Forms;
-//using MySql.Data;
-//using MySql.Data.MySqlClient;
 
 //Source:
 //https://myashkap.wordpress.com/2011/03/08/c-sharp-how-to-make-your-own-battery-monitor/

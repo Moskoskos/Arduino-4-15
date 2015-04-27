@@ -1,14 +1,6 @@
 ﻿using System;
-//using System.Collections.Generic;
-//using System.ComponentModel;
-//using System.Data;
 using System.Drawing;
-//using System.Text;
 using System.Windows.Forms;
-//using Microsoft.Win32;
-//using System.Media;
-//using System.Threading.Tasks;
-//using System.Threading;
 using System.Diagnostics;
 
 
@@ -55,22 +47,7 @@ namespace CTS_Application
             UpdateGraph(); 
             UpdateAlarmGrid();           
         }
-        //UBRUKT KODE! -------------UBRUKT KODE! -----------------UBRUKT KODE!
-        //private void tmrTestInit()
-        //{
-        //    tmrTest.Interval = 2000;
-        //    tmrTest.Elapsed += tmrTest_Elapsed;
-        //    tmrTest.AutoReset = true;
-        //}
-
-        //void tmrTest_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
-        //{
-        //    //UpdateTemp(); //Oppdaterer temperaturverdien i frmMain fra klassen arduinoCOM.
-        //    this.Invoke((MethodInvoker)delegate { UpdateTemp(); });
-        //}
-        /// <summary>
-        /// Innstillingene til tmrAlarm.
-        /// </summary>
+       
         private void tmrAlarmInit()
         {
             tmrAlarm.Interval = 3000; // Interval = 3 Sekunder.

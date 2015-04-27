@@ -33,7 +33,7 @@ namespace CTS_Application
             if (instance.Length != 0)
             {
                
-                //Hvis databasen er kjører, sjekker den om det finnes en rad for settings. Hvis det ikke gjør det, putter den inn default verdier.
+                //Hvis databasen kjører, sjekker den om det finnes en rad for settings. Hvis det ikke gjør det, putter den inn default verdier.
                if (chkSettings == "0")
                 {
                     dbEdit.ChangeSetPoint(1, -20, 30);
